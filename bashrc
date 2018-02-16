@@ -20,17 +20,11 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\033[33m\]$(rvm-prompt)\[\033[0m\]:\W\[\033[0m\]$(__git_ps1 "\[\033[1;33m\](\[\033[0;35m\]⎇ %s\[\033[1;33m\])") \[\033[1;36m\]\u\[\033[0m\]$ '
 
-# Copies the current path to the clipboard
-alias cpdir="pwd | tr -d '\n' | pbcopy"
-
 # Reload the bashrc
 function reload {
     source ~/.bashrc
     echo 'reloaded'
 }
-
-# Attatch to a session if it has been detatched from or create a new one
-alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 
 # Prints out the current bash version
 alias version='echo $BASH_VERSION'
