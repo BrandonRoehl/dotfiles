@@ -10,7 +10,7 @@ source "$HOME/.zsh/antigen/antigen.zsh"
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
+# antigen bundle zsh-users/zsh-history-substring-search
 
 antigen bundle BrandonRoehl/zsh-clean
 # antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
@@ -59,14 +59,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -v
 # End of lines configured by zsh-newuser-install
-
-# Copies the current path to the clipboard
-alias cpdir="pwd | tr -d '\n' | pbcopy"
-
-# Attached a session if it has been detached from or create a new one
-alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
-
-alias gca='git commit -a && git push'
 
 # export PATH="$PATH:$HOME/workspace/universe/bin"
 
