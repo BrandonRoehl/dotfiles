@@ -22,6 +22,9 @@ source "$HOME/.profile"
 
 setopt prompt_subst
 setopt correct
+setopt EXTENDED_GLOB
+# This instead for bash like glob
+# setopt KSH_GLOB
 
 # Enable colors in prompt
 export TERM=xterm-256color
@@ -32,10 +35,11 @@ export CLICOLOR=1 # MacOS
 if which dircolors &>/dev/null
 then
     alias ls='ls --color=auto --classify'
-    autoload -U colors
-    colors
     eval $(dircolors)
 fi
+
+autoload -U colors
+colors
 # The following lines were added by compinstall
 
 zstyle ':completion:*' auto-description '%d'
