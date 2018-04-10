@@ -1,4 +1,6 @@
 "*":
+  "atom-ide-ui":
+    use: {}
   "atom-material-ui":
     colors: {}
     tabs:
@@ -13,13 +15,8 @@
   core:
     projectHome: "/Users/BrandonRoehl/workspace"
     telemetryConsent: "limited"
-    themes: [
-      "atom-material-ui"
-      "one-dark-syntax"
-    ]
     titleBar: "custom"
   editor:
-    fontFamily: "Roboto Mono"
     fontSize: 12
     tabLength: 4
   "exception-reporting":
