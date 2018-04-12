@@ -10,6 +10,11 @@
     ui:
       panelContrast: true
       panelShadows: true
+  "atom-package-deps":
+    ignored: [
+      "linter"
+      "linter-clang"
+    ]
   autosave:
     enabled: true
   core:

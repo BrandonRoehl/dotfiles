@@ -7,6 +7,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GOPATH="$HOME/workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# Use GPG
+export GPG_TTY=$(tty)
+
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
 
