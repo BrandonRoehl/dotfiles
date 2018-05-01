@@ -18,6 +18,18 @@
   autosave:
     enabled: true
   core:
+    customFileTypes:
+      "source.ini": [
+        ".hgrc"
+        ".buckconfig"
+        ".flowconfig"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     projectHome: "/Users/BrandonRoehl/workspace"
     telemetryConsent: "limited"
     titleBar: "custom"
@@ -26,7 +38,14 @@
     tabLength: 4
   "exception-reporting":
     userId: "d5cac5a7-3131-ea39-89d0-21be943bab7d"
+  "file-icons":
+    coloured: false
   "markdown-preview": {}
+  nuclide:
+    "nuclide-home": {}
+    "nuclide-working-sets": {}
+    use: {}
+  "one-dark-ui": {}
   "platformio-ide-terminal":
     style:
       theme: "one-dark"

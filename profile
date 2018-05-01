@@ -7,6 +7,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GOPATH="$HOME/workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# Universe
+export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
 # Use GPG
 export GPG_TTY=$(tty)
 

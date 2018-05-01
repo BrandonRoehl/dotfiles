@@ -120,13 +120,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>445 364 620 392 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>231 386 796 473 0 0 1440 877 </string>
+	<string>231 407 918 452 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame com.apple.typography_panel_UbuntuMono-Regular</key>
 	<string>246 464 260 96 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>482 267 570 427 0 0 1440 877 </string>
+	<string>472 174 570 427 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>341 324 570 427 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
@@ -361,7 +361,7 @@
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
-			<false/>
+			<true/>
 			<key>Blur Radius</key>
 			<real>30</real>
 			<key>Bold Color</key>
@@ -855,7 +855,7 @@
 			<key>Thin Strokes</key>
 			<integer>1</integer>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.2091350729695432</real>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
@@ -1038,7 +1038,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-03-27T13:13:00Z</date>
+	<date>2018-05-01T15:20:34Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
