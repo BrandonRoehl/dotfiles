@@ -228,15 +228,21 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>385 167 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>355 308 918 512 0 0 1440 877 </string>
+	<string>355 308 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame com.apple.typography_panel_UbuntuMono-Regular</key>
 	<string>246 464 260 96 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>15 486 570 377 0 0 1440 877 </string>
+	<string>6 488 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>341 365 570 377 0 0 1440 877 </string>
+	<string>41 96 1354 769 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>355 224 570 377 0 0 1440 877 </string>
+	<key>NeverWarnAboutShortLivedSessions_B091E726-AE75-4CC2-9CD9-61EE377E988B</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_B091E726-AE75-4CC2-9CD9-61EE377E988B_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1137,6 +1143,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/BrandonRoehl/workspace/dotfiles</string>
+	<key>PromptOnQuit</key>
+	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>SUAutomaticallyUpdate</key>
@@ -1150,7 +1158,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-05-02T16:36:05Z</date>
+	<date>2018-05-10T17:14:13Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>

@@ -26,6 +26,9 @@ setopt EXTENDED_GLOB
 # This instead for bash like glob
 # setopt KSH_GLOB
 
+# Setopt for testing zsh plugins
+# setopt WARN_CREATE_GLOBAL
+
 # Enable colors in prompt
 export TERM=xterm-256color
 
