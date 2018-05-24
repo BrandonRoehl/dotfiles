@@ -199,21 +199,36 @@ let g:NERDTrimTrailingWhitespace=1
 
 " Ale Setup
 let g:ale_sign_column_always=1
-" let g:ale_statusline_format=['%d', '%d', '⬥ ok']
 let g:ale_sign_error='>>'
 let g:ale_sign_warning='--'
 let g:ale_lint_delay=250
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+" let g:ale_statusline_format=['%d', '%d', '⬥ ok']
+function! LinterStatus()
+    if exists('g:loaded_ale')
+        let l:counts = ale#statusline#Count(bufnr(''))
 
-    return l:counts.total == 0 ? '⬥ ok' : printf(
-    \   '⚠ %d ⨉ %d',
-    \   all_non_errors,
-    \   all_errors
-    \)
+        let l:dict = {
+                    \ '⚠': counts.warning + counts.style_warning,
+                    \ '⨉': counts.error + counts.style_error,
+                    \ 'ℹ︎': counts.info
+                    \ }
+
+        let l:result = ''
+        for [l:next_key, l:next_val] in items(dict)
+            if l:next_val
+                let l:result .= printf(' %s %d', next_key, next_val)
+            endif
+        endfor
+
+        if len(result)
+            return l:result[1:]
+        else
+            return '⬥ ok'
+        endif
+    else
+        return ''
+    endif
 endfunction
 set statusline+=%4*%{LinterStatus()}\ %*
 
