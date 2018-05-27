@@ -211,7 +211,7 @@ function! LinterStatus()
         let l:dict = {
                     \ '⚠': counts.warning + counts.style_warning,
                     \ '⨉': counts.error + counts.style_error,
-                    \ 'ℹ︎': counts.info
+                    \ 'i': counts.info
                     \ }
 
         let l:result = ''
@@ -264,5 +264,5 @@ let g:gitgutter_sign_modified_removed='~'
 " Close NerdTree when vim is closed
 autocmd bufenter * if (winnr("$") == 1
             \ && exists("b:NERDTree")
-            \ && b:NERDTree.isTabTree()) | q | endif")")
+            \ && b:NERDTree.isTabTree()) | q | endif
 
