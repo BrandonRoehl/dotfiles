@@ -10,13 +10,12 @@ Plug 'BrandonRoehl/auto-omni'
 " Plug '~/workspace/auto-omnicomplete'
 
 " Common
-Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim', { 'on': ['GundoShow', 'GundoRenderGraph', 'GundoToggle'] }
 Plug 'ap/vim-css-color'
 Plug 'gregsexton/matchtag'
-Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
@@ -35,6 +34,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'othree/html5.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'pangloss/vim-javascript'
+Plug 'junegunn/vader.vim',  { 'on': 'Vader', 'for': 'vader' }
 " TMUX
 if exists('$TMUX')
     Plug 'tpope/vim-tbone'
