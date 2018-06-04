@@ -20,6 +20,7 @@ Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
+Plug 'editorconfig/editorconfig-vim'
 " Git
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'airblade/vim-gitgutter'
@@ -186,6 +187,7 @@ set statusline+=%2*%{strlen(&fenc)?&fenc:'none'}[%{&ff}]\  "file encoding
 set statusline+=%3*%P\ ␤\ %l/%L☰\ :\ %2v\ %* " end
 
 "------   Plugin Settings   ------"
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " Maps nerd tree for easy access
 inoremap <silent> <C-\> <C-o>:NERDTreeToggle<cr>
 noremap <silent> <C-\> :NERDTreeToggle<cr>
