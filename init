@@ -31,6 +31,7 @@ do
     fi
 done
 git config --global alias.l 'log --graph --decorate --all'
+git config --global core.excludesfile "$HOME/.gitignore"
 
 if [ hash brew >/dev/null 2>&1 ]
 then
