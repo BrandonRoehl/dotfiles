@@ -1,4 +1,9 @@
 #!/bin/bash
+#brew install coreutils
+#$(brew --prefix coreutils)
+
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/.zsh/bin"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -17,4 +22,6 @@ alias cpdir="pwd | tr -d '\n' | pbcopy"
 
 # Attached a session if it has been detached from or create a new one
 alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
+
+alias ':q'='exit'
 

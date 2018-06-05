@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
-#brew install coreutils
-#$(brew --prefix coreutils)
+# Source the shared between sh bash and zsh
+source "$HOME/.profile"
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/.zsh/bin"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
+# Add antigen and plugins
 export ADOTDIR="$HOME/.zsh/bundle"
 source "$HOME/.zsh/antigen/antigen.zsh"
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -17,8 +15,6 @@ antigen bundle BrandonRoehl/zsh-clean
 
 # Tell Antigen that you're done.
 antigen apply
-
-source "$HOME/.profile"
 
 setopt prompt_subst
 setopt correct
