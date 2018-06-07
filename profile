@@ -26,5 +26,5 @@ alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 alias ':q'='exit'
 alias 'x'='exit'
 
-alias initJamf='git init --template ~/Dropbox\ \(JAMF\ Software\)/git_template'
+alias initJamf="git init --template '$HOME/Dropbox (JAMF Software)/git_template'"
 
