@@ -24,4 +24,5 @@ alias cpdir="pwd | tr -d '\n' | pbcopy"
 alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 
 alias ':q'='exit'
+alias 'x'='exit'
 
