@@ -140,6 +140,9 @@ else
     set directory=/tmp//
 endif
 
+" Fix syntax highlighting problems with Gradle and Jenkins files
+autocmd BufEnter Jenkinsfile,build.gradle :syntax sync fromstart
+
 "---------- Statusline ----------"
 let g:mode_map = {
             \ '__' : '------',
@@ -196,6 +199,7 @@ let g:nerdtree_tabs_open_on_console_startup=1
 
 noremap <silent> // :call NERDComment(0,"toggle")<cr>
 let g:NERDSpaceDelims=1
+let g:NERDTreeShowHidden=1
 let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 
