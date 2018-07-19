@@ -8,6 +8,17 @@ execute plug#begin()
 " Mine
 Plug 'BrandonRoehl/auto-omni'
 " Plug '~/workspace/auto-omnicomplete'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" elseif has('python3')
+    " Plug 'Shougo/deoplete.nvim'
+    " Plug 'roxma/nvim-yarp'
+    " Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" if has('nvim') || has('python3')
+    Plug 'zchee/deoplete-clang'
+    Plug 'landaire/deoplete-swift'
+endif
 
 " Common
 Plug 'w0rp/ale'
@@ -21,6 +32,7 @@ Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'mattn/emmet-vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 " Git
 Plug 'xuyuanp/nerdtree-git-plugin', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'airblade/vim-gitgutter'
@@ -76,9 +88,9 @@ set nofoldenable
 " Enable mouse suppourt
 set mouse=a
 " Mouse fix for tmux
-if has("mouse_sgr")
+if has('mouse_sgr')
     set ttymouse=sgr
-else
+elseif !has('nvim')
     set ttymouse=xterm2
 endif
 " Smooth scroll
@@ -95,6 +107,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
+set encoding=utf-8
 
 " Use system clipboard
 if !exists('$TMUX')
@@ -238,6 +251,9 @@ function! LinterStatus()
 endfunction
 set statusline+=%4*%{LinterStatus()}\ %*
 
+" deocomplete
+let g:deoplete#enable_at_startup = 1
+
 " YCM
 let g:ycm_auto_trigger=1
 let g:ycm_min_num_of_chars_for_completion=0
@@ -268,7 +284,7 @@ let g:gitgutter_sign_modified_removed='~'
 
 
 " Close NerdTree when vim is closed
-autocmd bufenter * if (winnr("$") == 1
-            \ && exists("b:NERDTree")
-            \ && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1
+            " \ && exists("b:NERDTree")
+            " \ && b:NERDTree.isTabTree()) | q | endif
 
