@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #brew install coreutils
 #$(brew --prefix coreutils)
 
@@ -25,6 +25,20 @@ alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 
 alias ':q'='exit'
 alias 'x'='exit'
+# if type 'nvim' > /dev/null; then
+    # alias vim='nvim'
+# fi
 
 alias initJamf="git init --template '$HOME/Dropbox (JAMF Software)/git_template'"
+
+function useJava() {
+    if [[ ! -z $1 ]]; then
+        local jvm
+        jvm=`/usr/libexec/java_home -v $1`
+        if [[ $? -eq 0 ]]; then
+            export JAVA_HOME=$jvm
+            java -version
+        fi
+    fi
+}
 
