@@ -1,0 +1,12 @@
+packages: [
+  "atom-html-preview"
+  "atom-ide-ui"
+  "cucumber"
+  "go-plus"
+  "ide-java"
+  "language-groovy"
+  "package-sync"
+  "platformio-ide-terminal"
+  "vim-mode-plus"
+  "vim-mode-plus-ex-mode"
+]

@@ -1,5 +1,7 @@
 "*":
   "atom-ide-ui":
+    "atom-ide-diagnostics-ui":
+      autoVisibility: true
     use:
       "atom-ide-busy-signal": "default"
       "atom-ide-code-actions": "default"
@@ -56,12 +58,26 @@
     userId: "d5cac5a7-3131-ea39-89d0-21be943bab7d"
   "file-icons":
     coloured: false
+  "go-plus":
+    config:
+      compileOnSave: false
+    format: {}
+    lint: {}
+    panel:
+      displayMode: "closed"
+    test:
+      coverageDisplayMode: "gutter"
+      coverageHighlightMode: "disabled"
+      runTestsOnSave: false
+      runTestsWithCoverage: false
   "markdown-preview": {}
   nuclide:
     "nuclide-home": {}
     "nuclide-working-sets": {}
     use: {}
   "one-dark-ui": {}
+  "package-sync":
+    createOnChange: true
   "platformio-ide-terminal":
     style:
       theme: "one-dark"
