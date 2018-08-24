@@ -1,4 +1,7 @@
 "*":
+  "atom-clock":
+    dateFormat: "ddd h:mm A"
+    showClockIcon: true
   "atom-ide-ui":
     "atom-ide-diagnostics-ui":
       autoVisibility: true
@@ -78,6 +81,7 @@
   "one-dark-ui": {}
   "package-sync":
     createOnChange: true
+    forceOverwrite: true
   "platformio-ide-terminal":
     style:
       theme: "one-dark"

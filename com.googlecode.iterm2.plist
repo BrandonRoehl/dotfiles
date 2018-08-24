@@ -29,7 +29,7 @@
 	<key>DisableWindowSizeSnap</key>
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
-	<true/>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x19-0x60000</key>
@@ -192,11 +192,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 519 620 392 0 0 1920 1058 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>490 574 770 429 0 0 1920 1058 </string>
+	<string>328 372 770 429 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>494 525 570 377 0 0 1920 1057 </string>
+	<string>743 482 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 680 570 377 0 0 1920 1057 </string>
+	<string>0 330 976 727 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>905 307 570 377 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_B091E726-AE75-4CC2-9CD9-61EE377E988B</key>
@@ -1030,7 +1030,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-08-13T19:21:53Z</date>
+	<date>2018-08-20T12:59:18Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
@@ -1053,6 +1053,8 @@
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.10000000000000001</real>
+	<key>StretchTabsToFillBar</key>
+	<true/>
 	<key>SuppressRestartAnnouncement</key>
 	<true/>
 	<key>TabStyle</key>
@@ -1084,6 +1086,8 @@
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>disableMetalWhenUnplugged</key>
+	<false/>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findMode_iTerm</key>
@@ -2055,5 +2059,7 @@
 	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
+	<key>metalMaximizeThroughput</key>
+	<true/>
 </dict>
 </plist>

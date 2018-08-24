@@ -36,6 +36,7 @@ then
     alias ls='ls --color=auto --classify'
     eval $(dircolors)
 fi
+alias grep='grep --color=auto'
 
 autoload -U colors
 colors

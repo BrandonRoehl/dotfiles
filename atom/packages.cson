@@ -1,12 +1,18 @@
 packages: [
+  "atom-clock"
   "atom-html-preview"
   "atom-ide-ui"
   "cucumber"
   "go-plus"
+  "ide-css"
+  "ide-html"
   "ide-java"
+  "ide-json"
+  "language-gradle"
   "language-groovy"
   "package-sync"
   "platformio-ide-terminal"
+  "teletype"
   "vim-mode-plus"
   "vim-mode-plus-ex-mode"
 ]
