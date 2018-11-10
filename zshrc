@@ -10,8 +10,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 # antigen bundle zsh-users/zsh-history-substring-search
 
-antigen bundle BrandonRoehl/zsh-clean
-# antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
+# antigen bundle BrandonRoehl/zsh-clean
+antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
 
 # Tell Antigen that you're done.
 antigen apply
@@ -90,4 +90,10 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=243'
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=50'
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=212'
 ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=$ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/BrandonRoehl/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/BrandonRoehl/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/BrandonRoehl/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/BrandonRoehl/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 

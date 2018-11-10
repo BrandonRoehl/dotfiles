@@ -85,7 +85,7 @@ set background=light
 " No folding
 set nofoldenable
 
-" Enable mouse suppourt
+" Enable mouse support
 set mouse=a
 " Mouse fix for tmux
 if has('mouse_sgr')
