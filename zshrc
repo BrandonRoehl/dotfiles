@@ -3,6 +3,7 @@
 source "$HOME/.profile"
 
 # Add antigen and plugins
+export ANTIGEN_LOG='/dev/stdin'
 export ADOTDIR="$HOME/.zsh/bundle"
 source "$HOME/.zsh/antigen/antigen.zsh"
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -10,8 +11,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 # antigen bundle zsh-users/zsh-history-substring-search
 
-# antigen bundle BrandonRoehl/zsh-clean
-antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
+antigen bundle BrandonRoehl/zsh-clean
+# antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
 
 # Tell Antigen that you're done.
 antigen apply
