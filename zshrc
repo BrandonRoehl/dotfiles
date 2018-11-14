@@ -3,7 +3,7 @@
 source "$HOME/.profile"
 
 # Add antigen and plugins
-export ANTIGEN_LOG='/dev/stdin'
+export ANTIGEN_LOG='/dev/stdout'
 export ADOTDIR="$HOME/.zsh/bundle"
 source "$HOME/.zsh/antigen/antigen.zsh"
 antigen bundle zsh-users/zsh-syntax-highlighting
