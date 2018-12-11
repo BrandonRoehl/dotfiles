@@ -98,6 +98,8 @@
       theme: "one-dark"
     toggles:
       autoClose: true
+  teletype:
+    askBeforeJoiningPortalViaExternalApp: false
   "terminal-plus":
     core: {}
     style: {}

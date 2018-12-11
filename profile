@@ -12,6 +12,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export GOPATH="$HOME/workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
+# Flutter
+export PATH="$PATH:$HOME/workspace/flutter"
+
 # Universe
 export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
 # Use GPG
