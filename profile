@@ -13,6 +13,9 @@ export GOPATH="$HOME/workspace/go"
 export PATH="$PATH:$GOPATH/bin"
 
 # Flutter
+export PATH="$PATH:/etc/google-cloud-sdk/bin"
+
+# Flutter
 export PATH="$PATH:$HOME/workspace/flutter/bin"
 
 # Universe
