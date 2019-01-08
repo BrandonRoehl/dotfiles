@@ -23,6 +23,9 @@ export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
 # Use GPG
 export GPG_TTY=$(tty)
 
+# Auto git template
+export GIT_TEMPLATE_DIR="$HOME/.git_template"
+
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
 
@@ -34,8 +37,6 @@ alias 'x'='exit'
 # if type 'nvim' > /dev/null; then
     # alias vim='nvim'
 # fi
-
-alias initJamf="git init --template '$HOME/Dropbox (JAMF Software)/git_template'"
 
 function useJava() {
     if [[ ! -z $1 ]]; then
