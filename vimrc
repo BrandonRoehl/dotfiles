@@ -215,6 +215,9 @@ let g:NERDSpaceDelims=1
 let g:NERDTreeShowHidden=1
 let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
+let g:NERDTreeNodeDelimiter="\u00a0"
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Ale Setup
 let g:ale_sign_column_always=1
