@@ -24,7 +24,7 @@ export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
 export GPG_TTY=$(tty)
 
 # Auto git template
-export GIT_TEMPLATE_DIR="$HOME/.git_template"
+export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
 
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
