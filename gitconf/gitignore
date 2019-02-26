@@ -4,5 +4,8 @@
 # Windows
 Thumbs.db
 
+# IntelliJ IDEA
+.idea
+
 # VSCode
 .vs
