@@ -41,11 +41,21 @@ alias 'x'='exit'
 function useJava() {
     if [[ ! -z $1 ]]; then
         local jvm
-        jvm=`/usr/libexec/java_home -v $1`
+        jvm=$(/usr/libexec/java_home -v "$1")
         if [[ $? -eq 0 ]]; then
             export JAVA_HOME=$jvm
             java -version
         fi
     fi
+}
+
+alias 'sourcegraph'="docker run --publish 7080:7080 --publish 2633:2633 --rm --volume ~/.sourcegraph/config:/etc/sourcegraph --volume ~/.sourcegraph/data:/var/opt/sourcegraph sourcegraph/server:3.3.7"
+
+function git-who() {
+    git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
+}
+
+function updatedns() {
+    curl 'https://quick.jamf.net/api/dns/roehl?refresh_token=ueuvh1g5q8j3' -X PUT
 }
 

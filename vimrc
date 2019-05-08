@@ -26,7 +26,7 @@ Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'sjl/gundo.vim', { 'on': ['GundoShow', 'GundoRenderGraph', 'GundoToggle'] }
 Plug 'ap/vim-css-color'
-Plug 'gregsexton/matchtag'
+" Plug 'gregsexton/matchtag'
 Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'

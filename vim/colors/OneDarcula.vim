@@ -14,6 +14,7 @@ let g:colors_name = "OneDarcula"
 " hi Normal ctermfg=255 ctermbg=016
 
 hi CursorLine   term=bold cterm=bold ctermbg=235 ctermfg=none
+" hi CursorLine   term=underline cterm=underline
 hi CursorLineNr term=bold cterm=bold ctermbg=235 ctermfg=226
 hi LineNr       term=none cterm=none ctermbg=235 ctermfg=250
 hi link SignColumn LineNr

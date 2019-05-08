@@ -154,8 +154,12 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/dotfiles</string>
+	<string>~/Documents</string>
+	<key>NSNavLastUserSetHideExtensionButtonState</key>
+	<true/>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
@@ -193,13 +197,17 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 518 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>480 596 918 423 0 0 1680 1027 </string>
+	<string>470 458 937 514 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>286 156 1116 699 0 0 1680 1027 </string>
+	<string>523 81 1396 629 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>301 531 570 377 0 0 1680 1027 </string>
+	<string>45 102 1676 797 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>86 497 570 377 0 0 1680 1027 </string>
+	<string>601 456 1319 601 0 0 1920 1057 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>0 92 1571 867 0 0 1920 1057 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>275 578 570 377 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_B091E726-AE75-4CC2-9CD9-61EE377E988B</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_B091E726-AE75-4CC2-9CD9-61EE377E988B_selection</key>
@@ -969,6 +977,10 @@
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
+	<key>NoSyncSaveDocumentAsPathSet_saveDocumentAs:</key>
+	<true/>
+	<key>NoSyncSuppressAnnyoingBellOffer</key>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>568591738.66016102</real>
 	<key>OpenArrangementAtStartup</key>
@@ -980,6 +992,8 @@
 	<key>OptimumTabWidth</key>
 	<integer>175</integer>
 	<key>OptionIsMetaForSpecialChars</key>
+	<false/>
+	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PinchToChangeFontSizeDisabled</key>
 	<true/>
@@ -1018,6 +1032,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/brandon.roehl/dotfiles</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -1033,8 +1049,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-01-30T20:36:05Z</date>
+	<date>2019-04-03T13:36:38Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>Secure Input</key>
 	<false/>
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
@@ -1070,7 +1088,6 @@
 	<integer>0</integer>
 	<key>ToolbeltTools</key>
 	<array>
-		<string>Command History</string>
 		<string>Profiles</string>
 	</array>
 	<key>TraditionalVisualBell</key>
@@ -1100,7 +1117,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.7</string>
+	<string>3.2.8</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>

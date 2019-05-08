@@ -9,3 +9,10 @@ Thumbs.db
 
 # VSCode
 .vs
+.vscode
+
+# RedHat Java
+.project
+.classpath
+.factorypath
+.settings
