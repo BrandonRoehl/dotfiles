@@ -53,9 +53,9 @@ alias 'sourcegraph'="docker run --publish 7080:7080 --publish 2633:2633 --rm --v
 
 listening() {
     if [ $# -eq 0 ]; then
-        sudo lsof -iTCP -sTCP:LISTEN -n -P
+        lsof -iTCP -sTCP:LISTEN -n -P
     elif [ $# -eq 1 ]; then
-        sudo lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
     else
         echo "Usage: listening [pattern]"
     fi
