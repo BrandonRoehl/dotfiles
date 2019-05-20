@@ -55,9 +55,10 @@ listening() {
     if [ $# -eq 0 ]; then
         lsof -iTCP -sTCP:LISTEN -n -P
     elif [ $# -eq 1 ]; then
-        lsof -iTCP -sTCP:LISTEN -n -P | grep -i --color $1
+        lsof "-iTCP:$1" -sTCP:LISTEN -n -P
     else
-        echo "Usage: listening [pattern]"
+        echo 'Usage: listening [pattern]'
+        return 1
     fi
 }
 
