@@ -4,6 +4,8 @@ export PATH="$PATH:$HOME/AndroidSDK/platform-tools/:$HOME/.scripts"
 export TERM=xterm-256color
 export CLICOLOR=1
 
+source ~/.profile
+
 # Use Apple command line developer tools
 # Using implicit path
 # Load RVM into a shell session *as a function*
