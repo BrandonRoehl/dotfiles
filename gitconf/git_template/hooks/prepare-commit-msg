@@ -1,9 +1,12 @@
 #!/bin/sh
 # Prepend the Jira issue number to a commit message
-JIRA_ISSUE="$(git branch | grep -E "^\*" | grep -Eo "[A-Z]+-[0-9]{1,7}")"
-INCOMING_COMMIT_MESSAGE="$1"
-FIRST_LINE_ALREADY_HAS_JIRA_ISSUE=`head -1 $1 | grep -E "$JIRA_ISSUE"`
-if [ "$JIRA_ISSUE" -a ! "$FIRST_LINE_ALREADY_HAS_JIRA_ISSUE" -a "$2" != "merge" ]; then
-  echo "[$JIRA_ISSUE] \c" > $1
-  echo "$INCOMING_COMMIT_MESSAGE" >> $1
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+# SHA1=$3
+
+JIRA_ISSUE=$(git branch | grep -E "^\*" | grep -Eo "[A-Z]+-[0-9]{1,7}")
+# If not a merge AND the branch has a jira issue AND the commit does not include it
+if [ "$COMMIT_SOURCE" != "merge" ] && [ -n "$JIRA_ISSUE" ] && ! grep -E "$JIRA_ISSUE" "$COMMIT_MSG_FILE"; then
+    COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+    echo "[$JIRA_ISSUE] $COMMIT_MSG" > "$1"
 fi
