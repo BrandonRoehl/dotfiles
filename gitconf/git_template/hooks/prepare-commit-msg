@@ -9,7 +9,7 @@ if [ "$COMMIT_SOURCE" = "merge" ]; then
     exit
 fi
 
-JIRA_ISSUE=$(git branch | grep -Eo "[A-Z]+-[0-9]{1,7}")
+JIRA_ISSUE=$(git rev-parse --abbrev-ref HEAD | grep -Eo '[A-Z]+-[0-9]{1,7}')
 # If the branch has a jira issue AND the commit does not already include it
 if [ -n "$JIRA_ISSUE" ] && ! grep -E "$JIRA_ISSUE" "$COMMIT_MSG_FILE"; then
     COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
