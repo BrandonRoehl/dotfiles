@@ -41,6 +41,12 @@ alias grep='grep --color=auto'
 
 autoload -U colors
 colors
+
+# Add the iTerm integration
+if [ -f "$HOME/.iterm2_shell_integration.zsh" ]; then
+    source "$HOME/.iterm2_shell_integration.zsh"
+fi
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' auto-description '%d'
@@ -91,10 +97,4 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=243'
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=50'
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=212'
 ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=$ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/BrandonRoehl/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/BrandonRoehl/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/BrandonRoehl/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/BrandonRoehl/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
