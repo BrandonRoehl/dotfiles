@@ -152,7 +152,7 @@
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
-	<true/>
+	<false/>
 	<key>HideTabCloseButton</key>
 	<false/>
 	<key>HideTabNumber</key>
@@ -221,11 +221,11 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>470 458 937 514 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>712 323 1214 1001 0 0 2560 1417 </string>
+	<string>503 112 1130 1211 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>210 509 570 413 0 0 1680 1027 </string>
+	<string>735 1004 570 413 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>889 172 1487 1245 0 0 2560 1417 </string>
+	<string>174 560 1669 749 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>0 92 1571 867 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -1264,18 +1264,24 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.3.2</string>
 		<string>3.2.9</string>
-		<string>3.3.0</string>
 		<string>3.3.1</string>
+		<string>3.3.0</string>
+		<string>3.3.3</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>1</integer>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
 		<string>{{0, 0}, {2560, 1440}}</string>
 		<key>topLeft</key>
-		<string>{978, 957}</string>
+		<string>{246, 721}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -1286,7 +1292,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>586892374.59037197</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>41</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1735,6 +1741,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>number</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession.hostname</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -1981,6 +1995,10 @@
 	</dict>
 	<key>NoSyncSaveDocumentAsPathSet_saveDocumentAs:</key>
 	<true/>
+	<key>NoSyncSearchHistory2</key>
+	<array>
+		<string>jssweb1</string>
+	</array>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -2066,7 +2084,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-08-08T13:39:59Z</date>
+	<date>2019-09-11T13:15:19Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -2147,7 +2165,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.1</string>
+	<string>3.3.3</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
