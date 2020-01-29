@@ -3,3 +3,4 @@
 vim/plugged
 vim/.netrwhist
 zsh/bundle
+config/*
