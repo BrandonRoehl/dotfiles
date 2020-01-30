@@ -16,6 +16,7 @@ gradle
 groovy
 htop
 icu4c
+jamf-pro
 jfrog-cli-go
 jpeg
 kubernetes-cli
@@ -32,6 +33,7 @@ lolcat
 lua
 makeself
 maven
+minikube
 mysql-client
 ncurses
 nettle
@@ -46,10 +48,12 @@ readline
 ruby
 sass
 shellcheck
+sonar-scanner
 sqlite
 sshpass
 tmux
 tomcat@8
+tree
 unbound
 vde
 vim
