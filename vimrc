@@ -24,6 +24,7 @@ endif
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree', { 'on': [ 'NERDTreeToggle', 'NERDTree' ] }
 Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
 Plug 'sjl/gundo.vim', { 'on': ['GundoShow', 'GundoRenderGraph', 'GundoToggle'] }
 Plug 'ap/vim-css-color'
 " Plug 'gregsexton/matchtag'
