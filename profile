@@ -66,12 +66,3 @@ function git-who() {
     git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
 }
 
-# $1 is password
-function genJKS() {
-    keytool -genkey -alias scepca -keyalg RSA -keypass $1 -storepass $1 -dname "CN=roehl.quick.jamf.net, OU=Jamf, O=Jamf, L=Minneapolis, ST=MN, C=US" -keystore keystore.jks -validity 365 -keysize 2048
-}
-
-function updatedns() {
-    curl 'https://quick.jamf.net/api/dns/roehl?refresh_token=ueuvh1g5q8j3' -X PUT
-}
-
