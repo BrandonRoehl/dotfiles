@@ -59,6 +59,7 @@ zstyle ':completion:*' original true
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*' use-compctl true
 zstyle ':completion:*' verbose true
+zstyle ':completion:*' use-cache true
 zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
