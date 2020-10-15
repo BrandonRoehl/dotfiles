@@ -2,7 +2,7 @@
 #brew install coreutils
 #$(brew --prefix coreutils)
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/.zsh/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:$PATH:$HOME/.zsh/bin"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
