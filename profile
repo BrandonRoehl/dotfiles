@@ -10,7 +10,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 export GOPATH="$HOME/workspace/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Flutter
 export PATH="$PATH:/etc/google-cloud-sdk/bin"
@@ -25,6 +25,19 @@ export GPG_TTY=$(tty)
 
 # Auto git template
 export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
+
+# Add pyenv executable to PATH and
+# enable shims by adding the following
+# to ~/.profile and ~/.zprofile:
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+# Load pyenv into the shell by adding
+# the following to ~/.zshrc:
+
+eval "$(pyenv init -)"
 
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
