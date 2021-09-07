@@ -33,6 +33,7 @@ done
 git config --global alias.l 'log --graph --decorate --all'
 git config --global core.excludesfile "$HOME/.gitconf/gitignore"
 git config --global init.templatedir "$HOME/.gitconf/git_template/"
+git config --global pull.rebase false
 
 if [ hash brew >/dev/null 2>&1 ]
 then
