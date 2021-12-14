@@ -3,4 +3,5 @@
 vim/plugged
 vim/.netrwhist
 zsh/bundle
+pyenv/*
 config/*

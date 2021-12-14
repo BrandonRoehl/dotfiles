@@ -18,6 +18,9 @@ export PATH="$PATH:/etc/google-cloud-sdk/bin"
 # Flutter
 export PATH="$PATH:$HOME/workspace/flutter/bin"
 
+# brew install libpq
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
 # Universe
 export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
 # Use GPG
