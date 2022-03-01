@@ -373,7 +373,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "right_command"
+                            "key_code": "left_command"
                         }
                     ]
                 },
@@ -384,6 +384,16 @@
                     "to": [
                         {
                             "key_code": "right_command"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "pointing_button": "button4"
+                    },
+                    "to": [
+                        {
+                            "consumer_key_code": "play_or_pause"
                         }
                     ]
                 }
