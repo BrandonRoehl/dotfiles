@@ -2,8 +2,8 @@
 #brew install coreutils
 #$(brew --prefix coreutils)
 
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:$PATH:$HOME/.zsh/bin"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -32,9 +32,9 @@ export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
 # Add pyenv executable to PATH and
 # enable shims by adding the following
 # to ~/.profile and ~/.zprofile:
-
+#
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
 eval "$(pyenv init --path)"
 
 # Load pyenv into the shell by adding
