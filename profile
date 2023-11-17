@@ -53,6 +53,15 @@ alias 'x'='exit'
 # if type 'nvim' > /dev/null; then
     # alias vim='nvim'
 # fi
+#if [ -n "$WSL_DISTRO_NAME" ]; then
+#    alias git="git.exe"
+#    alias ssh="ssh.exe"
+#fi
+
+function start_idf() {
+    source "$HOME/esp/esp-idf/export.sh"
+    source "$HOME/esp/esp-matter/export.sh"
+}
 
 function useJava() {
     if [[ ! -z $1 ]]; then
