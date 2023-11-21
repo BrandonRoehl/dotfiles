@@ -34,13 +34,14 @@ export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
 # to ~/.profile and ~/.zprofile:
 #
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
-eval "$(pyenv init --path)"
+if test -f $PYENV_ROOT
+then
+    # Load pyenv into the shell by adding
+    # the following to ~/.zshrc:
+    export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
+    eval "$(pyenv init --path)"
+fi
 
-# Load pyenv into the shell by adding
-# the following to ~/.zshrc:
-
-eval "$(pyenv init -)"
 
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
