@@ -26,10 +26,13 @@ Plug('tpope/vim-git')
 
 vim.call('plug#end')
 
-local tree = require "nvim-tree"
-local api = require "nvim-tree.api"
-
+local ok, ntree = pcall(require, "nvim-tree")
+if ok then
+	local api = require "nvim-tree.api"
+	ntree.setup()
+	vim.keymap.set({'n', 'v', 'i'}, '<C-\\>', api.tree.toggle, { noremap = true })
 -- empty setup using defaults
+-- tree.setup { on_attach = my_on_attach, }
 -- local function my_on_attach(bufnr)
 -- 	local function opts(desc)
 -- 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -39,15 +42,10 @@ local api = require "nvim-tree.api"
 -- 	api.config.mappings.default_on_attach(bufnr)
 
 -- 	-- custom mappings
--- 	-- vim.keymap.set('i', '<C-\\>', api.tree.toggle)
--- 	-- vim.keymap.set('n', '<C-\\>', api.tree.toggle, opts('Toggle'))
--- 	-- vim.keymap.set('n', '<C-\\>', function() print("real lua function") end)
--- 	-- vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+--	-- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
 -- 	-- vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
 -- 	end
 -- pass to setup along with your other options
-tree.setup {
-	on_attach = my_on_attach,
-}
-vim.keymap.set({'n', 'v', 'i'}, '<C-\\>', api.tree.toggle, { noremap = true })
--- vim.keymap.set('n', '<C-\\>', function() print("real lua function") end)
+end
+
+-- normal stuff
