@@ -51,9 +51,11 @@ alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 
 alias ':q'='exit'
 alias 'x'='exit'
-# if type 'nvim' > /dev/null; then
-    # alias vim='nvim'
-# fi
+if type 'nvim' > /dev/null
+then
+    alias vim='nvim'
+    alias vi='nvim'
+fi
 #if [ -n "$WSL_DISTRO_NAME" ]; then
 #    alias git="git.exe"
 #    alias ssh="ssh.exe"
