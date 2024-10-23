@@ -130,6 +130,8 @@ vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
+-- Color columns
+vim.opt.colorcolumn = "81,121"
 
 -- Decrease update time
 vim.opt.updatetime = 250
