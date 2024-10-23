@@ -339,7 +339,7 @@ require("lazy").setup({
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-				{ "<leader><leader>", group = "Easymotion" },
+				{ "<leader><leader>", group = "EasyMotion" },
 			},
 		},
 	},
@@ -363,6 +363,23 @@ require("lazy").setup({
 				window = {
 					mappings = {
 						["\\"] = "close_window",
+					},
+				},
+			},
+			default_component_configs = {
+				git_status = {
+					symbols = {
+						-- Change type
+						added = "+",
+						deleted = "-",
+						modified = "~",
+						renamed = "~",
+						-- Status type
+						untracked = "?",
+						ignored = "*",
+						unstaged = "[]",
+						staged = "+",
+						conflict = "@",
 					},
 				},
 			},
