@@ -159,7 +159,9 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 5
+-- Change the mouse scroll speed to enable smooth scrolling
+vim.opt.mousescroll = "ver:1,hor:1"
 
 -- Spacing
 vim.opt.smarttab = true
