@@ -341,35 +341,28 @@ require("lazy").setup({
 			},
 		},
 	},
-	{
-		"nvim-tree/nvim-tree.lua",
-		-- version = "1.7.x",
-		lazy = false,
+
+	{ -- File tree
+		"nvim-neo-tree/neo-tree.nvim",
+		-- branch = "v3.x",
 		dependencies = {
-			-- Useful for getting pretty icons, but requires a Nerd Font.
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			local tree = require("nvim-tree")
-			local api = require("nvim-tree.api")
-			-- local function my_on_attach(bufnr)
-			-- 	local function opts(desc)
-			-- 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-			-- 	end
-
-			-- 	-- default mappings
-			-- 	api.config.mappings.default_on_attach(bufnr)
-
-			-- 	-- custom mappings
-			-- 	-- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts('Up'))
-			-- 	-- vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
-			-- 	end
-			-- end
-			-- pass to setup along with your other options
-			-- tree.setup { on_attach = my_on_attach }
-			tree.setup({})
-			vim.keymap.set({ "n", "v", "i" }, "<C-\\>", api.tree.toggle, { noremap = true })
-		end,
+		cmd = "Neotree",
+		keys = {
+			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+		},
+		opts = {
+			filesystem = {
+				window = {
+					mappings = {
+						["\\"] = "close_window",
+					},
+				},
+			},
+		},
 	},
 
 	-- NOTE: Plugins can specify dependencies.
