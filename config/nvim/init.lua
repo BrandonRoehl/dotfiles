@@ -335,9 +335,11 @@ require("lazy").setup({
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
+				{ "<leader>n", group = "[N]eoTree" },
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
+				{ "<leader><leader>", group = "Easymotion" },
 			},
 		},
 	},
@@ -353,6 +355,8 @@ require("lazy").setup({
 		cmd = "Neotree",
 		keys = {
 			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+			{ "<leader>nb", ":Neotree toggle show buffers right<CR>", desc = "NeoTree show [B]uffers", silent = true },
+			{ "<leader>ns", ":Neotree float git_status<CR>", desc = "NeoTree Git [S]tatus", silent = true },
 		},
 		opts = {
 			filesystem = {
