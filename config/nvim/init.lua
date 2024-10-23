@@ -882,13 +882,16 @@ require("lazy").setup({
 		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		opts = {
-			transparent = true,
+			style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
+			light_style = "day", -- The theme is used when the background is set to light
+			transparent = true, -- Enable this to disable setting the background color
+			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 		},
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.colorscheme("tokyonight")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
