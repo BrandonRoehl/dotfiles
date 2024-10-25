@@ -264,11 +264,52 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
+				add = { text = "┃" },
+				change = { text = "┃" },
 				delete = { text = "_" },
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
+				untracked = { text = "┆" },
+			},
+			signs_staged = {
+				add = { text = "┃" },
+				change = { text = "┃" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "┆" },
+			},
+			signs_staged_enable = true,
+			signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+			numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+			linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+			word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+			watch_gitdir = {
+				follow_files = true,
+			},
+			auto_attach = true,
+			attach_to_untracked = false,
+			current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+			current_line_blame_opts = {
+				virt_text = true,
+				virt_text_pos = "right_align", -- 'eol' | 'overlay' | 'right_align'
+				delay = 300,
+				ignore_whitespace = false,
+				virt_text_priority = 100,
+				use_focus = true,
+			},
+			current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+			sign_priority = 6,
+			update_debounce = 100,
+			status_formatter = nil, -- Use default
+			max_file_length = 40000, -- Disable if file is longer than this (in lines)
+			preview_config = {
+				-- Options passed to nvim_open_win
+				border = "single",
+				style = "minimal",
+				relative = "cursor",
+				row = 0,
+				col = 1,
 			},
 		},
 	},
@@ -349,8 +390,7 @@ require("lazy").setup({
 		-- branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			-- not using a NERDfont
-			-- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
 		},
 		cmd = "Neotree",
@@ -359,6 +399,7 @@ require("lazy").setup({
 			{ "<leader>nb", ":Neotree toggle show buffers right<CR>", desc = "NeoTree show [B]uffers", silent = true },
 			{ "<leader>ns", ":Neotree float git_status<CR>", desc = "NeoTree Git [S]tatus", silent = true },
 		},
+		-- NOTE: Neotree configuration here is not the full config.
 		opts = {
 			filesystem = {
 				window = {
@@ -371,38 +412,18 @@ require("lazy").setup({
 					hide_dotfiles = false,
 					hide_gitignored = false,
 					hide_hidden = false, -- only works on Windows for hidden files/directories
-					hide_by_name = {
-						--"node_modules"
-					},
-					hide_by_pattern = { -- uses glob style patterns
-						--"*.meta",
-						--"*/src/*/tsconfig.json",
-					},
-					always_show = { -- remains visible even if other settings would normally hide it
-						--".gitignored",
-					},
-					always_show_by_pattern = { -- uses glob style patterns
-						--".env*",
-					},
-					never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-						--".DS_Store",
-						--"thumbs.db"
-					},
-					never_show_by_pattern = { -- uses glob style patterns
-						--".null-ls_*",
-					},
 				},
 				follow_current_file = {
 					enabled = true, -- This will find and focus the file in the active buffer every time
 					--               -- the current file is changed while the tree is open.
 					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},
-				buffers = {
-					follow_current_file = {
-						enabled = true, -- This will find and focus the file in the active buffer every time
-						--              -- the current file is changed while the tree is open.
-						leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
-					},
+			},
+			buffers = {
+				follow_current_file = {
+					enabled = true, -- This will find and focus the file in the active buffer every time
+					--              -- the current file is changed while the tree is open.
+					leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 				},
 			},
 			default_component_configs = {
@@ -423,17 +444,18 @@ require("lazy").setup({
 					expander_expanded = "v",
 					expander_highlight = "NeoTreeExpander",
 				},
-				icon = {
+				-- Set the icons to ASCII if you don't have a nerd font otherwise use
+				-- the default icons provided by nvim-web-devicons and unicode characters
+				icon = vim.g.have_nerd_font and {} or {
 					folder_closed = ">",
 					folder_open = "v",
 					folder_empty = "-",
-					provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
+					provider = function(icon, node, _) -- default icon provider utilizes nvim-web-devicons if available
 						if node.type == "file" or node.type == "terminal" then
 							local success, web_devicons = pcall(require, "nvim-web-devicons")
-							local name = node.type == "terminal" and "terminal" or node.name
 							if success then
-								local devicon, hl = web_devicons.get_icon(name)
-								icon.text = devicon or icon.text
+								local name = node.type == "terminal" and "terminal" or node.name
+								local _, hl = web_devicons.get_icon(name)
 								icon.highlight = hl or icon.highlight
 							end
 						end
@@ -452,7 +474,9 @@ require("lazy").setup({
 					use_git_status_colors = true,
 					highlight = "NeoTreeFileName",
 				},
-				git_status = {
+				-- Set the icons to ASCII if you don't have a nerd font otherwise use
+				-- the default icons provided by nvim-web-devicons and unicode characters
+				git_status = vim.g.have_nerd_font and {} or {
 					symbols = {
 						-- Change type
 						added = "+", -- or "", but this is redundant info if you use git_status_colors on the name
@@ -466,26 +490,6 @@ require("lazy").setup({
 						staged = "✔",
 						conflict = "@",
 					},
-				},
-				-- If you don't want to use these columns, you can set `enabled = false` for each of them individually
-				file_size = {
-					enabled = true,
-					required_width = 64, -- min width of window required to show this column
-				},
-				type = {
-					enabled = true,
-					required_width = 122, -- min width of window required to show this column
-				},
-				last_modified = {
-					enabled = true,
-					required_width = 88, -- min width of window required to show this column
-				},
-				created = {
-					enabled = true,
-					required_width = 110, -- min width of window required to show this column
-				},
-				symlink_target = {
-					enabled = false,
 				},
 			},
 		},
