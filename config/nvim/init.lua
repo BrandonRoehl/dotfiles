@@ -333,6 +333,8 @@ require("lazy").setup({
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
 		opts = {
+			---@type false | "classic" | "modern" | "helix"
+			preset = "helix",
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
@@ -370,7 +372,9 @@ require("lazy").setup({
 				},
 			},
 
-			-- Document existing key chains
+			--- Document existing key chains
+			--- You can add any mappings here, or use `require('which-key').add()` later
+			---@type wk.Spec
 			spec = {
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 				{ "<leader>d", group = "[D]ocument" },
