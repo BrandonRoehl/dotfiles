@@ -789,12 +789,12 @@ require("lazy").setup({
 				pyright = {}, -- python
 				rust_analyzer = {}, -- rust
 				gopls = {
-          analyses = {
-            unusedparams = true,
-          },
-          -- staticcheck = true,
-          -- gofumpt = true,
-        }, -- golang
+					analyses = {
+						unusedparams = true,
+					},
+					-- staticcheck = true,
+					-- gofumpt = true,
+				}, -- golang
 				-- sourcekit = {}, -- swift
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
@@ -1039,7 +1039,18 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
+		opts = {
+			signs = false,
+			keywords = {
+				FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
+				TODO = { icon = " ", color = "info" },
+				HACK = { icon = " ", color = "warning" },
+				WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+				PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+				NOTE = { icon = " ", color = "hint", alt = { "INFO", "MARK" } },
+				TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+			},
+		},
 	},
 
 	{ -- Collection of various small independent plugins/modules
@@ -1098,6 +1109,7 @@ require("lazy").setup({
 				"query",
 				"vim",
 				"vimdoc",
+				-- "pkl",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
