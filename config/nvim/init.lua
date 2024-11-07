@@ -331,7 +331,7 @@ require("lazy").setup({
 
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
+		event = "VeryLazy",
 		opts = {
 			---@type false | "classic" | "modern" | "helix"
 			preset = "helix",
@@ -384,7 +384,30 @@ require("lazy").setup({
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-				{ "<leader><leader>", group = "EasyMotion" },
+				{ "K", desc = "LSP Hover", mode = { "n" } },
+				{
+					"<leader><leader>",
+					group = "EasyMotion",
+					expand = function()
+						return {
+							{ "f", desc = "EasyMotion [F]ind" },
+							{ "w", desc = "EasyMotion [W]ord" },
+							{ "l", desc = "EasyMotion [L]ine" },
+							{ "j", desc = "EasyMotion [J]ump" },
+							{ "s", desc = "EasyMotion [S]earch" },
+						}
+					end,
+				},
+			},
+		},
+		-- Show the local buffer mappings
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = true })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
 			},
 		},
 	},
