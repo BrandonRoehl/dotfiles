@@ -163,7 +163,7 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
 -- Change the mouse scroll speed to enable smooth scrolling
-vim.opt.mousescroll = "ver:1,hor:1"
+-- vim.opt.mousescroll = "ver:1,hor:1"
 
 -- Spacing
 vim.opt.smarttab = true
@@ -388,15 +388,12 @@ require("lazy").setup({
 				{
 					"<leader><leader>",
 					group = "EasyMotion",
-					expand = function()
-						return {
-							{ "f", desc = "EasyMotion [F]ind" },
-							{ "w", desc = "EasyMotion [W]ord" },
-							{ "l", desc = "EasyMotion [L]ine" },
-							{ "j", desc = "EasyMotion [J]ump" },
-							{ "s", desc = "EasyMotion [S]earch" },
-						}
-					end,
+					mode = { "n" },
+					{ "<leader><leader>f", desc = "EasyMotion [F]ind" },
+					{ "<leader><leader>w", desc = "EasyMotion [W]ord" },
+					{ "<leader><leader>l", desc = "EasyMotion [L]ine" },
+					{ "<leader><leader>j", desc = "EasyMotion [J]ump" },
+					{ "<leader><leader>s", desc = "EasyMotion [S]earch" },
 				},
 			},
 		},
