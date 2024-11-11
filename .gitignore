@@ -5,3 +5,5 @@ vim/.netrwhist
 zsh/bundle
 pyenv/*
 config/*
+!config/nvim
+config/nvim/lazy-lock.json
