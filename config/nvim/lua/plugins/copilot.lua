@@ -3,6 +3,6 @@ return {
 		"github/copilot.vim",
 		-- version = "1.41.x",
 		-- lazy = false,
-		event = "VimEnter",
+		event = "VeryLazy",
 	},
 }
