@@ -8,3 +8,5 @@ config/*
 !config/nvim
 config/nvim/lazy-lock.json
 !config/karabiner
+!config/kitty
+!config/neovide
