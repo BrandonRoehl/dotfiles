@@ -17,26 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Detect what terminal we are using
-local program = vim.fn.getenv("TERM_PROGRAM")
--- Order is important here
-if vim.g.neovide then
-	-- Neovide has a Nerd Font built in
-	vim.g.have_nerd_font = true
-elseif program == "iTerm2.app" then
-	-- I don't have a Nerd Font in iTerm2
-	vim.g.have_nerd_font = false
-elseif program == "Apple_Terminal" then
-	-- Apple Terminal will never have this
-	vim.g.have_nerd_font = false
-elseif vim.fn.has_key(vim.fn.environ(), "KITTY_WINDOW_ID") == 1 then
-	-- Kitty has a Nerd Font built in
-	vim.g.have_nerd_font = true
-else
-	-- Assume we don't have a Nerd Font
-	vim.g.have_nerd_font = false
-end
-
 require("config")
 
 -- [[ Configure and install plugins ]]
