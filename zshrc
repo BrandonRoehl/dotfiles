@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+# Enable colors in prompt
+export TERM=screen-256color
+
 # Source the shared between sh bash and zsh
 source "$HOME/.profile"
 
@@ -25,9 +28,6 @@ setopt EXTENDED_GLOB
 
 # Setopt for testing zsh plugins
 # setopt WARN_CREATE_GLOBAL
-
-# Enable colors in prompt
-export TERM=xterm-256color
 
 # Enable colored output for ls
 export CLICOLOR=1 # MacOS
