@@ -6,6 +6,7 @@ return {
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"folke/tokyonight.nvim",
+		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		opts = {
 			style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
@@ -29,7 +30,7 @@ return {
 		event = "VimEnter",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
-			signs = false,
+			signs = vim.g.have_nerd_font,
 			keywords = {
 				FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" } },
 				TODO = { icon = " ", color = "info" },
