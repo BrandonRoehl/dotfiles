@@ -173,14 +173,54 @@ return {
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {}, -- c and c++
-				pyright = {}, -- python
+				pyright = {
+					-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "openFilesOnly",
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
+					single_file_support = true,
+				}, -- python
 				rust_analyzer = {}, -- rust
 				gopls = {
-					analyses = {
-						unusedparams = true,
+					settings = {
+						-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
+						gopls = {
+							gofumpt = true,
+							-- https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
+							codelenses = {
+								gc_details = false,
+								generate = true,
+								regenerate_cgo = true,
+								-- run_govulncheck = true,
+								test = true,
+								tidy = true,
+								upgrade_dependency = true,
+								vendor = true,
+							},
+							-- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+							-- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
+							analyses = {},
+							usePlaceholders = true,
+							-- staticcheck = true,
+							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+							semanticTokens = true,
+						},
 					},
-					-- staticcheck = true,
-					-- gofumpt = true,
 				}, -- golang
 				-- sourcekit = {}, -- swift
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
