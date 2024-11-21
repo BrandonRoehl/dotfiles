@@ -214,7 +214,7 @@ return {
 								rangeVariableTypes = true,
 							},
 							-- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-							analyses = {},
+							-- analyses = {},
 							usePlaceholders = true,
 							-- staticcheck = true,
 							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
