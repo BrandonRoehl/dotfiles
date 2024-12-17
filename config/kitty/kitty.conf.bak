@@ -790,7 +790,8 @@ visual_bell_duration 0.1 ease-in linear
 #: parts, like this: 2.0 ease-in linear. kitty supports all the CSS
 #: easing functions <https://developer.mozilla.org/en-
 #: US/docs/Web/CSS/easing-function>.
-# visual_bell_color none
+
+visual_bell_color none
 
 #: The color used by visual bell. Set to none will fall back to
 #: selection background color. If you feel that the visual bell is too
@@ -2637,8 +2638,3 @@ macos_titlebar_color background
 #: }}}
 
 #: }}}
-
-# BEGIN_KITTY_THEME
-# Tokyo Night
-include current-theme.conf
-# END_KITTY_THEME
