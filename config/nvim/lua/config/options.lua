@@ -164,3 +164,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.encoding = "utf-8"
+
+-- Spellcheck
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
