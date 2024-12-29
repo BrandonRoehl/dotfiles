@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # Enable colors in prompt
-export TERM=screen-256color
+export TERM=xterm-256color
 
 # Source the shared between sh bash and zsh
 source "$HOME/.profile"
