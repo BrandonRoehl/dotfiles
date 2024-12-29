@@ -7,6 +7,8 @@ elseif program == "iTerm.app" then
 	require("config.program.iterm")
 elseif program == "Apple_Terminal" then
 	require("config.program.apple")
+elseif program == "ghostty" then
+	require("config.program.ghostty")
 elseif vim.fn.has_key(vim.fn.environ(), "KITTY_WINDOW_ID") == 1 then
 	require("config.program.kitty")
 else
