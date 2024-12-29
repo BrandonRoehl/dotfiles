@@ -378,7 +378,7 @@ cursor-opacity = 1
 #   * `underline`
 #   * `block_hollow`
 # 
-cursor-style = bar
+cursor-style = block
 
 # Sets the default blinking state of the cursor. This is just the default
 # state; running programs may override the cursor style using `DECSCUSR` (`CSI
