@@ -1,0 +1,16 @@
+# vim:ft=ini:fileencoding=utf-8:foldmethod=marker
+
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+
+theme = "tokyonight_night"
+# font-family = "RobotoMono Nerd Font"
+# font-size = 13
+# window-vsync = true
+
+# font_family
+# font_family      RobotoMono Nerd Font
+# bold_font        auto
+# italic_font      auto
+# bold_italic_font auto
+
