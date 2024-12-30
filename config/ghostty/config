@@ -238,7 +238,7 @@ adjust-overline-position =
 adjust-overline-thickness = 
 
 # Thickness in pixels of the bar cursor and outlined rect cursor.
-adjust-cursor-thickness = 
+adjust-cursor-thickness = 1
 
 # Height in pixels of the cursor. Currently applies to all cursor types:
 # bar, rect, and outlined rect.
