@@ -1,5 +1,5 @@
 # vim:ft=config:fileencoding=utf-8:foldmethod=marker
-# ghostty +show-config --docs
+# ghostty +show-config --docs --changes-only
 # The font families to use.
 # 
 # You can generate the list of valid values using the CLI:
