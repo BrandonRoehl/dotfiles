@@ -109,6 +109,10 @@
                         "vendor_id": 1452
                     },
                     "ignore": true
+                },
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "ignore": true
                 }
             ],
             "fn_function_keys": [
