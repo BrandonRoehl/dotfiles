@@ -125,12 +125,21 @@ return {
 			completion = {
 				ghost_text = {
 					enabled = true,
+					-- Show the ghost text when an item has been selected
 					show_with_selection = true,
+					-- Show the ghost text when no item has been selected, defaulting to the first item
 					show_without_selection = false,
 				},
 				documentation = {
+					-- Controls whether the documentation window will automatically show when selecting a completion item
 					auto_show = true,
+					-- Delay before showing the documentation window
 					auto_show_delay_ms = 500,
+					-- Delay before updating the documentation window when selecting a new item,
+					-- while an existing item is still visible
+					update_delay_ms = 50,
+					-- Whether to use treesitter highlighting, disable if you run into performance issues
+					treesitter_highlighting = true,
 				},
 				list = {
 					selection = {
@@ -154,7 +163,23 @@ return {
 				},
 			},
 			-- Show the signature help when typing
-			signature = { enabled = true },
+			signature = {
+				enabled = true,
+				trigger = {
+					-- Show the signature help automatically
+					enabled = true,
+					-- Show the signature help window after typing any of alphanumerics, `-` or `_`
+					show_on_keyword = false,
+					blocked_trigger_characters = {},
+					blocked_retrigger_characters = {},
+					-- Show the signature help window after typing a trigger character
+					show_on_trigger_character = true,
+					-- Show the signature help window when entering insert mode
+					show_on_insert = true,
+					-- Show the signature help window when the cursor comes after a trigger character when entering insert mode
+					show_on_insert_on_trigger_character = true,
+				},
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
