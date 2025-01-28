@@ -21,8 +21,8 @@ export PATH="$PATH:$HOME/workspace/flutter/bin"
 # brew install libpq
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-# Universe
-export PATH="$PATH:$HOME/.universe/bin" # Add RVM to PATH for scripting
+# PIPx
+export PATH="$PATH:$HOME/.local/bin"
 # Use GPG
 export GPG_TTY=$(tty)
 
