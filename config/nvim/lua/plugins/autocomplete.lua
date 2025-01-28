@@ -46,7 +46,7 @@ return {
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 			-- See the full "keymap" documentation for information on defining your own keymap.
 			keymap = {
-				preset = "super-tab",
+				preset = "default",
 
 				-- Default mappings
 				-- ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -67,10 +67,25 @@ return {
 
 				-- unbinding tab this now goes to copilot if you remove copilot
 				-- add this back
-				-- ["<Tab>"] = {},
-				-- ["<S-Tab>"] = {},
 				-- ['<Tab>'] = { 'snippet_forward', 'fallback' },
 				-- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+
+				-- Enter will insert whether is selected
+				-- or enter if nothing is yet
+				["<CR>"] = { "accept", "fallback" },
+				-- Tab will accept the ghost text or the selection first
+				["<Tab>"] = {
+					function(cmp)
+						if cmp.snippet_active() then
+							return cmp.accept()
+						else
+							return cmp.select_and_accept()
+						end
+					end,
+					"snippet_forward",
+					"fallback",
+				},
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
 
 				-- ['<C-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
 
@@ -128,7 +143,7 @@ return {
 					-- Show the ghost text when an item has been selected
 					show_with_selection = true,
 					-- Show the ghost text when no item has been selected, defaulting to the first item
-					show_without_selection = false,
+					show_without_selection = true,
 				},
 				documentation = {
 					-- Controls whether the documentation window will automatically show when selecting a completion item
@@ -143,10 +158,11 @@ return {
 				},
 				list = {
 					selection = {
-						preselect = function(ctx)
-							return ctx.mode ~= "cmdline"
-							-- return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
-						end,
+						preselect = false,
+						-- preselect = function(ctx)
+						-- 	return ctx.mode ~= "cmdline"
+						-- 	-- return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
+						-- end,
 						auto_insert = false,
 						-- auto_insert = function(ctx)
 						-- 	return ctx.mode ~= "cmdline"
