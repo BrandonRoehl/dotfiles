@@ -112,18 +112,22 @@ return {
 							max_completions = 3,
 							max_attempts = 4,
 							-- kind = "Copilot",
-							-- debounce = 750, ---@type integer | false
-							-- auto_refresh = {
-							-- 	backward = true,
-							-- 	forward = true,
-							-- },
+							debounce = 500, ---@type integer | false
+							auto_refresh = {
+								backward = true,
+								forward = true,
+							},
 						},
 					},
 				},
 			},
 			-- Completion behavior
 			completion = {
-				ghost_text = { enabled = true },
+				ghost_text = {
+					enabled = true,
+					show_with_selection = true,
+					show_without_selection = false,
+				},
 				documentation = {
 					auto_show = true,
 					auto_show_delay_ms = 500,
