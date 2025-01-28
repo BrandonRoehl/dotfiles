@@ -1,10 +1,35 @@
 -- Autocompletion
 return {
 	{
+		"github/copilot.vim",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		event = "BufWinEnter",
+		-- event = "VeryLazy",
+		init = function()
+			vim.g.copilot_no_maps = true
+		end,
+		config = function()
+			-- Block the normal Copilot suggestions
+			vim.api.nvim_create_augroup("github_copilot", { clear = true })
+			for _, event in pairs({ "FileType", "BufUnload", "BufEnter" }) do
+				vim.api.nvim_create_autocmd({ event }, {
+					group = "github_copilot",
+					callback = function()
+						vim.fn["copilot#On" .. event]()
+					end,
+				})
+			end
+		end,
+	},
+	{
 		"saghen/blink.cmp",
 		event = "InsertEnter",
 		-- optional: provides snippets for the snippet source
-		dependencies = "rafamadriz/friendly-snippets",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+			"fang2hou/blink-copilot",
+		},
 
 		-- use a release tag to download pre-built binaries
 		version = "*",
@@ -21,7 +46,7 @@ return {
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 			-- See the full "keymap" documentation for information on defining your own keymap.
 			keymap = {
-				preset = "enter",
+				preset = "super-tab",
 
 				-- Default mappings
 				-- ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
@@ -42,8 +67,8 @@ return {
 
 				-- unbinding tab this now goes to copilot if you remove copilot
 				-- add this back
-				["<Tab>"] = {},
-				["<S-Tab>"] = {},
+				-- ["<Tab>"] = {},
+				-- ["<S-Tab>"] = {},
 				-- ['<Tab>'] = { 'snippet_forward', 'fallback' },
 				-- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 
@@ -67,14 +92,38 @@ return {
 				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = "mono",
+				-- Custom icons
+				kind_icons = {
+					Copilot = "",
+				},
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "copilot", "lsp", "path", "snippets", "buffer" },
+				providers = {
+					copilot = {
+						name = "copilot",
+						module = "blink-copilot",
+						score_offset = 100,
+						async = true,
+						{
+							max_completions = 3,
+							max_attempts = 4,
+							-- kind = "Copilot",
+							-- debounce = 750, ---@type integer | false
+							-- auto_refresh = {
+							-- 	backward = true,
+							-- 	forward = true,
+							-- },
+						},
+					},
+				},
 			},
+			-- Completion behavior
 			completion = {
+				ghost_text = { enabled = true },
 				documentation = {
 					auto_show = true,
 					auto_show_delay_ms = 500,
@@ -85,7 +134,7 @@ return {
 							return ctx.mode ~= "cmdline"
 							-- return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active({ direction = 1 })
 						end,
-						auto_insert = true,
+						auto_insert = false,
 						-- auto_insert = function(ctx)
 						-- 	return ctx.mode ~= "cmdline"
 						-- end,
@@ -100,6 +149,8 @@ return {
 					},
 				},
 			},
+			-- Show the signature help when typing
+			signature = { enabled = true },
 		},
 		opts_extend = { "sources.default" },
 	},
