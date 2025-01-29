@@ -222,15 +222,28 @@ return {
 						},
 					},
 				}, -- golang
-				-- sourcekit = {}, -- swift
+				sourcekit = {}, -- swift
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				-- ts_ls = {},
-				--
+				ts_ls = {
+					capabilities = {},
+					init_options = {
+						plugins = { -- I think this was my breakthrough that made it work
+							{
+								name = "@vue/typescript-plugin",
+								location = "/usr/local/lib/node_modules/@vue/language-server",
+								languages = { "vue" },
+							},
+						},
+					},
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				},
+
+				volar = {},
 
 				lua_ls = {
 					-- cmd = {...},
@@ -270,8 +283,15 @@ return {
 			})
 
 			require("mason-lspconfig").setup({
-				ensure_installed = vim.tbl_keys(servers or {}),
-				automatic_installation = false,
+				ensure_installed = {},
+				automatic_installation = {
+					exclude = {
+						"clangd",
+						"rust_analyzer",
+						"solargraph",
+						"sourcekit",
+					},
+				},
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}
