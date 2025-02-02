@@ -30,8 +30,7 @@ require("config")
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require("lazy").setup({
-	-- INFO: Load all the plugins and their configs
+require("lazy").setup({ -- INFO: Load all the plugins and their configs
 	{ import = "plugins" },
 
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the

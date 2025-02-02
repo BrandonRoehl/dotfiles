@@ -1,7 +1,27 @@
 -- Format
+--- @return LazyPluginSpec[]
 return {
+	--- @type LazyPluginSpec
 	{ -- Autoformat
 		"stevearc/conform.nvim",
+		dependencies = {
+			{ "williamboman/mason.nvim" }, -- NOTE: Must be added on the top level
+			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+			{
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				opts = {
+					-- Tools to auto install and instead use from the env
+					ensure_installed = {
+						"stylua", -- Used to format Lua code
+						"black", -- Used to format Python code
+						"isort", -- Used to sort Python imports
+						-- "eslint", -- Used to lint JavaScript and TypeScript
+						-- "prettier", -- Used to format JavaScript and TypeScript
+						-- "rustfmt", -- Used to format Rust code
+					},
+				},
+			},
+		},
 		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		keys = {

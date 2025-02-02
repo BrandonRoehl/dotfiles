@@ -1,5 +1,7 @@
 -- LSP Plugins
+--- @return LazyPluginSpec[]
 return {
+	--- @type LazyPluginSpec
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
@@ -12,15 +14,19 @@ return {
 			},
 		},
 	},
-	{ "Bilal2453/luvit-meta", lazy = true },
+	--- @type LazyPluginSpec
+	{
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
+	--- @type LazyPluginSpec
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
-			{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
+			"williamboman/mason.nvim", -- NOTE: Must be added on the top level
 			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -264,14 +270,8 @@ return {
 					},
 				},
 			}
-			-- Ensure the servers and tools above are installed
-			--  To check the current status of installed tools and/or manually install
-			--  other tools, you can run
-			--    :Mason
-			--
-			--  You can press `g?` for help in this menu.
-			require("mason").setup()
 
+			-- NOTE: `mason-lspconfig` must be setup before servers are configured
 			require("mason-lspconfig").setup({
 				-- ensure_installed = vim.tbl_keys(servers or {}),
 				ensure_installed = {},
@@ -285,6 +285,10 @@ return {
 				},
 			})
 
+			-- Must be setup after ``mason-lspconfig``. Doing this with
+			-- {@link MasonLspconfigSettings.ensure_installed} and
+			-- {@link MasonLspconfigSettings.automatic_installation} excluding
+			-- server keys that are not in mason-lspconfig
 			local lspconfig = require("lspconfig")
 			for server_name, config in pairs(servers) do
 				-- This handles overriding only values explicitly passed
@@ -293,20 +297,6 @@ return {
 				config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
 				lspconfig[server_name].setup(config)
 			end
-
-			-- Install extra tools
-			-- You can add other tools here that you want Mason to install
-			-- for you, so that they are available from within Neovim.
-			require("mason-tool-installer").setup({
-				ensure_installed = {
-					"stylua", -- Used to format Lua code
-					"black", -- Used to format Python code
-					"isort", -- Used to sort Python imports
-					-- "eslint", -- Used to lint JavaScript and TypeScript
-					-- "prettier", -- Used to format JavaScript and TypeScript
-					-- "rustfmt", -- Used to format Rust code
-				},
-			})
 		end,
 	},
 }
