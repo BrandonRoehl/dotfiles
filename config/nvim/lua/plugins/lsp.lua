@@ -166,8 +166,8 @@ return {
 			--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
 			--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
 			--- @type lsp.ClientCapabilities
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
 
 			-- Enable the following language servers
 			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -179,7 +179,6 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				clangd = {}, -- c and c++
 				pyright = {
 					-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
 					settings = {
@@ -230,6 +229,7 @@ return {
 					},
 				}, -- golang
 				sourcekit = {}, -- swift
+				clangd = {}, -- c and c++ after sourcekit so sourcekit is used if available
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
