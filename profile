@@ -49,6 +49,8 @@ alias cpdir="pwd | tr -d '\n' | pbcopy"
 # Attached a session if it has been detached from or create a new one
 alias startTmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 
+alias fix_xcode="rm -rf '$HOME/Library/Developer/Xcode/DerivedData'"
+
 alias ':q'='exit'
 alias 'x'='exit'
 if type 'nvim' > /dev/null
