@@ -34,7 +34,7 @@ export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
 # to ~/.profile and ~/.zprofile:
 #
 export PYENV_ROOT="$HOME/.pyenv"
-if test -f $PYENV_ROOT
+if test -d $PYENV_ROOT
 then
     # Load pyenv into the shell by adding
     # the following to ~/.zshrc:
