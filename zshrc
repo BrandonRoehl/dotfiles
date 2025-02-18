@@ -1,7 +1,4 @@
 #!/usr/bin/env zsh
-# Enable colors in prompt
-export TERM=xterm-256color
-
 # Source the shared between sh bash and zsh
 source "$HOME/.profile"
 
