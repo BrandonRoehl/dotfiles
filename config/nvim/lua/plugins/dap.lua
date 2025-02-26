@@ -22,7 +22,6 @@ return {
 			},
 			{ "leoluz/nvim-dap-go", config = true },
 		},
-
 		-- stylua: ignore
 		keys = {
 			{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
@@ -43,7 +42,6 @@ return {
 			{ "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
 			{ "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
 		},
-
 		config = function()
 			-- load mason-nvim-dap here, after all adapters have been setup
 			-- if LazyVim.has("mason-nvim-dap.nvim") then
