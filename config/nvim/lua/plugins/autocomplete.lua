@@ -1,5 +1,26 @@
 -- Autocompletion
+--- @return LazyPluginSpec[]
 return {
+	--- @type LazyPluginSpec
+	{
+		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+		-- used for completion, annotations and signatures of Neovim apis
+		"folke/lazydev.nvim",
+		ft = "lua",
+		opts = {
+			library = {
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				"nvim-dap-ui",
+			},
+		},
+	},
+	--- @type LazyPluginSpec
+	{
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
+	--- @type LazyPluginSpec
 	{
 		"saghen/blink.cmp",
 		event = "InsertEnter",
@@ -100,6 +121,8 @@ return {
 					lazydev = {
 						name = "LazyDev",
 						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 50,
 					},
 					copilot = {
 						name = "copilot",
