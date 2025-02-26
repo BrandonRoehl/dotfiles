@@ -113,6 +113,15 @@
                 {
                     "identifiers": { "is_keyboard": true },
                     "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 866,
+                        "vendor_id": 10730
+                    },
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [
