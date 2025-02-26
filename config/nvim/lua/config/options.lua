@@ -168,3 +168,6 @@ vim.opt.encoding = "utf-8"
 -- Spellcheck
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+
+-- Allow setting the title
+vim.opt.title = true
