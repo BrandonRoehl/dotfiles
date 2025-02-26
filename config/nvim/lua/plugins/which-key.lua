@@ -69,7 +69,7 @@ return {
 			---@type wk.Spec
 			spec = {
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ocument" },
+				{ "<leader>d", group = "[D]ebug" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>n", group = "[N]eoTree" },
