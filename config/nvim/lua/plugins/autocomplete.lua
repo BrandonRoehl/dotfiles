@@ -176,6 +176,7 @@ return {
 					},
 				},
 				menu = {
+					auto_show = true,
 					draw = vim.g.have_nerd_font and {} or {
 						columns = {
 							{ "label", "label_description", gap = 1 },
