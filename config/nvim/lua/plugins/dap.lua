@@ -1,6 +1,7 @@
 -- DAP Plugins
 --- @return LazyPluginSpec[]
 return {
+	--- @type LazyPluginSpec
 	{
 		"mfussenegger/nvim-dap",
 		recommended = true,
@@ -49,18 +50,6 @@ return {
 			-- 	require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
 			-- end
 			local dap = require("dap")
-			dap.configurations.python = {
-				{
-					type = "python",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					pythonPath = function()
-						return "/usr/bin/python"
-					end,
-				},
-			}
-			require("dap-go").setup()
 
 			require("mason-nvim-dap").setup({
 				-- Makes a best effort to setup the various debuggers with
@@ -75,10 +64,33 @@ return {
 				-- online, please don't ask me how to install them :)
 				ensure_installed = {
 					-- Update this to ensure that you have the debuggers for the langs you want
+					"delve",
 				},
 			})
 
+			-- Set some icons
+			vim.api.nvim_set_hl(0, "DapBreak", { fg = "#e51400" })
+			vim.api.nvim_set_hl(0, "DapStop", { fg = "#ffcc00" })
 			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+			-- stylua: ignore
+			local breakpoint_icons = vim.g.have_nerd_font and {
+				Breakpoint = "",
+				BreakpointCondition = "",
+				BreakpointRejected = "",
+				LogPoint = "",
+				Stopped = "",
+			} or {
+				Breakpoint = "●",
+				BreakpointCondition = "⊜",
+				BreakpointRejected = "⊘",
+				LogPoint = "◆",
+				Stopped = "⭔",
+			}
+			for type, icon in pairs(breakpoint_icons) do
+				local tp = "Dap" .. type
+				local hl = (type == "Stopped") and "DapStop" or "DapBreak"
+				vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+			end
 
 			-- setup dap config by VSCode launch.json file
 			local vscode = require("dap.ext.vscode")
@@ -86,8 +98,30 @@ return {
 			vscode.json_decode = function(str)
 				return vim.json.decode(json.json_strip_comments(str))
 			end
+
+			dap.configurations.python = {
+				{
+					type = "python",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					pythonPath = function()
+						return "/usr/bin/python"
+					end,
+				},
+			}
+
+			-- Install golang specific config
+			require("dap-go").setup({
+				delve = {
+					-- On Windows delve must be run attached or it crashes.
+					-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+					detached = vim.fn.has("win32") == 0,
+				},
+			})
 		end,
 	},
+	--- @type LazyPluginSpec
 	{
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "nvim-neotest/nvim-nio" },
@@ -96,20 +130,35 @@ return {
 			{ "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
 			{ "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
 		},
-		opts = {},
+		-- For more information, see |:help nvim-dap-ui|
+		--- @type dapui.Config
+		opts = {
+			-- Set icons to characters that are more likely to work in every terminal.
+			--    Feel free to remove or use ones that you like more! :)
+			--    Don't feel like these are good choices.
+			icons = vim.g.have_nerd_font and {} or { expanded = "▾", collapsed = "▸", current_frame = "*" },
+			controls = {
+				icons = vim.g.have_nerd_font and {} or {
+					pause = "⏸",
+					play = "▶",
+					step_into = "⏎",
+					step_over = "⏭",
+					step_out = "⏮",
+					step_back = "b",
+					run_last = "▶▶",
+					terminate = "⏹",
+					disconnect = "⏏",
+				},
+			},
+		},
 		config = function(_, opts)
 			local dap = require("dap")
 			local dapui = require("dapui")
 			dapui.setup(opts)
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open({})
-			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close({})
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close({})
-			end
+
+			dap.listeners.after.event_initialized["dapui_config"] = dapui.open
+			dap.listeners.before.event_terminated["dapui_config"] = dapui.close
+			dap.listeners.before.event_exited["dapui_config"] = dapui.close
 		end,
 	},
 }
