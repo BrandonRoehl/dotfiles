@@ -101,16 +101,57 @@ return {
 						-- append = { "append" },
 					},
 					-- header = vim.split(logo, "\n"),
-					-- stylua: ignore
 					center = {
-						{ action = 'Telescope find_files cwd=',               desc = " Find File",    icon = " ", key = "f" },
-						{ action = "ene | startinsert",                       desc = " New File",     icon = " ", key = "n" },
-						{ action = 'Telescope oldfiles cwd=',                 desc = " Recent Files", icon = " ", key = "r" },
-						{ action = 'Telescope live_grep cwd=',                desc = " Find Text",    icon = " ", key = "g" },
-						{ action = 'Telescope find_files cwd=~/.config/nvim', desc = " Config",       icon = " ", key = "c" },
-						{ action = "LazyGit",                                 desc = " Lazy Git",     icon = " ", key = "x" },
-						{ action = "Lazy",                                    desc = " Lazy",         icon = "󰒲 ", key = "l" },
-						{ action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",  icon = " ", key = "q" },
+						{
+							action = "Telescope find_files cwd=",
+							desc = " Find File",
+							icon = vim.g.have_nerd_font and " " or "🔍",
+							key = "f",
+						},
+						{
+							action = "ene | startinsert",
+							desc = " New File",
+							icon = vim.g.have_nerd_font and " " or "📄",
+							key = "n",
+						},
+						{
+							action = "Telescope oldfiles cwd=",
+							desc = " Recent Files",
+							icon = vim.g.have_nerd_font and " " or "📑",
+							key = "r",
+						},
+						{
+							action = "Telescope live_grep cwd=",
+							desc = " Find Text",
+							icon = vim.g.have_nerd_font and " " or "📋",
+							key = "g",
+						},
+						{
+							action = "Telescope find_files cwd=~/.config/nvim",
+							desc = " Config",
+							icon = vim.g.have_nerd_font and " " or "⚙",
+							key = "c",
+						},
+						{
+							action = "LazyGit",
+							desc = " Lazy Git",
+							icon = vim.g.have_nerd_font and " " or "⌥",
+							key = "x",
+						},
+						{
+							action = "Lazy",
+							desc = " Lazy",
+							icon = vim.g.have_nerd_font and "󰒲 " or "📦",
+							key = "l",
+						},
+						{
+							action = function()
+								vim.api.nvim_input("<cmd>qa<cr>")
+							end,
+							desc = " Quit",
+							icon = vim.g.have_nerd_font and " " or "⎋",
+							key = "q",
+						},
 						-- { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
 					},
 					footer = function()
