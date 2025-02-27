@@ -61,13 +61,13 @@ return {
 						{
 							action = "Telescope find_files cwd=~/.config/nvim",
 							desc = " Config",
-							icon = vim.g.have_nerd_font and " " or "⚙",
+							icon = vim.g.have_nerd_font and " " or "⚙ ",
 							key = "c",
 						},
 						{
 							action = "LazyGit",
 							desc = " Lazy Git",
-							icon = vim.g.have_nerd_font and " " or "⌥",
+							icon = vim.g.have_nerd_font and " " or "⌥ ",
 							key = "x",
 						},
 						{
@@ -81,7 +81,7 @@ return {
 								vim.api.nvim_input("<cmd>qa<cr>")
 							end,
 							desc = " Quit",
-							icon = vim.g.have_nerd_font and " " or "⎋",
+							icon = vim.g.have_nerd_font and " " or "⎋ ",
 							key = "q",
 						},
 						-- { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
