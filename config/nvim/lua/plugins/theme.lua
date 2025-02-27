@@ -103,7 +103,7 @@ return {
 					-- header = vim.split(logo, "\n"),
 					center = {
 						{
-							action = "Telescope find_files cwd=",
+							action = "Telescope find_files",
 							desc = " Find File",
 							icon = vim.g.have_nerd_font and " " or "🔍",
 							key = "f",
@@ -115,13 +115,13 @@ return {
 							key = "n",
 						},
 						{
-							action = "Telescope oldfiles cwd=",
+							action = "Telescope oldfiles",
 							desc = " Recent Files",
 							icon = vim.g.have_nerd_font and " " or "📑",
 							key = "r",
 						},
 						{
-							action = "Telescope live_grep cwd=",
+							action = "Telescope live_grep",
 							desc = " Find Text",
 							icon = vim.g.have_nerd_font and " " or "📋",
 							key = "g",
