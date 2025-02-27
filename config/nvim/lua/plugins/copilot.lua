@@ -6,6 +6,7 @@ return {
 		cmd = "Copilot",
 		build = ":Copilot auth",
 		event = "BufWinEnter",
+		version = "*",
 		init = function()
 			vim.g.copilot_no_maps = true
 		end,
@@ -35,7 +36,7 @@ return {
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "main",
+		version = "*",
 		cmd = "CopilotChat",
 		dependencies = {
 			{ "github/copilot.vim" },

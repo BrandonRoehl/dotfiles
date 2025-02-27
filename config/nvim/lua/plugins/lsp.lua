@@ -6,6 +6,7 @@ return {
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
+		version = "*",
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			"williamboman/mason.nvim", -- NOTE: Must be added on the top level

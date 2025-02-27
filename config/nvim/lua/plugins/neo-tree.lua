@@ -3,6 +3,7 @@
 return {
 	{ -- File tree
 		"nvim-neo-tree/neo-tree.nvim",
+		version = "*",
 		-- branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",

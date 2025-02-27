@@ -9,6 +9,7 @@ return {
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"folke/tokyonight.nvim",
+		version = "*",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		--- @module 'tokyonight'
@@ -65,6 +66,7 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		version = "*",
 		opts = {
 			options = {
 				icons_enabled = vim.g.have_nerd_font,
