@@ -15,6 +15,7 @@ return {
 			light_style = "day", -- The theme is used when the background is set to light
 			transparent = false, -- Enable this to disable setting the background color
 			terminal_colors = false, -- Configure the colors used when opening a `:terminal` in Neovim
+			lualine_bold = true,
 		},
 		init = function()
 			-- Load the colorscheme here.
@@ -45,30 +46,23 @@ return {
 		},
 	},
 	--- @type LazyPluginSpec
-	{ -- Collection of various small independent plugins/modules
-		"echasnovski/mini.statusline",
-		version = "*",
-		opts = { use_icons = vim.g.have_nerd_font },
-		event = "VimEnter",
-		config = function(_, opts)
-			-- Simple and easy statusline.
-			--  You could remove this setup call if you don't like it,
-			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
-			-- set use_icons to true if you have a Nerd Font
-			statusline.setup(opts)
-
-			-- You can configure sections in the statusline by overriding their
-			-- default behavior. For example, here we set the section for
-			-- cursor location to LINE:COLUMN
-			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return "%2l:%-2v"
-			end
-
-			-- ... and there is more!
-			--  Check out: https://github.com/echasnovski/mini.nvim
-		end,
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			options = {
+				icons_enabled = vim.g.have_nerd_font,
+				theme = "tokyonight",
+				globalstatus = vim.o.laststatus == 3,
+				component_separators = { left = "│", right = "│" },
+				section_separators = { left = "", right = "" },
+				disabled_filetypes = {
+					statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" },
+					winbar = {},
+				},
+			},
+			extensions = { "lazy", "mason", "neo-tree", "nvim-dap-ui" },
+		},
 	},
 }
 -- Better Around/Inside textobjects

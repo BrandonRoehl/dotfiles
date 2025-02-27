@@ -9,12 +9,16 @@ return {
 		},
 		cmd = "Neotree",
 		keys = {
-			{ "\\", ":Neotree reveal<CR>", desc = "NeoTree reveal", silent = true },
+			{ "\\", ":Neotree reveal left<CR>", desc = "NeoTree reveal", silent = true },
 			{ "<leader>nb", ":Neotree toggle show buffers right<CR>", desc = "NeoTree show [B]uffers", silent = true },
 			{ "<leader>ns", ":Neotree float git_status<CR>", desc = "NeoTree Git [S]tatus", silent = true },
 		},
 		-- NOTE: Neotree configuration here is not the full config.
 		opts = {
+			source_selector = {
+				winbar = true,
+				statusline = false,
+			},
 			filesystem = {
 				window = {
 					mappings = {
