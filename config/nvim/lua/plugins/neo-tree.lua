@@ -1,3 +1,5 @@
+--- @module 'lazy'
+--- @return LazyPluginSpec[]
 return {
 	{ -- File tree
 		"nvim-neo-tree/neo-tree.nvim",
@@ -15,9 +17,25 @@ return {
 		},
 		-- NOTE: Neotree configuration here is not the full config.
 		opts = {
+			sources = {
+				"filesystem",
+				"git_status",
+				"buffers",
+				-- "document_symbols",
+			},
 			source_selector = {
-				winbar = true,
+				winbar = false,
 				statusline = false,
+				separator_active = "",
+				show_scrolled_off_parent_node = true,
+				padding = 1,
+				sources = {
+					{ source = "filesystem", display_name = nil },
+					{ source = "git_status", display_name = nil },
+					{ source = "buffers", display_name = nil },
+					-- { source = "document_symbols" },
+				},
+				tabs_layout = "start",
 			},
 			filesystem = {
 				window = {

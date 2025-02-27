@@ -1,3 +1,5 @@
+--- @module 'lazy'
+--- @return LazyPluginSpec[]
 return {
 	-- NOTE: Plugins can specify dependencies.
 	--

@@ -1,3 +1,5 @@
+--- @module 'lazy'
+--- @return LazyPluginSpec[]
 return {
 	-- NOTE: Plugins can also be added by using a table,
 	-- with the first argument being the link and the following

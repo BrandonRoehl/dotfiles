@@ -1,3 +1,5 @@
+--- @module 'lazy'
+--- @return LazyPluginSpec[]
 return {
 	{
 		"github/copilot.vim",
@@ -20,6 +22,15 @@ return {
 					end,
 				})
 			end
+			-- vim.g.copilot_filetypes = {
+			-- 	["*"] = true,
+			-- 	gitcommit = false,
+			-- 	NeogitCommitMessage = false,
+			-- 	DressingInput = false,
+			-- 	TelescopePrompt = false,
+			-- 	["neo-tree-popup"] = false,
+			-- 	["dap-repl"] = false,
+			-- }
 		end,
 	},
 	{

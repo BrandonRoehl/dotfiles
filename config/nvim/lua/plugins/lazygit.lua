@@ -1,4 +1,5 @@
 -- https://github.com/kdheepak/lazygit.nvim
+--- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	"kdheepak/lazygit.nvim",
