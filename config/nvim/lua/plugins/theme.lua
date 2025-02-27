@@ -11,12 +11,27 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
+		--- @module 'tokyonight'
+		--- @type tokyonight.Config
 		opts = {
 			style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
 			light_style = "day", -- The theme is used when the background is set to light
 			transparent = false, -- Enable this to disable setting the background color
 			terminal_colors = false, -- Configure the colors used when opening a `:terminal` in Neovim
 			lualine_bold = true,
+			cache = true,
+			plugins = {
+				-- enable all plugins when not using lazy.nvim
+				-- set to false to manually enable/disable plugins
+				all = package.loaded.lazy == nil,
+				-- uses your plugin manager to automatically enable needed plugins
+				-- currently only lazy.nvim is supported
+				auto = true,
+				-- add any plugins here that you want to enable
+				-- for all possible plugins, see:
+				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
+				-- telescope = true,
+			},
 		},
 		init = function()
 			-- Load the colorscheme here.
