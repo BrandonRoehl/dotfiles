@@ -46,11 +46,13 @@ return {
 			local user = vim.env.USER or "User"
 			user = user:sub(1, 1):upper() .. user:sub(2)
 			return {
+				model = "gpt-o3-mini",
 				auto_insert_mode = true,
 				question_header = (vim.g.have_nerd_font and "  " or " ") .. user .. " ",
 				answer_header = vim.g.have_nerd_font and "  Copilot " or " Copilot ",
 				window = {
-					width = 0.4,
+					-- width = 0.4,
+					layout = "float",
 				},
 			}
 		end,
