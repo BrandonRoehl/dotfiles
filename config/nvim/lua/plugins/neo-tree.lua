@@ -12,9 +12,14 @@ return {
 		},
 		cmd = "Neotree",
 		keys = {
-			{ "\\", ":Neotree reveal left<CR>", desc = "NeoTree reveal", silent = true },
-			{ "<leader>nb", ":Neotree toggle show buffers right<CR>", desc = "NeoTree show [B]uffers", silent = true },
-			{ "<leader>ns", ":Neotree float git_status<CR>", desc = "NeoTree Git [S]tatus", silent = true },
+			{ "\\", "<cmd>Neotree reveal left<CR>", desc = "NeoTree reveal", silent = true },
+			{
+				"<leader>nb",
+				"<cmd>Neotree toggle show buffers right<CR>",
+				desc = "NeoTree show [B]uffers",
+				silent = true,
+			},
+			{ "<leader>ns", "<cmd>Neotree float git_status<CR>", desc = "NeoTree Git [S]tatus", silent = true },
 		},
 		-- NOTE: Neotree configuration here is not the full config.
 		opts = {

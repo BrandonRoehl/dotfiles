@@ -77,7 +77,7 @@ return {
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>n", group = "[N]eoTree" },
 				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>t", group = "[T]ab" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>l", group = "[L]azy Git" },
 				{ "K", desc = "LSP Hover", mode = { "n" } },
