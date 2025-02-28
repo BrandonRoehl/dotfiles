@@ -48,6 +48,12 @@ return {
 							key = "n",
 						},
 						{
+							action = "Neotree reveal",
+							desc = " File Tree",
+							icon = vim.g.have_nerd_font and " " or "📁",
+							key = "\\",
+						},
+						{
 							action = "Telescope oldfiles",
 							desc = " Recent Files",
 							icon = vim.g.have_nerd_font and " " or "📑",
@@ -79,13 +85,16 @@ return {
 						},
 						{
 							action = function()
-								vim.api.nvim_input("<cmd>qa<cr>")
+								if vim.fn.tabpagenr("$") > 1 then
+									vim.api.nvim_input("<cmd>tabclose<cr>")
+								else
+									vim.api.nvim_input("<cmd>qa<cr>")
+								end
 							end,
 							desc = " Quit",
 							icon = vim.g.have_nerd_font and " " or "⎋ ",
 							key = "q",
 						},
-						-- { action = 'lua require("persistence").load()', desc = " Restore Session", icon = " ", key = "s" },
 					},
 					footer = function()
 						local stats = require("lazy").stats()

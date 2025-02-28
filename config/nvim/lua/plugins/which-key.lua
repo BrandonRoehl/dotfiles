@@ -72,14 +72,14 @@ return {
 			---@type wk.Spec
 			spec = {
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-				{ "<leader>d", group = "[D]ebug" },
+				{ "<leader>d", group = "[D]ebug", icon = " " },
 				{ "<leader>r", group = "[R]ename" },
-				{ "<leader>s", group = "[S]earch" },
-				{ "<leader>n", group = "[N]eoTree" },
+				{ "<leader>s", group = "[S]earch", icon = " " },
+				{ "<leader>n", group = "[N]eoTree", icon = " " },
 				{ "<leader>w", group = "[W]orkspace" },
-				{ "<leader>t", group = "[T]ab" },
+				{ "<leader>t", group = "[T]ab", icon = "󰓩 " },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
-				{ "<leader>l", group = "[L]azy Git" },
+				{ "<leader>l", group = "[L]azy Git", icon = " " },
 				{ "K", desc = "LSP Hover", mode = { "n" } },
 				{
 					"<leader><leader>",

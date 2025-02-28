@@ -32,7 +32,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- tab stuff
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "[T]ab [N]ew" })
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew +Dashboard<CR>", { desc = "[T]ab [N]ew" })
 vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "[T]ab Close" })
 vim.keymap.set("n", "<leader>tl", "<cmd>tabnext +<CR>", { desc = "[T]ab Next" })
 vim.keymap.set("n", "<leader>th", "<cmd>tabnext -<CR>", { desc = "[T]ab Previous" })
