@@ -237,9 +237,18 @@ return {
 							},
 						},
 					},
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
 				},
-				volar = {},
+				volar = {
+					-- add filetypes for typescript, javascript and vue
+					filetypes = { "vue" },
+					init_options = {
+						vue = {
+							-- disable hybrid mode
+							hybridMode = false,
+						},
+					},
+				},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
