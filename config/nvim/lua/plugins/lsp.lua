@@ -237,6 +237,13 @@ return {
 							},
 						},
 					},
+					on_new_config = function(new_config, new_root_dir)
+						local lib_path =
+							vim.fs.find("node_modules/@vue/language-server", { path = new_root_dir, upward = true })[1]
+						if lib_path then
+							new_config.init_options.plugins[0].location = lib_path
+						end
+					end,
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
 				},
 				volar = {
@@ -247,7 +254,19 @@ return {
 							-- disable hybrid mode
 							hybridMode = false,
 						},
+						typescript = {
+							-- replace with your global TypeScript library path
+							tsdk = "/usr/local/lib/node_modules/typescript/lib",
+						},
 					},
+					-- find a local one if not use a global if you cannot fine one
+					on_new_config = function(new_config, new_root_dir)
+						local lib_path =
+							vim.fs.find("node_modules/typescript/lib", { path = new_root_dir, upward = true })[1]
+						if lib_path then
+							new_config.init_options.typescript.tsdk = lib_path
+						end
+					end,
 				},
 				lua_ls = {
 					-- cmd = {...},
