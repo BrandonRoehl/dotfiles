@@ -57,12 +57,12 @@ return {
 					fg = c.orange,
 				}
 				hl.TelescopePreviewTitle = {
-					bg = c.bg_float,
-					fg = c.border_highlight,
+					bg = c.green,
+					fg = c.bg_float,
 				}
 				hl.TelescopeResultsTitle = {
-					bg = c.bg_float,
-					fg = c.border_highlight,
+					bg = c.cyan,
+					fg = c.bg_float,
 				}
 			end,
 		},
