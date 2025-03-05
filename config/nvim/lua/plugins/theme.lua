@@ -31,8 +31,38 @@ return {
 				-- add any plugins here that you want to enable
 				-- for all possible plugins, see:
 				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
-				-- telescope = true,
+				telescope = true,
 			},
+			-- on_highlights = function(hl, c)
+			-- 	local prompt = "#2d3149"
+			-- 	hl.TelescopeNormal = {
+			-- 		bg = c.bg_dark,
+			-- 		fg = c.fg_dark,
+			-- 	}
+			-- 	hl.TelescopeBorder = {
+			-- 		bg = c.bg_dark,
+			-- 		fg = c.bg_dark,
+			-- 	}
+			-- 	hl.TelescopePromptNormal = {
+			-- 		bg = prompt,
+			-- 	}
+			-- 	hl.TelescopePromptBorder = {
+			-- 		bg = prompt,
+			-- 		fg = prompt,
+			-- 	}
+			-- 	hl.TelescopePromptTitle = {
+			-- 		bg = prompt,
+			-- 		fg = c.fg_dark,
+			-- 	}
+			-- 	hl.TelescopePreviewTitle = {
+			-- 		bg = c.bg_dark,
+			-- 		fg = c.fg_dark,
+			-- 	}
+			-- 	hl.TelescopeResultsTitle = {
+			-- 		bg = c.bg_dark,
+			-- 		fg = c.fg_dark,
+			-- 	}
+			-- end,
 		},
 		init = function()
 			-- Load the colorscheme here.

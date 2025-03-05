@@ -23,20 +23,62 @@ return {
 					end,
 				})
 			end
-			-- vim.g.copilot_filetypes = {
-			-- 	["*"] = true,
-			-- 	gitcommit = false,
-			-- 	NeogitCommitMessage = false,
-			-- 	DressingInput = false,
-			-- 	TelescopePrompt = false,
-			-- 	["neo-tree-popup"] = false,
-			-- 	["dap-repl"] = false,
-			-- }
+			vim.g.copilot_filetypes = {
+				["*"] = true,
+				gitcommit = false,
+				NeogitCommitMessage = false,
+				DressingInput = false,
+				TelescopePrompt = false,
+				["neo-tree-popup"] = false,
+				["dap-repl"] = false,
+			}
 		end,
+	},
+	{
+		"olimorris/codecompanion.nvim",
+		version = "*",
+		enabled = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = true,
+		cmd = {
+			"CodeCompanion",
+			"CodeCompanionChat",
+			"CodeCompanionCmd",
+			"CodeCompanionActions",
+		},
+		keys = {
+			{ "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle Chat", mode = { "n", "v" } },
+			{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
+		},
+		opts = {
+			strategies = {
+				chat = {
+					adapter = "copilot",
+				},
+				inline = {
+					adapter = "copilot",
+				},
+			},
+			adapters = {
+				copilot = function()
+					return require("codecompanion.adapters").extend("copilot", {
+						schema = {
+							model = {
+								default = "claude-3.7-sonnet",
+							},
+						},
+					})
+				end,
+			},
+		},
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		version = "*",
+		enabled = false,
 		cmd = "CopilotChat",
 		dependencies = {
 			{ "github/copilot.vim" },
@@ -46,19 +88,18 @@ return {
 			local user = vim.env.USER or "User"
 			user = user:sub(1, 1):upper() .. user:sub(2)
 			return {
-				model = "gpt-o3-mini",
-				auto_insert_mode = true,
+				model = "claude-3.7-sonnet",
+				auto_insert_mode = false,
 				question_header = (vim.g.have_nerd_font and "  " or " ") .. user .. " ",
 				answer_header = vim.g.have_nerd_font and "  Copilot " or " Copilot ",
-				window = {
-					-- width = 0.4,
-					layout = "float",
-				},
+				-- window = {
+				-- 	-- width = 0.4,
+				-- 	-- layout = "float",
+				-- },
 			}
 		end,
 		keys = {
 			{ "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
-			{ "<leader>a", "", desc = "+[A]I", mode = { "n", "v" } },
 			{
 				"<leader>aa",
 				function()

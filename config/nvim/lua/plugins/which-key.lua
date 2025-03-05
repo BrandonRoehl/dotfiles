@@ -71,6 +71,7 @@ return {
 			--- You can add any mappings here, or use `require('which-key').add()` later
 			---@type wk.Spec
 			spec = {
+				{ "<leader>a", group = "[A]I", mode = { "n", "v" } },
 				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 				{ "<leader>d", group = "[D]ebug", icon = " " },
 				{ "<leader>r", group = "[R]ename" },
