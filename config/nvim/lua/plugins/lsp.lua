@@ -163,20 +163,29 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				pyright = {
-					-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
+				-- pyright = {
+				-- 	-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
+				-- 	settings = {
+				-- 		single_file_support = true,
+				-- 		python = {
+				-- 			analysis = {
+				-- 				autoSearchPaths = true,
+				-- 				diagnosticMode = "openFilesOnly",
+				-- 				useLibraryCodeForTypes = true,
+				-- 				typeCheckingMode = "basic",
+				-- 			},
+				-- 		},
+				-- 	},
+				-- 	-- 	single_file_support = true,
+				-- }, -- python
+				basedpyright = {
+					-- docs/configuration/language-server-settings.md
 					settings = {
-						single_file_support = true,
-						python = {
-							analysis = {
-								autoSearchPaths = true,
-								diagnosticMode = "openFilesOnly",
-								useLibraryCodeForTypes = true,
-							},
+						basedpyright = {
+							typeCheckingMode = "basic",
 						},
 					},
-					single_file_support = true,
-				}, -- python
+				}, -- better python
 				rust_analyzer = {}, -- rust
 				gopls = {
 					settings = {
