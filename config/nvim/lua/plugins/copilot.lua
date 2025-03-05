@@ -23,20 +23,21 @@ return {
 					end,
 				})
 			end
-			-- vim.g.copilot_filetypes = {
-			-- 	["*"] = true,
-			-- 	gitcommit = false,
-			-- 	NeogitCommitMessage = false,
-			-- 	DressingInput = false,
-			-- 	TelescopePrompt = false,
-			-- 	["neo-tree-popup"] = false,
-			-- 	["dap-repl"] = false,
-			-- }
+			vim.g.copilot_filetypes = {
+				["*"] = true,
+				gitcommit = false,
+				NeogitCommitMessage = false,
+				DressingInput = false,
+				TelescopePrompt = false,
+				["neo-tree-popup"] = false,
+				["dap-repl"] = false,
+			}
 		end,
 	},
 	{
 		"olimorris/codecompanion.nvim",
 		version = "*",
+		enabled = true,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
@@ -66,7 +67,7 @@ return {
 					return require("codecompanion.adapters").extend("copilot", {
 						schema = {
 							model = {
-								default = "o3-mini",
+								default = "claude-3.7-sonnet",
 							},
 						},
 					})
@@ -87,7 +88,7 @@ return {
 			local user = vim.env.USER or "User"
 			user = user:sub(1, 1):upper() .. user:sub(2)
 			return {
-				model = "o3-mini",
+				model = "claude-3.7-sonnet",
 				auto_insert_mode = false,
 				question_header = (vim.g.have_nerd_font and "  " or " ") .. user .. " ",
 				answer_header = vim.g.have_nerd_font and "  Copilot " or " Copilot ",
