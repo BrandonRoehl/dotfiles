@@ -33,36 +33,38 @@ return {
 				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
 				telescope = true,
 			},
-			-- on_highlights = function(hl, c)
-			-- 	local prompt = "#2d3149"
-			-- 	hl.TelescopeNormal = {
-			-- 		bg = c.bg_dark,
-			-- 		fg = c.fg_dark,
-			-- 	}
-			-- 	hl.TelescopeBorder = {
-			-- 		bg = c.bg_dark,
-			-- 		fg = c.bg_dark,
-			-- 	}
-			-- 	hl.TelescopePromptNormal = {
-			-- 		bg = prompt,
-			-- 	}
-			-- 	hl.TelescopePromptBorder = {
-			-- 		bg = prompt,
-			-- 		fg = prompt,
-			-- 	}
-			-- 	hl.TelescopePromptTitle = {
-			-- 		bg = prompt,
-			-- 		fg = c.fg_dark,
-			-- 	}
-			-- 	hl.TelescopePreviewTitle = {
-			-- 		bg = c.bg_dark,
-			-- 		fg = c.fg_dark,
-			-- 	}
-			-- 	hl.TelescopeResultsTitle = {
-			-- 		bg = c.bg_dark,
-			-- 		fg = c.fg_dark,
-			-- 	}
-			-- end,
+			on_highlights = function(hl, c)
+				local prompt = "#2d3149"
+				hl.TelescopeNormal = {
+					fg = c.fg,
+					bg = c.bg_float,
+					-- 	bg = c.bg_dark,
+					-- 	fg = c.fg_dark,
+				}
+				hl.TelescopeBorder = {
+					bg = c.bg_float,
+					fg = c.bg_float,
+				}
+				hl.TelescopePromptNormal = {
+					bg = prompt,
+				}
+				hl.TelescopePromptBorder = {
+					bg = prompt,
+					fg = prompt,
+				}
+				hl.TelescopePromptTitle = {
+					bg = prompt,
+					fg = c.orange,
+				}
+				hl.TelescopePreviewTitle = {
+					bg = c.bg_float,
+					fg = c.border_highlight,
+				}
+				hl.TelescopeResultsTitle = {
+					bg = c.bg_float,
+					fg = c.border_highlight,
+				}
+			end,
 		},
 		init = function()
 			-- Load the colorscheme here.
