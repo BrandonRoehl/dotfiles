@@ -27,6 +27,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		version = "*",
+		---@type wk.Opts
 		opts = {
 			---@type false | "classic" | "modern" | "helix"
 			preset = "helix",
@@ -92,6 +93,10 @@ return {
 					{ "<leader><leader>j", desc = "EasyMotion [J]ump" },
 					{ "<leader><leader>s", desc = "EasyMotion [S]earch" },
 				},
+			},
+
+			win = {
+				title = true,
 			},
 		},
 		-- Show the local buffer mappings

@@ -33,17 +33,19 @@ return {
 				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
 				telescope = true,
 			},
+			-- if you want borderless popups
 			on_highlights = function(hl, c)
-				local prompt = "#2d3149"
+				-- local prompt = "#2d3149"
+				local prompt = c.bg_highlight
+				local results = c.bg_float
+				local preview = "#1d212f"
 				hl.TelescopeNormal = {
 					fg = c.fg,
-					bg = c.bg_float,
-					-- 	bg = c.bg_dark,
-					-- 	fg = c.fg_dark,
+					bg = preview,
 				}
 				hl.TelescopeBorder = {
-					bg = c.bg_float,
-					fg = c.bg_float,
+					bg = preview,
+					fg = preview,
 				}
 				hl.TelescopePromptNormal = {
 					bg = prompt,
@@ -62,6 +64,19 @@ return {
 				}
 				hl.TelescopeResultsTitle = {
 					bg = c.cyan,
+					fg = c.bg_float,
+				}
+				hl.TelescopeResultsBorder = {
+					bg = results,
+					fg = results,
+				}
+				hl.TelescopeResultsNormal = {
+					bg = results,
+					fg = c.fg,
+				}
+				-- Which key
+				hl.WhichKeyBorder = {
+					bg = c.bg_float,
 					fg = c.bg_float,
 				}
 			end,
