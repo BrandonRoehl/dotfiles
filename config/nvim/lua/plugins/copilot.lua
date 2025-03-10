@@ -41,6 +41,8 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
+			-- Progress options optional
+			"j-hui/fidget.nvim",
 		},
 		config = true,
 		cmd = {
@@ -64,7 +66,9 @@ return {
 			},
 			adapters = {
 				copilot = function()
-					return require("codecompanion.adapters").extend("copilot", {
+					-- lua print(vim.inspect(require("codecompanion.adapters").extend("copilot").schema.model.choices()))
+					local adapters = require("codecompanion.adapters")
+					return adapters.extend("copilot", {
 						schema = {
 							model = {
 								default = "claude-3.7-sonnet",
@@ -74,6 +78,9 @@ return {
 				end,
 			},
 		},
+		init = function()
+			require("plugins.codecompanion.fidget-spinner"):init()
+		end,
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
