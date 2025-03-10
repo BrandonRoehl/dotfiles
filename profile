@@ -1,7 +1,6 @@
 #!/bin/sh
 #brew install coreutils
 #$(brew --prefix coreutils)
-
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
 export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
@@ -55,8 +54,14 @@ alias ':q'='exit'
 alias 'x'='exit'
 if type 'nvim' > /dev/null
 then
+    export EDITOR="nvim"
     alias vim='nvim'
     alias vi='nvim'
+elif type 'vim' > /dev/null
+then
+    export EDITOR="vim"
+else
+    export EDITOR="vi"
 fi
 #if [ -n "$WSL_DISTRO_NAME" ]; then
 #    alias git="git.exe"
