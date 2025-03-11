@@ -53,7 +53,7 @@ return {
 		},
 		keys = {
 			{ "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle Chat", mode = { "n", "v" } },
-			{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Actions", mode = { "n", "v" } },
+			{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Prompt Actions", mode = { "n", "v" } },
 		},
 		opts = {
 			strategies = {
