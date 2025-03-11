@@ -26,11 +26,13 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<C-d>", "<C-w><C-d>", { desc = "Show the diagnostics under the cursor" })
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
+
+-- vim.keymap.set("n", "<C-d>", "<C-w>d", { desc = "Show diagnostics under the cursor" })
+vim.keymap.set("n", "<C-d>", vim.diagnostic.open_float, { desc = "Show diagnostics under the cursor" })
 
 -- tab stuff
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew +Dashboard<CR>", { desc = "[T]ab [N]ew" })
