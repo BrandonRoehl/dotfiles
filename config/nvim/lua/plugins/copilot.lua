@@ -71,7 +71,7 @@ return {
 					return adapters.extend("copilot", {
 						schema = {
 							model = {
-								default = "claude-3.7-sonnet",
+								default = "claude-3.7-sonnet-thought",
 							},
 						},
 					})
@@ -95,7 +95,7 @@ return {
 			local user = vim.env.USER or "User"
 			user = user:sub(1, 1):upper() .. user:sub(2)
 			return {
-				model = "claude-3.7-sonnet",
+				model = "claude-3.7-sonnet-thought",
 				auto_insert_mode = false,
 				question_header = (vim.g.have_nerd_font and "  " or " ") .. user .. " ",
 				answer_header = vim.g.have_nerd_font and "  Copilot " or " Copilot ",
