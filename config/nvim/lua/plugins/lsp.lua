@@ -291,6 +291,8 @@ return {
 						},
 					},
 				},
+				-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vale_ls
+				vale_ls = {},
 			}
 
 			-- NOTE: `mason-lspconfig` must be setup before servers are configured
