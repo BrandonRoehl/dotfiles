@@ -56,3 +56,4 @@ function mkmainJava {
 
 # added by travis gem
 [ -f /Users/BrandonRoehl/.travis/travis.sh ] && source /Users/BrandonRoehl/.travis/travis.sh
+. "$HOME/.cargo/env"
