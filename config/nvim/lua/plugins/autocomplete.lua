@@ -1,4 +1,8 @@
 -- Autocompletion
+--- @module 'blink.cmp'
+--- @type blink.cmp.WindowBorder
+local border = "rounded"
+
 --- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
@@ -162,6 +166,8 @@ return {
 					update_delay_ms = 50,
 					-- Whether to use treesitter highlighting, disable if you run into performance issues
 					treesitter_highlighting = true,
+					-- Window borders to easier see
+					window = { border = border },
 				},
 				list = {
 					selection = {
@@ -184,6 +190,8 @@ return {
 							{ "kind" },
 						},
 					},
+					-- Window borders to easier see
+					border = border,
 				},
 			},
 			-- Show the signature help when typing
@@ -203,6 +211,8 @@ return {
 					-- Show the signature help window when the cursor comes after a trigger character when entering insert mode
 					show_on_insert_on_trigger_character = true,
 				},
+				-- Window borders to easier see
+				window = { border = border },
 			},
 		},
 		opts_extend = { "sources.default" },
