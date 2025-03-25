@@ -31,9 +31,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move focus to the right window"
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move focus to the upper window" })
 
--- vim.keymap.set("n", "<C-d>", "<C-w>d", { desc = "Show diagnostics under the cursor" })
-vim.keymap.set("n", "<C-d>", vim.diagnostic.open_float, { desc = "Show diagnostics under the cursor" })
-
 -- tab stuff
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew +Dashboard<CR>", { desc = "[T]ab [N]ew" })
 vim.keymap.set("n", "<leader>tq", "<cmd>tabclose<CR>", { desc = "[T]ab Close" })

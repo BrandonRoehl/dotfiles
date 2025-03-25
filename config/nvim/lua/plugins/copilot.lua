@@ -4,7 +4,7 @@ return {
 	{
 		"github/copilot.vim",
 		cmd = "Copilot",
-		build = ":Copilot auth",
+		-- build = ":Copilot auth",
 		event = "BufWinEnter",
 		version = "*",
 		init = function()
