@@ -17,6 +17,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Set global border definition for hovers
+vim.g.border = "rounded"
+
 require("config")
 
 -- [[ Configure and install plugins ]]

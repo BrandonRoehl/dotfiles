@@ -144,6 +144,13 @@ return {
 					end
 				end,
 			})
+			-- To override globally the opts if none are provided
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = opts.border or vim.g.border
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
+			end
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
 			--  By default, Neovim doesn't support everything that is in the LSP specification.
