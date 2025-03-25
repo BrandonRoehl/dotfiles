@@ -30,7 +30,7 @@ return {
 		---@type wk.Opts
 		opts = {
 			---@type false | "classic" | "modern" | "helix"
-			preset = vim.g.border == "none" and "classic" or "helix",
+			preset = "helix",
 			icons = {
 				-- set icon mappings to true if you have a Nerd Font
 				mappings = vim.g.have_nerd_font,
@@ -97,6 +97,7 @@ return {
 
 			win = {
 				title = true,
+				border = vim.g.border,
 			},
 		},
 		-- Show the local buffer mappings
