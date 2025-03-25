@@ -133,6 +133,21 @@ return {
 						})
 					end
 
+					vim.api.nvim_create_autocmd("CursorHold", {
+						buffer = event.buf,
+						callback = function()
+							local opts = {
+								focusable = false,
+								close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+								border = vim.g.border,
+								source = "always",
+								prefix = " ",
+								scope = "cursor",
+							}
+							vim.diagnostic.open_float(nil, opts)
+						end,
+					})
+
 					-- The following code creates a keymap to toggle inlay hints in your
 					-- code, if the language server you are using supports them
 					--
@@ -145,6 +160,7 @@ return {
 				end,
 			})
 			-- To override globally the opts if none are provided
+			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
 			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 				opts = opts or {}
