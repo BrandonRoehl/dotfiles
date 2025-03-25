@@ -19,6 +19,7 @@ vim.g.maplocalleader = " "
 
 -- Set global border definition for hovers
 vim.g.border = "rounded"
+-- vim.g.border = "none"
 
 require("config")
 

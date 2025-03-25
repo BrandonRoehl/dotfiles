@@ -33,53 +33,55 @@ return {
 				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
 				telescope = true,
 			},
-			-- if you want borderless popups
-			-- on_highlights = function(hl, c)
-			-- 	-- local prompt = "#2d3149"
-			-- 	local prompt = c.bg_highlight
-			-- 	local results = c.bg_float
-			-- 	local preview = "#1d212f"
-			-- 	hl.TelescopeNormal = {
-			-- 		fg = c.fg,
-			-- 		bg = preview,
-			-- 	}
-			-- 	hl.TelescopeBorder = {
-			-- 		bg = preview,
-			-- 		fg = preview,
-			-- 	}
-			-- 	hl.TelescopePromptNormal = {
-			-- 		bg = prompt,
-			-- 	}
-			-- 	hl.TelescopePromptBorder = {
-			-- 		bg = prompt,
-			-- 		fg = prompt,
-			-- 	}
-			-- 	hl.TelescopePromptTitle = {
-			-- 		bg = prompt,
-			-- 		fg = c.orange,
-			-- 	}
-			-- 	hl.TelescopePreviewTitle = {
-			-- 		bg = c.green,
-			-- 		fg = c.bg_float,
-			-- 	}
-			-- 	hl.TelescopeResultsTitle = {
-			-- 		bg = c.cyan,
-			-- 		fg = c.bg_float,
-			-- 	}
-			-- 	hl.TelescopeResultsBorder = {
-			-- 		bg = results,
-			-- 		fg = results,
-			-- 	}
-			-- 	hl.TelescopeResultsNormal = {
-			-- 		bg = results,
-			-- 		fg = c.fg,
-			-- 	}
-			-- 	-- Which key
-			-- 	hl.WhichKeyBorder = {
-			-- 		bg = c.bg_float,
-			-- 		fg = c.bg_float,
-			-- 	}
-			-- end,
+			on_highlights = vim.g.border == "none"
+					and function(hl, c)
+						-- if you want borderless popups
+						-- local prompt = "#2d3149"
+						local prompt = c.bg_highlight
+						local results = c.bg_float
+						local preview = "#1d212f"
+						hl.TelescopeNormal = {
+							fg = c.fg,
+							bg = preview,
+						}
+						hl.TelescopeBorder = {
+							bg = preview,
+							fg = preview,
+						}
+						hl.TelescopePromptNormal = {
+							bg = prompt,
+						}
+						hl.TelescopePromptBorder = {
+							bg = prompt,
+							fg = prompt,
+						}
+						hl.TelescopePromptTitle = {
+							bg = prompt,
+							fg = c.orange,
+						}
+						hl.TelescopePreviewTitle = {
+							bg = c.green,
+							fg = c.bg_float,
+						}
+						hl.TelescopeResultsTitle = {
+							bg = c.cyan,
+							fg = c.bg_float,
+						}
+						hl.TelescopeResultsBorder = {
+							bg = results,
+							fg = results,
+						}
+						hl.TelescopeResultsNormal = {
+							bg = results,
+							fg = c.fg,
+						}
+						-- Which key
+						hl.WhichKeyBorder = {
+							bg = c.bg_float,
+							fg = c.bg_float,
+						}
+					end
+				or function(_, _) end,
 		},
 		init = function()
 			-- Load the colorscheme here.
