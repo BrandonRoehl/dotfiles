@@ -17,9 +17,9 @@ return {
 						"stylua", -- Used to format Lua code
 						"black", -- Used to format Python code
 						"isort", -- Used to sort Python imports
+						"rustfmt", -- Used to format Rust code
 						-- "eslint", -- Used to lint JavaScript and TypeScript
 						-- "prettier", -- Used to format JavaScript and TypeScript
-						-- "rustfmt", -- Used to format Rust code
 					},
 				},
 			},

@@ -302,7 +302,6 @@ return {
 				automatic_installation = {
 					exclude = {
 						"clangd",
-						"rust_analyzer",
 						"solargraph",
 						"sourcekit",
 					},
