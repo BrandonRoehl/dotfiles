@@ -15,5 +15,13 @@ return {
 		version = "*",
 		config = true,
 		lazy = false,
+		--- @module 'mason'
+		--- @class MasonSettings
+		opts = {
+			ui = {
+				border = vim.g.border,
+				-- icons = {},
+			},
+		},
 	},
 }

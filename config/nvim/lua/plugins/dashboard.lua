@@ -84,6 +84,12 @@ return {
 							key = "l",
 						},
 						{
+							action = "Mason",
+							desc = " Mason",
+							icon = vim.g.have_nerd_font and "󱌣 " or "🛠️",
+							key = "m",
+						},
+						{
 							action = function()
 								if vim.fn.tabpagenr("$") > 1 then
 									vim.api.nvim_input("<cmd>tabclose<cr>")
