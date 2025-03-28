@@ -34,51 +34,60 @@ require("config")
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require("lazy").setup({ -- INFO: Load all the plugins and their configs
-	{ import = "plugins" },
+require("lazy").setup(
+	{ -- INFO: Load all the plugins and their configs
+		{ import = "plugins" },
 
-	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
-	-- init.lua. If you want these files, they are in the repository, so you can just download them and
-	-- place them in the correct locations.
+		-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
+		-- init.lua. If you want these files, they are in the repository, so you can just download them and
+		-- place them in the correct locations.
 
-	-- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-	--
-	--  Here are some example plugins that I've included in the Kickstart repository.
-	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
-	--
-	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-}, {
-	ui = {
-		border = vim.g.border,
-		-- If you are using a Nerd Font: set icons to an empty table which will use the
-		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-		icons = vim.g.have_nerd_font and {} or {
-			cmd = "⌘",
-			config = "🛠",
-			event = "📅",
-			ft = "📂",
-			init = "⚙",
-			keys = "🗝",
-			plugin = "🔌",
-			runtime = "💻",
-			require = "🌙",
-			source = "📄",
-			start = "🚀",
-			task = "📌",
-			lazy = "💤 ",
+		-- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
+		--
+		--  Here are some example plugins that I've included in the Kickstart repository.
+		--  Uncomment any of the lines below to enable them (you will need to restart nvim).
+		--
+		-- require 'kickstart.plugins.debug',
+		-- require 'kickstart.plugins.indent_line',
+		-- require 'kickstart.plugins.lint',
+		-- require 'kickstart.plugins.autopairs',
+		-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+	},
+	--- @type LazyConfig
+	{
+		ui = {
+			border = vim.g.border,
+			-- If you are using a Nerd Font: set icons to an empty table which will use the
+			-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+			icons = vim.g.have_nerd_font and {} or {
+				cmd = "⌘",
+				config = "🛠",
+				event = "📅",
+				ft = "📂",
+				init = "⚙",
+				keys = "🗝",
+				plugin = "🔌",
+				runtime = "💻",
+				require = "🌙",
+				source = "📄",
+				start = "🚀",
+				task = "📌",
+				lazy = "💤 ",
+			},
 		},
-	},
-	install = {
-		-- install missing plugins on startup. This doesn't increase startup time.
-		missing = true,
-		-- try to load one of these colorschemes when starting an installation during startup
-		colorscheme = { "tokyonight" },
-	},
-})
+		install = {
+			-- install missing plugins on startup. This doesn't increase startup time.
+			missing = true,
+			-- try to load one of these colorschemes when starting an installation during startup
+			colorscheme = { "tokyonight" },
+		},
+		change_detection = {
+			-- automatically check for config file changes and reload the ui
+			enabled = false,
+			notify = true, -- get a notification when changes are found
+		},
+	}
+)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=4 sts=4 sw=4 et

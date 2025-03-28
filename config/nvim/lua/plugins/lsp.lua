@@ -109,7 +109,10 @@ return {
 					--
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+					if
+						client
+						and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+					then
 						-- vim.cmd([[
 						-- hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
 						-- hi! LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
@@ -138,6 +141,14 @@ return {
 					vim.api.nvim_create_autocmd("CursorHold", {
 						buffer = event.buf,
 						callback = function()
+							-- Check if there are any visible floating windows already
+							for _, win in ipairs(vim.api.nvim_list_wins()) do
+								if vim.api.nvim_win_get_config(win).relative ~= "" then
+									-- A float exists, don't create another one
+									return
+								end
+							end
+
 							local opts = {
 								focusable = false,
 								close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
@@ -154,7 +165,9 @@ return {
 					-- code, if the language server you are using supports them
 					--
 					-- This may be unwanted, since they displace some of your code
-					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					if
+						client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+					then
 						map("<leader>ch", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 						end, "Toggle Inlay [C]ode [H]ints")
