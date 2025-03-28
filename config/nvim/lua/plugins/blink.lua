@@ -117,7 +117,7 @@ return {
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
 				default = { "copilot", "lsp", "path", "snippets" },
-				per_filetype = { lua = { "copilot", "lsp", "path", "lazydev" } },
+				per_filetype = { lua = { "copilot", "lsp", "path", "snippets", "lazydev" } },
 				-- removed "buffer"
 				providers = {
 					lazydev = {
