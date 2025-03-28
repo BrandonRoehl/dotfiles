@@ -131,11 +131,9 @@ return {
 			sections = {
 				-- Add CodeCompanion to the right side of the status line
 				lualine_x = {
-					{
-						-- This will be replaced by the actual component in the config function
-						-- this is registered in `lua/lualine/components`
-						"codecompanion",
-					},
+					-- This will be replaced by the actual component in the config function
+					-- this is registered in `lua/lualine/components`
+					"codecompanion",
 					"encoding",
 					"fileformat",
 					"filetype",
