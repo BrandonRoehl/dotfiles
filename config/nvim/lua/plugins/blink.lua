@@ -147,6 +147,10 @@ return {
 			completion = {
 				ghost_text = {
 					enabled = true,
+					-- Show the ghost text when the menu is open
+					show_with_menu = true,
+					-- Show the ghost text even if the menu isn't open
+					show_without_menu = true,
 					-- Show the ghost text when an item has been selected
 					show_with_selection = true,
 					-- Show the ghost text when no item has been selected, defaulting to the first item
