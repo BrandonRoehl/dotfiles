@@ -116,7 +116,8 @@ return {
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "copilot", "lsp", "path", "snippets", "lazydev" },
+				default = { "copilot", "lsp", "path", "snippets" },
+				per_filetype = { lua = { "copilot", "lsp", "path", "lazydev" } },
 				-- removed "buffer"
 				providers = {
 					lazydev = {
