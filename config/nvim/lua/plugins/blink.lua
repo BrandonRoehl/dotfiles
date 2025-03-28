@@ -184,11 +184,12 @@ return {
 				},
 				menu = {
 					auto_show = true,
-					draw = vim.g.have_nerd_font and {} or {
-						columns = {
+					draw = {
+						treesitter = { "copilot", "lsp", "lazydev" },
+						columns = not vim.g.have_nerd_font and {
 							{ "label", "label_description", gap = 1 },
 							{ "kind" },
-						},
+						} or nil,
 					},
 					-- Window borders to easier see
 					border = vim.g.border,
