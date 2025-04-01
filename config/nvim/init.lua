@@ -18,9 +18,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set global border definition for hovers
--- vim.g.border = "rounded"
-vim.g.border = "none"
-vim.g.borderchars = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
+vim.g.border = "rounded"
+-- vim.g.border = "none"
 
 require("config")
 

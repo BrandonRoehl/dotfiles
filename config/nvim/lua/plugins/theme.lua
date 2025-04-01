@@ -45,7 +45,7 @@ return {
 					return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
 				end
 
-				return {
+				local opts = {
 					-- Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend },
 					-- PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
 					-- PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -55,15 +55,22 @@ return {
 					DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
 					DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
 					DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
-					-- Telescope
-					TelescopeTitle = { fg = theme.ui.special, bold = true },
-					TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-					TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-					TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-					TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-					TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-					TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 				}
+
+				if vim.g.border == "none" then
+					opts = vim.tbl_extend("force", opts, {
+						-- Telescope
+						TelescopeTitle = { fg = theme.ui.special, bold = true },
+						TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+						TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+						TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+						TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+						TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+						TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+					})
+				end
+
+				return opts
 			end,
 			theme = "dragon", -- Load "wave" theme
 			background = { -- map the value of 'background' option to a theme
