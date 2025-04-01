@@ -8,86 +8,56 @@ return {
 		-- change the command in the config to whatever the name of that colorscheme is.
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		"folke/tokyonight.nvim",
+		"Mofiqul/vscode.nvim",
+		dependencies = {
+			"nvim-neo-tree/neo-tree.nvim",
+		},
 		version = "*",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		--- @module 'tokyonight'
-		--- @type tokyonight.Config
 		opts = {
-			style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
-			light_style = "day", -- The theme is used when the background is set to light
-			transparent = false, -- Enable this to disable setting the background color
-			terminal_colors = false, -- Configure the colors used when opening a `:terminal` in Neovim
-			lualine_bold = true,
-			cache = true,
-			plugins = {
-				-- enable all plugins when not using lazy.nvim
-				-- set to false to manually enable/disable plugins
-				all = package.loaded.lazy == nil,
-				-- uses your plugin manager to automatically enable needed plugins
-				-- currently only lazy.nvim is supported
-				auto = true,
-				-- add any plugins here that you want to enable
-				-- for all possible plugins, see:
-				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
-				telescope = true,
-			},
-			-- on_highlights = vim.g.border == "none"
-			-- 		and function(hl, c)
-			-- 			-- if you want borderless popups
-			-- 			-- local prompt = "#2d3149"
-			-- 			local prompt = c.bg_highlight
-			-- 			local results = c.bg_float
-			-- 			local preview = "#1d212f"
-			-- 			hl.TelescopeNormal = {
-			-- 				fg = c.fg,
-			-- 				bg = preview,
-			-- 			}
-			-- 			hl.TelescopeBorder = {
-			-- 				bg = preview,
-			-- 				fg = preview,
-			-- 			}
-			-- 			hl.TelescopePromptNormal = {
-			-- 				bg = prompt,
-			-- 			}
-			-- 			hl.TelescopePromptBorder = {
-			-- 				bg = prompt,
-			-- 				fg = prompt,
-			-- 			}
-			-- 			hl.TelescopePromptTitle = {
-			-- 				bg = prompt,
-			-- 				fg = c.orange,
-			-- 			}
-			-- 			hl.TelescopePreviewTitle = {
-			-- 				bg = c.green,
-			-- 				fg = c.bg_float,
-			-- 			}
-			-- 			hl.TelescopeResultsTitle = {
-			-- 				bg = c.cyan,
-			-- 				fg = c.bg_float,
-			-- 			}
-			-- 			hl.TelescopeResultsBorder = {
-			-- 				bg = results,
-			-- 				fg = results,
-			-- 			}
-			-- 			hl.TelescopeResultsNormal = {
-			-- 				bg = results,
-			-- 				fg = c.fg,
-			-- 			}
-			-- 			-- Which key
-			-- 			hl.WhichKeyBorder = {
-			-- 				bg = c.bg_float,
-			-- 				fg = c.bg_float,
-			-- 			}
-			-- 		end
-			-- 	or function(_, _) end,
+			transparent = false,
+			italic_comments = false,
+			underline_links = false,
+			color_overrides = {},
+			group_overrides = {},
+			disable_nvimtree_bg = false,
+			terminal_colors = true,
 		},
+		config = function(_, opts)
+			local n = require("neo-tree.ui.highlights")
+			local c = require("vscode.colors").get_colors()
+
+			opts.group_overrides = {
+				-- this supports the same val table as vim.api.nvim_set_hl
+				-- use colors from this colorscheme by requiring vscode.colors!
+				Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+				-- NeoTreeDirectoryIcon = { fg = c.vscYellowOrange },
+				-- [n.DIRECTORY_NAME] = { fg = c.vscBack },
+
+				-- neo-tree color config
+				[n.DIRECTORY_ICON] = { fg = c.vscYellowOrange },
+				[n.DIM_TEXT] = { fg = c.vscDimHighlight },
+				[n.HIDDEN_BY_NAME] = { fg = c.vscDimHighlight },
+
+				[n.GIT_ADDED] = { fg = c.vscGitAdded },
+				[n.GIT_CONFLICT] = { fg = c.vscGitConflicting },
+				[n.GIT_DELETED] = { fg = c.vscGitDeleted },
+				[n.GIT_IGNORED] = { fg = c.vscGitIgnored },
+				[n.GIT_MODIFIED] = { fg = c.vscGitModified },
+				[n.GIT_RENAMED] = { fg = c.vscGitRenamed },
+				[n.GIT_STAGED] = { fg = c.vscGitStageModified },
+				[n.GIT_UNSTAGED] = { fg = c.vscGitStageDeleted },
+				[n.GIT_UNTRACKED] = { fg = c.vscGitUntracked },
+				[n.GIT_IGNORED] = { fg = c.vscDimHighlight },
+			}
+			require("vscode").setup(opts)
+		end,
 		init = function()
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd.colorscheme("vscode")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")
@@ -119,7 +89,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = vim.g.have_nerd_font,
-				theme = "tokyonight",
+				theme = "vscode",
 				globalstatus = vim.o.laststatus == 3,
 				component_separators = { left = "│", right = "│" },
 				section_separators = { left = "", right = "" },
