@@ -34,27 +34,7 @@ return {
 			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
-		--- @type table: Configuration opts. Keys: defaults, pickers, extensions
-		opts = {
-			-- You can put your default mappings / updates / etc. in here
-			--  All the info you're looking for is in `:help telescope.setup()`
-			--
-			-- defaults = {
-			-- 	-- if you want borderless
-			-- 	borderchars = { " ", "", " ", "", "", "", "", "" },
-			-- },
-			--   mappings = {
-			--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-			--   },
-			-- },
-			-- pickers = {}
-			extensions = {
-				["ui-select"] = {
-					require("telescope.themes").get_dropdown(),
-				},
-			},
-		},
-		config = function(_, opts)
+		config = function()
 			-- Telescope is a fuzzy finder that comes with a lot of different things that
 			-- it can fuzzy find! It's more than just a "file finder", it can search
 			-- many different aspects of Neovim, your workspace, LSP, and more!
@@ -76,7 +56,25 @@ return {
 
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
-			require("telescope").setup(opts)
+			require("telescope").setup({
+				-- You can put your default mappings / updates / etc. in here
+				--  All the info you're looking for is in `:help telescope.setup()`
+				--
+				-- defaults = {
+				-- 	-- if you want borderless
+				-- 	borderchars = { " ", "", " ", "", "", "", "", "" },
+				-- },
+				--   mappings = {
+				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+				--   },
+				-- },
+				-- pickers = {}
+				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown(),
+					},
+				},
+			})
 
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
