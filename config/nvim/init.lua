@@ -18,8 +18,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Set global border definition for hovers
-vim.g.border = "rounded"
--- vim.g.border = "none"
+-- vim.g.border = "rounded"
+vim.g.border = "none"
+vim.g.borderchars = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" }
 
 require("config")
 
@@ -79,7 +80,7 @@ require("lazy").setup(
 			-- install missing plugins on startup. This doesn't increase startup time.
 			missing = true,
 			-- try to load one of these colorschemes when starting an installation during startup
-			colorscheme = { "tokyonight" },
+			colorscheme = { "kanagawa" },
 		},
 		change_detection = {
 			-- automatically check for config file changes and reload the ui
