@@ -83,16 +83,17 @@ return {
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "<leader>l", group = "[L]azy Git", icon = " " },
 				{ "K", desc = "LSP Hover", mode = { "n" } },
-				{
-					"<leader><leader>",
-					group = "EasyMotion",
-					mode = { "n" },
-					{ "<leader><leader>f", desc = "EasyMotion [F]ind" },
-					{ "<leader><leader>w", desc = "EasyMotion [W]ord" },
-					{ "<leader><leader>l", desc = "EasyMotion [L]ine" },
-					{ "<leader><leader>j", desc = "EasyMotion [J]ump" },
-					{ "<leader><leader>s", desc = "EasyMotion [S]earch" },
-				},
+				{ "<leader><leader>", group = "Hop" },
+				-- {
+				-- 	"<leader><leader>",
+				-- 	group = "EasyMotion",
+				-- 	mode = { "n" },
+				-- 	{ "<leader><leader>f", desc = "EasyMotion [F]ind" },
+				-- 	{ "<leader><leader>w", desc = "EasyMotion [W]ord" },
+				-- 	{ "<leader><leader>l", desc = "EasyMotion [L]ine" },
+				-- 	{ "<leader><leader>j", desc = "EasyMotion [J]ump" },
+				-- 	{ "<leader><leader>s", desc = "EasyMotion [S]earch" },
+				-- },
 			},
 
 			win = {
