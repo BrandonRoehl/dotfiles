@@ -1,6 +1,8 @@
 return {
 	{
-		-- lazy motion hasn't been updated in 7 years as of the time of running
+		-- easymotion was last updated in 2022 and that was the README. The last
+		-- piece of code was changed in 2020 so for now I will use hop.nvim
+		-- and now a fork of hop since the original is not being maintained
 		"smoka7/hop.nvim",
 		event = "BufWinEnter",
 		lazy = true,
