@@ -17,8 +17,8 @@ return {
 			{ "<leader><leader>F", "<cmd>HopChar1BC<cr>", desc = "Find character backwards" },
 			{ "<leader><leader>t", "<cmd>HopChar1CurrentLineAC<cr>", desc = "Til character forwards" },
 			{ "<leader><leader>T", "<cmd>HopChar1CurrentLineBC<cr>", desc = "Til character backwards" },
-			{ "<leader><leader>w", "<cmd>HopWordAC<cr>", desc = "Hop next word" },
-			{ "<leader><leader>b", "<cmd>HopWordBC<cr>", desc = "Hop previous word" },
+			{ "<leader><leader>w", "<cmd>HopWordAC<cr>", desc = "Start of word forwards" },
+			{ "<leader><leader>b", "<cmd>HopWordBC<cr>", desc = "Start of word backwards" },
 			-- <leader><leader> l	Matches beginning & ending of word, camelCase, after _, and after # forwards
 			{ "<leader><leader>l", "<cmd>HopAnywhereAC<cr>", desc = "Hop forward" },
 			-- <leader><leader> h	Matches beginning & ending of word, camelCase, after _, and after # backwards
