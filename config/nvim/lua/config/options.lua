@@ -133,7 +133,7 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 1000
 
 -- No timeout for easymotion
-vim.opt.timeout = false
+-- vim.opt.timeout = false
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
