@@ -66,7 +66,9 @@ return {
 							key = "g",
 						},
 						{
-							action = "Telescope find_files cwd=~/.config/nvim",
+							action = function()
+								require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+							end,
 							desc = " Config",
 							icon = vim.g.have_nerd_font and " " or "⚙ ",
 							key = "c",

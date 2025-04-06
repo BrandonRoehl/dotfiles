@@ -1,12 +1,3 @@
---- @param method string method to call on telescope builtin
---- @return function() a lazy function require
-local function builtin(method)
-	-- See `:help telescope.builtin`
-	return function()
-		require("telescope.builtin")[method]()
-	end
-end
-
 --- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
@@ -46,16 +37,21 @@ return {
 		},
 		cmd = { "Telescope" },
 		keys = {
-			{ "<leader>sh", builtin("help_tags"), mode = "n", desc = "[S]earch [H]elp" },
-			{ "<leader>sk", builtin("keymaps"), mode = "n", desc = "[S]earch [K]eymaps" },
-			{ "<leader>sf", builtin("find_files"), mode = "n", desc = "[S]earch [F]iles" },
-			{ "<leader>ss", builtin("builtin"), mode = "n", desc = "[S]earch Telescope" },
-			{ "<leader>sw", builtin("grep_string"), mode = "n", desc = "[S]earch current [W]ord" },
-			{ "<leader>sg", builtin("live_grep"), mode = "n", desc = "[S]earch by [G]rep" },
-			{ "<leader>sd", builtin("diagnostics"), mode = "n", desc = "[S]earch [D]iagnostics" },
-			{ "<leader>sr", builtin("resume"), mode = "n", desc = "[S]earch [R]esume" },
-			{ "<leader>s.", builtin("oldfiles"), mode = "n", desc = '[S]earch Recent Files ("." for repeat)' },
-			{ "<leader>sb", builtin("buffers"), mode = "n", desc = "[S]earch existing [B]uffers" },
+			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", mode = "n", desc = "[S]earch [H]elp" },
+			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", mode = "n", desc = "[S]earch [K]eymaps" },
+			{ "<leader>sf", "<cmd>Telescope find_files<cr>", mode = "n", desc = "[S]earch [F]iles" },
+			{ "<leader>ss", "<cmd>Telescope builtin<cr>", mode = "n", desc = "[S]earch Telescope" },
+			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", mode = "n", desc = "[S]earch current [W]ord" },
+			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "[S]earch by [G]rep" },
+			{ "<leader>sd", "<cmd>Telescope diagnostics<cr>", mode = "n", desc = "[S]earch [D]iagnostics" },
+			{ "<leader>sr", "<cmd>Telescope resume<cr>", mode = "n", desc = "[S]earch [R]esume" },
+			{
+				"<leader>s.",
+				"<cmd>Telescope oldfiles<cr>",
+				mode = "n",
+				desc = '[S]earch Recent Files ("." for repeat)',
+			},
+			{ "<leader>sb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "[S]earch existing [B]uffers" },
 
 			-- Slightly advanced example of overriding default behavior and theme
 			{
@@ -89,6 +85,7 @@ return {
 			-- Shortcut for searching your Neovim configuration files
 			{
 				"<leader>sn",
+				-- "Telescope find_files cwd=~/.config/nvim",
 				function()
 					require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 				end,
