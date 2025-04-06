@@ -217,9 +217,4 @@ return {
 			},
 		},
 	},
-	--- @type LazyPluginSpec
-	{
-		"Bilal2453/luvit-meta",
-		lazy = true,
-	},
 }
