@@ -8,7 +8,6 @@ return {
 		version = "*",
 		dependencies = {
 			{ "williamboman/mason.nvim" }, -- NOTE: Must be added on the top level
-			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
 			{
 				"WhoIsSethDaniel/mason-tool-installer.nvim",
 				opts = {

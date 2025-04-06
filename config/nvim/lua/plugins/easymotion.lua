@@ -1,4 +1,10 @@
 return {
+	-- { -- Easymotion you know why you are here
+	-- 	"easymotion/vim-easymotion",
+	-- 	-- version = "3.0.x",
+	-- 	-- lazy = false,
+	-- 	event = "VimEnter",
+	-- },
 	{
 		-- easymotion was last updated in 2022 and that was the README. The last
 		-- piece of code was changed in 2020 so for now I will use hop.nvim

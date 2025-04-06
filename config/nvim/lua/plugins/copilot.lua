@@ -36,14 +36,6 @@ return {
 		end,
 	},
 	{
-		"j-hui/fidget.nvim",
-		version = "*",
-		lazy = true,
-		config = function()
-			require("plugins.codecompanion.fidget-spinner"):init()
-		end,
-	},
-	{
 		"olimorris/codecompanion.nvim",
 		version = "*",
 		enabled = true,
