@@ -14,7 +14,8 @@ return {
 		"williamboman/mason.nvim",
 		version = "*",
 		config = true,
-		lazy = false,
+		lazy = true,
+		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
 		--- @module 'mason'
 		--- @class MasonSettings
 		opts = {
