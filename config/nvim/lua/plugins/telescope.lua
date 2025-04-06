@@ -1,4 +1,5 @@
---- @return function()
+--- @param method string method to call on telescope builtin
+--- @return function() a lazy function require
 local function builtin(method)
 	-- See `:help telescope.builtin`
 	return function()
