@@ -35,6 +35,14 @@ return {
 		end,
 	},
 	{
+		"j-hui/fidget.nvim",
+		version = "*",
+		lazy = true,
+		config = function()
+			require("plugins.codecompanion.fidget-spinner"):init()
+		end,
+	},
+	{
 		"olimorris/codecompanion.nvim",
 		version = "*",
 		enabled = true,
@@ -45,6 +53,7 @@ return {
 			"j-hui/fidget.nvim",
 		},
 		config = true,
+		lazy = true,
 		cmd = {
 			"CodeCompanion",
 			"CodeCompanionChat",
@@ -78,9 +87,6 @@ return {
 				end,
 			},
 		},
-		init = function()
-			require("plugins.codecompanion.fidget-spinner"):init()
-		end,
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
