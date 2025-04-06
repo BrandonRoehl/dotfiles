@@ -69,34 +69,27 @@ return {
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
 
-					local function telescope(method)
-						return function()
-							-- this is here to make sure we actually load
-							-- telescope but only when these are called
-							require("telescope.builtin")[method]()
-						end
-					end
-					map("gd", telescope("lsp_definitions"), "[G]oto [D]efinition")
+					map("gd", "<cmd>Telescope lsp_definitions<cr>", "[G]oto [D]efinition")
 
 					-- Find references for the word under your cursor.
-					map("gr", telescope("lsp_references"), "[G]oto [R]eferences")
+					map("gr", "<cmd>Telescope lsp_references<cr>", "[G]oto [R]eferences")
 
 					-- Jump to the implementation of the word under your cursor.
 					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gI", telescope("lsp_implementations"), "[G]oto [I]mplementation")
+					map("gI", "<cmd>Telescope lsp_implementations<cr>", "[G]oto [I]mplementation")
 
 					-- Jump to the type of the word under your cursor.
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>cD", telescope("lsp_type_definitions"), "Type [D]efinition")
+					map("<leader>cD", "<cmd>Telescope lsp_type_definitions<cr>", "Type [D]efinition")
 
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>cs", telescope("lsp_document_symbols"), "[C]ode [S]ymbols")
+					map("<leader>cs", "<cmd>Telescope lsp_document_symbols<cr>", "[C]ode [S]ymbols")
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
-					map("<leader>ws", telescope("lsp_dynamic_workspace_symbols"), "[W]orkspace [S]ymbols")
+					map("<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "[W]orkspace [S]ymbols")
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
@@ -118,7 +111,7 @@ return {
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if
 						client
-						and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+						and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
 					then
 						-- vim.cmd([[
 						-- hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
@@ -173,7 +166,7 @@ return {
 					--
 					-- This may be unwanted, since they displace some of your code
 					if
-						client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+						client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
 					then
 						map("<leader>ch", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
