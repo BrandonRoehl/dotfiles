@@ -75,6 +75,7 @@ return {
 					adapter = "copilot",
 				},
 			},
+			show_defaults = false,
 			adapters = {
 				copilot = function()
 					-- lua print(vim.inspect(require("codecompanion.adapters").extend("copilot").schema.model.choices()))
@@ -82,7 +83,7 @@ return {
 					return adapters.extend("copilot", {
 						schema = {
 							model = {
-								default = "claude-3.7-sonnet-thought",
+								default = "claude-3.7-sonnet",
 							},
 						},
 					})
