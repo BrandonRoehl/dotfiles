@@ -50,6 +50,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			-- Progress options optional
+			"nvim-telescope/telescope.nvim",
 			"j-hui/fidget.nvim",
 		},
 		config = true,
