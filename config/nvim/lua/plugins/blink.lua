@@ -9,7 +9,13 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-			{ "fang2hou/blink-copilot", version = "*" },
+			{
+				"fang2hou/blink-copilot",
+				version = "*",
+				dependencies = {
+					"github/copilot.vim",
+				},
+			},
 		},
 
 		-- use a release tag to download pre-built binaries

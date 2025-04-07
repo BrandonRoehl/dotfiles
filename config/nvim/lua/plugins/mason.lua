@@ -15,6 +15,7 @@ return {
 		version = "*",
 		config = true,
 		lazy = true,
+		build = ":MasonUpdate",
 		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
 		--- @module 'mason'
 		--- @class MasonSettings
