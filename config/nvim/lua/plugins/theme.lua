@@ -1,5 +1,3 @@
-local theme = "tokyonight" -- Set the default theme here.
-
 --- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
@@ -11,7 +9,7 @@ return {
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"folke/tokyonight.nvim",
-		enabled = theme == "tokyonight",
+		enabled = true,
 		version = "*",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -51,7 +49,7 @@ return {
 		--
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"rebelot/kanagawa.nvim",
-		enabled = theme == "kanagawa",
+		enabled = false,
 		version = "*",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
