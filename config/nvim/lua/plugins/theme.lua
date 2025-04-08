@@ -126,4 +126,86 @@ return {
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
+	--- @return LazyPluginSpec
+	{
+		-- You can easily change to a different colorscheme.
+		-- Change the name of the colorscheme plugin below, and then
+		-- change the command in the config to whatever the name of that colorscheme is.
+		--
+		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+		"catppuccin/nvim",
+		enabled = false,
+		lazy = false,
+		priority = 1000, -- Make sure to load this before all the other start plugins.
+		--- @module 'catppuccin'
+		--- @type CatppuccinOptions
+		opts = {
+			flavour = "auto",
+			background = {
+				light = "latte",
+				dark = "mocha",
+			},
+			default_integrations = true,
+			integrations = {
+				blink_cmp = true,
+				dap = true,
+				dap_ui = true,
+				dashboard = true,
+				gitsigns = true,
+				neotree = true,
+				treesitter = true,
+				treesitter_context = true,
+				copilot_vim = true,
+				hop = true,
+				mason = true,
+				fidget = true,
+				which_key = true,
+				telescope = {
+					enabled = true,
+					style = vim.g.border == "none" and "nvchad" or "classic",
+				},
+				semantic_tokens = true,
+				-- notify = true,
+				-- noice = true,
+				-- native_lsp = {
+				-- 	enabled = true,
+				-- 	virtual_text = {
+				-- 		errors = { "italic" },
+				-- 		hints = { "italic" },
+				-- 		warnings = { "italic" },
+				-- 		information = { "italic" },
+				-- 		ok = { "italic" },
+				-- 	},
+				-- 	underlines = {
+				-- 		errors = { "underline" },
+				-- 		hints = { "underline" },
+				-- 		warnings = { "underline" },
+				-- 		information = { "underline" },
+				-- 		ok = { "underline" },
+				-- 	},
+				-- 	inlay_hints = {
+				-- 		background = true,
+				-- 	},
+				-- },
+				--
+			},
+			-- custom_highlights = function(colors)
+			-- 	return {
+			-- 		NormalFloat = { fg = colors.text, bg = colors.mantle }, -- Normal text in floating windows.
+			-- 		FloatBorder = { fg = colors.blue, bg = colors.mantle },
+			-- 		FloatTitle = { fg = colors.subtext0, bg = colors.mantle }, -- Title of floating windows
+			-- 		TelescopeBorder = { fg = colors.blue, bg = colors.none }, -- Border of the telescope window
+			-- 	}
+			-- end,
+		},
+		config = function(_, opts)
+			require("catppuccin").setup(opts)
+		end,
+		init = function()
+			-- Load the colorscheme here.
+			-- Like many other themes, this one has different styles, and you could load
+			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+			vim.cmd.colorscheme("catppuccin")
+		end,
+	},
 }
