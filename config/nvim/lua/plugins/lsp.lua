@@ -180,8 +180,6 @@ return {
 			--- @type vim.diagnostic.Opts
 			local diag_opts = {
 				float = {
-					focusable = false,
-					close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
 					border = vim.g.border,
 					source = "if_many",
 					prefix = " ",
