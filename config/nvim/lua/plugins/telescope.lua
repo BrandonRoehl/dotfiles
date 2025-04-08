@@ -41,6 +41,7 @@ return {
 			{ "<leader>sk", "<cmd>Telescope keymaps<cr>", mode = "n", desc = "[S]earch [K]eymaps" },
 			{ "<leader>sf", "<cmd>Telescope find_files<cr>", mode = "n", desc = "[S]earch [F]iles" },
 			{ "<leader>ss", "<cmd>Telescope builtin<cr>", mode = "n", desc = "[S]earch Telescope" },
+			{ "<leader>sc", "<cmd>Telescope colorscheme<cr>", mode = "n", desc = "[S]earch [C]olorscheme" },
 			{ "<leader>sw", "<cmd>Telescope grep_string<cr>", mode = "n", desc = "[S]earch current [W]ord" },
 			{ "<leader>sg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "[S]earch by [G]rep" },
 			{ "<leader>sd", "<cmd>Telescope diagnostics<cr>", mode = "n", desc = "[S]earch [D]iagnostics" },
