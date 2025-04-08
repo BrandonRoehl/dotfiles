@@ -193,22 +193,34 @@ return {
 						min = vim.diagnostic.severity.ERROR,
 					},
 				},
+				signs = {
+					-- linehl = {
+					-- 	[vim.diagnostic.severity.ERROR] = "DiagnosticVirtualTextError",
+					-- 	[vim.diagnostic.severity.WARN] = "DiagnosticVirtualTextWarn",
+					-- 	[vim.diagnostic.severity.HINT] = "DiagnosticVirtualTextHint",
+					-- 	[vim.diagnostic.severity.INFO] = "DiagnosticVirtualTextInfo",
+					-- },
+					numhl = {
+						[vim.diagnostic.severity.ERROR] = "DiagnosticError",
+						[vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+						[vim.diagnostic.severity.HINT] = "DiagnosticHint",
+						[vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+					},
+				},
 				underline = true,
 				severity_sort = true,
 				virtual_lines = false,
 			}
 			if vim.g.have_nerd_font then
-				vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
-				vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
-				vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
-				vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
-				diag_opts.signs = {
-					text = {
-						[vim.diagnostic.severity.ERROR] = "",
-						[vim.diagnostic.severity.WARN] = "",
-						[vim.diagnostic.severity.INFO] = "",
-						[vim.diagnostic.severity.HINT] = "󰌵",
-					},
+				vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError" })
+				vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn" })
+				vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticInfo" })
+				vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticHint" })
+				diag_opts.signs.text = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.INFO] = "",
+					[vim.diagnostic.severity.HINT] = "󰌵",
 				}
 			end
 			vim.diagnostic.config(diag_opts)
