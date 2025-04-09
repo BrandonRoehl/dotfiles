@@ -10,3 +10,4 @@ config/*
 !config/kitty
 !config/neovide
 !config/ghostty
+!config/tmux
