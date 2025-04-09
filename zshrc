@@ -71,28 +71,3 @@ bindkey -v
 
 # export PATH="$PATH:$HOME/workspace/universe/bin"
 
-# Plugin configuration
-
-# Declare the variable
-typeset -A ZSH_HIGHLIGHT_STYLES
-
-# Go to the full 256 bit colors
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=203,bold'
-ZSH_HIGHLIGHT_STYLES[command]='fg=84'
-ZSH_HIGHLIGHT_STYLES[alias]=$ZSH_HIGHLIGHT_STYLES[command]
-ZSH_HIGHLIGHT_STYLES[function]=$ZSH_HIGHLIGHT_STYLES[command]
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=177'
-ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=177'
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=99'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=50'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=45'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=$ZSH_HIGHLIGHT_STYLES[single-hyphen-option]
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=215'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=$ZSH_HIGHLIGHT_STYLES[single-quoted-argument]
-ZSH_HIGHLIGHT_STYLES[assign]='fg=227'
-ZSH_HIGHLIGHT_STYLES[redirection]=$ZSH_HIGHLIGHT_STYLES[assign]
-ZSH_HIGHLIGHT_STYLES[comment]='fg=243'
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=50'
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=212'
-ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]=$ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]
-
