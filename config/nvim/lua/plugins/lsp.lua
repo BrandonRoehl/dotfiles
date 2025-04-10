@@ -8,7 +8,8 @@ return {
 		"neovim/nvim-lspconfig",
 		version = "*",
 		lazy = true,
-		event = { "BufReadPost", "BufNewFile" },
+		event = "BufWinEnter",
+		-- event = { "BufReadPost", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
