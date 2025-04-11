@@ -43,6 +43,23 @@ return {
 		end,
 	},
 	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		enabled = false,
+		version = "*",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			-- ...
+		},
+		config = function(_, opts)
+			require("github-theme").setup(opts)
+		end,
+		init = function()
+			vim.cmd.colorscheme("github_dark_default")
+		end,
+	},
+	{
 		-- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
