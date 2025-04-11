@@ -1,7 +1,7 @@
 --- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
-	--- @return LazyPluginSpec
+	--- @type LazyPluginSpec
 	{
 		-- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
@@ -43,28 +43,6 @@ return {
 		end,
 	},
 	{
-		"projekt0n/github-nvim-theme",
-		name = "github-theme",
-		enabled = false,
-		version = "*",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			-- ...
-		},
-		config = function(_, opts)
-			require("github-theme").setup(opts)
-		end,
-		init = function()
-			vim.cmd.colorscheme("github_dark_default")
-		end,
-	},
-	{
-		-- You can easily change to a different colorscheme.
-		-- Change the name of the colorscheme plugin below, and then
-		-- change the command in the config to whatever the name of that colorscheme is.
-		--
-		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"rebelot/kanagawa.nvim",
 		enabled = false,
 		version = "*",
@@ -137,23 +115,15 @@ return {
 			},
 		},
 		init = function()
-			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
-	--- @return LazyPluginSpec
+	--- @type LazyPluginSpec
 	{
-		-- You can easily change to a different colorscheme.
-		-- Change the name of the colorscheme plugin below, and then
-		-- change the command in the config to whatever the name of that colorscheme is.
-		--
-		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"catppuccin/nvim",
 		enabled = false,
 		lazy = false,
-		priority = 1000, -- Make sure to load this before all the other start plugins.
+		priority = 1000,
 		--- @module 'catppuccin'
 		--- @type CatppuccinOptions
 		opts = {
@@ -219,10 +189,25 @@ return {
 			require("catppuccin").setup(opts)
 		end,
 		init = function()
-			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			vim.cmd.colorscheme("catppuccin")
+		end,
+	},
+	--- @type LazyPluginSpec
+	{
+		"projekt0n/github-nvim-theme",
+		name = "github-theme",
+		enabled = false,
+		version = "*",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			-- ...
+		},
+		config = function(_, opts)
+			require("github-theme").setup(opts)
+		end,
+		init = function()
+			vim.cmd.colorscheme("github_dark_default")
 		end,
 	},
 }
