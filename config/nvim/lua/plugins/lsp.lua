@@ -372,6 +372,8 @@ return {
 				},
 				-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vale_ls
 				vale_ls = {},
+				-- https://writewithharper.com/docs/integrations/neovim
+				harper_ls = {},
 			}
 
 			-- NOTE: `mason-lspconfig` must be setup before servers are configured

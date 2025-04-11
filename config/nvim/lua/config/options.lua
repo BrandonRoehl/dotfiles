@@ -166,7 +166,8 @@ vim.opt.autoindent = true
 vim.opt.encoding = "utf-8"
 
 -- Spellcheck
-vim.opt.spell = true
+-- using harper_ls instead
+vim.opt.spell = false
 vim.opt.spelllang = "en_us"
 
 -- Allow setting the title
