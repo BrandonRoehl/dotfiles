@@ -14,8 +14,8 @@ return {
 					-- Tools to auto install and instead use from the env
 					ensure_installed = {
 						"stylua", -- Used to format Lua code
-						"black", -- Used to format Python code
-						"isort", -- Used to sort Python imports
+						-- "black", -- Used to format Python code
+						-- "isort", -- Used to sort Python imports
 						"rustfmt", -- Used to format Rust code
 						-- "eslint", -- Used to lint JavaScript and TypeScript
 						-- "prettier", -- Used to format JavaScript and TypeScript
@@ -56,7 +56,8 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				python = { "isort", "black" },
+				-- python = { "isort", "black" },
+				rust = { "rustfmt" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				javascript = { "prettierd", "prettier", stop_after_first = true },

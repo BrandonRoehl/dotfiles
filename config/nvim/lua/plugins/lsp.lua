@@ -8,8 +8,8 @@ return {
 		"neovim/nvim-lspconfig",
 		version = "*",
 		lazy = true,
-		event = "BufWinEnter",
-		-- event = { "BufReadPost", "BufNewFile" },
+		-- event = "BufWinEnter",
+		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 		dependencies = {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
@@ -265,6 +265,7 @@ return {
 						},
 					},
 				}, -- better python
+				ruff = {}, -- python formatting that works with basedpyright
 				rust_analyzer = {}, -- rust
 				gopls = {
 					settings = {
@@ -379,7 +380,9 @@ return {
 			-- NOTE: `mason-lspconfig` must be setup before servers are configured
 			require("mason-lspconfig").setup({
 				-- ensure_installed = vim.tbl_keys(servers or {}),
-				ensure_installed = {},
+				ensure_installed = {
+					"ruff",
+				},
 				automatic_installation = {
 					exclude = {
 						"clangd",
