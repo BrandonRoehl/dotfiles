@@ -62,40 +62,14 @@ return {
 					-- for LSP related items. It sets the mode, buffer and description for us each time.
 					local map = function(keys, func, desc, mode)
 						mode = mode or "n"
-						local rhs = type(func) == "function"
-								and function()
-									require("telescope")
-									func()
-								end
-							or func
-						vim.keymap.set(mode, keys, rhs, { buffer = event.buf, desc = "LSP: " .. desc })
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
 					-- Jump to the definition of the word under your cursor.
 					--  This is where a variable was first declared, or where a function is defined, etc.
 					--  To jump back, press <C-t>.
 
-					map("gd", "<cmd>Telescope lsp_definitions<cr>", "[G]oto [D]efinition")
-
-					-- Find references for the word under your cursor.
-					map("gr", "<cmd>Telescope lsp_references<cr>", "[G]oto [R]eferences")
-
-					-- Jump to the implementation of the word under your cursor.
-					--  Useful when your language has ways of declaring types without an actual implementation.
-					map("gI", "<cmd>Telescope lsp_implementations<cr>", "[G]oto [I]mplementation")
-
-					-- Jump to the type of the word under your cursor.
-					--  Useful when you're not sure what type a variable is and you want to see
-					--  the definition of its *type*, not where it was *defined*.
-					map("<leader>cD", "<cmd>Telescope lsp_type_definitions<cr>", "Type [D]efinition")
-
-					-- Fuzzy find all the symbols in your current document.
-					--  Symbols are things like variables, functions, types, etc.
-					map("<leader>cs", "<cmd>Telescope lsp_document_symbols<cr>", "[C]ode [S]ymbols")
-
-					-- Fuzzy find all the symbols in your current workspace.
-					--  Similar to document symbols, except searches over your entire project.
-					map("<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "[W]orkspace [S]ymbols")
+					-- lsp keybinds
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
@@ -148,14 +122,14 @@ return {
 						buffer = event.buf,
 						callback = function()
 							-- Check if there are any visible floating windows already
-							for _, win in ipairs(vim.api.nvim_list_wins()) do
-								if vim.api.nvim_win_get_config(win).relative ~= "" then
-									-- A float exists, don't create another one
-									return
-								end
-							end
+							-- for _, win in ipairs(vim.api.nvim_list_wins()) do
+							-- 	if vim.api.nvim_win_get_config(win).relative ~= "" then
+							-- 		-- A float exists, don't create another one
+							-- 		return
+							-- 	end
+							-- end
 
-							vim.diagnostic.open_float(nil)
+							vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
 						end,
 					})
 
@@ -215,6 +189,7 @@ return {
 				underline = true,
 				severity_sort = true,
 				virtual_lines = false,
+				focusable = false,
 			}
 			if vim.g.have_nerd_font then
 				vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticError" })
