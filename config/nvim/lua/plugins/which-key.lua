@@ -78,7 +78,6 @@ return {
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch", icon = " " },
 				{ "<leader>f", group = "[F]ind", icon = " " },
-				{ "<leader>n", group = "[N]eoTree", icon = " " },
 				{ "<leader>g", group = "[G]it", icon = " " },
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]ab", icon = "󰓩 " },
