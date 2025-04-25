@@ -45,7 +45,6 @@ return {
 			-- Copilot authorization
 			"github/copilot.vim",
 			-- Progress options optional
-			"nvim-telescope/telescope.nvim",
 			"j-hui/fidget.nvim",
 		},
 		config = true,

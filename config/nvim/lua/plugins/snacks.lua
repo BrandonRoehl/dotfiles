@@ -37,13 +37,11 @@ return {
 		-- stylua: ignore
 		keys = {
 			-- Top Pickers & Explorer
-			{ "<leader>fs", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+			{ "\\", function() Snacks.explorer() end, desc = "File Explorer" },
+			{ "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 			{ "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-			-- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
-			{ "\\", function() Snacks.explorer() end, desc = "File Explorer" },
 			-- find
 			{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -86,6 +84,7 @@ return {
 			{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
 			{ "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
 			{ "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+			{ "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 			-- LSP
 			{ "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
 			{ "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
