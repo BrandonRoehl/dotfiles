@@ -29,10 +29,6 @@ return {
 				-- uses your plugin manager to automatically enable needed plugins
 				-- currently only lazy.nvim is supported
 				auto = true,
-				-- add any plugins here that you want to enable
-				-- for all possible plugins, see:
-				--   * https://github.com/folke/tokyonight.nvim/tree/main/lua/tokyonight/groups
-				telescope = true,
 			},
 		},
 		init = function()
@@ -92,19 +88,6 @@ return {
 					DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
 					DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
 				}
-
-				if vim.g.border == "none" then
-					opts = vim.tbl_extend("force", opts, {
-						-- Telescope
-						TelescopeTitle = { fg = theme.ui.special, bold = true },
-						TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-						TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
-						TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-						TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-						TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-						TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-					})
-				end
 
 				return opts
 			end,
