@@ -136,7 +136,19 @@ return {
 		-- stylua: ignore
 		keys = {
 			-- Top Pickers & Explorer
-			{ "\\", function() Snacks.explorer() end, desc = "File Explorer" },
+			{ "\\", desc = "File Explorer", function()
+				local explorer_pickers = Snacks.picker.get({ source = "explorer" })
+				for _, v in pairs(explorer_pickers) do
+					if v:is_focused() then
+						v:close()
+					else
+						v:focus()
+					end
+				end
+				if #explorer_pickers == 0 then
+					Snacks.picker.explorer()
+				end
+			end },
 			{ "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 			{ "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
@@ -207,24 +219,20 @@ return {
 			{ "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
 			{ "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
 			{ "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
-			{
-				"<leader>N",
-				desc = "Neovim News",
-				function()
-					Snacks.win({
-						file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-						width = 0.6,
-						height = 0.6,
-						wo = {
-							spell = false,
-							wrap = false,
-							signcolumn = "yes",
-							statuscolumn = " ",
-							conceallevel = 3,
-						},
-					})
-				end,
-			}
+			{ "<leader>N", desc = "Neovim News", function()
+				Snacks.win({
+					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
+					width = 0.6,
+					height = 0.6,
+					wo = {
+						spell = false,
+						wrap = false,
+						signcolumn = "yes",
+						statuscolumn = " ",
+						conceallevel = 3,
+					},
+				})
+			end }
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("User", {
