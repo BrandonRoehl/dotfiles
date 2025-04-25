@@ -39,8 +39,6 @@ return {
 			local lualine_require = require("lualine_require")
 			lualine_require.require = require
 
-			-- local icons = LazyVim.config.icons
-
 			vim.o.laststatus = vim.g.lualine_laststatus
 
 			local opts = {
@@ -128,6 +126,14 @@ return {
 						-- 	return " " .. os.date("%R")
 						-- end,
 					},
+				},
+				inactive_sections = {
+					lualine_a = {},
+					lualine_b = {},
+					lualine_c = { "filename" },
+					lualine_x = { "location" },
+					lualine_y = {},
+					lualine_z = {},
 				},
 				extensions = { "lazy", "mason", "fzf", "neo-tree", "nvim-dap-ui" },
 			}
