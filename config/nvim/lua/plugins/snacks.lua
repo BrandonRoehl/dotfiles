@@ -8,6 +8,11 @@ return {
 		--- @module 'snacks'
 		--- @type snacks.Config
 		opts = {
+			-- styles = {
+			-- 	["*"] = {
+			-- 		border = vim.g.border,
+			-- 	},
+			-- },
 			bigfile = { enabled = true },
 			indent = {
 				animate = {
