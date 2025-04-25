@@ -101,7 +101,7 @@ return {
 						{
 							icon = vim.g.have_nerd_font and " " or "⎋ ",
 							key = "q",
-							desc = " Quit",
+							desc = "Quit",
 							action = ":qa",
 						},
 					},
