@@ -200,7 +200,7 @@ return {
 					[vim.diagnostic.severity.ERROR] = "",
 					[vim.diagnostic.severity.WARN] = "",
 					[vim.diagnostic.severity.INFO] = "",
-					[vim.diagnostic.severity.HINT] = "󰌵",
+					[vim.diagnostic.severity.HINT] = "",
 				}
 			end
 			vim.diagnostic.config(diag_opts)
