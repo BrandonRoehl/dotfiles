@@ -21,7 +21,10 @@ return {
 				timeout = 3000,
 			},
 			-- picker stuff
-			explorer = { enabled = true },
+			explorer = {
+				enabled = true,
+				replace_netrw = true,
+			},
 			picker = {
 				enabled = true,
 				sources = {
