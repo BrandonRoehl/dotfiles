@@ -68,6 +68,9 @@ return {
 						"filename",
 					},
 					lualine_x = {
+						-- This will be replaced by the actual component in the config function
+						-- this is registered in `lua/lualine/components`
+						"codecompanion",
 						Snacks.profiler.status(),
 						-- stylua: ignore
 						{
@@ -111,17 +114,16 @@ return {
 								end
 							end,
 						},
-						-- This will be replaced by the actual component in the config function
-						-- this is registered in `lua/lualine/components`
-						"codecompanion",
+						"fileformat",
+						"encoding",
 					},
 					lualine_y = {
-						"encoding",
-						"fileformat",
+						"progress",
+						-- { "progress", separator = " ", padding = { left = 1, right = 0 } },
+						-- { "location", padding = { left = 0, right = 1 } },
 					},
 					lualine_z = {
-						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-						{ "location", padding = { left = 0, right = 1 } },
+						"location",
 						-- function()
 						-- 	return " " .. os.date("%R")
 						-- end,
