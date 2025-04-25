@@ -21,8 +21,23 @@ return {
 				timeout = 3000,
 			},
 			-- picker stuff
-			picker = { enabled = true },
 			explorer = { enabled = true },
+			picker = {
+				enabled = true,
+				sources = {
+					explorer = {
+						win = {
+							list = {
+								keys = {
+									["s"] = "edit_vsplit",
+									["S"] = "edit_split",
+									["\\"] = "close",
+								},
+							},
+						},
+					},
+				},
+			},
 			-- quickfile = { enabled = true },
 			-- scope = { enabled = true },
 			-- scroll = { enabled = true },
