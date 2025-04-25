@@ -138,15 +138,12 @@ return {
 			-- Top Pickers & Explorer
 			{ "\\", desc = "File Explorer", function()
 				local explorer_pickers = Snacks.picker.get({ source = "explorer" })
-				for _, v in pairs(explorer_pickers) do
-					if v:is_focused() then
-						v:close()
-					else
-						v:focus()
-					end
-				end
 				if #explorer_pickers == 0 then
 					Snacks.picker.explorer()
+				-- elseif explorer_pickers[1]:is_focused() then
+				-- 	explorer_pickers[1]:close()
+				else
+					explorer_pickers[1]:focus()
 				end
 			end },
 			{ "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
