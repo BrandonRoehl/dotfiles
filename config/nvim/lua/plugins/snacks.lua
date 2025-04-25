@@ -91,7 +91,12 @@ return {
 							desc = "Config",
 							action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
 						},
-						{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
+						{
+							icon = vim.g.have_nerd_font and " " or "🔄",
+							key = "s",
+							desc = "Restore Session",
+							section = "session",
+						},
 						{
 							icon = vim.g.have_nerd_font and "󰒲 " or "📦",
 							key = "L",
