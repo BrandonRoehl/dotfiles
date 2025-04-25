@@ -98,7 +98,12 @@ return {
 							action = ":Mason",
 							-- enabled = package.loaded.mason ~= nil,
 						},
-						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+						{
+							icon = vim.g.have_nerd_font and " " or "⎋ ",
+							key = "q",
+							desc = " Quit",
+							action = ":qa",
+						},
 					},
 				},
 				sections = {
