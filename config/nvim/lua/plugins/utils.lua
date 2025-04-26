@@ -30,11 +30,15 @@ return {
 		},
 	},
 	-- Block highlights text detected as colors e.g. #ffffff
+	-- Come back to this when this is added for real
+	-- https://github.com/neovim/neovim/pull/33440
 	{
 		"brenoprata10/nvim-highlight-colors",
 		event = "VeryLazy",
 		version = "*",
-		opts = {},
+		opts = {
+			render = "virtual",
+		},
 	},
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",

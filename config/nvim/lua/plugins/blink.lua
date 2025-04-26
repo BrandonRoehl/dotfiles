@@ -1,3 +1,16 @@
+-- Add `nvim-highlight-colors` if the package is loaded and the item is an LSP source
+local function colorize(ctx, hl)
+	-- If LSP source and you have `nvim-highlight-colors` loaded, check for
+	-- color derived from documentation
+	if package.loaded["nvim-highlight-colors"] and ctx.item.source_name == "LSP" then
+		local color_item = require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
+		if color_item and color_item.abbr_hl_group then
+			hl = color_item.abbr_hl_group
+		end
+	end
+	return hl
+end
+
 -- Autocompletion
 --- @module 'lazy'
 --- @return LazyPluginSpec[]
@@ -6,7 +19,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		event = "InsertEnter",
-		-- optional: provides snippets for the snippet source
+		-- Optional: provides snippets for the snippet source
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			{
@@ -18,7 +31,7 @@ return {
 			},
 		},
 
-		-- use a release tag to download pre-built binaries
+		-- Use a release tag to download pre-built binaries
 		version = "*",
 		-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 		-- build = 'cargo build --release',
@@ -181,6 +194,16 @@ return {
 							{ "label", "label_description", gap = 1 },
 							{ "kind" },
 						} or nil,
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									return colorize(ctx, ctx.kind_icon) .. ctx.icon_gap
+								end,
+								highlight = function(ctx)
+									return colorize(ctx, "BlinkCmpKind" .. ctx.kind)
+								end,
+							},
+						},
 					},
 					-- Window borders to easier see
 					border = vim.g.border,
