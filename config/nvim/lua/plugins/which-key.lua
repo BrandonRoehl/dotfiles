@@ -25,6 +25,7 @@ return {
 
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
+		version = "*",
 		event = "VeryLazy",
 		---@type wk.Opts
 		opts = {

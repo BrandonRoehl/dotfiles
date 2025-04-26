@@ -4,6 +4,7 @@ return {
 	--- @type LazyPluginSpec
 	{
 		"nvim-lualine/lualine.nvim",
+		version = "*",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		event = "VeryLazy",
 		init = function()

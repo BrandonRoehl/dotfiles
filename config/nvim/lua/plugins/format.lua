@@ -5,6 +5,7 @@ return {
 	--- @type LazyPluginSpec
 	{ -- Autoformat
 		"stevearc/conform.nvim",
+		version = "*",
 		dependencies = {
 			{ "williamboman/mason.nvim" }, -- NOTE: Must be added on the top level
 			{

@@ -40,7 +40,6 @@ return {
 	{
 		"rebelot/kanagawa.nvim",
 		enabled = false,
-		version = "*",
 		lazy = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		--- @module 'kanagawa'
@@ -181,7 +180,6 @@ return {
 		"projekt0n/github-nvim-theme",
 		name = "github-theme",
 		enabled = false,
-		version = "*",
 		lazy = false,
 		priority = 1000,
 		opts = {
