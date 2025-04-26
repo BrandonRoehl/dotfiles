@@ -1,14 +1,10 @@
--- Add `nvim-highlight-colors` if the package is loaded and the item is an LSP source
-local function colorize(ctx, hl)
+local function get_color_item(ctx)
 	-- If LSP source and you have `nvim-highlight-colors` loaded, check for
 	-- color derived from documentation
 	if package.loaded["nvim-highlight-colors"] and ctx.item.source_name == "LSP" then
-		local color_item = require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
-		if color_item and color_item.abbr_hl_group then
-			hl = color_item.abbr_hl_group
-		end
+		return require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
 	end
-	return hl
+	return nil
 end
 
 -- Autocompletion
@@ -197,10 +193,21 @@ return {
 						components = {
 							kind_icon = {
 								text = function(ctx)
-									return colorize(ctx, ctx.kind_icon) .. ctx.icon_gap
+									-- Default kind icon
+									local icon = ctx.kind_icon
+									-- See if there is a colored icon
+									local color_item = get_color_item(ctx)
+									if color_item and color_item.abbr ~= "" then
+										icon = color_item.abbr
+									end
+									return icon .. ctx.icon_gap
 								end,
 								highlight = function(ctx)
-									return colorize(ctx, "BlinkCmpKind" .. ctx.kind)
+									local color_item = get_color_item(ctx)
+									if color_item and color_item.abbr_hl_group then
+										return color_item.abbr_hl_group
+									end
+									return "BlinkCmpKind" .. ctx.kind
 								end,
 							},
 						},
