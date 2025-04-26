@@ -6,7 +6,6 @@ return {
 	{
 		-- Main LSP Configuration
 		"neovim/nvim-lspconfig",
-		version = "*",
 		lazy = true,
 		-- event = "BufWinEnter",
 		event = { "BufWinEnter", "BufReadPost", "BufNewFile" },

@@ -4,7 +4,6 @@ return {
 	-- Notifications provider
 	{
 		"j-hui/fidget.nvim",
-		version = "*",
 		lazy = true,
 		opts = {},
 		config = function(_, opts)

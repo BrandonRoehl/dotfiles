@@ -7,7 +7,6 @@ return {
 		-- build = "<cmd>Copilot setup<cr>",
 		-- event = "BufWinEnter",
 		event = { "BufWinEnter", "BufReadPost", "BufNewFile" },
-		version = "*",
 		init = function()
 			vim.g.copilot_no_maps = true
 		end,
@@ -37,7 +36,6 @@ return {
 	},
 	{
 		"olimorris/codecompanion.nvim",
-		version = "*",
 		enabled = true,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
