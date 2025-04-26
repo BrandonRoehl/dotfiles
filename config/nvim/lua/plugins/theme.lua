@@ -129,14 +129,17 @@ return {
 				hop = true,
 				mason = true,
 				fidget = true,
-				which_key = true,
-				telescope = {
-					enabled = true,
-					style = vim.g.border == "none" and "nvchad" or "classic",
-				},
 				semantic_tokens = true,
-				-- notify = true,
-				-- noice = true,
+				snacks = {
+					enabled = true,
+				},
+				which_key = true,
+				notify = true,
+				noice = true,
+				-- telescope = {
+				-- 	enabled = true,
+				-- 	style = vim.g.border == "none" and "nvchad" or "classic",
+				-- },
 				-- native_lsp = {
 				-- 	enabled = true,
 				-- 	virtual_text = {
@@ -157,7 +160,6 @@ return {
 				-- 		background = true,
 				-- 	},
 				-- },
-				--
 			},
 			-- custom_highlights = function(colors)
 			-- 	return {
