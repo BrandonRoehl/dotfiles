@@ -29,6 +29,13 @@ return {
 			},
 		},
 	},
+	-- Block highlights text detected as colors e.g. #ffffff
+	{
+		"brenoprata10/nvim-highlight-colors",
+		event = "VeryLazy",
+		version = "*",
+		opts = {},
+	},
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
 }

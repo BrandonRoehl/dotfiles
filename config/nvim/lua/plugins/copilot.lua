@@ -6,8 +6,7 @@ return {
 		version = "*",
 		cmd = "Copilot",
 		-- build = "<cmd>Copilot setup<cr>",
-		-- event = "BufWinEnter",
-		event = { "BufWinEnter", "BufReadPost", "BufNewFile" },
+		event = "BufWinEnter",
 		init = function()
 			vim.g.copilot_no_maps = true
 		end,
