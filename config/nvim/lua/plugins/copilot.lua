@@ -9,6 +9,15 @@ return {
 		event = "BufWinEnter",
 		init = function()
 			vim.g.copilot_no_maps = true
+			vim.g.copilot_filetypes = {
+				["*"] = true,
+				gitcommit = false,
+				NeogitCommitMessage = false,
+				DressingInput = false,
+				TelescopePrompt = false,
+				["neo-tree-popup"] = false,
+				["dap-repl"] = false,
+			}
 		end,
 		config = function()
 			-- Block the normal Copilot suggestions
@@ -23,15 +32,6 @@ return {
 					end,
 				})
 			end
-			vim.g.copilot_filetypes = {
-				["*"] = true,
-				gitcommit = false,
-				NeogitCommitMessage = false,
-				DressingInput = false,
-				TelescopePrompt = false,
-				["neo-tree-popup"] = false,
-				["dap-repl"] = false,
-			}
 		end,
 	},
 	{
