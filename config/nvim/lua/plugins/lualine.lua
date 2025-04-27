@@ -6,7 +6,10 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		version = "*",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"folke/snacks.nvim",
+		},
 		event = "VeryLazy",
 		init = function()
 			vim.g.lualine_laststatus = vim.o.laststatus

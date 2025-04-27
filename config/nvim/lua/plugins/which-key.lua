@@ -84,6 +84,8 @@ return {
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 				{ "K", desc = "LSP Hover", mode = { "n" } },
 				{ "<leader><leader>", group = "Hop" },
+				{ "<BS>", desc = "Decrement Selection", mode = "x" },
+				{ "<c-space>", desc = "Increment Selection", mode = { "x", "n" } },
 			},
 
 			win = {

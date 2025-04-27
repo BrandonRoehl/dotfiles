@@ -14,7 +14,7 @@ return {
 	--- @type LazyPluginSpec
 	{
 		"saghen/blink.cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "VeryLazy" },
 		-- Optional: provides snippets for the snippet source
 		dependencies = {
 			"rafamadriz/friendly-snippets",
