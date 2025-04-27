@@ -60,9 +60,14 @@ return {
 					--
 					-- In this case, we create a function that lets us more easily define mappings specific
 					-- for LSP related items. It sets the mode, buffer and description for us each time.
-					local function map(keys, func, desc, mode)
+					---@param keys string           Left-hand side |{lhs}| of the mapping.
+					---@param func string|function  Right-hand side |{rhs}| of the mapping, can be a Lua function.
+					---@param opts? vim.keymap.set.Opts
+					---@param mode? string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
+					local function map(keys, func, opts, mode)
 						mode = mode or "n"
-						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+						opts = vim.tbl_deep_extend("keep", opts, { buffer = event.buf })
+						vim.keymap.set(mode, keys, func, opts)
 					end
 
 					-- Jump to the definition of the word under your cursor.
@@ -70,18 +75,24 @@ return {
 					--  To jump back, press <C-t>.
 
 					-- lsp keybinds
+					map("gd", Snacks.picker.lsp_definitions, { desc = "[G]oto [D]efinition" })
+					map("gD", Snacks.picker.lsp_declarations, { desc = "[G]oto [D]eclaration" })
+					map("gr", Snacks.picker.lsp_references, { nowait = true, desc = "[R]eferences" })
+					map("gI", Snacks.picker.lsp_implementations, { desc = "Goto [I]mplementation" })
+					map("gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
+					map("<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP [S]ymbols" })
+					map("<leader>sS", Snacks.picker.lsp_workspace_symbols, { desc = "LSP Workspace [S]ymbols" })
+					-- map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+					-- map("gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
+					-- map("gr", vim.lsp.buf.references, { nowait = true, desc = "[R]eferences" })
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
 
 					-- Execute a code action, usually your cursor needs to be on top an error
 					-- or a suggestion from your LSP for this to activate.
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-
-					-- WARN: This is not Goto Definition, this is Goto Declaration.
-					--  For example, in C this would take you to the header.
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" }, { "n", "x" })
 
 					-- The following autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.
@@ -142,7 +153,7 @@ return {
 					then
 						map("<leader>ch", function()
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-						end, "Toggle Inlay [C]ode [H]ints")
+						end, { desc = "Toggle Inlay [C]ode [H]ints" })
 					end
 				end,
 			})
