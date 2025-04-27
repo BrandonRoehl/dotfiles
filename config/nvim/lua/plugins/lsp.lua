@@ -1,5 +1,6 @@
 -- LSP Plugins
 --- @module 'lazy'
+--- @module 'snacks'
 --- @return LazyPluginSpec[]
 return {
 	--- @type LazyPluginSpec
@@ -60,8 +61,8 @@ return {
 					--
 					-- In this case, we create a function that lets us more easily define mappings specific
 					-- for LSP related items. It sets the mode, buffer and description for us each time.
-					---@param keys string           Left-hand side |{lhs}| of the mapping.
-					---@param func string|function  Right-hand side |{rhs}| of the mapping, can be a Lua function.
+					---@param keys string Left-hand side |{lhs}| of the mapping.
+					---@param func string|function Right-hand side |{rhs}| of the mapping, can be a Lua function.
 					---@param opts? vim.keymap.set.Opts
 					---@param mode? string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
 					local function map(keys, func, opts, mode)
