@@ -1,5 +1,3 @@
---- @module 'lazy'
---- @module 'snacks'
 --- @return LazyPluginSpec[]
 return {
 	--- @type LazyPluginSpec

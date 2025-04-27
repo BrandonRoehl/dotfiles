@@ -8,7 +8,6 @@ local function get_color_item(ctx)
 end
 
 -- Autocompletion
---- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	--- @type LazyPluginSpec
@@ -248,7 +247,11 @@ return {
 		opts = {
 			library = {
 				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				-- { path = "luvit-meta/library", words = { "vim%.uv" } },
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "LazyVim", words = { "LazyVim" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
+				{ path = "lazy.nvim", words = { "LazyVim" } },
 				"nvim-dap-ui",
 			},
 		},

@@ -1,4 +1,3 @@
---- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	-- Here is a more advanced example where we pass configuration

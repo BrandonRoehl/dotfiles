@@ -1,5 +1,4 @@
 -- Mason
---- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	-- Ensure the servers and tools above are installed

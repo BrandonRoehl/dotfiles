@@ -1,4 +1,3 @@
---- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	{

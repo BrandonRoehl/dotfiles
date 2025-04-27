@@ -1,5 +1,4 @@
 -- Format
---- @module 'lazy'
 --- @return LazyPluginSpec[]
 return {
 	--- @type LazyPluginSpec
