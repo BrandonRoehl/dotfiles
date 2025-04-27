@@ -16,9 +16,6 @@ return {
 			-- },
 			bigfile = { enabled = true },
 			indent = {
-				animate = {
-					enabled = false,
-				},
 				enabled = true,
 			},
 			input = { enabled = true },
@@ -235,6 +232,7 @@ return {
 			end }
 		},
 		init = function()
+			vim.g.snacks_animate = false
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "VeryLazy",
 				callback = function()
