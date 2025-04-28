@@ -18,6 +18,9 @@ return {
 			-- Useful status updates for LSP.
 			"j-hui/fidget.nvim",
 
+			-- UI for actions
+			"folke/snacks.nvim",
+
 			-- Allows extra capabilities provided by blink
 			"saghen/blink.cmp",
 		},
