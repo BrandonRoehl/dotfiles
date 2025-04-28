@@ -9,6 +9,7 @@ return {
 			{ "williamboman/mason.nvim" }, -- NOTE: Must be added on the top level
 			{
 				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				enabled = false,
 				opts = {
 					-- Tools to auto install and instead use from the env
 					ensure_installed = {
