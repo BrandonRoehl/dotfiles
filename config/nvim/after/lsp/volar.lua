@@ -19,9 +19,7 @@ return {
 		},
 	},
 	before_init = function(_, config)
-		if
-			not (config.init_options and config.init_options.typescript and config.init_options.typescript.tsdk == "")
-		then
+		if vim.tbl_get(config, "init_options", "typescript", "tsdk") ~= "" then
 			return
 		end
 
