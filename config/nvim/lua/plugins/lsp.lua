@@ -219,19 +219,16 @@ return {
 			vim.diagnostic.config(diag_opts)
 
 			-- LSP servers and clients are able to communicate to each other what features they support.
-			--  By default, Neovim doesn't support everything that is in the LSP specification.
-			--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-			--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-			--- @type lsp.ClientCapabilities
-			local capabilities = vim.tbl_extend(
-				"force",
-				vim.lsp.protocol.make_client_capabilities(),
-				require("blink.cmp").get_lsp_capabilities()
-			)
-
-			-- Override the default capabilities with the new ones
+			-- By default, Neovim doesn't support everything that is in the LSP specification.
+			-- When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+			-- So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
 			vim.lsp.config("*", {
-				capabilities = capabilities,
+				--- @type lsp.ClientCapabilities
+				capabilities = vim.tbl_extend(
+					"force",
+					vim.lsp.protocol.make_client_capabilities(),
+					require("blink.cmp").get_lsp_capabilities()
+				),
 			})
 
 			-- Enable the following language servers
