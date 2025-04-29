@@ -223,180 +223,59 @@ return {
 			--  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
 			--  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
 			--- @type lsp.ClientCapabilities
-			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local capabilities = require("blink.cmp").get_lsp_capabilities({}, true)
+			local capabilities = vim.tbl_extend(
+				"force",
+				vim.lsp.protocol.make_client_capabilities(),
+				require("blink.cmp").get_lsp_capabilities()
+			)
+
+			-- Override the default capabilities with the new ones
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
 
 			-- Enable the following language servers
 			--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-			--
-			--  Add any additional override configuration in the following tables. Available keys are:
-			--  - cmd (table): Override the default command used to start the server
-			--  - filetypes (table): Override the default list of associated filetypes for the server
-			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-			--  - settings (table): Override the default settings passed when initializing the server.
-			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
-				-- pyright = {
-				-- 	-- https://github.com/microsoft/pyright/blob/main/docs/settings.md
-				-- 	settings = {
-				-- 		single_file_support = true,
-				-- 		python = {
-				-- 			analysis = {
-				-- 				autoSearchPaths = true,
-				-- 				diagnosticMode = "openFilesOnly",
-				-- 				useLibraryCodeForTypes = true,
-				-- 				typeCheckingMode = "basic",
-				-- 			},
-				-- 		},
-				-- 	},
-				-- 	-- 	single_file_support = true,
-				-- }, -- python
-				basedpyright = {
-					-- docs/configuration/language-server-settings.md
-					settings = {
-						basedpyright = {
-							typeCheckingMode = "basic",
-						},
-					},
-				}, -- better python
-				ruff = {}, -- python formatting that works with basedpyright
-				rust_analyzer = {}, -- rust
-				gopls = {
-					settings = {
-						-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-						gopls = {
-							gofumpt = true,
-							-- https://github.com/golang/tools/blob/master/gopls/doc/codelenses.md
-							codelenses = {
-								gc_details = false,
-								generate = true,
-								regenerate_cgo = true,
-								-- run_govulncheck = true,
-								test = true,
-								tidy = true,
-								upgrade_dependency = true,
-								vendor = true,
-							},
-							-- https://github.com/golang/tools/blob/master/gopls/doc/inlayHints.md
-							hints = {
-								assignVariableTypes = true,
-								compositeLiteralFields = true,
-								compositeLiteralTypes = true,
-								constantValues = true,
-								functionTypeParameters = true,
-								parameterNames = true,
-								rangeVariableTypes = true,
-							},
-							-- https://github.com/golang/tools/blob/master/gopls/doc/analyzers.md
-							-- analyses = {},
-							usePlaceholders = true,
-							-- staticcheck = true,
-							directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-							semanticTokens = true,
-						},
-					},
-				}, -- golang
-				sourcekit = {}, -- swift
-				clangd = {}, -- c and c++ after sourcekit so sourcekit is used if available
-				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {
-					--- @type lsp.ClientCapabilities
-					capabilities = {
-						textDocument = {
-							formatting = nil,
-						},
-					},
-					init_options = {
-						plugins = { -- I think this was my breakthrough that made it work
-							{
-								name = "@vue/typescript-plugin",
-								location = "/usr/local/lib/node_modules/@vue/language-server",
-								languages = { "vue" },
-							},
-						},
-					},
-					on_new_config = function(new_config, new_root_dir)
-						local lib_path =
-							vim.fs.find("node_modules/@vue/language-server", { path = new_root_dir, upward = true })[1]
-						if lib_path then
-							new_config.init_options.plugins[0].location = lib_path
-						end
-					end,
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
-				},
-				volar = {
-					-- add filetypes for typescript, javascript and vue
-					filetypes = { "vue" },
-					init_options = {
-						vue = {
-							-- disable hybrid mode
-							hybridMode = false,
-						},
-						typescript = {
-							-- replace with your global TypeScript library path
-							tsdk = "/usr/local/lib/node_modules/typescript/lib",
-						},
-					},
-					-- find a local one if not use a global if you cannot fine one
-					on_new_config = function(new_config, new_root_dir)
-						local lib_path =
-							vim.fs.find("node_modules/typescript/lib", { path = new_root_dir, upward = true })[1]
-						if lib_path then
-							new_config.init_options.typescript.tsdk = lib_path
-						end
-					end,
-				},
-				lua_ls = {
-					-- cmd = {...},
-					-- filetypes = { ...},
-					-- capabilities = {},
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
-				-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vale_ls
-				vale_ls = {},
-				-- https://writewithharper.com/docs/integrations/neovim
-				harper_ls = {},
+				-- "pyright",
+				"basedpyright",
+				"ruff",
+				"rust_analyzer",
+				"gopls",
+				"sourcekit",
+				"clangd",
+				"ts_ls",
+				"volar",
+				"lua_ls",
+				-- "vale_ls",
+				"harper_ls",
 			}
-
 			-- NOTE: `mason-lspconfig` must be setup before servers are configured
 			require("mason-lspconfig").setup({
 				-- ensure_installed = vim.tbl_keys(servers or {}),
 				ensure_installed = {
+					-- "pyright",
+					"basedpyright",
 					"ruff",
+					"rust_analyzer",
+					"gopls",
+					"ts_ls",
+					"volar",
+					"lua_ls",
+					"harper_ls",
 				},
-				automatic_installation = {
-					exclude = {
-						"clangd",
-						"solargraph",
-						"sourcekit",
-					},
-				},
+				automatic_installation = false,
+				-- automatic_installation = {
+				-- 	exclude = {
+				-- 		"clangd",
+				-- 		"solargraph",
+				-- 		"sourcekit",
+				-- 	},
+				-- },
 			})
 
-			-- Must be setup after ``mason-lspconfig``. Doing this with
-			-- {@link MasonLspconfigSettings.ensure_installed} and
-			-- {@link MasonLspconfigSettings.automatic_installation} excluding
-			-- server keys that are not in mason-lspconfig
-			local lspconfig = require("lspconfig")
-			for server_name, config in pairs(servers) do
-				-- This handles overriding only values explicitly passed
-				-- by the server configuration above. Useful when disabling
-				-- certain features of an LSP (for example, turning off formatting for ts_ls)
-				config.capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {})
-				lspconfig[server_name].setup(config)
+			for _, server in ipairs(servers) do
+				vim.lsp.enable(server)
 			end
 		end,
 	},
