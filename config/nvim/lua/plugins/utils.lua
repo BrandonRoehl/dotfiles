@@ -8,7 +8,7 @@ return {
 		opts = {},
 		config = function(_, opts)
 			require("fidget").setup(opts)
-			require("plugins.codecompanion.fidget-spinner"):init()
+			require("codecompanion.fidget-spinner"):init()
 		end,
 	},
 	{
