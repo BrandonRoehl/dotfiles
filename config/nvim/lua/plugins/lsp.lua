@@ -39,25 +39,12 @@ return {
 			"harper_ls",
 		},
 		---@type string[]
-		-- Servers to install with mason on startup
-		ensure_installed = {
-			-- "pyright",
-			"basedpyright",
-			"ruff",
-			"rust_analyzer",
-			"gopls",
-			"ts_ls",
-			"volar",
-			"lua_ls",
-			"harper_ls",
+		-- Servers to skip installing with mason
+		exclude = {
+			"clangd",
+			"solargraph",
+			"sourcekit",
 		},
-		-- automatic_installation = {
-		-- 	exclude = {
-		-- 		"clangd",
-		-- 		"solargraph",
-		-- 		"sourcekit",
-		-- 	},
-		-- },
 	},
 	config = function(_, opts)
 		-- Brief aside: **What is LSP?**
@@ -264,9 +251,12 @@ return {
 			),
 		})
 
+		local ensure_installed = vim.tbl_filter(function(server)
+			vim.tbl_contains(opts.exclude, server)
+		end, opts.servers)
+
 		require("mason-lspconfig").setup({
-			-- ensure_installed = vim.tbl_keys(servers or {}),
-			ensure_installed = opts.ensure_installed,
+			ensure_installed = ensure_installed,
 			automatic_installation = false,
 		})
 
