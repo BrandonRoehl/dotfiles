@@ -2,7 +2,6 @@
 return {
 	{
 		"github/copilot.vim",
-		version = "*",
 		cmd = "Copilot",
 		-- build = "<cmd>Copilot setup<cr>",
 		event = "BufWinEnter",
@@ -35,7 +34,6 @@ return {
 	},
 	{
 		"olimorris/codecompanion.nvim",
-		version = "*",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",

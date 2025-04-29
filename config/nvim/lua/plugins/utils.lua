@@ -3,7 +3,6 @@ return {
 	-- Notifications provider
 	{
 		"j-hui/fidget.nvim",
-		version = "*",
 		lazy = true,
 		opts = {},
 		config = function(_, opts)
@@ -34,7 +33,6 @@ return {
 	{
 		"brenoprata10/nvim-highlight-colors",
 		event = "VeryLazy",
-		version = "*",
 		opts = {
 			render = "virtual",
 		},

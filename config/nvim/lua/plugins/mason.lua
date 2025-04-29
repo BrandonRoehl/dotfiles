@@ -11,7 +11,6 @@ return {
 	--- @type LazyPluginSpec
 	{ -- Mason general setup
 		"williamboman/mason.nvim",
-		version = "*",
 		config = true,
 		lazy = true,
 		build = ":MasonUpdate",

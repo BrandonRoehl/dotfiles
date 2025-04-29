@@ -3,7 +3,6 @@ return {
 	--- @type LazyPluginSpec
 	{
 		"nvim-lualine/lualine.nvim",
-		version = "*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"folke/snacks.nvim",

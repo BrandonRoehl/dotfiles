@@ -12,10 +12,12 @@ return {
 		-- and now a fork of hop since the original is not being maintained
 		"smoka7/hop.nvim",
 		lazy = true,
+		-- Install the latest git commit instead of last release
+		verstion = false,
 		opts = {
 			keys = "etovxqpdygfblzhckisuran",
 		},
-		-- setting the keybinding for when to load it
+		-- Setting the keybinding for when to load it
 		keys = {
 			-- The easy motion binds
 			{ "<leader><leader>s", "<cmd>HopChar1<cr>", desc = "Search character" },
@@ -25,19 +27,19 @@ return {
 			{ "<leader><leader>T", "<cmd>HopChar1CurrentLineBC<cr>", desc = "Til character backwards" },
 			{ "<leader><leader>w", "<cmd>HopWordAC<cr>", desc = "Start of word forwards" },
 			{ "<leader><leader>b", "<cmd>HopWordBC<cr>", desc = "Start of word backwards" },
-			-- <leader><leader> l	Matches beginning & ending of word, camelCase, after _, and after # forwards
+			-- <leader><leader> l Matches beginning & ending of word, camelCase, after _, and after # forwards
 			{ "<leader><leader>l", "<cmd>HopAnywhereAC<cr>", desc = "Hop forward" },
-			-- <leader><leader> h	Matches beginning & ending of word, camelCase, after _, and after # backwards
+			-- <leader><leader> h Matches beginning & ending of word, camelCase, after _, and after # backwards
 			{ "<leader><leader>h", "<cmd>HopAnywhereBC<cr>", desc = "Hop backwards" },
-			-- <leader><leader> e	End of word forwards
-			-- <leader><leader> ge	End of word backwards
+			-- <leader><leader> e End of word forwards
+			-- <leader><leader> ge End of word backwards
 			{ "<leader><leader>j", "<cmd>HopLineStartAC<cr>", desc = "Start of line forwards" },
 			{ "<leader><leader>k", "<cmd>HopLineStartBC<cr>", desc = "Start of line backwards" },
 			{ "<leader><leader>/", "<cmd>HopPattern<cr>", desc = "Search n-character" },
-			-- <leader><leader><leader> bdt	Til character
-			-- <leader><leader><leader> bdw	Start of word
-			-- <leader><leader><leader> bde	End of word
-			-- <leader><leader><leader> bdjk	Start of line
+			-- <leader><leader><leader> bdt Til character
+			-- <leader><leader><leader> bdw Start of word
+			-- <leader><leader><leader> bde End of word
+			-- <leader><leader><leader> bdjk Start of line
 			{ "<leader><leader><leader>j", "<cmd>HopAnywhere<cr>", desc = "JumpToAnywhere motion" },
 
 			-- Custom stuff I have added
