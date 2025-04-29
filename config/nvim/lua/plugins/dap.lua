@@ -1,5 +1,6 @@
 -- DAP Plugins
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
 	--- @type LazyPluginSpec
 	{

@@ -1,7 +1,8 @@
 -- Format
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
-	--- @type LazyPluginSpec
+	---@type LazyPluginSpec
 	{ -- Autoformat
 		"stevearc/conform.nvim",
 		dependencies = {

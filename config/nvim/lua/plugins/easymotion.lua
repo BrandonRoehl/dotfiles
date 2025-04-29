@@ -1,4 +1,5 @@
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
 	-- { -- Easymotion you know why you are here
 	-- 	"easymotion/vim-easymotion",

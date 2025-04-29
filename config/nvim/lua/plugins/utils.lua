@@ -1,4 +1,5 @@
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
 	-- Notifications provider
 	{
@@ -35,6 +36,29 @@ return {
 		event = "VeryLazy",
 		opts = {
 			render = "virtual",
+		},
+	},
+	-- Ensure the servers and tools above are installed
+	--  To check the current status of installed tools and/or manually install
+	--  other tools, you can run
+	--    :Mason
+	--
+	--  You can press `g?` for help in this menu.
+	-- require("mason").setup()
+	--- @type LazyPluginSpec
+	{
+		"williamboman/mason.nvim",
+		config = true,
+		lazy = true,
+		build = ":MasonUpdate",
+		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate" },
+		--- @module 'mason'
+		--- @class MasonSettings
+		opts = {
+			ui = {
+				border = vim.g.border,
+				-- icons = {},
+			},
 		},
 	},
 	-- Detect tabstop and shiftwidth automatically

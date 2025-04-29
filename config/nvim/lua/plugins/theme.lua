@@ -1,6 +1,7 @@
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
-	--- @type LazyPluginSpec
+	---@type LazyPluginSpec
 	{
 		-- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
@@ -12,8 +13,8 @@ return {
 		lazy = false,
 		version = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		--- @module 'tokyonight'
-		--- @type tokyonight.Config
+		---@module 'tokyonight'
+		---@type tokyonight.Config
 		opts = {
 			style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
 			light_style = "day", -- The theme is used when the background is set to light
@@ -43,8 +44,8 @@ return {
 		lazy = false,
 		version = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
-		--- @module 'kanagawa'
-		--- @type KanagawaConfig
+		---@module 'kanagawa'
+		---@type KanagawaConfig
 		opts = {
 			compile = false, -- enable compiling the colorscheme
 			undercurl = true, -- enable undercurls
@@ -100,15 +101,15 @@ return {
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
-	--- @type LazyPluginSpec
+	---@type LazyPluginSpec
 	{
 		"catppuccin/nvim",
 		enabled = false,
 		lazy = false,
 		version = false,
 		priority = 1000,
-		--- @module 'catppuccin'
-		--- @type CatppuccinOptions
+		---@module 'catppuccin'
+		---@type CatppuccinOptions
 		opts = {
 			flavour = "auto",
 			background = {
@@ -177,7 +178,7 @@ return {
 			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	--- @type LazyPluginSpec
+	---@type LazyPluginSpec
 	{
 		"projekt0n/github-nvim-theme",
 		name = "github-theme",

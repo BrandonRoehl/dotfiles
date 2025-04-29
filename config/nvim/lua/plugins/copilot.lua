@@ -1,4 +1,5 @@
---- @return LazyPluginSpec[]
+---@module "lazy"
+---@return LazyPluginSpec[]
 return {
 	{
 		"github/copilot.vim",
