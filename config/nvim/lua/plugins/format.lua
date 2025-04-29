@@ -3,23 +3,21 @@
 ---@return LazyPluginSpec[]
 return {
 	---@type LazyPluginSpec
-	{ -- Autoformat
+	{
 		"stevearc/conform.nvim",
 		dependencies = {
-			{ "williamboman/mason.nvim" }, -- NOTE: Must be added on the top level
-			{
-				"WhoIsSethDaniel/mason-tool-installer.nvim",
-				enabled = false,
-				opts = {
-					-- Tools to auto install and instead use from the env
-					ensure_installed = {
-						"stylua", -- Used to format Lua code
-						-- "black", -- Used to format Python code
-						-- "isort", -- Used to sort Python imports
-						"rustfmt", -- Used to format Rust code
-						-- "eslint", -- Used to lint JavaScript and TypeScript
-						-- "prettier", -- Used to format JavaScript and TypeScript
-					},
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			enabled = false,
+			dependencies = "mason.nvim",
+			opts = {
+				-- Tools to auto install and instead use from the env
+				ensure_installed = {
+					"stylua", -- Used to format Lua code
+					-- "black", -- Used to format Python code
+					-- "isort", -- Used to sort Python imports
+					"rustfmt", -- Used to format Rust code
+					-- "eslint", -- Used to lint JavaScript and TypeScript
+					-- "prettier", -- Used to format JavaScript and TypeScript
 				},
 			},
 		},

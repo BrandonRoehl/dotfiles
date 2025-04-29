@@ -5,13 +5,11 @@ return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	lazy = true,
-	-- event = "BufWinEnter", "BufReadPost"
 	event = { "BufRead", "BufNewFile", "VeryLazy" },
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
-		"williamboman/mason.nvim", -- NOTE: Must be added on the top level
-		"williamboman/mason-lspconfig.nvim",
+		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
 
 		-- Useful status updates for LSP.
 		"j-hui/fidget.nvim",
