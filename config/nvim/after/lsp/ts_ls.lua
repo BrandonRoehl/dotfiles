@@ -1,10 +1,8 @@
-local function get_vue_path(root_dir)
+local function get_vue_path(root_dir, default)
 	local project_root = vim.fs.dirname(vim.fs.find("node_modules", { path = root_dir, upward = true })[1])
-	local vuels = project_root and vim.fs.joinpath(project_root, "node_modules", "@vue", "language-server") or ""
-	-- Add this as the default and check if it exists
-	-- vim.uv.fs_stat(vuels)
-	-- /usr/local/lib/node_modules/@vue/language-server
-	return vuels
+	local vuels = project_root and vim.fs.joinpath(project_root, "node_modules", "@vue", "language-server") or default
+	-- Return the value if it exists else empty string
+	return vim.uv.fs_stat(vuels) and vuels or ""
 end
 
 local vue_plugin = {
@@ -29,7 +27,7 @@ return {
 			return
 		end
 
-		local lib_path = get_vue_path(config.root_dir)
+		local lib_path = get_vue_path(config.root_dir, "/usr/local/lib/node_modules/@vue/language-server")
 		-- Maybe add an exists check here
 		if lib_path then
 			vue_plugin.location = lib_path

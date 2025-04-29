@@ -1,10 +1,8 @@
--- Will have to test why this was using a local var in their implementation
--- https://github.com/vuejs/language-tools/blob/master/packages/language-server/lib/types.ts
--- local volar_init_options = {}
-
-local function get_typescript_server_path(root_dir)
+local function get_typescript_server_path(root_dir, default)
 	local project_root = vim.fs.dirname(vim.fs.find("node_modules", { path = root_dir, upward = true })[1])
-	return project_root and vim.fs.joinpath(project_root, "node_modules", "typescript", "lib") or ""
+	local tsdk = project_root and vim.fs.joinpath(project_root, "node_modules", "typescript", "lib") or default
+	-- Return the value if it exists else empty string
+	return vim.uv.fs_stat(tsdk) and tsdk or ""
 end
 
 return {
@@ -27,11 +25,7 @@ return {
 			return
 		end
 
-		local tsdk = get_typescript_server_path(config.root_dir)
-		if not tsdk then
-			-- Replace with your global TypeScript library path
-			tsdk = "/usr/local/lib/node_modules/typescript/lib"
-		end
-		config.init_options.typescript.tsdk = tsdk
+		config.init_options.typescript.tsdk =
+			get_typescript_server_path(config.root_dir, "/usr/local/lib/node_modules/typescript/lib")
 	end,
 }
