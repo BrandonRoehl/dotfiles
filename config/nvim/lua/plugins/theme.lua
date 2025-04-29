@@ -10,6 +10,7 @@ return {
 		"folke/tokyonight.nvim",
 		enabled = true,
 		lazy = false,
+		version = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		--- @module 'tokyonight'
 		--- @type tokyonight.Config
@@ -40,6 +41,7 @@ return {
 		"rebelot/kanagawa.nvim",
 		enabled = false,
 		lazy = false,
+		version = false,
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		--- @module 'kanagawa'
 		--- @type KanagawaConfig
@@ -103,6 +105,7 @@ return {
 		"catppuccin/nvim",
 		enabled = false,
 		lazy = false,
+		version = false,
 		priority = 1000,
 		--- @module 'catppuccin'
 		--- @type CatppuccinOptions
