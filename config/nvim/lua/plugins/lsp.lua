@@ -37,6 +37,7 @@ return {
 			"lua_ls",
 			-- "vale_ls",
 			"harper_ls",
+			"gdscript",
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
@@ -45,6 +46,7 @@ return {
 			"solargraph",
 			"sourcekit",
 			"rust_analyzer",
+			"gdscript",
 		},
 	},
 	config = function(_, opts)
