@@ -239,10 +239,19 @@ return {
 		end
 		vim.diagnostic.config(diag_opts)
 
+		-- Mark what needs to be installed with Mason
+		local ensure_installed = vim.tbl_filter(function(server)
+			return not vim.tbl_contains(opts.exclude, server)
+		end, opts.servers)
+		require("mason-lspconfig").setup({
+			ensure_installed = ensure_installed,
+			automatic_installation = false,
+		})
+
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		-- By default, Neovim doesn't support everything that is in the LSP specification.
-		-- When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-		-- So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+		-- When you add blink-cmp, luasnip, etc. Neovim now has *more* capabilities.
+		-- So, we create new capabilities with blink cmp, and then broadcast that to the servers.
 		vim.lsp.config("*", {
 			--- @type lsp.ClientCapabilities
 			capabilities = vim.tbl_extend(
@@ -251,18 +260,6 @@ return {
 				require("blink.cmp").get_lsp_capabilities()
 			),
 		})
-
-		local ensure_installed = vim.tbl_filter(function(server)
-			return not vim.tbl_contains(opts.exclude, server)
-		end, opts.servers)
-
-		require("mason-lspconfig").setup({
-			ensure_installed = ensure_installed,
-			automatic_installation = false,
-		})
-
-		for _, server in ipairs(opts.servers) do
-			vim.lsp.enable(server)
-		end
+		vim.lsp.enable(opts.servers)
 	end,
 }
