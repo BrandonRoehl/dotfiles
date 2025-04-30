@@ -252,7 +252,7 @@ return {
 		})
 
 		local ensure_installed = vim.tbl_filter(function(server)
-			vim.tbl_contains(opts.exclude, server)
+			return not vim.tbl_contains(opts.exclude, server)
 		end, opts.servers)
 
 		require("mason-lspconfig").setup({
