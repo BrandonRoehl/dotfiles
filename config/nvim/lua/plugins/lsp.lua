@@ -44,6 +44,7 @@ return {
 			"clangd",
 			"solargraph",
 			"sourcekit",
+			"rust_analyzer",
 		},
 	},
 	config = function(_, opts)
