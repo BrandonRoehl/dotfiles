@@ -38,8 +38,20 @@ vim.opt.signcolumn = "yes"
 -- Color columns
 vim.opt.colorcolumn = "81,121"
 
--- Decrease update time
+-- If this many milliseconds nothing is typed the swap file will be
+-- written to disk (see |crash-recovery|). Also used for the
+-- |CursorHold| autocommand event.
 vim.opt.updatetime = 250
+
+-- Disable swapfile for JamfProtect cause it causes lag cause we cannot handle
+-- file events. So no recovery and no quick switching. Also no multiple
+-- instances in the same file otherwise you are going to have a bad time.
+if vim.uv.fs_stat("/Applications/JamfProtect.app/") then
+	vim.opt.swapfile = false
+	-- Characters typed to schedule a swap file write
+	-- 0 will disable the swap file feature even if the other flag is flipped
+	vim.opt.updatecount = 0
+end
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
