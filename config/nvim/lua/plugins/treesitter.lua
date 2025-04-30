@@ -92,6 +92,7 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		version = false,
 		event = "VeryLazy",
 		lazy = true,
 		config = function()
@@ -116,5 +117,24 @@ return {
 				end
 			end
 		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		version = false,
+		event = "VeryLazy",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		-- opts = {},
+		commands = { "TSContextToggle", "TSContextEnable", "TSContextDisable" },
+		-- keys = {
+		-- 	{
+		-- 		"[c",
+		-- 		function()
+		-- 			require("treesitter-context").go_to_context()
+		-- 		end,
+		-- 		mode = "n",
+		-- 		silent = true,
+		-- 		desc = "Disable Context",
+		-- 	},
+		-- },
 	},
 }
