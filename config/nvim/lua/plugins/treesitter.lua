@@ -123,7 +123,14 @@ return {
 		version = false,
 		event = "VeryLazy",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		-- opts = {},
+		--- @type TSContext.UserConfig
+		opts = {
+			line_numbers = true,
+			trim_scope = "outer",
+			mode = "topline",
+			-- https://neovim.io/doc/user/lua.html#vim.opt%3Aget()
+			max_lines = vim.opt.scrolloff:get(),
+		},
 		commands = { "TSContextToggle", "TSContextEnable", "TSContextDisable" },
 		-- keys = {
 		-- 	{
