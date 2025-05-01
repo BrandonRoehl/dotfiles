@@ -93,7 +93,7 @@ return {
 				---@param mode? string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
 				local function map(keys, func, opts, mode)
 					mode = mode or "n"
-					opts = vim.tbl_deep_extend("keep", opts, { buffer = event.buf })
+					opts.buffer = event.buf
 					vim.keymap.set(mode, keys, func, opts)
 				end
 
