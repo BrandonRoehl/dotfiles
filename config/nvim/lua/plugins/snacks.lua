@@ -28,6 +28,8 @@ return {
 		},
 		picker = {
 			enabled = true,
+			hidden = true,
+			ignored = true,
 			sources = {
 				explorer = {
 					win = {
