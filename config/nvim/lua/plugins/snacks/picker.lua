@@ -11,10 +11,14 @@ return {
 		},
 		picker = {
 			enabled = true,
-			hidden = true,
-			ignored = true,
 			sources = {
+				files = {
+					hidden = true,
+					ignored = true,
+				},
 				explorer = {
+					hidden = true,
+					ignored = true,
 					win = {
 						list = {
 							keys = {
