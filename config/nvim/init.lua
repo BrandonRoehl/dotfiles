@@ -48,7 +48,7 @@ require("lazy").setup({
 		---@type string[] plugins that match these patterns will use your local versions instead of being fetched from GitHub
 		patterns = { "BrandonRoehl" },
 		-- Fallback to git when local plugin doesn't exist
-		fallback = true,
+		fallback = false,
 	},
 	install = {
 		-- install missing plugins on startup. This doesn't increase startup time.
