@@ -130,6 +130,7 @@ return {
 			mode = "topline",
 			-- https://neovim.io/doc/user/lua.html#vim.opt%3Aget()
 			max_lines = vim.opt.scrolloff:get(),
+			multiwindow = true,
 		},
 		commands = { "TSContextToggle", "TSContextEnable", "TSContextDisable" },
 		-- keys = {
