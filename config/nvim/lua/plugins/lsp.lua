@@ -155,22 +155,6 @@ return {
 					})
 				end
 
-				-- The following auto commands trigger the diagnostics for what you are hovering
-				vim.api.nvim_create_autocmd("CursorHold", {
-					buffer = event.buf,
-					callback = function()
-						-- Check if there are any visible floating windows already
-						-- for _, win in ipairs(vim.api.nvim_list_wins()) do
-						-- 	if vim.api.nvim_win_get_config(win).relative ~= "" then
-						-- 		-- A float exists, don't create another one
-						-- 		return
-						-- 	end
-						-- end
-
-						vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
-					end,
-				})
-
 				-- The following code creates a keymap to toggle inlay hints in your
 				-- code, if the language server you are using supports them
 				--

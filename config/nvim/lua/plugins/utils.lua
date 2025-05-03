@@ -14,7 +14,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim" },
 		opts = {
 			signs = vim.g.have_nerd_font,
 			keywords = {
@@ -27,6 +27,22 @@ return {
 				TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
 			},
 		},
+		-- keys = {
+		-- 	{
+		-- 		"<leader>st",
+		-- 		function()
+		-- 			Snacks.picker.todo_comments()
+		-- 		end,
+		-- 		desc = "Todo",
+		-- 	},
+		-- 	{
+		-- 		"<leader>sT",
+		-- 		function()
+		-- 			Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+		-- 		end,
+		-- 		desc = "Todo/Fix/Fixme",
+		-- 	},
+		-- },
 	},
 	-- Block highlights text detected as colors e.g. #ffffff
 	-- Come back to this when this is added for real
