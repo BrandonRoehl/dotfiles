@@ -2,5 +2,7 @@ return {
 	"BrandonRoehl/action-aura.nvim",
 	lazy = false,
 	version = false,
-	opts = {},
+	opts = {
+		border = "rounded",
+	},
 }
