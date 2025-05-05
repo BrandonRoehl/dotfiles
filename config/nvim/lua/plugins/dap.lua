@@ -5,6 +5,7 @@ return {
 	--- @type LazyPluginSpec
 	{
 		"mfussenegger/nvim-dap",
+		version = false,
 		recommended = true,
 		desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 		dependencies = {
@@ -12,16 +13,21 @@ return {
 			-- virtual text for the debugger
 			{
 				"theHamsta/nvim-dap-virtual-text",
+				version = false,
 				opts = {},
 			},
 			{
 				"jay-babu/mason-nvim-dap.nvim",
+				version = false,
 				dependencies = "mason.nvim",
 				cmd = { "DapInstall", "DapUninstall" },
 				-- mason-nvim-dap is loaded when nvim-dap loads
 				config = true,
 			},
-			{ "leoluz/nvim-dap-go", config = true },
+			-- Golang
+			{ "leoluz/nvim-dap-go", config = true, version = false },
+			-- Python
+			{ "mfussenegger/nvim-dap-python", version = false },
 		},
 		-- stylua: ignore
 		keys = {
@@ -42,6 +48,9 @@ return {
 			{ "<leader>ds", function() require("dap").session() end, desc = "Session" },
 			{ "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
 			{ "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+			-- Python ones
+			{ "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+			{ "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
 		},
 		config = function()
 			-- load mason-nvim-dap here, after all adapters have been setup
@@ -98,18 +107,6 @@ return {
 				return vim.json.decode(json.json_strip_comments(str))
 			end
 
-			dap.configurations.python = {
-				{
-					type = "python",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					pythonPath = function()
-						return "/usr/bin/python"
-					end,
-				},
-			}
-
 			-- Install golang specific config
 			require("dap-go").setup({
 				delve = {
@@ -118,11 +115,15 @@ return {
 					detached = vim.fn.has("win32") == 0,
 				},
 			})
+
+			-- Python specific config
+			require("dap-python").setup("python3")
 		end,
 	},
-	--- @type LazyPluginSpec
+	-- @type LazyPluginSpec
 	{
 		"rcarriga/nvim-dap-ui",
+		version = false,
 		dependencies = { "nvim-neotest/nvim-nio" },
 		-- stylua: ignore
 		keys = {
