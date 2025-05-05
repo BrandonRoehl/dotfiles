@@ -21,3 +21,6 @@ require("config.keymaps")
 
 -- Load custom autocommands for the base of neovim
 require("config.autocmds")
+
+-- Load custom helpers
+require("config.utils")

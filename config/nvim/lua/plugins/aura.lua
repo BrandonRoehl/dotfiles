@@ -2,7 +2,7 @@ return {
 	"BrandonRoehl/action-aura.nvim",
 	lazy = false,
 	version = false,
-	enabled = false,
+	enabled = Utils:is_computer("⚡️"),
 	opts = {
 		border = "rounded",
 	},
