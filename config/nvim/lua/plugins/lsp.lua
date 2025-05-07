@@ -38,6 +38,7 @@ return {
 			-- "vale_ls",
 			"harper_ls",
 			"gdscript",
+			"graphql",
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
@@ -45,7 +46,7 @@ return {
 			"clangd",
 			"solargraph",
 			"sourcekit",
-			"rust_analyzer",
+			-- "rust_analyzer",
 			"gdscript",
 		},
 	},
