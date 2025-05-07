@@ -39,6 +39,7 @@ return {
 			"harper_ls",
 			"gdscript",
 			"graphql",
+			"texlab",
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
