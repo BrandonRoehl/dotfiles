@@ -23,8 +23,6 @@ return {
 				-- mason-nvim-dap is loaded when nvim-dap loads
 				config = true,
 			},
-			-- Golang
-			{ "leoluz/nvim-dap-go", config = true, version = false },
 		},
 		-- stylua: ignore
 		keys = {
@@ -101,7 +99,16 @@ return {
 			vscode.json_decode = function(str)
 				return vim.json.decode(json.json_strip_comments(str))
 			end
-
+		end,
+	},
+	-- Golang dap
+	{
+		"mfussenegger/nvim-dap",
+		enabled = true,
+		dependencies = {
+			{ "leoluz/nvim-dap-go", config = true, version = false },
+		},
+		config = function()
 			-- Install golang specific config
 			require("dap-go").setup({
 				delve = {
@@ -112,11 +119,11 @@ return {
 			})
 		end,
 	},
+	-- Python dap
 	{
 		"mfussenegger/nvim-dap",
-		enabled = Utils:is_computer("🔥"),
+		enabled = false,
 		dependencies = {
-			-- Python
 			{ "mfussenegger/nvim-dap-python", version = false },
 		},
 		-- stylua: ignore
