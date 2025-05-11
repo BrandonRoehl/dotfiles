@@ -43,13 +43,20 @@ return {
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
-		exclude = {
+		exclude = vim.fn.has("win32") == 0 and {
 			"clangd",
 			"solargraph",
 			"sourcekit",
 			-- "rust_analyzer",
 			"gdscript",
-		},
+		} or {
+			"clangd",
+			"solargraph",
+			"sourcekit",
+			"rust_analyzer",
+			"gdscript",
+			"gopls",
+		}
 	},
 	config = function(_, opts)
 		-- Brief aside: **What is LSP?**
