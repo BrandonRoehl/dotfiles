@@ -63,7 +63,7 @@ return {
 	-- require("mason").setup()
 	--- @type LazyPluginSpec
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		config = true,
 		lazy = true,
 		build = ":MasonUpdate",

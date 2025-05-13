@@ -9,8 +9,7 @@ return {
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
-		{ "williamboman/mason-lspconfig.nvim", dependencies = "mason.nvim" },
-
+		{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
 		-- Useful status updates for LSP.
 		"j-hui/fidget.nvim",
 
@@ -43,20 +42,22 @@ return {
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
-		exclude = vim.fn.has("win32") == 0 and {
-			"clangd",
-			"solargraph",
-			"sourcekit",
-			-- "rust_analyzer",
-			"gdscript",
-		} or {
-			"clangd",
-			"solargraph",
-			"sourcekit",
-			"rust_analyzer",
-			"gdscript",
-			"gopls",
-		}
+		exclude = vim.fn.has("win32") == 0
+				and {
+					"clangd",
+					"solargraph",
+					"sourcekit",
+					-- "rust_analyzer",
+					"gdscript",
+				}
+			or {
+				"clangd",
+				"solargraph",
+				"sourcekit",
+				"rust_analyzer",
+				"gdscript",
+				"gopls",
+			},
 	},
 	config = function(_, opts)
 		-- Brief aside: **What is LSP?**
@@ -254,10 +255,13 @@ return {
 		local ensure_installed = vim.tbl_filter(function(server)
 			return not vim.tbl_contains(opts.exclude, server)
 		end, opts.servers)
-		require("mason-lspconfig").setup({
-			ensure_installed = ensure_installed,
-			automatic_installation = false,
-		})
+		require("mason-lspconfig").setup(
+			---@type MasonLspconfigSettings
+			{
+				ensure_installed = ensure_installed,
+				automatic_enable = false,
+			}
+		)
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		-- By default, Neovim doesn't support everything that is in the LSP specification.
