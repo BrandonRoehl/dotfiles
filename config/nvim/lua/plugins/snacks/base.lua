@@ -1,7 +1,7 @@
 ---@module "lazy"
 ---@type LazyPluginSpec
 return {
-	"folke/snacks.nvim",
+	"snacks.nvim",
 	--- @module 'snacks'
 	--- @type snacks.Config
 	opts = {
