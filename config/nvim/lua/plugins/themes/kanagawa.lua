@@ -2,7 +2,7 @@
 ---@return LazyPluginSpec
 return {
 	"rebelot/kanagawa.nvim",
-	enabled = false,
+	enabled = true,
 	lazy = false,
 	version = false,
 	priority = 1000, -- Make sure to load this before all the other start plugins.
@@ -53,7 +53,7 @@ return {
 
 			return opts
 		end,
-		theme = "dragon", -- Load "wave" theme
+		-- theme = "wave", -- Load "wave" theme
 		background = { -- map the value of 'background' option to a theme
 			dark = "dragon", -- try "dragon" !
 			light = "lotus",

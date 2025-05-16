@@ -2,7 +2,7 @@
 ---@return LazyPluginSpec
 return {
 	"catppuccin/nvim",
-	enabled = false,
+	enabled = true,
 	lazy = false,
 	version = false,
 	priority = 1000,
