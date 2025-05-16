@@ -46,7 +46,6 @@ return {
 			"clangd",
 			"solargraph",
 			"sourcekit",
-			"rust_analyzer",
 			"gdscript",
 		} or {
 			"clangd",
