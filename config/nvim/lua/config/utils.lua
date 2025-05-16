@@ -14,7 +14,7 @@ function M:is_computer(...)
 	if #names == 0 then
 		names = { vim.fn.hostname() }
 		-- On macOS, get the computer name instead of just the hostname
-		if vim.fn.has("macunix") then
+		if vim.loop.os_uname().sysname == "Darwin" then
 			local obj = vim.system({ "scutil", "--get", "ComputerName" }, { text = true }):wait()
 			if obj.code == 0 then
 				local out, _ = string.gsub(obj.stdout, "\n$", "")
