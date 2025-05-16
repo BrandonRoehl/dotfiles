@@ -7,6 +7,14 @@ local M = {}
 local names = {}
 setmetatable(names, { __mode = "kv" })
 
+function M:is_win()
+	return jit.os:find("Windows")
+end
+
+function M:is_mac()
+	return jit.os:find("OSX")
+end
+
 ---@param ... string computer name if found else hostname
 ---@return boolean true if the computer name matches
 function M:is_computer(...)
@@ -14,7 +22,7 @@ function M:is_computer(...)
 	if #names == 0 then
 		names = { vim.fn.hostname() }
 		-- On macOS, get the computer name instead of just the hostname
-		if jit.os:find("OSX") then
+		if M:is_mac() then
 			local obj = vim.system({ "scutil", "--get", "ComputerName" }, { text = true }):wait()
 			if obj.code == 0 then
 				local out, _ = string.gsub(obj.stdout, "\n$", "")

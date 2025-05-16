@@ -42,18 +42,18 @@ return {
 		},
 		---@type string[]
 		-- Servers to skip installing with mason
-		exclude = vim.fn.has("win32") == 0 and {
-			"clangd",
-			"solargraph",
-			"sourcekit",
-			"gdscript",
-		} or {
+		exclude = Utils:is_win() and {
 			"clangd",
 			"solargraph",
 			"sourcekit",
 			"rust_analyzer",
 			"gdscript",
 			"gopls",
+		} or {
+			"clangd",
+			"solargraph",
+			"sourcekit",
+			"gdscript",
 		},
 	},
 	config = function(_, opts)
