@@ -6,6 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/snacks.nvim",
 	},
+	lazy = true,
 	event = "VeryLazy",
 	init = function()
 		vim.g.lualine_laststatus = vim.o.laststatus
