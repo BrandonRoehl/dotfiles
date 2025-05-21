@@ -1,7 +1,7 @@
 ---@module "lazy"
 ---@type LazyPluginSpec
 return {
-	"nvim-dap",
+	"mfussenegger/nvim-dap",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		-- virtual text for the debugger
@@ -13,7 +13,7 @@ return {
 		{
 			"jay-babu/mason-nvim-dap.nvim",
 			version = false,
-			dependencies = "mason.nvim",
+			dependencies = "mason-org/mason.nvim",
 			cmd = { "DapInstall", "DapUninstall" },
 			-- mason-nvim-dap is loaded when nvim-dap loads
 			config = true,

@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		enabled = false,
-		dependencies = "mason.nvim",
+		dependencies = "mason-org/mason.nvim",
 		opts = {
 			-- Tools to auto install and instead use from the env
 			ensure_installed = {

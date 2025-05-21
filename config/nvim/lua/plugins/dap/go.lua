@@ -2,7 +2,7 @@
 ---@module "lazy"
 ---@return LazyPluginSpec
 return {
-	"nvim-dap",
+	"mfussenegger/nvim-dap",
 	enabled = true,
 	dependencies = {
 		{ "leoluz/nvim-dap-go", config = true, version = false, lazy = true },

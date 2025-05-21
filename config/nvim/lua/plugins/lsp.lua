@@ -9,7 +9,7 @@ return {
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
-		{ "mason-org/mason-lspconfig.nvim", dependencies = "mason.nvim" },
+		{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
 		-- Useful status updates for LSP.
 		"j-hui/fidget.nvim",
 
