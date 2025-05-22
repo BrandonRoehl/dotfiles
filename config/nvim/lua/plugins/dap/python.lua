@@ -11,7 +11,7 @@ return {
 		{ "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
 		{ "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
 	},
-	config = function()
+	opts = function(_, opt)
 		-- Python specific config
 		require("dap-python").setup("python3")
 	end,

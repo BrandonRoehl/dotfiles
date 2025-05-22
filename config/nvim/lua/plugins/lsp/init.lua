@@ -36,5 +36,75 @@ return {
 	dependencies = {
 		-- Useful status updates for LSP.
 		"j-hui/fidget.nvim",
+
+		-- Automatically install LSPs and related tools to stdpath for Neovim
+		{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
+
+		-- Allows extra capabilities provided by blink
+		"saghen/blink.cmp",
 	},
+	config = function(_, opts)
+		-- if nerd_font override
+		if vim.g.have_nerd_font then
+			for key, sign in pairs({
+				[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+				[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+				[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+				[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+			}) do
+				vim.fn.sign_define(sign, {
+					text = opts.diagnostics.signs.text[key],
+					texthl = opts.diagnostics.signs.numhl[key],
+				})
+			end
+		end
+
+		if vim.g.border then
+			-- To override globally the opts if none are provided
+			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = opts.border or vim.g.border
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
+			end
+		end
+
+		vim.diagnostic.config(opts.diagnostics)
+
+		--  This function gets run when an LSP attaches to a particular buffer.
+		--    That is to say, every time a new file is opened that is associated with
+		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
+		--    function will be executed to configure the current buffer
+		vim.api.nvim_create_autocmd("LspAttach", {
+			group = vim.api.nvim_create_augroup("lazy-lsp-attach", { clear = true }),
+			callback = opts.on_attach,
+		})
+
+		-- Mark what needs to be installed with Mason
+		-- local ensure_installed = vim.tbl_filter(function(server)
+		-- 	return not vim.tbl_contains(opts.exclude, server)
+		-- end, opts.servers)
+		require("mason-lspconfig").setup(
+			---@type MasonLspconfigSettings
+			{
+				ensure_installed = opts.ensure_installed,
+				automatic_enable = false,
+			}
+		)
+
+		-- LSP servers and clients are able to communicate to each other what features they support.
+		-- By default, Neovim doesn't support everything that is in the LSP specification.
+		-- When you add blink-cmp, luasnip, etc. Neovim now has *more* capabilities.
+		-- So, we create new capabilities with blink cmp, and then broadcast that to the servers.
+		vim.lsp.config("*", {
+			--- @type lsp.ClientCapabilities
+			capabilities = vim.tbl_extend(
+				"force",
+				vim.lsp.protocol.make_client_capabilities(),
+				require("blink.cmp").get_lsp_capabilities()
+			),
+		})
+		vim.lsp.enable(opts.servers)
+	end,
 }

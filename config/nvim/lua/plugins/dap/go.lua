@@ -7,7 +7,7 @@ return {
 	dependencies = {
 		{ "leoluz/nvim-dap-go", config = true, version = false, lazy = true },
 	},
-	config = function()
+	opts = function(_, opt)
 		-- Install golang specific config
 		require("dap-go").setup({
 			delve = {

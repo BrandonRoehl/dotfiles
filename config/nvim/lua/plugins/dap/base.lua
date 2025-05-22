@@ -16,7 +16,7 @@ return {
 			dependencies = "mason-org/mason.nvim",
 			cmd = { "DapInstall", "DapUninstall" },
 			-- mason-nvim-dap is loaded when nvim-dap loads
-			config = true,
+			config = false,
 		},
 	},
 	-- stylua: ignore
