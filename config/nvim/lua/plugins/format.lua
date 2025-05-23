@@ -10,11 +10,7 @@ return {
 		opts_extend = { "ensure_installed" },
 		opts = {
 			-- Tools to auto install and instead use from the env
-			ensure_installed = {
-				"rustfmt", -- Used to format Rust code
-				-- "eslint", -- Used to lint JavaScript and TypeScript
-				-- "prettier", -- Used to format JavaScript and TypeScript
-			},
+			ensure_installed = {},
 		},
 	},
 	{
@@ -50,14 +46,7 @@ return {
 					lsp_format = lsp_format_opt,
 				}
 			end,
-			formatters_by_ft = {
-				-- Conform can also run multiple formatters sequentially
-				rust = { "rustfmt" },
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				vue = { "prettierd", "prettier", stop_after_first = true },
-			},
+			formatters_by_ft = {},
 		},
 	},
 }
