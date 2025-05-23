@@ -44,16 +44,6 @@ return {
 		-- 	},
 		-- },
 	},
-	-- Block highlights text detected as colors e.g. #ffffff
-	-- Come back to this when this is added for real
-	-- https://github.com/neovim/neovim/pull/33440
-	{
-		"brenoprata10/nvim-highlight-colors",
-		event = "VeryLazy",
-		opts = {
-			render = "virtual",
-		},
-	},
 	-- Ensure the servers and tools above are installed
 	--  To check the current status of installed tools and/or manually install
 	--  other tools, you can run

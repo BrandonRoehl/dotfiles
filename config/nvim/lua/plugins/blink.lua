@@ -1,19 +1,13 @@
-local function get_color_item(ctx)
-	-- If LSP source and you have `nvim-highlight-colors` loaded, check for
-	-- color derived from documentation
-	if package.loaded["nvim-highlight-colors"] and ctx.item.source_name == "LSP" then
-		return require("nvim-highlight-colors").format(ctx.item.documentation, { kind = ctx.kind })
-	end
-	return nil
-end
-
 -- Autocompletion
 --- @return LazyPluginSpec
 return {
 	"saghen/blink.cmp",
 	-- Use a release tag to download pre-built binaries
 	version = "*",
-	-- Events to trigger
+	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+	-- build = 'cargo build --release',
+	-- If you use nix, you can build from source using latest nightly rust with:
+	-- build = 'nix run .#build-plugin',
 	event = { "InsertEnter", "VeryLazy" },
 	-- Optional: provides snippets for the snippet source
 	dependencies = {
@@ -98,6 +92,7 @@ return {
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			default = { "lsp", "path", "snippets" },
+			-- default = { "lsp", "path", "snippets", "buffer" },
 		},
 		-- Completion behavior
 		completion = {
@@ -146,27 +141,6 @@ return {
 						{ "label", "label_description", gap = 1 },
 						{ "kind" },
 					} or nil,
-					components = {
-						kind_icon = {
-							text = function(ctx)
-								-- Default kind icon
-								local icon = ctx.kind_icon
-								-- See if there is a colored icon
-								local color_item = get_color_item(ctx)
-								if color_item and color_item.abbr ~= "" then
-									icon = color_item.abbr
-								end
-								return icon .. ctx.icon_gap
-							end,
-							highlight = function(ctx)
-								local color_item = get_color_item(ctx)
-								if color_item and color_item.abbr_hl_group then
-									return color_item.abbr_hl_group
-								end
-								return "BlinkCmpKind" .. ctx.kind
-							end,
-						},
-					},
 				},
 				-- Window borders to easier see
 				border = vim.g.border,
@@ -192,6 +166,13 @@ return {
 			-- Window borders to easier see
 			window = { border = vim.g.border },
 		},
+
+		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
+		-- You may use a lua implementation instead by using `implementation = "lua"` or fallback to the lua implementation,
+		-- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
+		--
+		-- See the fuzzy documentation for more information
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
