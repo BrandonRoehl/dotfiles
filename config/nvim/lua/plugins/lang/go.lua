@@ -16,7 +16,7 @@ return {
 						delve = {
 							-- On Windows delve must be run attached or it crashes.
 							-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-							detached = Utils:is_win() or vim.fn.has("win32") == 0,
+							detached = not Utils:is_win(),
 						},
 					})
 				end,

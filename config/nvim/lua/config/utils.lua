@@ -8,7 +8,7 @@ local names = {}
 setmetatable(names, { __mode = "kv" })
 
 function M:is_win()
-	return jit.os:find("Windows")
+	return jit.os:find("Windows") or vim.fn.has("win32") == 1
 end
 
 function M:is_mac()
