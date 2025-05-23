@@ -55,8 +55,9 @@ return {
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers", "ensure_installed" },
 	config = function(_, opts)
-		-- if nerd_font override
-		if vim.g.have_nerd_font then
+		-- if nerd_font override the signs column
+		local signs = vim.tbl_get(opts, "diagnostics", "signs")
+		if vim.g.have_nerd_font and signs then
 			for key, sign in pairs({
 				[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
 				[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
@@ -64,8 +65,8 @@ return {
 				[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
 			}) do
 				vim.fn.sign_define(sign, {
-					text = opts.diagnostics.signs.text[key],
-					texthl = opts.diagnostics.signs.numhl[key],
+					text = vim.tbl_get(signs, "text", key),
+					texthl = vim.tbl_get(signs, "numl", key),
 				})
 			end
 		end
