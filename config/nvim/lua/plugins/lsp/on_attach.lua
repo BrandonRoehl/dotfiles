@@ -2,6 +2,7 @@
 ---@type LazyPluginSpec
 return {
 	"neovim/nvim-lspconfig",
+	optional = true,
 	dependencies = {
 		-- UI for actions
 		"folke/snacks.nvim",

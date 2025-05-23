@@ -2,6 +2,7 @@
 ---@type LazyPluginSpec
 return {
 	"neovim/nvim-lspconfig",
+	optional = true,
 	opts = {
 		--- @type vim.diagnostic.Opts
 		diagnostics = {
