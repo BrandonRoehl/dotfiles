@@ -11,21 +11,14 @@ end
 --- @return LazyPluginSpec
 return {
 	"saghen/blink.cmp",
+	-- Use a release tag to download pre-built binaries
+	version = "*",
+	-- Events to trigger
 	event = { "InsertEnter", "VeryLazy" },
 	-- Optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		{
-			"fang2hou/blink-copilot",
-			version = "*",
-			dependencies = {
-				"github/copilot.vim",
-			},
-		},
 	},
-
-	-- Use a release tag to download pre-built binaries
-	version = "*",
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
@@ -58,8 +51,7 @@ return {
 			-- ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
 			-- ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
 
-			-- unbinding tab this now goes to copilot if you remove copilot
-			-- add this back
+			-- Tab completion
 			-- ['<Tab>'] = { 'snippet_forward', 'fallback' },
 			-- ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
 
@@ -105,29 +97,7 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "copilot", "lsp", "path", "snippets" },
-			per_filetype = {
-				codecompanion = { "codecompanion" },
-			},
-			-- removed "buffer"
-			providers = {
-				copilot = {
-					name = "copilot",
-					module = "blink-copilot",
-					score_offset = 100,
-					async = true,
-					opts = {
-						max_completions = 3,
-						max_attempts = 4,
-						-- kind = "Copilot",
-						debounce = 500, ---@type integer | false
-						auto_refresh = {
-							backward = true,
-							forward = true,
-						},
-					},
-				},
-			},
+			default = { "lsp", "path", "snippets" },
 		},
 		-- Completion behavior
 		completion = {
@@ -171,7 +141,7 @@ return {
 			menu = {
 				auto_show = true,
 				draw = {
-					treesitter = { "copilot", "lsp", "lazydev" },
+					treesitter = { "lsp" },
 					columns = not vim.g.have_nerd_font and {
 						{ "label", "label_description", gap = 1 },
 						{ "kind" },

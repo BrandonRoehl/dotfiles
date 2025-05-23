@@ -35,9 +35,6 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		opts = {
-			---@type string[]
-			-- Enable the following language servers
-			-- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 			servers = {
 				-- "pyright",
 				"rust_analyzer",
@@ -51,8 +48,6 @@ return {
 				"graphql",
 				"texlab",
 			},
-			---@type string[]
-			-- Servers to skip installing with mason
 			ensure_installed = {
 				"rust_analyzer",
 				"ts_ls",

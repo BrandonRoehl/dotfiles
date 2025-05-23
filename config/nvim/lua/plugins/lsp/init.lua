@@ -43,9 +43,19 @@ return {
 		-- Allows extra capabilities provided by blink
 		"saghen/blink.cmp",
 	},
+	opts = {
+		---@type string[]
+		-- Enable the following language servers
+		-- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+		servers = {},
+		---@type string[]
+		-- Servers to skip installing with mason
+		ensure_installed = {},
+	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers", "ensure_installed" },
 	config = function(_, opts)
+		vim.print(opts)
 		-- if nerd_font override
 		if vim.g.have_nerd_font then
 			for key, sign in pairs({
