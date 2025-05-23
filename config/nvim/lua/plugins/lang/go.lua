@@ -26,6 +26,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = { "go" },
 		},
@@ -33,6 +34,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
+		opts_extend = { "servers", "ensure_installed" },
 		opts = {
 			servers = { "gopls" },
 			ensure_installed = not Utils:is_win() and { "gopls" } or {},

@@ -4,6 +4,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -34,6 +35,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
+		opts_extend = { "servers", "ensure_installed" },
 		opts = {
 			servers = {
 				-- "pyright",

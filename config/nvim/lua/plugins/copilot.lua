@@ -43,6 +43,7 @@ return {
 				"github/copilot.vim",
 			},
 		},
+		opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 		opts = {
 			sources = {
 				default = { "copilot" },

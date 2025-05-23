@@ -26,12 +26,14 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
 		opts = {
+			opts_extend = { "ensure_installed" },
 			ensure_installed = { "python" },
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
+		opts_extend = { "servers", "ensure_installed" },
 		opts = {
 			servers = {
 				-- "pyright",

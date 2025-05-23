@@ -22,6 +22,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"lua",
@@ -35,6 +36,7 @@ return {
 		optional = true,
 		--- @module 'blink.cmp'
 		--- @type blink.cmp.Config
+		opts_extend = { "completion.menu.draw.treesitter" },
 		opts = {
 			sources = {
 				per_filetype = {
@@ -61,6 +63,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
+		opts_extend = { "servers", "ensure_installed" },
 		opts = {
 			servers = { "lua_ls" },
 			ensure_installed = { "lua_ls" },
