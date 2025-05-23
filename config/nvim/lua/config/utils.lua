@@ -36,6 +36,19 @@ function M:is_computer(...)
 	end, { predicate = true })
 end
 
+-- Add support for custom event to lazy nvim
+---@param name string the event name to add
+function M:register_custom_event(name)
+	local Event = require("lazy.core.handler.event")
+
+	Event.mappings[name] = { id = name, event = "User", pattern = name }
+	Event.mappings["User " .. name] = Event.mappings[name]
+end
+
+function M:trigger_custom_event(name)
+	vim.api.nvim_exec_autocmds("User", { pattern = name })
+end
+
 _G.Utils = M
 
 return _G.Utils

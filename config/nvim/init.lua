@@ -16,6 +16,9 @@ vim.opt.rtp:prepend(lazypath)
 -- This is the base like your leader globals and stuff not requiring plugins
 require("config")
 
+-- Register custom events before setup
+Utils:register_custom_event("LazyDap")
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run

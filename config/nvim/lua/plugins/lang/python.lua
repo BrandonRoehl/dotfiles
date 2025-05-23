@@ -2,25 +2,23 @@
 ---@return LazyPluginSpec[]
 return {
 	{
-		"mfussenegger/nvim-dap",
-		optional = true,
+		"mfussenegger/nvim-dap-python",
 		enabled = Utils:is_computer("🔥"),
+		version = false,
+		lazy = true,
+		event = "LazyDap",
 		dependencies = {
-			{
-				"mfussenegger/nvim-dap-python",
-				version = false,
-				lazy = true,
-				config = function()
-					-- Python specific config
-					require("dap-python").setup("python3")
-				end,
-			},
+			"mfussenegger/nvim-dap",
+            -- stylua: ignore
+            keys = {
+                { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
+                { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+            },
 		},
-        -- stylua: ignore
-        keys = {
-            { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
-            { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
-        },
+		config = function()
+			-- Python specific config
+			require("dap-python").setup("python3")
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",

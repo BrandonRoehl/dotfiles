@@ -31,7 +31,7 @@ return {
 	import = "plugins.lsp",
 
 	lazy = true,
-	event = { "BufRead", "BufNewFile", "VeryLazy" },
+	event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Useful status updates for LSP.

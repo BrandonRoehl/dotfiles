@@ -94,5 +94,8 @@ return {
 		vscode.json_decode = function(str)
 			return vim.json.decode(json.json_strip_comments(str))
 		end
+
+		-- The custom event exec that causes the other setup plugins to run
+		Utils:trigger_custom_event("LazyDap")
 	end,
 }

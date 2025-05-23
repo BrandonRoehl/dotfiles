@@ -36,7 +36,6 @@ return {
 				per_filetype = {
 					codecompanion = { "codecompanion" },
 				},
-				-- removed "buffer"
 				providers = {
 					copilot = {
 						name = "copilot",
