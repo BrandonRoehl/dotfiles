@@ -24,6 +24,7 @@ return {
 				"vimdoc",
 				"xml",
 				"yaml",
+				"swift",
 			},
 		},
 	},

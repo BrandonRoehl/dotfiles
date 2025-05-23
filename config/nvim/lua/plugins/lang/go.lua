@@ -1,4 +1,3 @@
--- DAP Plugins
 ---@module "lazy"
 ---@return LazyPluginSpec[]
 return {
