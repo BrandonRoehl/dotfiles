@@ -224,5 +224,5 @@ return {
 		},
 	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
-	opts_extend = { "sources.default" },
+	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 }
