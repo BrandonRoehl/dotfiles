@@ -45,6 +45,7 @@ function M:register_custom_event(name)
 	Event.mappings["User " .. name] = Event.mappings[name]
 end
 
+-- Trigger the custom event and load all plugins that are waiting on it
 function M:trigger_custom_event(name)
 	vim.api.nvim_exec_autocmds("User", { pattern = name })
 end
