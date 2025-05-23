@@ -20,6 +20,7 @@ return {
 	},
 	{
 		"fang2hou/blink-copilot",
+		lazy = true,
 		version = "*",
 		dependencies = {
 			"github/copilot.vim",
