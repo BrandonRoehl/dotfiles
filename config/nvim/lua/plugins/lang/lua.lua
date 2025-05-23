@@ -58,4 +58,27 @@ return {
 			},
 		},
 	},
+	{
+		"neovim/nvim-lspconfig",
+		optional = true,
+		opts = {
+			servers = { "lua_ls" },
+			ensure_installed = { "lua_ls" },
+		},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		optional = true,
+		opts = {
+			ensure_installed = { "stylua" },
+		},
+	},
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+			},
+		},
+	},
 }

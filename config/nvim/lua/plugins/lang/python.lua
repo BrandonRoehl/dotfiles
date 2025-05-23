@@ -44,4 +44,23 @@ return {
 			},
 		},
 	},
+	-- This has been replaced by Ruff
+	-- {
+	-- 	"WhoIsSethDaniel/mason-tool-installer.nvim",
+	-- 	optional = true,
+	-- 	opts = {
+	-- 		ensure_installed = {
+	-- 			"black", -- Used to format Python code
+	-- 			"isort", -- Used to sort Python imports
+	-- 		},
+	-- 	},
+	-- },
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	opts = {
+	-- 		formatters_by_ft = {
+	-- 			python = { "isort", "black" },
+	-- 		},
+	-- 	},
+	-- },
 }
