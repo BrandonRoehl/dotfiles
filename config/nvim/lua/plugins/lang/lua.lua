@@ -2,17 +2,6 @@
 ---@return LazyPluginSpec[]
 return {
 	{
-		"nvim-treesitter/nvim-treesitter",
-		optional = true,
-		opts = {
-			ensure_installed = {
-				"lua",
-				"luadoc",
-				"luap",
-			},
-		},
-	},
-	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 		-- used for completion, annotations and signatures of Neovim apis
 		"folke/lazydev.nvim",
@@ -29,11 +18,21 @@ return {
 			},
 		},
 	},
+	-- Extend
+	{
+		"nvim-treesitter/nvim-treesitter",
+		optional = true,
+		opts = {
+			ensure_installed = {
+				"lua",
+				"luadoc",
+				"luap",
+			},
+		},
+	},
 	{
 		"saghen/blink.cmp",
 		optional = true,
-
-		-- These will extend the base configuration
 		--- @module 'blink.cmp'
 		--- @type blink.cmp.Config
 		opts = {
