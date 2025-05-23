@@ -107,17 +107,10 @@ return {
 		sources = {
 			default = { "copilot", "lsp", "path", "snippets" },
 			per_filetype = {
-				lua = { "copilot", "lsp", "path", "snippets", "lazydev" },
 				codecompanion = { "codecompanion" },
 			},
 			-- removed "buffer"
 			providers = {
-				lazydev = {
-					name = "LazyDev",
-					module = "lazydev.integrations.blink",
-					-- make lazydev completions top priority (see `:h blink.cmp`)
-					score_offset = 50,
-				},
 				copilot = {
 					name = "copilot",
 					module = "blink-copilot",
@@ -230,5 +223,6 @@ return {
 			window = { border = vim.g.border },
 		},
 	},
+	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "sources.default" },
 }

@@ -23,40 +23,14 @@ return {
 		{ "<c-space>", desc = "Increment Selection" },
 		{ "<bs>", desc = "Decrement Selection", mode = "x" },
 	},
+	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "ensure_installed" },
 	---@type TSConfig
 	---@diagnostic disable-next-line: missing-fields
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },
-		ensure_installed = {
-			"bash",
-			"c",
-			"diff",
-			"html",
-			"javascript",
-			"jsdoc",
-			"json",
-			"jsonc",
-			"lua",
-			"luadoc",
-			"luap",
-			"markdown",
-			"markdown_inline",
-			"printf",
-			"python",
-			"query",
-			"regex",
-			"toml",
-			"tsx",
-			"typescript",
-			"vim",
-			"vimdoc",
-			"xml",
-			"yaml",
-			"rust",
-			"ron",
-		},
+		ensure_installed = {},
 		incremental_selection = {
 			enable = true,
 			keymaps = {

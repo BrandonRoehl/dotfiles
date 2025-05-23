@@ -43,6 +43,8 @@ return {
 		-- Allows extra capabilities provided by blink
 		"saghen/blink.cmp",
 	},
+	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
+	opts_extend = { "servers", "ensure_installed" },
 	config = function(_, opts)
 		-- if nerd_font override
 		if vim.g.have_nerd_font then

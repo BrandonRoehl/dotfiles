@@ -4,6 +4,7 @@ return {
 	-- Inject a dependency to the main module to force this to load
 	{
 		"nvim-treesitter/nvim-treesitter",
+		optional = true,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
