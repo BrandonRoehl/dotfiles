@@ -20,7 +20,7 @@ return {
 		opts = {
 			servers = {
 				"ts_ls",
-				"volar",
+				"vue_ls",
 			},
 			ensure_installed = { "ts_ls" },
 		},
