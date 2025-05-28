@@ -35,11 +35,13 @@ return {
 		opts = {
 			servers = {
 				-- "pyright",
-				"basedpyright",
+				-- "basedpyright",
+				"pyrefly",
 				"ruff",
 			},
 			ensure_installed = {
-				"basedpyright",
+				-- "basedpyright",
+				"pyrefly",
 				"ruff",
 			},
 		},
