@@ -59,6 +59,9 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' use-cache true
 zstyle :compinstall filename '~/.zshrc'
 
+# The following line has been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/brandon.roehl/.docker/completions $fpath)
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
