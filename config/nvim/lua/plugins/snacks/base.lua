@@ -10,7 +10,7 @@ return {
 		-- 		border = vim.g.border,
 		-- 	},
 		-- },
-		bigfile = { enabled = true },
+		bigfile = { enabled = false },
 		indent = {
 			enabled = true,
 		},
