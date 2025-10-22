@@ -1,31 +1,8 @@
 # vim:ft=config:fileencoding=utf-8:foldmethod=marker
 # ghostty +show-config --docs --changes-only
-#
-# Apply a font feature. To enable multiple font features you can repeat
-# this multiple times or use a comma-separated list of feature settings.
-# 
-# The syntax for feature settings is as follows, where `feat` is a feature:
-# 
-#   * Enable features with e.g. `feat`, `+feat`, `feat on`, `feat=1`.
-#   * Disabled features with e.g. `-feat`, `feat off`, `feat=0`.
-#   * Set a feature value with e.g. `feat=2`, `feat = 3`, `feat 4`.
-#   * Feature names may be wrapped in quotes, meaning this config should be
-#     syntactically compatible with the `font-feature-settings` CSS property.
-# 
-# The syntax is fairly loose, but invalid settings will be silently ignored.
-# 
-# The font feature will apply to all fonts rendered by Ghostty. A future
-# enhancement will allow targeting specific faces.
-# 
-# To disable programming ligatures, use `-calt` since this is the typical
-# feature name for programming ligatures. To look into what font features
-# your font has and what they do, use a font inspection tool such as
-# [fontdrop.info](https://fontdrop.info).
-# 
-# To generally disable most ligatures, use `-calt, -liga, -dlig`.
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+
+config-file = theme
+config-file = macos
 
 # Thickness in pixels or percentage adjustment of the bar cursor and outlined rect cursor.
 # See the notes about adjustments in `adjust-cell-width`.
@@ -56,61 +33,6 @@ adjust-cursor-thickness = 1
 # 
 # Example: `hinting`, `no-hinting`, `force-autohint`, `no-force-autohint`
 freetype-load-flags = hinting,force-autohint,monochrome,autohint
-
-# A theme to use. This can be a built-in theme name, a custom theme
-# name, or an absolute path to a custom theme file. Ghostty also supports
-# specifying a different theme to use for light and dark mode. Each
-# option is documented below.
-# 
-# If the theme is an absolute pathname, Ghostty will attempt to load that
-# file as a theme. If that file does not exist or is inaccessible, an error
-# will be logged and no other directories will be searched.
-# 
-# If the theme is not an absolute pathname, two different directories will be
-# searched for a file name that matches the theme. This is case sensitive on
-# systems with case-sensitive filesystems. It is an error for a theme name to
-# include path separators unless it is an absolute pathname.
-# 
-# The first directory is the `themes` subdirectory of your Ghostty
-# configuration directory. This is `$XDG_CONFIG_HOME/ghostty/themes` or
-# `~/.config/ghostty/themes`.
-# 
-# The second directory is the `themes` subdirectory of the Ghostty resources
-# directory. Ghostty ships with a multitude of themes that will be installed
-# into this directory. On macOS, this list is in the
-# `Ghostty.app/Contents/Resources/ghostty/themes` directory. On Linux, this
-# list is in the `share/ghostty/themes` directory (wherever you installed the
-# Ghostty "share" directory.
-# 
-# To see a list of available themes, run `ghostty +list-themes`.
-# 
-# A theme file is simply another Ghostty configuration file. They share
-# the same syntax and same configuration options. A theme can set any valid
-# configuration option so please do not use a theme file from an untrusted
-# source. The built-in themes are audited to only set safe configuration
-# options.
-# 
-# Some options cannot be set within theme files. The reason these are not
-# supported should be self-evident. A theme file cannot set `theme` or
-# `config-file`. At the time of writing this, Ghostty will not show any
-# warnings or errors if you set these options in a theme file but they will
-# be silently ignored.
-# 
-# Any additional colors specified via background, foreground, palette, etc.
-# will override the colors specified in the theme.
-# 
-# To specify a different theme for light and dark mode, use the following
-# syntax: `light:theme-name,dark:theme-name`. For example:
-# `light:Rose Pine Dawn,dark:Rose Pine`. Whitespace around all values are
-# trimmed and order of light and dark does not matter. Both light and dark
-# must be specified in this form. In this form, the theme used will be
-# based on the current desktop environment theme.
-# 
-# There are some known bugs with light/dark mode theming. These will
-# be fixed in a future update:
-# 
-#   - macOS: titlebar tabs style is not updated when switching themes.
-theme = light:tokyonight-day,dark:tokyonight
 
 # Hide the mouse immediately when typing. The mouse becomes visible again
 # when the mouse is used (button, movement, etc.). Platform-specific behavior
@@ -287,4 +209,75 @@ auto-update = check
 # 
 # This only works on macOS since only macOS has an auto-update feature.
 auto-update-channel = stable
+
+# Whether to enable shell integration auto-injection or not. Shell integration
+# greatly enhances the terminal experience by enabling a number of features:
+# 
+#   * Working directory reporting so new tabs, splits inherit the
+#     previous terminal's working directory.
+# 
+#   * Prompt marking that enables the "jump_to_prompt" keybinding.
+# 
+#   * If you're sitting at a prompt, closing a terminal will not ask
+#     for confirmation.
+# 
+#   * Resizing the window with a complex prompt usually paints much
+#     better.
+# 
+# Allowable values are:
+# 
+#   * `none` - Do not do any automatic injection. You can still manually
+#     configure your shell to enable the integration.
+# 
+#   * `detect` - Detect the shell based on the filename.
+# 
+#   * `bash`, `elvish`, `fish`, `zsh` - Use this specific shell injection scheme.
+# 
+# The default value is `detect`.
+shell-integration = detect
+
+# Shell integration features to enable. These require our shell integration
+# to be loaded, either automatically via shell-integration or manually.
+# 
+# The format of this is a list of features to enable separated by commas. If
+# you prefix a feature with `no-` then it is disabled. If you omit a feature,
+# its default value is used, so you must explicitly disable features you don't
+# want. You can also use `true` or `false` to turn all features on or off.
+# 
+# Example: `cursor`, `no-cursor`, `sudo`, `no-sudo`, `title`, `no-title`
+# 
+# Available features:
+# 
+#   * `cursor` - Set the cursor to a blinking bar at the prompt.
+# 
+#   * `sudo` - Set sudo wrapper to preserve terminfo.
+# 
+#   * `title` - Set the window title via shell integration.
+# 
+#   * `ssh-env` - Enable SSH environment variable compatibility. Automatically
+#     converts TERM from `xterm-ghostty` to `xterm-256color` when connecting to
+#     remote hosts and propagates COLORTERM, TERM_PROGRAM, and TERM_PROGRAM_VERSION.
+#     Whether or not these variables will be accepted by the remote host(s) will
+#     depend on whether or not the variables are allowed in their sshd_config.
+#     (Available since: 1.2.0)
+# 
+#   * `ssh-terminfo` - Enable automatic terminfo installation on remote hosts.
+#     Attempts to install Ghostty's terminfo entry using `infocmp` and `tic` when
+#     connecting to hosts that lack it. Requires `infocmp` to be available locally
+#     and `tic` to be available on remote hosts. Once terminfo is installed on a
+#     remote host, it will be automatically "cached" to avoid repeat installations.
+#     If desired, the `+ssh-cache` CLI action can be used to manage the installation
+#     cache manually using various arguments.
+#     (Available since: 1.2.0)
+# 
+#   * `path` - Add Ghostty's binary directory to PATH. This ensures the `ghostty`
+#     command is available in the shell even if shell init scripts reset PATH.
+#     This is particularly useful on macOS where PATH is often overridden by
+#     system scripts. The directory is only added if not already present.
+# 
+# SSH features work independently and can be combined for optimal experience:
+# when both `ssh-env` and `ssh-terminfo` are enabled, Ghostty will install its
+# terminfo on remote hosts and use `xterm-ghostty` as TERM, falling back to
+# `xterm-256color` with environment variables if terminfo installation fails.
+shell-integration-features = cursor,no-sudo,title,no-ssh-env,no-ssh-terminfo,path
 
