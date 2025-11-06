@@ -81,3 +81,143 @@ font-feature = -dlig
 #   - macOS: titlebar tabs style is not updated when switching themes.
 theme = light:tokyonight-day,dark:tokyonight
 
+# The color of the cursor. If this is not set, a default will be chosen.
+# 
+# Direct colors can be specified as either hex (`#RRGGBB` or `RRGGBB`)
+# or a named X11 color.
+# 
+# Additionally, special values can be used to set the color to match
+# other colors at runtime:
+# 
+#   * `cell-foreground` - Match the cell foreground color.
+#     (Available since: 1.2.0)
+# 
+#   * `cell-background` - Match the cell background color.
+#     (Available since: 1.2.0)
+# cursor-color = cell-foreground
+cursor-color = 
+
+# The opacity level (opposite of transparency) of the cursor. A value of 1
+# is fully opaque and a value of 0 is fully transparent. A value less than 0
+# or greater than 1 will be clamped to the nearest valid value. Note that a
+# sufficiently small value such as 0.3 may be effectively invisible and may
+# make it difficult to find the cursor.
+cursor-opacity = 1
+
+# The style of the cursor. This sets the default style. A running program can
+# still request an explicit cursor style using escape sequences (such as `CSI
+# q`). Shell configurations will often request specific cursor styles.
+# 
+# Note that shell integration will automatically set the cursor to a bar at
+# a prompt, regardless of this configuration. You can disable that behavior
+# by specifying `shell-integration-features = no-cursor` or disabling shell
+# integration entirely.
+# 
+# Valid values are:
+# 
+#   * `block`
+#   * `bar`
+#   * `underline`
+#   * `block_hollow`
+cursor-style = block
+
+# Sets the default blinking state of the cursor. This is just the default
+# state; running programs may override the cursor style using `DECSCUSR` (`CSI
+# q`).
+# 
+# If this is not set, the cursor blinks by default. Note that this is not the
+# same as a "true" value, as noted below.
+# 
+# If this is not set at all (`null`), then Ghostty will respect DEC Mode 12
+# (AT&T cursor blink) as an alternate approach to turning blinking on/off. If
+# this is set to any value other than null, DEC mode 12 will be ignored but
+# `DECSCUSR` will still be respected.
+# 
+# Valid values are:
+# 
+#   * ` ` (blank)
+#   * `true`
+#   * `false`
+cursor-style-blink = 
+
+# The color of the text under the cursor. If this is not set, a default will
+# be chosen.
+# Specified as either hex (`#RRGGBB` or `RRGGBB`) or a named X11 color.
+# Since version 1.2.0, this can also be set to `cell-foreground` to match
+# the cell foreground color, or `cell-background` to match the cell
+# background color.
+cursor-text = 
+
+
+# Custom shaders to run after the default shaders. This is a file path
+# to a GLSL-syntax shader for all platforms.
+# 
+# Warning: Invalid shaders can cause Ghostty to become unusable such as by
+# causing the window to be completely black. If this happens, you can
+# unset this configuration to disable the shader.
+# 
+# Custom shader support is based on and compatible with the Shadertoy shaders.
+# Shaders should specify a `mainImage` function and the available uniforms
+# largely match Shadertoy, with some caveats and Ghostty-specific extensions.
+# 
+# The uniform values available to shaders are as follows:
+# 
+#  * `sampler2D iChannel0` - Input texture.
+# 
+#    A texture containing the current terminal screen. If multiple custom
+#    shaders are specified, the output of previous shaders is written to
+#    this texture, to allow combining multiple effects.
+# 
+#  * `vec3 iResolution` - Output texture size, `[width, height, 1]` (in px).
+# 
+#  * `float iTime` - Time in seconds since first frame was rendered.
+# 
+#  * `float iTimeDelta` - Time in seconds since previous frame was rendered.
+# 
+#  * `float iFrameRate` - Average framerate. (NOT CURRENTLY SUPPORTED)
+# 
+#  * `int iFrame` - Number of frames that have been rendered so far.
+# 
+#  * `float iChannelTime[4]` - Current time for video or sound input. (N/A)
+# 
+#  * `vec3 iChannelResolution[4]` - Resolutions of the 4 input samplers.
+# 
+#    Currently only `iChannel0` exists, and `iChannelResolution[0]` is
+#    identical to `iResolution`.
+# 
+#  * `vec4 iMouse` - Mouse input info. (NOT CURRENTLY SUPPORTED)
+# 
+#  * `vec4 iDate` - Date/time info. (NOT CURRENTLY SUPPORTED)
+# 
+#  * `float iSampleRate` - Sample rate for audio. (N/A)
+# 
+# Ghostty-specific extensions:
+# 
+#  * `vec4 iCurrentCursor` - Info about the terminal cursor.
+# 
+#    - `iCurrentCursor.xy` is the -X, +Y corner of the current cursor.
+#    - `iCurrentCursor.zw` is the width and height of the current cursor.
+# 
+#  * `vec4 iPreviousCursor` - Info about the previous terminal cursor.
+# 
+#  * `vec4 iCurrentCursorColor` - Color of the terminal cursor.
+# 
+#  * `vec4 iPreviousCursorColor` - Color of the previous terminal cursor.
+# 
+#  * `float iTimeCursorChange` - Timestamp of terminal cursor change.
+# 
+#    When the terminal cursor changes position or color, this is set to
+#    the same time as the `iTime` uniform, allowing you to compute the
+#    time since the change by subtracting this from `iTime`.
+# 
+# If the shader fails to compile, the shader will be ignored. Any errors
+# related to shader compilation will not show up as configuration errors
+# and only show up in the log, since shader compilation happens after
+# configuration loading on the dedicated render thread.  For interactive
+# development, use [shadertoy.com](https://shadertoy.com).
+# 
+# This can be repeated multiple times to load multiple shaders. The shaders
+# will be run in the order they are specified.
+# 
+# This can be changed at runtime and will affect all open terminals.
+custom-shader = shaders/cursor_smear.glsl
