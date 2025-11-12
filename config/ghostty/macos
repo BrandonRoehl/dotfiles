@@ -40,4 +40,4 @@
 # most cases.
 # 
 # Changing this option at runtime only applies to new windows.
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
