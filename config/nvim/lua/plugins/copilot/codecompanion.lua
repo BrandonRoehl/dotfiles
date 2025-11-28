@@ -25,25 +25,12 @@ return {
 	opts = {
 		strategies = {
 			chat = {
-				adapter = "copilot",
+				name = "copilot",
+				model = "gpt-4.1",
 			},
 			inline = {
 				adapter = "copilot",
 			},
-		},
-		show_defaults = false,
-		adapters = {
-			copilot = function()
-				-- lua print(vim.inspect(require("codecompanion.adapters").extend("copilot").schema.model.choices()))
-				local adapters = require("codecompanion.adapters")
-				return adapters.extend("copilot", {
-					schema = {
-						model = {
-							default = "claude-3.7-sonnet",
-						},
-					},
-				})
-			end,
 		},
 	},
 }
