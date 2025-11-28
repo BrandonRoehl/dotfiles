@@ -2,29 +2,9 @@
 ---@return LazyPluginSpec[]
 return {
 	{
-		"github/copilot.vim",
-		optional = true,
-		config = function()
-			-- Block the normal Copilot suggestions
-			-- This setup and the callback is required for
-			-- https://github.com/fang2hou/blink-copilot
-			vim.api.nvim_create_augroup("github_copilot", { clear = true })
-			vim.api.nvim_create_autocmd({ "FileType", "BufUnload" }, {
-				group = "github_copilot",
-				callback = function(args)
-					vim.fn["copilot#On" .. args.event]()
-				end,
-			})
-			vim.fn["copilot#OnFileType"]()
-		end,
-	},
-	{
 		"fang2hou/blink-copilot",
 		lazy = true,
 		version = "*",
-		dependencies = {
-			"github/copilot.vim",
-		},
 	},
 	{
 		"saghen/blink.cmp",
@@ -34,9 +14,6 @@ return {
 		opts = {
 			sources = {
 				default = { "copilot" },
-				per_filetype = {
-					codecompanion = { "codecompanion" },
-				},
 				providers = {
 					copilot = {
 						name = "copilot",
