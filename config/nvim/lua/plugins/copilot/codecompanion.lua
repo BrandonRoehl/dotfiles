@@ -2,12 +2,10 @@
 ---@return LazyPluginSpec
 return {
 	"olimorris/codecompanion.nvim",
-	enabled = false,
+	-- enabled = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
-		-- Copilot authorization
-		"github/copilot.vim",
 		-- Progress options optional
 		-- check the fidget config
 		"j-hui/fidget.nvim",
