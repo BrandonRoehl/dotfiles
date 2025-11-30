@@ -79,7 +79,7 @@ font-feature = -dlig
 # be fixed in a future update:
 # 
 #   - macOS: titlebar tabs style is not updated when switching themes.
-theme = light:tokyonight-day,dark:tokyonight
+theme = light:TokyoNight Day,dark:TokyoNight Night
 
 # The color of the cursor. If this is not set, a default will be chosen.
 # 
