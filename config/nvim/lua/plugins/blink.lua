@@ -1,5 +1,6 @@
 -- Autocompletion
---- @return LazyPluginSpec
+---@module "lazy"
+---@return LazyPluginSpec
 return {
 	"saghen/blink.cmp",
 	-- Use a release tag to download pre-built binaries
