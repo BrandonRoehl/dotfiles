@@ -33,5 +33,6 @@ return {
 	init = function()
 		-- Notification providers
 		-- require("plugins.codecompanion.fidget-spinner"):init()
+		require("plugins.codecompanion.snacks-notify"):init()
 	end,
 }
