@@ -6,9 +6,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
-		-- Progress options optional
-		-- check the fidget config
-		"j-hui/fidget.nvim",
 	},
 	config = true,
 	lazy = true,
@@ -33,4 +30,8 @@ return {
 			},
 		},
 	},
+	init = function()
+		-- Notification providers
+		-- require("plugins.codecompanion.fidget-spinner"):init()
+	end,
 }

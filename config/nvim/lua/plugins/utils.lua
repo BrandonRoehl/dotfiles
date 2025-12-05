@@ -2,15 +2,15 @@
 ---@return LazyPluginSpec[]
 return {
 	-- Notifications provider
-	{
-		"j-hui/fidget.nvim",
-		lazy = true,
-		opts = {},
-		config = function(_, opts)
-			require("fidget").setup(opts)
-			require("codecompanion.fidget-spinner"):init()
-		end,
-	},
+	-- {
+	-- 	"j-hui/fidget.nvim",
+	-- 	lazy = true,
+	-- 	opts = {},
+	-- 	config = function(_, opts)
+	-- 		require("fidget").setup(opts)
+	-- 		require("codecompanion.fidget-spinner"):init()
+	-- 	end,
+	-- },
 	{
 		"folke/todo-comments.nvim",
 		event = "VeryLazy",

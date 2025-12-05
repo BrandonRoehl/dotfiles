@@ -35,7 +35,7 @@ return {
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	dependencies = {
 		-- Useful status updates for LSP.
-		"j-hui/fidget.nvim",
+		-- "j-hui/fidget.nvim",
 
 		-- Automatically install LSPs and related tools to stdpath for Neovim
 		{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
