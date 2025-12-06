@@ -118,5 +118,7 @@ return {
 			),
 		})
 		vim.lsp.enable(opts.servers)
+
+		require("plugins.lsp.progress.callbacks"):create_autocmds()
 	end,
 }

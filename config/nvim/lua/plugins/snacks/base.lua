@@ -95,7 +95,5 @@ return {
 				Snacks.toggle.dim():map("<leader>uD")
 			end,
 		})
-
-		require("plugins.snacks.lsp.progress"):create_autocmd()
 	end,
 }

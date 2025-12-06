@@ -47,9 +47,10 @@ function M.callback(ev)
 	})
 end
 
-function M:create_autocmd()
+---@param group integer?
+function M:create_autocmd(group)
 	vim.api.nvim_create_autocmd("LspProgress", {
-		group = vim.api.nvim_create_augroup("lazy-lsp-progress", { clear = true }),
+		group = group or vim.api.nvim_create_augroup("lazy-lsp-progress", { clear = true }),
 		callback = M.callback,
 	})
 end
