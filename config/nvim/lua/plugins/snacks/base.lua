@@ -13,6 +13,7 @@ return {
 		bigfile = { enabled = false },
 		indent = {
 			enabled = true,
+			animate = { enabled = false },
 		},
 		input = { enabled = true },
 		notifier = {
@@ -21,7 +22,7 @@ return {
 		},
 		-- quickfile = { enabled = true },
 		-- scope = { enabled = true },
-		-- scroll = { enabled = true },
+		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		-- styles = {
@@ -63,7 +64,7 @@ return {
 		end }
 	},
 	init = function()
-		vim.g.snacks_animate = false
+		-- vim.g.snacks_animate = false
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",
 			callback = function()
