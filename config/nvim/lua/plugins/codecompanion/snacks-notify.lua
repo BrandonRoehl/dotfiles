@@ -3,7 +3,7 @@ local M = {
 }
 
 function M:init()
-	local group = vim.api.nvim_create_augroup("CodeCompanionSnacksHooks", {})
+	local group = vim.api.nvim_create_augroup("CodeCompanionSnacksHooks", { clear = true })
 
 	vim.api.nvim_create_autocmd({ "User" }, {
 		pattern = { "CodeCompanionRequestStarted", "CodeCompanionRequestStreaming" },

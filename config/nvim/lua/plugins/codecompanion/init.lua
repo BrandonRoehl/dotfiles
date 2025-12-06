@@ -34,5 +34,6 @@ return {
 		-- Notification providers
 		-- require("plugins.codecompanion.fidget-spinner"):init()
 		require("plugins.codecompanion.snacks-notify"):init()
+		require("plugins.codecompanion.progress-bar"):init()
 	end,
 }
