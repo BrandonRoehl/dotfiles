@@ -11,7 +11,7 @@ function M.callback(ev)
 	-- ESC ] 9 ; 4 ; st ; pr ST
 	local percentage = value.kind == "end" and 100 or value.percentage or 100
 	local mode = percentage == 100 and 0 or 1
-	local sequence = "\x1b]9;4;" .. mode .. ";" .. percentage .. "\x07"
+	local sequence = "\x1B]9;4;" .. mode .. ";" .. percentage .. "\x1B\x5C"
 	io.stdout:write(sequence)
 end
 

@@ -7,7 +7,7 @@ function M:init()
 		pattern = "CodeCompanionRequestStarted",
 		group = group,
 		callback = function(request)
-			io.stdout:write("\x1b]9;4;3;0\x07")
+			io.stdout:write("\x1B]9;4;3\x1B\x5C")
 		end,
 	})
 
@@ -15,7 +15,7 @@ function M:init()
 		pattern = "CodeCompanionRequestFinished",
 		group = group,
 		callback = function(request)
-			io.stdout:write("\x1b]9;4;0;0\x07")
+			io.stdout:write("\x1B]9;4;0\x1B\x5C")
 		end,
 	})
 end
