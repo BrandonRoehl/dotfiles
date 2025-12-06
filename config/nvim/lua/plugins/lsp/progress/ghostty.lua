@@ -8,6 +8,7 @@ function M.callback(ev)
 		return
 	end
 	-- https://conemu.github.io/en/AnsiEscapeCodes.html#ConEmu_specific_OSC
+	-- https://ghostty.org/docs/vt/osc/conemu
 	-- ESC ] 9 ; 4 ; st ; pr ST
 	local percentage = value.kind == "end" and 100 or value.percentage or 100
 	local mode = percentage == 100 and 0 or 1
