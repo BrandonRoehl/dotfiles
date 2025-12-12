@@ -18,9 +18,16 @@ end
 
 ---@param group integer?
 function M:create_autocmd(group)
+	group = group or vim.api.nvim_create_augroup("lazy-lsp-progress", { clear = true })
 	vim.api.nvim_create_autocmd("LspProgress", {
-		group = group or vim.api.nvim_create_augroup("lazy-lsp-progress", { clear = true }),
+		group = group,
 		callback = M.callback,
+	})
+	vim.api.nvim_create_autocmd("VimLeave", {
+		group = group,
+		callback = function()
+			io.stdout:write("\x1B]9;4;0\x1B\x5C")
+		end,
 	})
 end
 
