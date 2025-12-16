@@ -107,11 +107,11 @@ return {
 		-- UI for actions
 		"folke/snacks.nvim",
 	},
-	opts_extend = { "extend_config" },
+	opts_extend = { "setup_extend" },
 	opts = {
 		---@type fun(self:LazyPlugin, opts:table)[]
 		-- Will be executed when loading the plugin
-		extend_config = {
+		setup_extend = {
 			function(_, _)
 				--  This function gets run when an LSP attaches to a particular buffer.
 				--    That is to say, every time a new file is opened that is associated with

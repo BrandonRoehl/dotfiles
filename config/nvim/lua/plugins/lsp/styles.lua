@@ -3,7 +3,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	optional = true,
-	opts_extend = { "extend_config" },
+	opts_extend = { "setup_extend" },
 	opts = {
 		--- @type vim.diagnostic.Opts
 		diagnostics = {
@@ -46,7 +46,7 @@ return {
 		},
 		---@type fun(self:LazyPlugin, opts:table)[]
 		-- Will be executed when loading the plugin
-		extend_config = {
+		setup_extend = {
 			function(_, opts)
 				-- if nerd_font override the signs column
 				local signs = vim.tbl_get(opts, "diagnostics", "signs")

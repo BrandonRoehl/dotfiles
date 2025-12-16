@@ -179,11 +179,11 @@ return {
 		"neovim/nvim-lspconfig",
 		optional = true,
 		dependencies = { "saghen/blink.cmp" },
-		opts_extend = { "extend_config" },
+		opts_extend = { "setup_extend" },
 		opts = {
 			---@type fun(self:LazyPlugin, opts:table)[]
 			-- Will be executed when loading the plugin
-			extend_config = {
+			setup_extend = {
 				function(_, _)
 					-- LSP servers and clients are able to communicate to each other what features they support.
 					-- By default, Neovim doesn't support everything that is in the LSP specification.

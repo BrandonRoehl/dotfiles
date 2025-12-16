@@ -31,14 +31,14 @@ return {
 			-- Automatically install LSPs and related tools to stdpath for Neovim
 			{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
 		},
-		opts_extend = { "ensure_installed", "extend_config" },
+		opts_extend = { "ensure_installed", "setup_extend" },
 		opts = {
 			---@type string[]
 			-- Servers to skip installing with mason
 			ensure_installed = {},
 			---@type fun(self:LazyPlugin, opts:table)[]
 			-- Will be executed when loading the plugin
-			extend_config = {
+			setup_extend = {
 				function(_, opts)
 					-- Mark what needs to be installed with Mason
 					-- local ensure_installed = vim.tbl_filter(function(server)

@@ -39,12 +39,12 @@ return {
 		servers = {},
 		---@type fun(self:LazyPlugin, opts:table)[]
 		-- Will be executed when loading the plugin
-		extend_config = {},
+		setup_extend = {},
 	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers", "ensure_installed" },
 	config = function(plugin, opts)
-		for _, func in ipairs(opts.extend_config or {}) do
+		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
 		end
 
