@@ -70,7 +70,7 @@ return {
 		},
 	},
 	{
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"mason-org/mason.nvim",
 		optional = true,
 		opts_extend = { "ensure_installed" },
 		opts = {
