@@ -74,7 +74,7 @@ end
 ---@return fun():boolean check returning if the plugin should be enabled
 function M:enable_with(name)
 	return function()
-		M:has_plugin(name)
+		return M:has_plugin(name)
 	end
 end
 
