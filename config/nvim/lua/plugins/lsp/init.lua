@@ -44,10 +44,17 @@ return {
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers", "ensure_installed" },
 	config = function(plugin, opts)
+		vim.api.nvim_exec_autocmds("User", {
+			pattern = "LspPreEnable",
+			data = opts,
+		})
 		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
 		end
-
 		vim.lsp.enable(opts.servers)
+		vim.api.nvim_exec_autocmds("User", {
+			pattern = "LspPostEnable",
+			data = opts,
+		})
 	end,
 }

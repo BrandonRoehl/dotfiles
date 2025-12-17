@@ -16,8 +16,8 @@ return {
 		keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
 		build = ":MasonUpdate",
 		opts_extend = { "ensure_installed" },
-		--- @module 'mason'
-		--- @type MasonSettings | {ensure_installed: string[]}
+		---@module 'mason'
+		---@type MasonSettings | {ensure_installed: string[]}
 		opts = {
 			ui = {
 				border = vim.g.border,
@@ -48,34 +48,16 @@ return {
 		end,
 	},
 	{
-		"neovim/nvim-lspconfig",
-		optional = true,
-		dependencies = {
-			-- Automatically install LSPs and related tools to stdpath for Neovim
-			{ "mason-org/mason-lspconfig.nvim", dependencies = "mason-org/mason.nvim" },
-		},
-		opts_extend = { "ensure_installed", "setup_extend" },
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = "mason-org/mason.nvim",
+		lazy = true,
+		event = { "LspPreEnable" },
+		config = true,
+		---@module 'mason-lspconfig'
+		---@type MasonLspconfigSettings settings for what to install
 		opts = {
-			---@type string[]
-			-- Servers to skip installing with mason
 			ensure_installed = {},
-			---@type fun(self:LazyPlugin, opts:table)[]
-			-- Will be executed when loading the plugin
-			setup_extend = {
-				function(_, opts)
-					-- Mark what needs to be installed with Mason
-					-- local ensure_installed = vim.tbl_filter(function(server)
-					-- 	return not vim.tbl_contains(opts.exclude, server)
-					-- end, opts.servers)
-					require("mason-lspconfig").setup(
-						---@type MasonLspconfigSettings
-						{
-							ensure_installed = opts.ensure_installed,
-							automatic_enable = false,
-						}
-					)
-				end,
-			},
+			automatic_enable = false,
 		},
 	},
 }

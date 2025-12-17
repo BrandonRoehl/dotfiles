@@ -37,12 +37,13 @@ function M:is_computer(...)
 end
 
 -- Add support for custom event to lazy nvim
----@param name string the event name to add
-function M:register_custom_event(name)
+---@param ... string the event names to add
+function M:register_custom_event(...)
 	local Event = require("lazy.core.handler.event")
-
-	Event.mappings[name] = { id = name, event = "User", pattern = name }
-	Event.mappings["User " .. name] = Event.mappings[name]
+	for _, name in ipairs({ ... }) do
+		Event.mappings[name] = { id = name, event = "User", pattern = name }
+		Event.mappings["User " .. name] = Event.mappings[name]
+	end
 end
 
 -- Trigger the custom event and load all plugins that are waiting on it
@@ -54,6 +55,16 @@ end
 ---@return LazyPlugin|nil plugin if the plugin is configured
 function M:plugin_spec(name)
 	return require("lazy.core.config").spec.plugins[name]
+end
+
+---@param name string
+function M:plugin_opts(name)
+	local plugin = M:plugin_spec(name)
+	if not plugin then
+		return {}
+	end
+	local Plugin = require("lazy.core.plugin")
+	return Plugin.values(plugin, "opts", false)
 end
 
 -- Plugin

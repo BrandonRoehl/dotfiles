@@ -29,9 +29,16 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "servers", "ensure_installed" },
+		opts_extend = { "servers" },
 		opts = {
 			servers = { "gopls" },
+		},
+	},
+	{
+		"mason-org/mason-lspconfig.nvim",
+		optional = true,
+		opts_extend = { "ensure_installed" },
+		opts = {
 			ensure_installed = not Utils:is_win() and { "gopls" } or {},
 		},
 	},
