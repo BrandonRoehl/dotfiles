@@ -1,6 +1,6 @@
 -- Format
 ---@module "lazy"
----@return LazyPluginSpec[]
+---@return LazyPluginSpec
 return {
 	"stevearc/conform.nvim",
 	dependencies = { "mason-org/mason.nvim" },

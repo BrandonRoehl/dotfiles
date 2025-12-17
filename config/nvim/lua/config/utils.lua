@@ -50,6 +50,25 @@ function M:trigger_custom_event(name)
 	vim.api.nvim_exec_autocmds("User", { pattern = name })
 end
 
+---@param name string
+---@return LazyPlugin|nil plugin if the plugin is configured
+function M:plugin_spec(name)
+	return require("lazy.core.config").spec.plugins[name]
+end
+
+-- Plugin
+---@param name string
+---@return boolean true if the plugin is configured
+function M:has_plugin(name)
+	local spec = M:plugin_spec(name)
+	if not spec then
+		return false
+	elseif spec.enabled == false or (type(spec.enabled) == "function" and not spec.enabled()) then
+		return false
+	end
+	return not spec.optional
+end
+
 _G.Utils = M
 
 return _G.Utils
