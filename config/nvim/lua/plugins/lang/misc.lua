@@ -31,9 +31,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "servers" },
+		opts_extend = { "enable" },
 		opts = {
-			servers = {
+			enable = {
 				"sourcekit",
 				"clangd",
 				"harper_ls",

@@ -16,9 +16,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "servers" },
+		opts_extend = { "enable" },
 		opts = {
-			servers = {
+			enable = {
 				"ts_ls",
 				"vue_ls",
 			},

@@ -34,15 +34,15 @@ return {
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	opts = {
 		---@type string[]
-		-- Enable the following language servers
+		-- Enable the following language enable
 		-- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-		servers = {},
+		enable = {},
 		---@type fun(self:LazyPlugin, opts:table)[]
 		-- Will be executed when loading the plugin
 		setup_extend = {},
 	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
-	opts_extend = { "servers", "ensure_installed" },
+	opts_extend = { "enable", "ensure_installed" },
 	config = function(plugin, opts)
 		vim.api.nvim_exec_autocmds("User", {
 			pattern = "LspPreEnable",
@@ -51,7 +51,7 @@ return {
 		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
 		end
-		vim.lsp.enable(opts.servers)
+		vim.lsp.enable(opts.enable)
 		vim.api.nvim_exec_autocmds("User", {
 			pattern = "LspPostEnable",
 			data = opts,

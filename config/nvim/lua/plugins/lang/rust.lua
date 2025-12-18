@@ -12,9 +12,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "servers" },
+		opts_extend = { "enable" },
 		opts = {
-			servers = { "rust_analyzer" },
+			enable = { "rust_analyzer" },
 		},
 	},
 	{
