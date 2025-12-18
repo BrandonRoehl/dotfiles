@@ -7,7 +7,7 @@ return {
 	opts = {
 		-- styles = {
 		-- 	["*"] = {
-		-- 		border = vim.g.border,
+		-- 		border = vim.g.winborder,
 		-- 	},
 		-- },
 		bigfile = { enabled = false },

@@ -71,6 +71,20 @@ return {
 		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
 		end
+
+		-- Still bugs around `vim.o.winborder`
+		-- waiting on mason and snacks to remove this
+		if vim.g.winborder then
+			-- To override globally the opts if none are provided
+			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = opts.border or vim.g.winborder
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
+			end
+		end
+
 		-- Configure diagnostics
 		vim.diagnostic.config(opts.diagnostics)
 		-- Enable all servers that have provided keys

@@ -30,7 +30,8 @@ local function on_attach(event)
 	map("gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
 	map("<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP [S]ymbols" })
 	map("<leader>sS", Snacks.picker.lsp_workspace_symbols, { desc = "LSP Workspace [S]ymbols" })
-	map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+
+	-- map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
 	-- map("gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 	-- map("gr", vim.lsp.buf.references, { nowait = true, desc = "[R]eferences" })
 

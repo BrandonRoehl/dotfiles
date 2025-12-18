@@ -20,7 +20,7 @@ return {
 		---@type MasonSettings | {ensure_installed: string[]}
 		opts = {
 			ui = {
-				border = vim.g.border,
+				border = vim.g.winborder,
 			},
 		},
 		---@param opts MasonSettings | {ensure_installed: string[]}

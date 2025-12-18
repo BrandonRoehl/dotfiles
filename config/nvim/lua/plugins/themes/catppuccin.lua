@@ -37,7 +37,7 @@ return {
 			noice = true,
 			-- telescope = {
 			-- 	enabled = true,
-			-- 	style = vim.g.border == "none" and "nvchad" or "classic",
+			-- 	style = vim.g.winborder == "none" and "nvchad" or "classic",
 			-- },
 			-- native_lsp = {
 			-- 	enabled = true,

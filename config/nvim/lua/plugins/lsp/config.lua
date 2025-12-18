@@ -12,7 +12,7 @@ return {
 		},
 		diagnostics = {
 			float = {
-				border = vim.g.border,
+				border = vim.g.winborder,
 				source = "if_many",
 				prefix = " ",
 				scope = "cursor",

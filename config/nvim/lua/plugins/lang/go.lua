@@ -23,7 +23,7 @@ return {
 		optional = true,
 		opts_extend = { "ensure_installed" },
 		opts = {
-			ensure_installed = { "go" },
+			ensure_installed = { "go", "gomod", "gowork", "gosum" },
 		},
 	},
 	{

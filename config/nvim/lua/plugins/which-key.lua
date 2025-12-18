@@ -67,7 +67,7 @@ return {
 
 			win = {
 				title = true,
-				border = vim.g.border,
+				border = vim.g.winborder,
 			},
 		},
 		-- Show the local buffer mappings
