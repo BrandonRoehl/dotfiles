@@ -62,9 +62,7 @@ return {
 
 		-- First apply any custom configuration provided by plugins
 		for server, config in pairs(opts.servers or {}) do
-			if config then
-				vim.lsp.config(server, config)
-			end
+			vim.lsp.config(server, config)
 		end
 		-- Trigger pre enable after servers are configured
 		vim.api.nvim_exec_autocmds("User", {
