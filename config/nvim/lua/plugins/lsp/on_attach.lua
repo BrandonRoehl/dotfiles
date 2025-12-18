@@ -28,13 +28,13 @@ local function on_attach(event)
 	map("gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
 	map("<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP [S]ymbols" })
 	map("<leader>sS", Snacks.picker.lsp_workspace_symbols, { desc = "LSP Workspace [S]ymbols" })
-	-- map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+	map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
 	-- map("gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
 	-- map("gr", vim.lsp.buf.references, { nowait = true, desc = "[R]eferences" })
 
 	-- Rename the variable under your cursor.
 	--  Most Language Servers support renaming across files, etc.
-	map("<leader>rn", vim.lsp.buf.rename, { desc = "[R]e[n]ame" })
+	map("<leader>cr", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" })
 
 	-- Execute a code action, usually your cursor needs to be on top an error
 	-- or a suggestion from your LSP for this to activate.
