@@ -4,9 +4,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "enable", "ensure_installed" },
 		opts = {
-			enable = { "copilot" },
+			servers = { copilot = {} },
 		},
 	},
 	{

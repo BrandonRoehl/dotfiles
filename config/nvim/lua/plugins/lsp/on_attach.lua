@@ -116,7 +116,10 @@ return {
 				--  This function gets run when an LSP attaches to a particular buffer.
 				--    That is to say, every time a new file is opened that is associated with
 				--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-				--    function will be executed to configure the current buffer
+				--    function will be executed to configure the current buffer.
+				--
+				--  This is enabled as this instead of `on_attach` in lspconfig so it will
+				--  fire for all LSPs even those with a separate `on_attach`
 				vim.api.nvim_create_autocmd("LspAttach", {
 					group = vim.api.nvim_create_augroup("lazy-lsp-attach", { clear = true }),
 					callback = on_attach,

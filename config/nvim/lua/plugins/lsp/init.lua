@@ -52,6 +52,7 @@ return {
 	---@param plugin LazyPlugin
 	---@param opts LspOptions
 	config = function(plugin, opts)
+		--https://neovim.io/doc/user/lsp.html#lsp-config-merge
 		-- The configuration that is used will be merging keeping keys
 		-- 1. `nvim/lsp/name.lua`
 		--   - provided by "nvim-lspconfig"
