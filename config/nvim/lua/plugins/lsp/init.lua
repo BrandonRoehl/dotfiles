@@ -24,7 +24,7 @@
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
 ---@class LspServerConfig: vim.lsp.Config
----@field keys? LazyKeysSpec[]|fun(self:LazyPlugin, keys:string[]):LazyKeys[]
+---@field keys? LazyKeysSpec[]
 
 ---@module "lazy"
 ---@type LazyPluginSpec
@@ -43,11 +43,9 @@ return {
 		-- Will be executed when loading the plugin
 		setup_extend = {},
 		---@type table<string, LspServerConfig?>
-		servers = {
-			["*"] = {
-				keys = {},
-			},
-		},
+		servers = {},
+		---@type vim.diagnostic.Opts
+		diagnostics = {},
 	},
 	---@param plugin LazyPlugin
 	---@param opts LspOptions
@@ -73,6 +71,8 @@ return {
 		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
 		end
+		-- Configure diagnostics
+		vim.diagnostic.config(opts.diagnostics)
 		-- Enable all servers that have provided keys
 		local enable = vim.tbl_filter(function(server)
 			return server ~= "*"

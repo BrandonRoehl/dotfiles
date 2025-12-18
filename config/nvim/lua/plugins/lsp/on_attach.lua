@@ -15,6 +15,8 @@ local function on_attach(event)
 		opts.buffer = event.buf
 		vim.keymap.set(mode, keys, func, opts)
 	end
+	-- local Keys = require("lazy.core.handler.keys")
+	--    for _, keys in pairs(Keys.resolve(spec)) do
 
 	-- Jump to the definition of the word under your cursor.
 	--  This is where a variable was first declared, or where a function is defined, etc.
