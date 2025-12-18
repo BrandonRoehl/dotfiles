@@ -14,7 +14,25 @@ return {
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 	},
-
+	specs = {
+		"neovim/nvim-lspconfig",
+		optional = true,
+		dependencies = { "saghen/blink.cmp" },
+		---@param opts LspOptions
+		opts = function(_, opts)
+			return vim.tbl_deep_extend("force", opts, {
+				servers = {
+					["*"] = {
+						capabilities = vim.tbl_extend(
+							"force",
+							vim.lsp.protocol.make_client_capabilities(),
+							require("blink.cmp").get_lsp_capabilities()
+						),
+					},
+				},
+			})
+		end,
+	},
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
 	opts = {
@@ -175,23 +193,4 @@ return {
 	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 	-- init is called on parsing of the plugin spec thus this just sets up the
 	-- config command for the LSPs when they load
-	init = function(_)
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "LspPreEnable",
-			callback = function(_)
-				-- LSP servers and clients are able to communicate to each other what features they support.
-				-- By default, Neovim doesn't support everything that is in the LSP specification.
-				-- When you add blink-cmp, luasnip, etc. Neovim now has *more* capabilities.
-				-- So, we create new capabilities with blink cmp, and then broadcast that to the servers.
-				vim.lsp.config("*", {
-					--- @type lsp.ClientCapabilities
-					capabilities = vim.tbl_extend(
-						"force",
-						vim.lsp.protocol.make_client_capabilities(),
-						require("blink.cmp").get_lsp_capabilities()
-					),
-				})
-			end,
-		})
-	end,
 }
