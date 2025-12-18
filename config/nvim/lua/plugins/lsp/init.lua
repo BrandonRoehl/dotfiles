@@ -24,7 +24,7 @@
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
 ---@class LspServerConfig: vim.lsp.Config
----@field keys? LazyKeysSpec[]|fun(self:LazyPlugin, keys:string[]):((string|LazyKeys)[])
+---@field keys? LazyKeysSpec[]|fun(self:LazyPlugin, keys:string[]):LazyKeys[]
 
 ---@module "lazy"
 ---@type LazyPluginSpec
