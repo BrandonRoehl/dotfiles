@@ -31,15 +31,14 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "enable" },
 		opts = {
-			enable = {
-				"sourcekit",
-				"clangd",
-				"harper_ls",
-				"gdscript",
-				"graphql",
-				"texlab",
+			servers = {
+				sourcekit = {},
+				clangd = {},
+				harper_ls = {},
+				gdscript = {},
+				graphql = {},
+				texlab = {},
 			},
 		},
 	},

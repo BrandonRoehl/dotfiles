@@ -35,11 +35,11 @@ return {
 		optional = true,
 		opts_extend = { "enable" },
 		opts = {
-			enable = {
-				-- "pyright",
-				"basedpyright",
-				-- "pyrefly",
-				"ruff",
+			servers = {
+				-- pyright = {},
+				basedpyright = {},
+				-- pyrefly = {},
+				ruff = {},
 			},
 		},
 	},

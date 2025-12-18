@@ -63,9 +63,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "enable" },
 		opts = {
-			enable = { "lua_ls" },
+			servers = { lua_ls = {} },
 		},
 	},
 	{

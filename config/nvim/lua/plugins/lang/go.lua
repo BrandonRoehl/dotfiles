@@ -29,9 +29,8 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "enable" },
 		opts = {
-			enable = { "gopls" },
+			servers = { gopls = {} },
 		},
 	},
 	{
