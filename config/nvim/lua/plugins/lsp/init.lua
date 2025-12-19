@@ -23,7 +23,8 @@
 -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
----@class LazyKeysLspSpec: LazyKeysSpec,snacks.keymap.set.Opts
+---@module "lazy"
+---@class LazyKeysLspSpec: LazyKeysSpec,vim.keymap.set.Opts
 ---@field method? string|string[] lsp methods that allow this to bind
 ---@class LazyKeysLsp: LazyKeys
 ---@field method? string|string[] lsp methods that allow this to bind
@@ -122,7 +123,6 @@ end
 ---@class LspServerConfig: vim.lsp.Config
 ---@field keys? LazyKeysLspSpec[]
 
----@module "lazy"
 ---@type LazyPluginSpec
 return {
 	-- Main LSP Configuration
