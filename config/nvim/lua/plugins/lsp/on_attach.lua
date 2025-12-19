@@ -1,54 +1,40 @@
+---@param client vim.lsp.Client
+---@param bufnr integer
+function bind_keys(client, bufnr)
+	local opts = Utils:plugin_opts("nvim-lspconfig")
+	---@type LazyKeysSpec[]
+	local global_spec = vim.tbl_get(opts, "servers", "*", "keys") or {}
+	---@type LazyKeysSpec[]
+	local server_spec = vim.tbl_get(opts, "servers", client.name, "keys") or {}
+	---@type LazyKeysSpec[]
+	local spec = vim.list_extend(vim.deepcopy(server_spec), vim.deepcopy(global_spec))
+
+	local LazyKeys = require("lazy.core.handler.keys")
+	for _, keys in pairs(LazyKeys.resolve(spec)) do
+		local opts = LazyKeys.opts(keys)
+		---@cast opts snacks.keymap.set.Opts
+		opts.buffer = bufnr
+		if opts.lsp then
+			opts.lsp.bufnr = bufnr
+		end
+		Snacks.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
+	end
+end
+
 ---@param event vim.api.keyset.create_autocmd.callback_args
 ---@return boolean?
 local function on_attach(event)
-	-- NOTE: Remember that Lua is a real programming language, and as such it is possible
-	-- to define small helper and utility functions so you don't have to repeat yourself.
-	--
-	-- In this case, we create a function that lets us more easily define mappings specific
-	-- for LSP related items. It sets the mode, buffer and description for us each time.
-	---@param keys string Left-hand side |{lhs}| of the mapping.
-	---@param func string|function Right-hand side |{rhs}| of the mapping, can be a Lua function.
-	---@param opts? vim.keymap.set.Opts
-	---@param mode? string|string[] Mode "short-name" (see |nvim_set_keymap()|), or a list thereof.
-	local function map(keys, func, opts, mode)
-		mode = mode or "n"
-		opts.buffer = event.buf
-		vim.keymap.set(mode, keys, func, opts)
+	local client = vim.lsp.get_client_by_id(event.data.client_id)
+	if not client then
+		return
 	end
-	-- local Keys = require("lazy.core.handler.keys")
-	--    for _, keys in pairs(Keys.resolve(spec)) do
-
-	-- Jump to the definition of the word under your cursor.
-	--  This is where a variable was first declared, or where a function is defined, etc.
-	--  To jump back, press <C-t>.
-
-	-- lsp keybinds
-	map("gd", Snacks.picker.lsp_definitions, { desc = "[G]oto [D]efinition" })
-	map("gD", Snacks.picker.lsp_declarations, { desc = "[G]oto [D]eclaration" })
-	map("gr", Snacks.picker.lsp_references, { nowait = true, desc = "[R]eferences" })
-	map("gI", Snacks.picker.lsp_implementations, { desc = "Goto [I]mplementation" })
-	map("gy", Snacks.picker.lsp_type_definitions, { desc = "Goto T[y]pe Definition" })
-	map("<leader>ss", Snacks.picker.lsp_symbols, { desc = "LSP [S]ymbols" })
-	map("<leader>sS", Snacks.picker.lsp_workspace_symbols, { desc = "LSP Workspace [S]ymbols" })
-
-	-- map("gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
-	-- map("gD", vim.lsp.buf.declaration, { desc = "[G]oto [D]eclaration" })
-	-- map("gr", vim.lsp.buf.references, { nowait = true, desc = "[R]eferences" })
-
-	-- Rename the variable under your cursor.
-	--  Most Language Servers support renaming across files, etc.
-	map("<leader>cr", vim.lsp.buf.rename, { desc = "[C]ode [R]ename" })
-
-	-- Execute a code action, usually your cursor needs to be on top an error
-	-- or a suggestion from your LSP for this to activate.
-	map("<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ction" }, { "n", "x" })
+	bind_keys(client, event.buf)
 
 	-- The following autocommands are used to highlight references of the
 	-- word under your cursor when your cursor rests there for a little while.
 	--    See `:help CursorHold` for information about when this is executed
 	--
 	-- When you move your cursor, the highlights will be cleared (the second autocommand).
-	local client = vim.lsp.get_client_by_id(event.data.client_id)
 	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
 		-- vim.cmd([[
 		-- hi! LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
@@ -89,16 +75,6 @@ local function on_attach(event)
 			vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
 		end,
 	})
-
-	-- The following code creates a keymap to toggle inlay hints in your
-	-- code, if the language server you are using supports them
-	--
-	-- This may be unwanted, since they displace some of your code
-	if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-		map("<leader>ch", function()
-			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-		end, { desc = "Toggle Inlay [C]ode [H]ints" })
-	end
 end
 
 ---@module "lazy"
@@ -106,10 +82,6 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	optional = true,
-	dependencies = {
-		-- UI for actions
-		"folke/snacks.nvim",
-	},
 	opts_extend = { "setup_extend" },
 	opts = {
 		---@type fun(self:LazyPlugin, opts:table)[]

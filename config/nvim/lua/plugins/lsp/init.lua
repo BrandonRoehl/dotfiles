@@ -23,8 +23,11 @@
 -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
+---@class LazyKeysLspSpec: LazyKeysSpec,snacks.keymap.set.Opts
+---@class LazyKeysLsp: LazyKeys,snacks.keymap.set.Opts
+
 ---@class LspServerConfig: vim.lsp.Config
----@field keys? LazyKeysSpec[]
+---@field keys? LazyKeysLspSpec[]
 
 ---@module "lazy"
 ---@type LazyPluginSpec
@@ -66,7 +69,7 @@ return {
 		-- Trigger pre enable after servers are configured
 		vim.api.nvim_exec_autocmds("User", {
 			pattern = "LspPreEnable",
-			data = opts,
+			-- data = opts,
 		})
 		for _, func in ipairs(opts.setup_extend or {}) do
 			func(plugin, opts)
@@ -96,7 +99,7 @@ return {
 		end
 		vim.api.nvim_exec_autocmds("User", {
 			pattern = "LspPostEnable",
-			data = opts,
+			-- data = opts,
 		})
 	end,
 }
