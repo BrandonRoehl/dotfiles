@@ -41,10 +41,6 @@ return {
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers.*.keys" },
-	dependencies = {
-		-- UI for actions
-		"folke/snacks.nvim",
-	},
 	---@class LspOptions configs to change when the popup is shown
 	opts = {
 		---@type table<string, LspServerConfig?>
