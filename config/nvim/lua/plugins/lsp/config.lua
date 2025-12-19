@@ -7,6 +7,7 @@ return {
 		-- UI for actions
 		"folke/snacks.nvim",
 	},
+	---@module "plugins.lsp"
 	---@type LspOptions
 	opts = {
 		servers = {

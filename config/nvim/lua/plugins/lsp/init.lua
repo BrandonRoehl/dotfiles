@@ -140,7 +140,7 @@ return {
 		---@type vim.diagnostic.Opts
 		diagnostics = {},
 	},
-	---@param plugin LazyPlugin
+	---@param _ LazyPlugin
 	---@param opts LspOptions
 	config = function(_, opts)
 		--  This function gets run when an LSP attaches to a particular buffer.
