@@ -24,7 +24,9 @@
 -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
 ---@class LazyKeysLspSpec: LazyKeysSpec,snacks.keymap.set.Opts
----@class LazyKeysLsp: LazyKeys,snacks.keymap.set.Opts
+---@field method? string|string[] lsp methods that allow this to bind
+---@class LazyKeysLsp: LazyKeys
+---@field method? string|string[] lsp methods that allow this to bind
 
 ---@class LspServerConfig: vim.lsp.Config
 ---@field keys? LazyKeysLspSpec[]

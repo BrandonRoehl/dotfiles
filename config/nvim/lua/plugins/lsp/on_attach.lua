@@ -11,13 +11,25 @@ function bind_keys(client, bufnr)
 
 	local LazyKeys = require("lazy.core.handler.keys")
 	for _, keys in pairs(LazyKeys.resolve(spec)) do
+		---@cast keys LazyKeysLsp
 		local opts = LazyKeys.opts(keys)
-		---@cast opts snacks.keymap.set.Opts
+		---@cast opts vim.keymap.set.Opts
 		opts.buffer = bufnr
-		if opts.lsp then
-			opts.lsp.bufnr = bufnr
+		opts.method = nil
+
+		---@type boolean
+		local should_bind = true
+		if keys.method then
+			-- Methods where provided if they are not present do not bind
+			local methods = type(keys.method) == "string" and { keys.method } or keys.method --[[@as string[] ]]
+			should_bind = vim.tbl_contains(methods, function(method)
+				return client:supports_method(method, bufnr)
+			end, { predicate = true })
 		end
-		Snacks.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
+
+		if should_bind then
+			vim.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
+		end
 	end
 end
 
