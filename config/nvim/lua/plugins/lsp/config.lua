@@ -15,37 +15,36 @@ return {
                 -- stylua: ignore
                 ---@type LazyKeysLspSpec[]
 				keys = {
-                    { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
+                    -- { "K", vim.lsp.buf.hover, desc = "Hover" },
+                    -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", method = "textDocument/definition" },
+                    -- { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+                    -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
+                    -- { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
+                    -- { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
+                    { "gK", function() return vim.lsp.buf.signature_help() end, desc = "Signature Help", method = "textDocument/signatureHelp" },
+                    { "<c-k>", function() return vim.lsp.buf.signature_help() end, mode = "i", desc = "Signature Help", method = "textDocument/signatureHelp" },
+                    { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", method = "rename" },
+                    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "x" }, method = "textDocument/codeAction" },
+                    { "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" }, method = "textDocument/codeLens" },
+                    { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" }, method = "textDocument/codeLens" },
+                    { "<leader>ch>", function()
+		            	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		            end, desc = "Toggle Inlay [C]ode [H]ints", method = "textDocument/inlayHint" },
+
+                    -- Snacks pickers
                     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "[G]oto [D]efinition", method = "textDocument/definition" },
                     { "gD", function() Snacks.picker.lsp_declarations() end, desc = "[G]oto [D]eclaration" },
                     { "gr", function() Snacks.picker.lsp_references() end, desc = "[R]eferences", nowait = true },
                     { "gI", function() Snacks.picker.lsp_implementations() end, desc = "[G]oto [I]mplementation" },
                     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "[G]oto T[y]pe Definition" },
-                    {"<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP [S]ymbols" },
-                    {"<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace [S]ymbols" },
-                    -- { "K", function() return vim.lsp.buf.hover() end, desc = "Hover" },
-                    -- Specific methods to check
-                    { "gK", function() return vim.lsp.buf.signature_help() end, desc = "Signature Help", method = "textDocument/signatureHelp" },
-                    { "<c-k>", function() return vim.lsp.buf.signature_help() end, mode = "i", desc = "Signature Help", method = "textDocument/signatureHelp" },
-                    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "x" }, method = "textDocument/codeAction" },
-                    { "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" }, method = "textDocument/codeLens" },
-                    { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" }, method = "textDocument/codeLens" },
+                    { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
+                    { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP [S]ymbols" },
+                    { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace [S]ymbols" },
                     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = {"n"}, method = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
-                    { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", method = "rename" },
                     { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", method = "textDocument/documentHighlight" },
                     { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", method = "textDocument/documentHighlight" },
                     { "<a-n>", function() Snacks.words.jump(vim.v.count1, true) end, desc = "Next Reference", method = "textDocument/documentHighlight" },
                     { "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", method = "textDocument/documentHighlight" },
-                    { "<leader>ch>", function()
-		            	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-		            end, desc = "Toggle Inlay [C]ode [H]ints", method = "textDocument/inlayHint" },
-                    -- Non snacks ones
-                    --
-                    -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", lsp = { method = "textDocument/definition" },
-                    -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
-                    -- { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
-                    -- { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
-                    -- { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
                 },
 			},
 		},
