@@ -135,9 +135,6 @@ return {
 	opts_extend = { "servers.*.keys" },
 	---@class LspOptions configs to change when the popup is shown
 	opts = {
-		---@type fun(self:LazyPlugin, opts:table)[]
-		-- Will be executed when loading the plugin
-		setup_extend = {},
 		---@type table<string, LspServerConfig?>
 		servers = {},
 		---@type vim.diagnostic.Opts
@@ -145,7 +142,7 @@ return {
 	},
 	---@param plugin LazyPlugin
 	---@param opts LspOptions
-	config = function(plugin, opts)
+	config = function(_, opts)
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
 		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -173,9 +170,6 @@ return {
 		-- Trigger pre enable after servers are configured
 		--
 		Utils:trigger_custom_event("LspPreEnable")
-		for _, func in ipairs(opts.setup_extend or {}) do
-			func(plugin, opts)
-		end
 
 		-- Still bugs around `vim.o.winborder`
 		-- waiting on mason and snacks to remove this
@@ -200,5 +194,7 @@ return {
 			vim.lsp.enable(enable)
 		end
 		Utils:trigger_custom_event("LspPostEnable")
+
+		require("plugins.lsp.progress.callbacks"):create_autocmds()
 	end,
 }
