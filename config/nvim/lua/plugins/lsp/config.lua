@@ -12,8 +12,8 @@ return {
 	opts = {
 		servers = {
 			["*"] = {
-                ---@type LazyKeysLspSpec[]
                 -- stylua: ignore
+                ---@type LazyKeysLspSpec[]
 				keys = {
                     { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
                     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "[G]oto [D]efinition", method = "textDocument/definition" },
