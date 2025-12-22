@@ -99,6 +99,10 @@ return {
 	---@param _ LazyPlugin
 	---@param opts LspOptions
 	config = function(_, opts)
+		-- Trigger pre enable after servers are configured
+		--
+		Utils:trigger_custom_event("LspPreEnable")
+
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
 		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -123,9 +127,6 @@ return {
 		for server, config in pairs(opts.servers or {}) do
 			vim.lsp.config(server, config)
 		end
-		-- Trigger pre enable after servers are configured
-		--
-		Utils:trigger_custom_event("LspPreEnable")
 
 		-- Still bugs around `vim.o.winborder`
 		-- waiting on mason and snacks to remove this
