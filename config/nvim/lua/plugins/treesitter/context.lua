@@ -2,9 +2,9 @@
 ---@return LazyPluginSpec
 return {
 	"nvim-treesitter/nvim-treesitter-context",
+	dependencies = "nvim-treesitter/nvim-treesitter",
 	version = false,
 	event = "VeryLazy",
-	dependencies = "nvim-treesitter/nvim-treesitter",
 	--- @type TSContext.UserConfig
 	opts = {
 		line_numbers = true,
@@ -15,15 +15,15 @@ return {
 		multiwindow = true,
 	},
 	commands = { "TSContextToggle", "TSContextEnable", "TSContextDisable" },
-	-- keys = {
-	-- 	{
-	-- 		"[c",
-	-- 		function()
-	-- 			require("treesitter-context").go_to_context()
-	-- 		end,
-	-- 		mode = "n",
-	-- 		silent = true,
-	-- 		desc = "Disable Context",
-	-- 	},
-	-- },
+	keys = {
+		{
+			"[k",
+			function()
+				require("treesitter-context").go_to_context(vim.v.count1)
+			end,
+			mode = "n",
+			silent = true,
+			desc = "Go to context",
+		},
+	},
 }

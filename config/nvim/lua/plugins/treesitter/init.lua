@@ -2,8 +2,12 @@
 ---@type LazyPluginSpec
 return {
 	"nvim-treesitter/nvim-treesitter",
+	import = "plugins.treesitter",
 	branch = "main",
 	version = false, -- Latest release is way too old and doesn't work on Windows
+	lazy = true,
+	event = { "BufReadPost", "BufNewFile", "VeryLazy" },
+	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 	build = function()
 		local TS = require("nvim-treesitter")
 		if not TS.get_installed then
@@ -14,14 +18,8 @@ return {
 			TS.update(nil, { summary = true })
 		end)
 	end,
-	event = { "BufReadPost", "BufNewFile", "VeryLazy" },
-	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 	opts_extend = { "ensure_installed" },
-	---@alias TSFeat { enable?: boolean, disable?: string[] }
-	opts = {
-		highlight = { enable = true }, ---@type TSFeat
-		ensure_installed = {},
-	},
+	opts = { ensure_installed = {} },
 	---@param opts TSConfig
 	config = function(_, opts)
 		local TS = require("nvim-treesitter")
@@ -67,25 +65,22 @@ return {
 		vim.api.nvim_create_autocmd("FileType", {
 			group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
 			callback = function(ev)
-				local ft, lang = ev.match, vim.treesitter.language.get_lang(ev.match)
+				local ft, _ = ev.match, vim.treesitter.language.get_lang(ev.match)
 				if not Utils.treesitter.have(ft) then
 					return
 				end
 
-				---@param feat string
-				---@param query string
-				local function enabled(feat, query)
-					local f = opts[feat] or {} ---@type lazyvim.TSFeat
-					return f.enable ~= false
-						and not (type(f.disable) == "table" and vim.tbl_contains(f.disable, lang))
-						and Utils.treesitter.have(ft, query)
-				end
-
-				-- highlighting
-				if enabled("highlight", "highlights") then
-					pcall(vim.treesitter.start, ev.buf)
-				end
+				pcall(vim.treesitter.start, ev.buf)
 			end,
 		})
 	end,
+	-- If mason is enabled install the tree-sitter CLI tool
+	specs = {
+		"mason-org/mason.nvim",
+		optional = true,
+		opts_extend = { "ensure_installed" },
+		opts = {
+			ensure_installed = { "tree-sitter-cli" },
+		},
+	},
 }

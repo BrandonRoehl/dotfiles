@@ -2,6 +2,7 @@
 ---@type LazyPluginSpec
 return {
 	"nvim-treesitter/nvim-treesitter-textobjects",
+	dependencies = "nvim-treesitter/nvim-treesitter",
 	branch = "main",
 	event = "VeryLazy",
 	opts = {
