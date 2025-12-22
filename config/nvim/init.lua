@@ -17,7 +17,7 @@ vim.opt.rtp:prepend(lazypath)
 require("config")
 
 -- Register custom events before setup
-Utils:register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
+Utils.register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
 
 -- [[ Configure and install plugins ]]
 --

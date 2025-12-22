@@ -100,7 +100,7 @@ return {
 	config = function(_, opts)
 		-- Trigger pre enable after servers are configured
 		--
-		Utils:trigger_custom_event("LspPreEnable")
+		Utils.trigger_custom_event("LspPreEnable")
 
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
@@ -147,7 +147,7 @@ return {
 		if #enable > 0 then
 			vim.lsp.enable(enable)
 		end
-		Utils:trigger_custom_event("LspPostEnable")
+		Utils.trigger_custom_event("LspPostEnable")
 
 		require("plugins.lsp.progress.callbacks"):create_autocmds()
 	end,

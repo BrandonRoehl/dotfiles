@@ -36,7 +36,7 @@ function M:is_computer(...)
 	if #names == 0 then
 		names = { vim.fn.hostname() }
 		-- On macOS, get the computer name instead of just the hostname
-		if M:is_mac() then
+		if self.is_mac() then
 			local obj = vim.system({ "scutil", "--get", "ComputerName" }, { text = true }):wait()
 			if obj.code == 0 then
 				local out, _ = string.gsub(obj.stdout, "\n$", "")
@@ -52,7 +52,7 @@ end
 
 -- Add support for custom event to lazy nvim
 ---@param ... string the event names to add
-function M:register_custom_event(...)
+function M.register_custom_event(...)
 	local Event = require("lazy.core.handler.event")
 	for _, name in ipairs({ ... }) do
 		Event.mappings[name] = { id = name, event = "User", pattern = name }
@@ -61,19 +61,19 @@ function M:register_custom_event(...)
 end
 
 -- Trigger the custom event and load all plugins that are waiting on it
-function M:trigger_custom_event(name)
+function M.trigger_custom_event(name)
 	vim.api.nvim_exec_autocmds("User", { pattern = name })
 end
 
 ---@param name string
 ---@return LazyPlugin|nil plugin if the plugin is configured
-function M:plugin_spec(name)
+function M.plugin_spec(name)
 	return require("lazy.core.config").spec.plugins[name]
 end
 
 ---@param name string
 function M:plugin_opts(name)
-	local plugin = M:plugin_spec(name)
+	local plugin = self.plugin_spec(name)
 	if not plugin then
 		return {}
 	end
@@ -85,7 +85,7 @@ end
 ---@param name string
 ---@return boolean result if the plugin is configured
 function M:has_plugin(name)
-	local spec = M:plugin_spec(name)
+	local spec = M.plugin_spec(name)
 	-- Plugin spec exists
 	return spec ~= nil
 		-- Plugin spec is not disabled (enabled or nil)
@@ -99,7 +99,7 @@ end
 ---@return fun():boolean check returning if the plugin should be enabled
 function M:enable_with(name)
 	return function()
-		return M:has_plugin(name)
+		return self:has_plugin(name)
 	end
 end
 

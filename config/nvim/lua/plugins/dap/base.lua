@@ -96,6 +96,6 @@ return {
 		end
 
 		-- The custom event exec that causes the other setup plugins to run
-		Utils:trigger_custom_event("LazyDap")
+		Utils.trigger_custom_event("LazyDap")
 	end,
 }
