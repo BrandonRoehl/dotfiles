@@ -32,7 +32,7 @@ return {
 
 		local function attach(buf)
 			local ft = vim.bo[buf].filetype
-			if not (vim.tbl_get(opts, "move", "enable") and Utils.treesitter.have(ft, "textobjects")) then
+			if not (vim.tbl_get(opts, "move", "enable") and Utils.treesitter:have(ft, "textobjects")) then
 				return
 			end
 			---@type table<string, table<string, string>>

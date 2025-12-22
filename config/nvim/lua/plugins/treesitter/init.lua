@@ -48,16 +48,16 @@ return {
 
 		-- setup treesitter
 		TS.setup(opts)
-		Utils.treesitter.get_installed(true) -- initialize the installed langs
+		Utils.treesitter:get_installed(true) -- initialize the installed langs
 
 		-- install missing parsers
 		local install = vim.tbl_filter(function(lang)
-			return not Utils.treesitter.have(lang)
+			return not Utils.treesitter:have(lang)
 		end, opts.ensure_installed or {})
 		if #install > 0 then
 			Utils.treesitter.build(function()
 				TS.install(install, { summary = true }):await(function()
-					Utils.treesitter.get_installed(true) -- refresh the installed langs
+					Utils.treesitter:get_installed(true) -- refresh the installed langs
 				end)
 			end)
 		end
@@ -66,7 +66,7 @@ return {
 			group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
 			callback = function(ev)
 				local ft, _ = ev.match, vim.treesitter.language.get_lang(ev.match)
-				if not Utils.treesitter.have(ft) then
+				if not Utils.treesitter:have(ft) then
 					return
 				end
 
