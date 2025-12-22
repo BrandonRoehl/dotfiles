@@ -20,12 +20,12 @@ end
 
 ---@param lang string
 ---@param query string
-function M.have_query(lang, query)
+function M:have_query(lang, query)
 	local key = lang .. ":" .. query
-	if M._queries[key] == nil then
-		M._queries[key] = vim.treesitter.query.get(lang, query) ~= nil
+	if self._queries[key] == nil then
+		self._queries[key] = vim.treesitter.query.get(lang, query) ~= nil
 	end
-	return M._queries[key]
+	return self._queries[key]
 end
 
 ---@param what string|number|nil
@@ -40,18 +40,18 @@ function M:have(what, query)
 	if lang == nil or M:get_installed()[lang] == nil then
 		return false
 	end
-	if query and not M.have_query(lang, query) then
+	if query and not M:have_query(lang, query) then
 		return false
 	end
 	return true
 end
 
-function M.foldexpr()
-	return M:have(nil, "folds") and vim.treesitter.foldexpr() or "0"
+function M:foldexpr()
+	return self:have(nil, "folds") and vim.treesitter.foldexpr() or "0"
 end
 
-function M.indentexpr()
-	return M:have(nil, "indents") and require("nvim-treesitter").indentexpr() or -1
+function M:indentexpr()
+	return self:have(nil, "indents") and require("nvim-treesitter").indentexpr() or -1
 end
 
 ---@return string?
@@ -63,7 +63,7 @@ end
 
 ---@return boolean ok, utils.treesitter.Health health
 function M.check()
-	local is_win = vim.fn.has("win32") == 1
+	local is_win = Utils.is_win()
 	---@param tool string
 	---@param win boolean?
 	local function have(tool, win)
@@ -92,9 +92,9 @@ function M.check()
 end
 
 ---@param cb fun()
-function M.build(cb)
-	M.ensure_treesitter_cli(function(_, err)
-		local ok, health = M.check()
+function M:build(cb)
+	self.ensure_treesitter_cli(function(_, err)
+		local ok, health = self.check()
 		if ok then
 			return cb()
 		else

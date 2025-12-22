@@ -14,7 +14,7 @@ return {
 			Utils.error("Please restart Neovim and run `:TSUpdate` to use the `nvim-treesitter` **main** branch.")
 			return
 		end
-		Utils.treesitter.build(function()
+		Utils.treesitter:build(function()
 			TS.update(nil, { summary = true })
 		end)
 	end,
@@ -55,7 +55,7 @@ return {
 			return not Utils.treesitter:have(lang)
 		end, opts.ensure_installed or {})
 		if #install > 0 then
-			Utils.treesitter.build(function()
+			Utils.treesitter:build(function()
 				TS.install(install, { summary = true }):await(function()
 					Utils.treesitter:get_installed(true) -- refresh the installed langs
 				end)

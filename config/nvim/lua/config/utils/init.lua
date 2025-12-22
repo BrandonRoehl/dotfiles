@@ -15,11 +15,11 @@ setmetatable(M, {
 	end,
 })
 
-function M:is_win()
+function M.is_win()
 	return jit.os:find("Windows") or vim.fn.has("win32") == 1
 end
 
-function M:is_mac()
+function M.is_mac()
 	return jit.os:find("OSX")
 end
 
