@@ -1,5 +1,19 @@
----@class Utils
+local LazyUtil = require("lazy.core.util")
+
+---@class Utils: LazyUtilCore
+---@field treesitter utils.treesitter
 local M = {}
+
+setmetatable(M, {
+	__index = function(t, k)
+		if LazyUtil[k] then
+			return LazyUtil[k]
+		end
+		---@diagnostic disable-next-line: no-unknown
+		t[k] = require("config.utils." .. k)
+		return t[k]
+	end,
+})
 
 function M:is_win()
 	return jit.os:find("Windows") or vim.fn.has("win32") == 1
@@ -91,4 +105,4 @@ end
 
 _G.Utils = M
 
-return _G.Utils
+return M

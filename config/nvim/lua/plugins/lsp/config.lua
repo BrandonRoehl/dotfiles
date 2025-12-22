@@ -9,7 +9,6 @@ local function bind_keys(client, bufnr)
 	local server_spec = vim.tbl_get(opts, "servers", client.name, "keys") or {}
 	---@type LazyKeysSpec[]
 	local spec = vim.list_extend(vim.deepcopy(server_spec), vim.deepcopy(global_spec))
-	-- vim.print(spec)
 
 	local LazyKeys = require("lazy.core.handler.keys")
 	for _, keys in pairs(LazyKeys.resolve(spec)) do
