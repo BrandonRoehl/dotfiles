@@ -95,15 +95,16 @@ return {
 		{ "<leader>sf", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
 	},
 	specs = {
-		"neovim/nvim-lspconfig",
-		optional = true,
-		dependencies = { "folke/snacks.nvim" },
-		opts_extend = { "servers.*.keys" },
-		---@module "plugins.lsp"
-		---@type LspOptions lsp options
-		opts = {
-			servers = {
-				["*"] = {
+		{
+			"neovim/nvim-lspconfig",
+			optional = true,
+			dependencies = { "folke/snacks.nvim" },
+			opts_extend = { "servers.*.keys" },
+			---@module "plugins.lsp"
+			---@type LspOptions lsp options
+			opts = {
+				servers = {
+					["*"] = {
                     -- stylua: ignore
 					keys = {
                         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "[G]oto [D]efinition", method = "textDocument/definition" },
@@ -116,6 +117,20 @@ return {
                         { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace [S]ymbols" },
                         -- { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = {"n"}, method = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
                     },
+					},
+				},
+			},
+		},
+		{
+			"folke/which-key.nvim",
+			optional = true,
+			opts_extend = { "spec" },
+			opts = {
+				---@type wk.Spec
+				spec = {
+					{ "<leader>s", group = "[S]earch", icon = " " },
+					{ "<leader>f", group = "[F]ind", icon = " " },
+					{ "<leader>g", group = "[G]it", icon = " " },
 				},
 			},
 		},

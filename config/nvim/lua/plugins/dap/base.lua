@@ -19,6 +19,17 @@ return {
 			config = false,
 		},
 	},
+	specs = {
+		"folke/which-key.nvim",
+		optional = true,
+		opts_extend = { "spec" },
+		opts = {
+			---@type wk.Spec
+			spec = {
+				{ "<leader>d", group = "[D]ebug", icon = " " },
+			},
+		},
+	},
 	-- stylua: ignore
 	keys = {
 		{ "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },

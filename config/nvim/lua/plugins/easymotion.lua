@@ -55,4 +55,15 @@ return {
 		-- Custom stuff I have added
 		{ "<leader><leader>0", "<cmd>HopLine<cr>", desc = "Hop begining of line", mode = { "n", "v" } },
 	},
+	specs = {
+		"folke/which-key.nvim",
+		optional = true,
+		opts_extend = { "spec" },
+		opts = {
+			---@type wk.Spec
+			spec = {
+				{ "<leader><leader>", group = "Hop" },
+			},
+		},
+	},
 }
