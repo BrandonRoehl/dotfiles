@@ -114,20 +114,6 @@ return {
 			group = vim.api.nvim_create_augroup("lazy-lsp-attach", { clear = true }),
 			callback = on_attach,
 		})
-		--https://neovim.io/doc/user/lsp.html#lsp-config-merge
-		-- The configuration that is used will be merging keeping keys
-		-- 1. `nvim/lsp/name.lua`
-		--   - provided by "nvim-lspconfig"
-		-- 2. `nvim/lsp/after/name.lua`
-		--   - custom overrides for your config
-		-- 3. `{ opts.servers.name }`
-		--   - extra features provided by plugins
-
-		-- First apply any custom configuration provided by plugins
-		for server, config in pairs(opts.servers or {}) do
-			vim.lsp.config(server, config)
-		end
-
 		-- Still bugs around `vim.o.winborder`
 		-- waiting on mason and snacks to remove this
 		if vim.g.winborder then
@@ -140,9 +126,21 @@ return {
 				return orig_util_open_floating_preview(contents, syntax, opts, ...)
 			end
 		end
-
 		-- Configure diagnostics
 		vim.diagnostic.config(opts.diagnostics)
+
+		--https://neovim.io/doc/user/lsp.html#lsp-config-merge
+		-- The configuration that is used will be merging keeping keys
+		-- 1. `nvim/lsp/name.lua`
+		--   - provided by "nvim-lspconfig"
+		-- 2. `nvim/lsp/after/name.lua`
+		--   - custom overrides for your config
+		-- 3. `{ opts.servers.name }`
+		--   - extra features provided by plugins
+		-- First apply any custom configuration provided by plugins
+		for server, config in pairs(opts.servers or {}) do
+			vim.lsp.config(server, config)
+		end
 		-- Enable all servers that have provided keys
 		local enable = vim.tbl_filter(function(server)
 			return server ~= "*"
