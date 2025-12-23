@@ -22,8 +22,12 @@ return {
 		end)
 	end,
 	opts_extend = { "ensure_installed" },
-	opts = { ensure_installed = {} },
-	---@param opts TSConfig
+	---@class LazyTSConfig: TSConfig
+	opts = {
+		---@type string[]
+		ensure_installed = {},
+	},
+	---@param opts LazyTSConfig
 	config = function(_, opts)
 		local LU = require("lazy.core.util")
 		local TS = require("nvim-treesitter")
