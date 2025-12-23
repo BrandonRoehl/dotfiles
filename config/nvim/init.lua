@@ -13,11 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure Neovim ]]
 --
+-- Load custom helpers
+require("utils")
 -- This is the base like your leader globals and stuff not requiring plugins
 require("config")
-
--- Register custom events before setup
-Utils.register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
 
 -- [[ Configure and install plugins ]]
 --

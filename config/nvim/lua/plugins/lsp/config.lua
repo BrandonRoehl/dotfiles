@@ -2,7 +2,7 @@
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 local function bind_keys(client, bufnr)
-	local opts = Utils:plugin_opts("nvim-lspconfig")
+	local opts = Utils.lazy:plugin_opts("nvim-lspconfig")
 	---@type LazyKeysSpec[]
 	local global_spec = vim.tbl_get(opts, "servers", "*", "keys") or {}
 	---@type LazyKeysSpec[]
@@ -112,7 +112,7 @@ return {
 	config = function(_, opts)
 		-- Trigger pre enable after servers are configured
 		--
-		Utils.trigger_custom_event("LspPreEnable")
+		Utils.lazy.trigger_custom_event("LspPreEnable")
 
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
@@ -159,6 +159,6 @@ return {
 		if #enable > 0 then
 			vim.lsp.enable(enable)
 		end
-		Utils.trigger_custom_event("LspPostEnable")
+		Utils.lazy.trigger_custom_event("LspPostEnable")
 	end,
 }

@@ -12,6 +12,9 @@ vim.g.winborder = "rounded"
 -- the new one that exists but is still buggy
 -- vim.o.winborder = "rounded"
 
+-- Register custom events before setup
+Utils.lazy.register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
+
 -- Load globals for specific terminal emulators
 require("config.program")
 
@@ -23,6 +26,3 @@ require("config.keymaps")
 
 -- Load custom autocommands for the base of neovim
 require("config.autocmds")
-
--- Load custom helpers
-require("config.utils")

@@ -2,7 +2,7 @@
 ---@class utils.treesitter
 local M = {}
 
-local Utils = require("config.utils")
+local Utils = require("utils")
 local LazyUtils = require("lazy.core.util")
 
 M._installed = nil ---@type table<string,boolean>?

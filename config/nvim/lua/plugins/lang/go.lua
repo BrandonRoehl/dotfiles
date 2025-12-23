@@ -5,7 +5,7 @@ return {
 		"leoluz/nvim-dap-go",
 		version = false,
 		lazy = true,
-		enabled = Utils:enable_with("nvim-dap"),
+		enabled = Utils.lazy:enable_with("nvim-dap"),
 		event = "LazyDap",
 		dependencies = { "mfussenegger/nvim-dap", optional = true },
 		config = function()

@@ -22,7 +22,7 @@ function M:is_host(...)
 	if #self._host == 0 then
 		self._host = { vim.fn.hostname() }
 		-- On macOS, get the computer name instead of just the hostname
-		if self.is_mac() then
+		if vim.fn.executable("scutil") == 1 then
 			local obj = vim.system({ "scutil", "--get", "ComputerName" }, { text = true }):wait()
 			if obj.code == 0 then
 				local out, _ = string.gsub(obj.stdout, "\n$", "")

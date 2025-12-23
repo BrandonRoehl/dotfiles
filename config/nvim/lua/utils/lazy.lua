@@ -1,16 +1,5 @@
----@class utils
----@field treesitter utils.treesitter
----@field lsp utils.lsp
----@field computer utils.computer
+---@class utils.lazy
 local M = {}
-
-setmetatable(M, {
-	__index = function(t, k)
-		---@diagnostic disable-next-line: no-unknown
-		t[k] = require("config.utils." .. k)
-		return t[k]
-	end,
-})
 
 -- Add support for custom event to lazy nvim
 ---@param ... string the event names to add
@@ -64,7 +53,5 @@ function M:enable_with(name)
 		return self:has_plugin(name)
 	end
 end
-
-_G.Utils = M
 
 return M
