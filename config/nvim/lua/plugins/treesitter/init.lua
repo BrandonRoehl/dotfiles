@@ -11,7 +11,10 @@ return {
 	build = function()
 		local TS = require("nvim-treesitter")
 		if not TS.get_installed then
-			Utils.lazy.error("Please restart Neovim and run `:TSUpdate` to use the `nvim-treesitter` **main** branch.")
+			vim.notify(
+				"Please restart Neovim and run `:TSUpdate` to use the `nvim-treesitter` **main** branch.",
+				{ level = vim.log.levels.ERROR }
+			)
 			return
 		end
 		Utils.treesitter:build(function()
@@ -22,13 +25,13 @@ return {
 	opts = { ensure_installed = {} },
 	---@param opts TSConfig
 	config = function(_, opts)
+		local LU = require("lazy.core.util")
 		local TS = require("nvim-treesitter")
-
 		setmetatable(require("nvim-treesitter.install"), {
 			__newindex = function(_, k)
 				if k == "compilers" then
 					vim.schedule(function()
-						Utils.lazy.error({
+						LU.error({
 							"Setting custom compilers for `nvim-treesitter` is no longer supported.",
 							"",
 							"For more info, see:",
@@ -41,9 +44,9 @@ return {
 
 		-- some quick sanity checks
 		if not TS.get_installed then
-			return Utils.lazy.error("Please use `:Lazy` and update `nvim-treesitter`")
+			return LU.error("Please use `:Lazy` and update `nvim-treesitter`")
 		elseif type(opts.ensure_installed) ~= "table" then
-			return Utils.lazy.error("`nvim-treesitter` opts.ensure_installed must be a table")
+			return LU.error("`nvim-treesitter` opts.ensure_installed must be a table")
 		end
 
 		-- setup treesitter

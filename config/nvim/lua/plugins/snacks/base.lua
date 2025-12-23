@@ -91,6 +91,8 @@ return {
 				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.indent():map("<leader>ug")
 				Snacks.toggle.dim():map("<leader>uD")
+
+				require("plugins.snacks.progress.callbacks").create_autocmds()
 			end,
 		})
 	end,

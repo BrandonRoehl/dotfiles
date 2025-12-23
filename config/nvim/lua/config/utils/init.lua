@@ -1,10 +1,8 @@
 ---@class utils
----@field lazy LazyUtilCore
 ---@field treesitter utils.treesitter
 ---@field lsp utils.lsp
 ---@field computer utils.computer
 local M = {}
-M.lazy = require("lazy.core.util")
 
 setmetatable(M, {
 	__index = function(t, k)

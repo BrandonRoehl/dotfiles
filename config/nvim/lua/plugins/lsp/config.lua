@@ -160,7 +160,5 @@ return {
 			vim.lsp.enable(enable)
 		end
 		Utils.trigger_custom_event("LspPostEnable")
-
-		require("plugins.lsp.progress.callbacks"):create_autocmds()
 	end,
 }

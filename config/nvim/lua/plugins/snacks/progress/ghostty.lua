@@ -1,7 +1,7 @@
 local M = {}
 
 ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-function M.callback(ev)
+local function callback(ev)
 	local client = vim.lsp.get_client_by_id(ev.data.client_id)
 	local value = ev.data.params.value
 	if not client or type(value) ~= "table" then
@@ -17,11 +17,11 @@ function M.callback(ev)
 end
 
 ---@param group integer?
-function M:create_autocmd(group)
+function M.create_autocmd(group)
 	group = group or vim.api.nvim_create_augroup("lazy-lsp-progress", { clear = true })
 	vim.api.nvim_create_autocmd("LspProgress", {
 		group = group,
-		callback = M.callback,
+		callback = callback,
 	})
 	vim.api.nvim_create_autocmd("VimLeave", {
 		group = group,

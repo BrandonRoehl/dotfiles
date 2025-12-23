@@ -2,7 +2,8 @@
 ---@class utils.treesitter
 local M = {}
 
-Utils = require("config.utils")
+local Utils = require("config.utils")
+local LazyUtils = require("lazy.core.util")
 
 M._installed = nil ---@type table<string,boolean>?
 M._queries = {} ---@type table<string,boolean>
@@ -114,7 +115,7 @@ function M:build(cb)
 					"Install a C compiler with `winget install --id=BrechtSanders.WinLibs.POSIX.UCRT -e`"
 			end
 			vim.list_extend(lines, err and { "", err } or {})
-			Utils.lazy.error(lines, { title = "Treesitter" })
+			LazyUtils.error(lines, { title = "Treesitter" })
 		end
 	end)
 end
@@ -139,12 +140,12 @@ function M.ensure_treesitter_cli(cb)
 	mr.refresh(function()
 		local p = mr.get_package("tree-sitter-cli")
 		if not p:is_installed() then
-			Utils.lazy.info("Installing `tree-sitter-cli` with `mason.nvim`...")
+			LazyUtils.info("Installing `tree-sitter-cli` with `mason.nvim`...")
 			p:install(
 				nil,
 				vim.schedule_wrap(function(success)
 					if success then
-						Utils.lazy.info("Installed `tree-sitter-cli` with `mason.nvim`.")
+						LazyUtils.info("Installed `tree-sitter-cli` with `mason.nvim`.")
 						cb(true)
 					else
 						cb(false, "Failed to install `tree-sitter-cli` with `mason.nvim`.")
