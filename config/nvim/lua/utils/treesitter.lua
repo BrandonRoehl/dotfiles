@@ -1,3 +1,6 @@
+---@module "lazy"
+---@module "nvim-treesitter"
+
 ---https://github.com/LazyVim/LazyVim/blob/c64a61734fc9d45470a72603395c02137802bc6f/lua/lazyvim/utils/init.lua
 ---@class utils.treesitter
 local M = {}

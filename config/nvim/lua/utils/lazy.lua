@@ -1,3 +1,4 @@
+---@module "lazy"
 ---@class utils.lazy
 local M = {}
 
