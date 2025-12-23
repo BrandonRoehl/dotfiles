@@ -13,7 +13,7 @@ return {
 				delve = {
 					-- On Windows delve must be run attached or it crashes.
 					-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-					detached = not Utils.is_win(),
+					detached = not Utils.computer.is_win(),
 				},
 			})
 		end,
@@ -38,7 +38,7 @@ return {
 		optional = true,
 		opts_extend = { "ensure_installed" },
 		opts = {
-			ensure_installed = not Utils.is_win() and { "gopls" } or {},
+			ensure_installed = not Utils.computer.is_win() and { "gopls" } or {},
 		},
 	},
 }

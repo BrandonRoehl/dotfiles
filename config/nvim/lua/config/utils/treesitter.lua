@@ -63,7 +63,7 @@ end
 
 ---@return boolean ok, utils.treesitter.Health health
 function M.check()
-	local is_win = Utils.is_win()
+	local is_win = Utils.computer.is_win()
 	---@param tool string
 	---@param win boolean?
 	local function have(tool, win)
@@ -114,7 +114,7 @@ function M:build(cb)
 					"Install a C compiler with `winget install --id=BrechtSanders.WinLibs.POSIX.UCRT -e`"
 			end
 			vim.list_extend(lines, err and { "", err } or {})
-			Utils.error(lines, { title = "Treesitter" })
+			Utils.lazy.error(lines, { title = "Treesitter" })
 		end
 	end)
 end
@@ -139,12 +139,12 @@ function M.ensure_treesitter_cli(cb)
 	mr.refresh(function()
 		local p = mr.get_package("tree-sitter-cli")
 		if not p:is_installed() then
-			Utils.info("Installing `tree-sitter-cli` with `mason.nvim`...")
+			Utils.lazy.info("Installing `tree-sitter-cli` with `mason.nvim`...")
 			p:install(
 				nil,
 				vim.schedule_wrap(function(success)
 					if success then
-						Utils.info("Installed `tree-sitter-cli` with `mason.nvim`.")
+						Utils.lazy.info("Installed `tree-sitter-cli` with `mason.nvim`.")
 						cb(true)
 					else
 						cb(false, "Failed to install `tree-sitter-cli` with `mason.nvim`.")
