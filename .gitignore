@@ -11,3 +11,4 @@ config/*
 !config/neovide
 !config/ghostty
 !config/tmux
+!config/zed/settings.json
