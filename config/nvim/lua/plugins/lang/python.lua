@@ -14,7 +14,7 @@ return {
             -- stylua: ignore
             keys = {
                 { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
-                { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
+                { "<leader>dPc", function() require('dap-python').test_class() end,  desc = "Debug Class",  ft = "python" },
             },
 		},
 		config = function()
@@ -39,7 +39,18 @@ return {
 				-- pyright = {},
 				basedpyright = {},
 				-- pyrefly = {},
-				ruff = {},
+				ruff = {
+					keys = {
+						{
+							"<leader>co",
+							Utils.lsp.action["source.organizeImports"],
+							desc = "Organize Imports",
+						},
+					},
+					capabilities = {
+						hoverProvider = false,
+					},
+				},
 			},
 		},
 	},

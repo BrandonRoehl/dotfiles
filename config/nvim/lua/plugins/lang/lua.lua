@@ -17,6 +17,35 @@ return {
 				"nvim-dap-ui",
 			},
 		},
+		specs = {
+			"saghen/blink.cmp",
+			optional = true,
+			--- @module 'blink.cmp'
+			--- @type blink.cmp.Config
+			opts_extend = { "completion.menu.draw.treesitter" },
+			opts = {
+				sources = {
+					per_filetype = {
+						lua = { "copilot", "lsp", "path", "snippets", "lazydev" },
+					},
+					providers = {
+						lazydev = {
+							name = "LazyDev",
+							module = "lazydev.integrations.blink",
+							-- make lazydev completions top priority (see `:h blink.cmp`)
+							score_offset = 50,
+						},
+					},
+				},
+				completion = {
+					menu = {
+						draw = {
+							treesitter = { "lazydev" },
+						},
+					},
+				},
+			},
+		},
 	},
 	-- Extend
 	{
@@ -32,39 +61,13 @@ return {
 		},
 	},
 	{
-		"saghen/blink.cmp",
-		optional = true,
-		--- @module 'blink.cmp'
-		--- @type blink.cmp.Config
-		opts_extend = { "completion.menu.draw.treesitter" },
-		opts = {
-			sources = {
-				per_filetype = {
-					lua = { "copilot", "lsp", "path", "snippets", "lazydev" },
-				},
-				providers = {
-					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
-						-- make lazydev completions top priority (see `:h blink.cmp`)
-						score_offset = 50,
-					},
-				},
-			},
-			completion = {
-				menu = {
-					draw = {
-						treesitter = { "lazydev" },
-					},
-				},
-			},
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		optional = true,
 		opts = {
-			servers = { lua_ls = {} },
+			servers = {
+				lua_ls = {},
+				stylua = {},
+			},
 		},
 	},
 	{
@@ -72,24 +75,27 @@ return {
 		optional = true,
 		opts_extend = { "ensure_installed" },
 		opts = {
-			ensure_installed = { "lua_ls" },
-		},
-	},
-	{
-		"mason-org/mason.nvim",
-		optional = true,
-		opts_extend = { "ensure_installed" },
-		opts = {
-			ensure_installed = { "stylua" },
-		},
-	},
-	{
-		"stevearc/conform.nvim",
-		optional = true,
-		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
+			ensure_installed = {
+				"lua_ls",
+				"stylua",
 			},
 		},
 	},
+	-- {
+	-- 	"mason-org/mason.nvim",
+	-- 	optional = true,
+	-- 	opts_extend = { "ensure_installed" },
+	-- 	opts = {
+	-- 		ensure_installed = { "stylua" },
+	-- 	},
+	-- },
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	optional = true,
+	-- 	opts = {
+	-- 		formatters_by_ft = {
+	-- 			lua = { "stylua" },
+	-- 		},
+	-- 	},
+	-- },
 }

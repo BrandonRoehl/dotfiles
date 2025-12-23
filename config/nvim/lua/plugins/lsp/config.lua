@@ -37,10 +37,7 @@ end
 ---@param event vim.api.keyset.create_autocmd.callback_args
 ---@return boolean?
 local function on_attach(event)
-	local client = vim.lsp.get_client_by_id(event.data.client_id)
-	if not client then
-		return
-	end
+	local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
 	bind_keys(client, event.buf)
 
 	-- The following autocommands are used to highlight references of the
@@ -88,6 +85,21 @@ local function on_attach(event)
 			vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
 		end,
 	})
+
+	-- Auto-format ("lint") on save.
+	-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
+	if
+		not client:supports_method("textDocument/willSaveWaitUntil")
+		and client:supports_method("textDocument/formatting")
+	then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			group = vim.api.nvim_create_augroup("lsp_document_lint", { clear = false }),
+			buffer = event.buf,
+			callback = function()
+				vim.lsp.buf.format({ bufnr = event.buf, id = client.id, timeout_ms = 1000 })
+			end,
+		})
+	end
 end
 
 ---@module "lazy"

@@ -1,7 +1,8 @@
 local LazyUtil = require("lazy.core.util")
 
----@class Utils: LazyUtilCore
+---@class utils: LazyUtilCore
 ---@field treesitter utils.treesitter
+---@field lsp utils.lsp
 local M = {}
 
 setmetatable(M, {
