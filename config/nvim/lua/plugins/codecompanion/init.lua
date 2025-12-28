@@ -7,7 +7,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	config = true,
 	lazy = true,
 	cmd = {
 		"CodeCompanion",
@@ -30,7 +29,8 @@ return {
 			},
 		},
 	},
-	init = function()
+	config = function(_, opts)
+		require("codecompanion").setup(opts)
 		-- Notification providers
 		-- require("plugins.codecompanion.fidget-spinner"):init()
 		require("plugins.codecompanion.snacks-notify"):init()

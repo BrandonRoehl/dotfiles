@@ -3,6 +3,7 @@
 ---@return LazyPluginSpec
 return {
 	"stevearc/conform.nvim",
+	enabled = false,
 	dependencies = { "mason-org/mason.nvim" },
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },

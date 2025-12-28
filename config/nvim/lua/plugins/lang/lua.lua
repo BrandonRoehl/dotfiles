@@ -85,21 +85,4 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"mason-org/mason.nvim",
-	-- 	optional = true,
-	-- 	opts_extend = { "ensure_installed" },
-	-- 	opts = {
-	-- 		ensure_installed = { "stylua" },
-	-- 	},
-	-- },
-	-- {
-	-- 	"stevearc/conform.nvim",
-	-- 	optional = true,
-	-- 	opts = {
-	-- 		formatters_by_ft = {
-	-- 			lua = { "stylua" },
-	-- 		},
-	-- 	},
-	-- },
 }

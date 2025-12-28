@@ -66,26 +66,4 @@ return {
 			},
 		},
 	},
-
-	-- This has been replaced by Ruff
-	-- {
-	-- 	"mason-org/mason.nvim",
-	-- 	optional = true,
-	--  opts_extend = { "ensure_installed" },
-	-- 	opts = {
-	-- 		ensure_installed = {
-	-- 			"black", -- Used to format Python code
-	-- 			"isort", -- Used to sort Python imports
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	-- 	"stevearc/conform.nvim",
-	--  optional = true,
-	-- 	opts = {
-	-- 		formatters_by_ft = {
-	-- 			python = { "isort", "black" },
-	-- 		},
-	-- 	},
-	-- },
 }
