@@ -75,7 +75,7 @@ local function on_attach(event)
 		buffer = event.buf,
 		callback = function()
 			-- Check if there are any visible floating windows already
-			-- for _, win in ipairs(vim.api.nvim_list_wins()) do
+			-- for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
 			-- 	if vim.api.nvim_win_get_config(win).relative ~= "" then
 			-- 		-- A float exists, don't create another one
 			-- 		return
