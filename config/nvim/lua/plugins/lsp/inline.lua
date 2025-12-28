@@ -15,8 +15,8 @@ return {
                 -- stylua: ignore
                 ---@type LazyKeysLspSpec[]
 				keys = {
-                    { "<c-f>", vim.lsp.buf.inline_completion.get, mode = "i", desc = "Accept inline completion", method = "textDocument/inlineCompletion" },
-                    { "<c-g>", vim.lsp.buf.inline_completion.select, mode = "i", desc = "Switch inline completion", method = "textDocument/inlineCompletion" },
+                    { "<c-f>", vim.lsp.inline_completion.get, mode = "i", desc = "Accept inline completion", method = "textDocument/inlineCompletion" },
+                    { "<c-g>", vim.lsp.inline_completion.select, mode = "i", desc = "Switch inline completion", method = "textDocument/inlineCompletion" },
                 },
 			},
 		},
