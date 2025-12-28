@@ -73,14 +73,17 @@ return {
 			["<CR>"] = { "accept", "fallback" },
 			-- Tab will accept the ghost text or the selection first
 			["<Tab>"] = {
-				function(cmp)
-					if cmp.snippet_active() then
-						return cmp.accept()
-					else
-						return cmp.select_and_accept()
-					end
-				end,
+				-- If there is something selected accept it
+				"accept",
+				-- If there is nothing selected and a running snippet jump forward in the snippet
 				"snippet_forward",
+				-- If there is an inline completion available, select and accept it (nvim 0.12+)
+				function(_)
+					return vim.fn.has("nvim-0.12") == 1 and vim.lsp.inline_completion.get()
+				end,
+				-- If nothing so far is true but there is a menu select the first thing
+				"select_and_accept",
+				-- If there is actually nothing trigger the normal key
 				"fallback",
 			},
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -120,11 +123,11 @@ return {
 				-- Show the ghost text when the menu is open
 				show_with_menu = true,
 				-- Show the ghost text even if the menu isn't open
-				show_without_menu = true,
+				show_without_menu = false,
 				-- Show the ghost text when an item has been selected
 				show_with_selection = true,
 				-- Show the ghost text when no item has been selected, defaulting to the first item
-				show_without_selection = true,
+				show_without_selection = false,
 			},
 			documentation = {
 				-- Controls whether the documentation window will automatically show when selecting a completion item

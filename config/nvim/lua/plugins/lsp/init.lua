@@ -35,7 +35,7 @@
 return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
-	import = "plugins.lsp.config",
+	import = "plugins.lsp",
 	lazy = true,
 	event = { "BufReadPost", "BufNewFile", "VeryLazy" },
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },

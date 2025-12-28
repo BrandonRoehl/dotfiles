@@ -89,8 +89,8 @@ local function on_attach(event)
 	-- Auto-format ("lint") on save.
 	-- Usually not needed if server supports "textDocument/willSaveWaitUntil".
 	if
-		not client:supports_method("textDocument/willSaveWaitUntil")
-		and client:supports_method("textDocument/formatting")
+		not client:supports_method(vim.lsp.protocol.Methods.textDocument_willSaveWaitUntil, event.buf)
+		and client:supports_method(vim.lsp.protocol.Methods.textDocument_formatting, event.buf)
 	then
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = vim.api.nvim_create_augroup("lsp_document_lint", { clear = false }),
@@ -99,6 +99,13 @@ local function on_attach(event)
 				vim.lsp.buf.format({ bufnr = event.buf, id = client.id, timeout_ms = 1000 })
 			end,
 		})
+	end
+
+	if
+		vim.fn.has("nvim-0.12") == 1
+		and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, event.buf)
+	then
+		vim.lsp.inline_completion.enable(true, { bufnr = event.buf })
 	end
 end
 

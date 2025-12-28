@@ -2,6 +2,9 @@
 ---@type LazyPluginSpec
 return {
 	"mfussenegger/nvim-dap",
+	version = false,
+	lazy = true,
+	desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		-- virtual text for the debugger

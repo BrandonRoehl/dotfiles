@@ -23,6 +23,7 @@ return {
 				end
 			end,
 			expr = true,
+			mode = { "n", "i" },
 			desc = "Goto/Apply Next Edit Suggestion",
 		},
 		-- {
@@ -87,34 +88,5 @@ return {
 		-- 	mode = { "n", "x" },
 		-- 	desc = "Sidekick Select Prompt",
 		-- },
-	},
-	-- Specs unlike dependencies are only injected if this is enabled so
-	-- if blink isn't enabled this won't get injected and will not load either
-	-- if sidekick isn't loaded both need to be enabled
-	specs = {
-		{
-			"saghen/blink.cmp",
-			optional = true,
-			---@module 'blink.cmp'
-			---@type blink.cmp.Config
-			opts = {
-				keymap = {
-					["<Tab>"] = {
-						function() -- sidekick next edit suggestion
-							return require("sidekick").nes_jump_or_apply()
-						end,
-						function(cmp)
-							if cmp.snippet_active() then
-								return cmp.accept()
-							else
-								return cmp.select_and_accept()
-							end
-						end,
-						"snippet_forward",
-						"fallback",
-					},
-				},
-			},
-		},
 	},
 }

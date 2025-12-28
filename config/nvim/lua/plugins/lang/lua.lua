@@ -22,11 +22,15 @@ return {
 			optional = true,
 			--- @module 'blink.cmp'
 			--- @type blink.cmp.Config
-			opts_extend = { "completion.menu.draw.treesitter" },
+			opts_extend = {
+				"sources.default",
+				"sources.per_filetype.lua",
+				"completion.menu.draw.treesitter",
+			},
 			opts = {
 				sources = {
 					per_filetype = {
-						lua = { "copilot", "lsp", "path", "snippets", "lazydev" },
+						lua = { "lsp", "lazydev", "snippets", "path" },
 					},
 					providers = {
 						lazydev = {

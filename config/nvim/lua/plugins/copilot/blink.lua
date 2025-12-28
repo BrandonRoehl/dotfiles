@@ -1,3 +1,7 @@
+if vim.fn.has("nvim-0.12") == 1 then
+	return {}
+end
+
 ---@module "lazy"
 ---@return LazyPluginSpec[]
 return {
@@ -9,7 +13,11 @@ return {
 		lazy = true,
 		version = "*",
 	},
-	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
+	opts_extend = {
+		"sources.default",
+		"sources.per_filetype.lua",
+		"completion.menu.draw.treesitter",
+	},
 	opts = {
 		sources = {
 			default = { "copilot" },
@@ -30,6 +38,9 @@ return {
 						},
 					},
 				},
+			},
+			per_filetype = {
+				lua = { "copilot" },
 			},
 		},
 		completion = {
