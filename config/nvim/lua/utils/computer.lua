@@ -15,9 +15,9 @@ function M.is_mac()
 	return jit.os:find("OSX")
 end
 
----@param ... string computer name if found else hostname
+---@param func fun(name:string):boolean callback to run for each computer name
 ---@return boolean true if the computer name matches
-function M:is_host(...)
+function M:host_matches(func)
 	-- Cache the lookup of names so future checks are quicker
 	if #self._host == 0 then
 		self._host = { vim.fn.hostname() }
@@ -31,9 +31,24 @@ function M:is_host(...)
 		end
 	end
 
-	return vim.tbl_contains({ ... }, function(name)
-		return vim.list_contains(self._host, name)
-	end, { predicate = true })
+	return vim.tbl_contains(self._host, func, { predicate = true })
+end
+
+---@param ... string computer name if found else hostname
+---@return boolean true if the computer name matches
+function M:is_host(...)
+	local checks = { ... }
+	return self:host_matches(function(name)
+		return vim.list_contains(checks, name)
+	end)
+end
+
+---@param pattern string pattern to match against host names
+---@return boolean true if the computer name matches
+function M:host_contains(pattern)
+	return self:host_matches(function(name)
+		return string.match(pattern, name) ~= nil
+	end)
 end
 
 return M
