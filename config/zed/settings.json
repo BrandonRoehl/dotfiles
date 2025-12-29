@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "minimap": {
+    "show": "always"
+  },
   "buffer_line_height": "comfortable",
   "buffer_font_size": 13.0,
   "buffer_font_family": "JetBrainsMono Nerd Font",
