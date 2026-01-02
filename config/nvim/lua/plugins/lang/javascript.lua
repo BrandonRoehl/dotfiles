@@ -5,7 +5,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
 		opts = {
-			opts_extend = { "ensure_installed" },
 			ensure_installed = {
 				"javascript",
 				"typescript",
@@ -26,7 +25,6 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = { "ts_ls" },
 		},

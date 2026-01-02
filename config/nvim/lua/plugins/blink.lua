@@ -9,6 +9,7 @@ return {
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
+	lazy = true,
 	event = { "InsertEnter", "CmdlineEnter" },
 	-- Optional: provides snippets for the snippet source
 	dependencies = {
@@ -36,6 +37,11 @@ return {
 				},
 			})
 		end,
+	},
+	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
+	opts_extend = {
+		"sources.default",
+		"completion.menu.draw.treesitter",
 	},
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
@@ -196,8 +202,6 @@ return {
 		-- See the fuzzy documentation for more information
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
-	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
-	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 	-- init is called on parsing of the plugin spec thus this just sets up the
 	-- config command for the LSPs when they load
 }

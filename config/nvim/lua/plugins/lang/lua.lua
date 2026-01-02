@@ -22,15 +22,10 @@ return {
 			optional = true,
 			--- @module 'blink.cmp'
 			--- @type blink.cmp.Config
-			opts_extend = {
-				"sources.default",
-				"sources.per_filetype.lua",
-				"completion.menu.draw.treesitter",
-			},
 			opts = {
 				sources = {
 					per_filetype = {
-						lua = { "lsp", "lazydev", "snippets", "path" },
+						lua = { inherit_defaults = true, "lazydev" },
 					},
 					providers = {
 						lazydev = {
@@ -55,7 +50,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"lua",
@@ -77,7 +71,6 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"lua_ls",

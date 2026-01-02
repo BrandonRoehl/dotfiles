@@ -13,11 +13,6 @@ return {
 		lazy = true,
 		version = "*",
 	},
-	opts_extend = {
-		"sources.default",
-		"sources.per_filetype.lua",
-		"completion.menu.draw.treesitter",
-	},
 	opts = {
 		sources = {
 			default = { "copilot" },
@@ -38,9 +33,6 @@ return {
 						},
 					},
 				},
-			},
-			per_filetype = {
-				lua = { "copilot" },
 			},
 		},
 		completion = {

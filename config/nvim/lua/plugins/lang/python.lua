@@ -26,14 +26,12 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
 		opts = {
-			opts_extend = { "ensure_installed" },
 			ensure_installed = { "python" },
 		},
 	},
 	{
 		"neovim/nvim-lspconfig",
 		optional = true,
-		opts_extend = { "enable" },
 		opts = {
 			servers = {
 				-- pyright = {},
@@ -57,7 +55,6 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"basedpyright",
