@@ -21,8 +21,11 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		-- quickfile = { enabled = true },
-		-- scope = { enabled = true },
+		dim = {
+			animate = { enabled = false },
+		},
+		quickfile = { enabled = true },
+		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
 		-- styles = {
@@ -62,7 +65,7 @@ return {
 		end }
 	},
 	init = function()
-		vim.g.snacks_animate = false
+		-- vim.g.snacks_animate = false
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",
 			callback = function()
