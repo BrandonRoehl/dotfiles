@@ -28,6 +28,7 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
+		image = { enabled = true },
 		-- styles = {
 		-- 	notification = {
 		-- 		-- wo = { wrap = true } -- Wrap notifications
