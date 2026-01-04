@@ -38,12 +38,9 @@ return {
 				basedpyright = {},
 				-- pyrefly = {},
 				ruff = {
+                    -- stylua: ignore
 					keys = {
-						{
-							"<leader>co",
-							Utils.lsp.action["source.organizeImports"],
-							desc = "Organize Imports",
-						},
+						{ "<leader>co", Utils.lsp.action["source.organizeImports"], desc = "Organize Imports" },
 					},
 					capabilities = {
 						hoverProvider = false,
