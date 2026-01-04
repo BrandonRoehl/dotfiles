@@ -15,33 +15,29 @@ return {
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 	},
+	cmd = { "BlinkCmp" },
 	-- In neovim pre 0.11 you need to extend the LSP capabilities to support blink.cmp
+	-- added here to make sure this will load ahead
 	-- https://cmp.saghen.dev/installation.html#lsp-capabilities
-	specs = vim.fn.has("nvim-0.11") == 0
-			and {
-				"neovim/nvim-lspconfig",
-				optional = true,
-				dependencies = { "saghen/blink.cmp" },
-				---@param opts LspOptions
-				opts = function(_, opts)
-					-- LSP servers and clients are able to communicate to each other what features they support.
-					-- By default, Neovim doesn't support everything that is in the LSP specification.
-					-- When you add blink-cmp, luasnip, etc. Neovim now has *more* capabilities.
-					-- So, we create new capabilities with blink cmp, and then broadcast that to the servers.
-					return vim.tbl_deep_extend("force", opts, {
-						servers = {
-							["*"] = {
-								capabilities = vim.tbl_extend(
-									"force",
-									vim.lsp.protocol.make_client_capabilities(),
-									require("blink.cmp").get_lsp_capabilities()
-								),
-							},
-						},
-					})
-				end,
-			}
-		or {},
+	specs = {
+		"neovim/nvim-lspconfig",
+		optional = true,
+		dependencies = { "saghen/blink.cmp" },
+		---@param opts LspOptions
+		opts = function(_, opts)
+			-- LSP servers and clients are able to communicate to each other what features they support.
+			-- By default, Neovim doesn't support everything that is in the LSP specification.
+			-- When you add blink-cmp, luasnip, etc. Neovim now has *more* capabilities.
+			-- So, we create new capabilities with blink cmp, and then broadcast that to the servers.
+			return vim.tbl_deep_extend("force", opts, {
+				servers = {
+					["*"] = {
+						capabilities = require("blink.cmp").get_lsp_capabilities(),
+					},
+				},
+			})
+		end,
+	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = {
 		"sources.default",
