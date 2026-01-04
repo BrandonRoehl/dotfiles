@@ -1,7 +1,7 @@
 ---@module "plugins.lsp"
 ---@param client vim.lsp.Client
 ---@param bufnr integer
-local function bind_keys(client, bufnr)
+local bind_keys = vim.schedule_wrap(function(client, bufnr)
 	local opts = Utils.lazy:plugin_opts("nvim-lspconfig")
 	---@type LazyKeysSpec[]
 	local global_spec = vim.tbl_get(opts, "servers", "*", "keys") or {}
@@ -32,7 +32,7 @@ local function bind_keys(client, bufnr)
 			vim.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
 		end
 	end
-end
+end)
 
 ---@param event vim.api.keyset.create_autocmd.callback_args
 ---@return boolean?
