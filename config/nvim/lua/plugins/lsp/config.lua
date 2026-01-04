@@ -86,7 +86,7 @@ return {
 	optional = true,
 	---@param _ LazyPlugin
 	---@param opts LspOptions
-	config = function(_, opts)
+	config = vim.schedule_wrap(function(_, opts)
 		-- Trigger pre enable after servers are configured
 		--
 		Utils.lazy.trigger_custom_event("LspPreEnable")
@@ -127,7 +127,9 @@ return {
 		--   - extra features provided by plugins
 		-- First apply any custom configuration provided by plugins
 		for server, config in pairs(opts.servers or {}) do
-			vim.lsp.config(server, config)
+			if not vim.tbl_isempty(config) then
+				vim.lsp.config(server, config)
+			end
 		end
 		-- Enable all servers that have provided keys
 		local enable = vim.tbl_filter(function(server)
@@ -137,5 +139,5 @@ return {
 			vim.lsp.enable(enable)
 		end
 		Utils.lazy.trigger_custom_event("LspPostEnable")
-	end,
+	end),
 }
