@@ -11,11 +11,11 @@ return {
 	-- build = 'nix run .#build-plugin',
 	lazy = true,
 	event = { "InsertEnter", "CmdlineEnter" },
+	cmd = { "BlinkCmp" },
 	-- Optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 	},
-	cmd = { "BlinkCmp" },
 	-- In neovim pre 0.11 you need to extend the LSP capabilities to support blink.cmp
 	-- added here to make sure this will load ahead
 	-- https://cmp.saghen.dev/installation.html#lsp-capabilities
