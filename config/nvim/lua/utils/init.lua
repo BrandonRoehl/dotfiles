@@ -6,6 +6,7 @@
 local M = {}
 
 setmetatable(M, {
+	__mode = "kv",
 	__index = function(t, k)
 		---@diagnostic disable-next-line: no-unknown
 		t[k] = require("utils." .. k)
