@@ -6,7 +6,7 @@ return {
 	branch = "main",
 	version = false, -- Latest release is way too old and doesn't work on Windows
 	lazy = true,
-	event = { "BufReadPost", "BufNewFile", "BufWritePre", "VeryLazy" },
+	event = { "LazyFile", "VeryLazy" },
 	cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
 	build = function()
 		local TS = require("nvim-treesitter")

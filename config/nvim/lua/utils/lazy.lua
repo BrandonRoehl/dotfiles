@@ -17,6 +17,14 @@ function M.trigger_custom_event(name)
 	vim.api.nvim_exec_autocmds("User", { pattern = name })
 end
 
+-- Add support for the LazyFile event
+function M.lazy_file()
+	local Event = require("lazy.core.handler.event")
+
+	Event.mappings.LazyFile = { id = "LazyFile", event = { "BufReadPost", "BufNewFile", "BufWritePre" } }
+	Event.mappings["User LazyFile"] = Event.mappings.LazyFile
+end
+
 ---@param name string
 ---@return LazyPlugin|nil plugin if the plugin is configured
 function M.plugin_spec(name)

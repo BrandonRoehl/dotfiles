@@ -37,7 +37,7 @@ return {
 	"neovim/nvim-lspconfig",
 	import = "plugins.lsp",
 	lazy = true,
-	event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+	event = { "LazyFile" },
 	cmd = { "LspInfo", "LspInstall", "LspUninstall" },
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
 	opts_extend = { "servers.*.keys" },
