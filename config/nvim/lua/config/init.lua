@@ -12,10 +12,6 @@ vim.g.winborder = "rounded"
 -- the new one that exists but is still buggy
 -- vim.o.winborder = "rounded"
 
--- Register custom events before setup
-Utils.lazy.lazy_file()
-Utils.lazy.register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
-
 -- Load globals for specific terminal emulators
 require("config.program")
 
