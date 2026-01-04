@@ -13,7 +13,7 @@ return {
 				delve = {
 					-- On Windows delve must be run attached or it crashes.
 					-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-					detached = not Utils.computer.is_win(),
+					detached = not vim.fn.has("win32"),
 				},
 			})
 		end,
@@ -36,7 +36,7 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
 		opts = {
-			ensure_installed = not Utils.computer.is_win() and { "gopls" } or {},
+			ensure_installed = not vim.fn.has("win32") and { "gopls" } or {},
 		},
 	},
 }

@@ -7,16 +7,6 @@ local M = {}
 M._host = {}
 setmetatable(M._host, { __mode = "kv" })
 
-function M.is_win()
-	-- return jit.os:find("Windows") or
-	return vim.fn.has("win32")
-end
-
-function M.is_mac()
-	-- return jit.os:find("OSX")
-	return vim.fn.has("mac")
-end
-
 ---@param func fun(name:string):boolean callback to run for each computer name
 ---@return boolean true if the computer name matches
 function M:host_matches(func)

@@ -5,7 +5,6 @@
 ---@class utils.treesitter
 local M = {}
 
-local Utils = require("utils")
 local LazyUtils = require("lazy.core.util")
 
 M._installed = nil ---@type table<string,boolean>?
@@ -67,7 +66,7 @@ end
 
 ---@return boolean ok, utils.treesitter.Health health
 function M.check()
-	local is_win = Utils.computer.is_win()
+	local is_win = vim.fn.has("win32")
 	---@param tool string
 	---@param win boolean?
 	local function have(tool, win)
