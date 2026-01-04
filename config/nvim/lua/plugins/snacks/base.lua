@@ -6,11 +6,6 @@ return {
 	--- @module 'snacks'
 	--- @type snacks.Config
 	opts = {
-		-- styles = {
-		-- 	["*"] = {
-		-- 		border = vim.g.winborder,
-		-- 	},
-		-- },
 		bigfile = { enabled = false },
 		indent = {
 			enabled = true,
@@ -26,9 +21,10 @@ return {
 		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
-		scroll = { enabled = false },
 		statuscolumn = { enabled = true },
 		image = { enabled = true },
+		-- Disabled modules
+		scroll = { enabled = false },
 		-- styles = {
 		-- 	notification = {
 		-- 		-- wo = { wrap = true } -- Wrap notifications
