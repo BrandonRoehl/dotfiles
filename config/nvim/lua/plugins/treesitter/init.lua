@@ -31,20 +31,6 @@ return {
 	config = function(_, opts)
 		local LU = require("lazy.core.util")
 		local TS = require("nvim-treesitter")
-		setmetatable(require("nvim-treesitter.install"), {
-			__newindex = function(_, k)
-				if k == "compilers" then
-					vim.schedule(function()
-						LU.error({
-							"Setting custom compilers for `nvim-treesitter` is no longer supported.",
-							"",
-							"For more info, see:",
-							"- [compilers](https://docs.rs/cc/latest/cc/#compile-time-requirements)",
-						})
-					end)
-				end
-			end,
-		})
 
 		-- some quick sanity checks
 		if not TS.get_installed then
