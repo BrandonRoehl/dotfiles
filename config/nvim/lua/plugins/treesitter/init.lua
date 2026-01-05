@@ -13,7 +13,7 @@ return {
 		if not TS.get_installed then
 			vim.notify(
 				"Please restart Neovim and run `:TSUpdate` to use the `nvim-treesitter` **main** branch.",
-				{ level = vim.log.levels.ERROR }
+				vim.log.levels.ERROR
 			)
 			return
 		end
