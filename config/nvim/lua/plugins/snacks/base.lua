@@ -99,7 +99,7 @@ return {
 				Snacks.toggle.indent():map("<leader>ug")
 				Snacks.toggle.dim():map("<leader>uD")
 
-				require("plugins.snacks.progress.callbacks").create_autocmds()
+				require("plugins.snacks.progress.notify").create_autocmd()
 			end,
 		})
 	end,
