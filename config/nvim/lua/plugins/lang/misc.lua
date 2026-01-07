@@ -4,6 +4,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -44,6 +45,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"harper_ls",

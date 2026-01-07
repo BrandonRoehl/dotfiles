@@ -21,10 +21,7 @@ return {
 		"rafamadriz/friendly-snippets",
 	},
 	-- `opts_extend` can be a list of dotted keys that will be extended instead of merged
-	opts_extend = {
-		"sources.default",
-		"completion.menu.draw.treesitter",
-	},
+	opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 	--- @module 'blink.cmp'
 	--- @type blink.cmp.Config
 	opts = {

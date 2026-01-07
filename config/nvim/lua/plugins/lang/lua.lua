@@ -20,6 +20,7 @@ return {
 		specs = {
 			"saghen/blink.cmp",
 			optional = true,
+			opts_extend = { "sources.default", "completion.menu.draw.treesitter" },
 			--- @module 'blink.cmp'
 			--- @type blink.cmp.Config
 			opts = {
@@ -50,6 +51,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = {
 				"lua",
@@ -71,11 +73,7 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
-		opts = {
-			ensure_installed = {
-				"lua_ls",
-				"stylua",
-			},
-		},
+		opts_extend = { "ensure_installed" },
+		opts = { ensure_installed = { "lua_ls", "stylua" } },
 	},
 }

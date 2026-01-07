@@ -7,6 +7,7 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	optional = true,
+	opts_extend = { "servers.*.keys" },
 	---@type LspOptions
 	opts = {
 		servers = {
