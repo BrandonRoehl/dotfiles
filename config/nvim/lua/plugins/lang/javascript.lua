@@ -9,6 +9,7 @@ return {
 				"javascript",
 				"typescript",
 				"jsdoc",
+				"vue",
 			},
 		},
 	},
