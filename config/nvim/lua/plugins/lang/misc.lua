@@ -13,6 +13,7 @@ return {
 				"html",
 				"json",
 				"jsonc",
+				"make",
 				"markdown",
 				"markdown_inline",
 				"printf",
