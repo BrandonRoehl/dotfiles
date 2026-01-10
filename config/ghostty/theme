@@ -200,6 +200,7 @@ font-size = 13
 # 
 #   - macOS: titlebar tabs style is not updated when switching themes.
 theme = light:TokyoNight Day,dark:TokyoNight Night
+# theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
 # The color of the cursor. If this is not set, a default will be chosen.
 # 
