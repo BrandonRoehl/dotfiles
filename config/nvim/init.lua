@@ -11,12 +11,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Load custom helpers
-require("utils")
--- Register custom events before setup
-Utils.lazy.lazy_file()
-Utils.lazy.register_custom_event("LazyDap", "LspPreEnable", "LspPostEnable")
-
 -- [[ Configure Neovim ]]
 --
 -- This is the base like your leader globals and stuff not requiring plugins

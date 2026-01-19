@@ -4,7 +4,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = { "rust", "ron" },
 		},
@@ -19,7 +18,6 @@ return {
 	{
 		"mason-org/mason-lspconfig.nvim",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = { "rust_analyzer" },
 		},
@@ -27,7 +25,6 @@ return {
 	{
 		"mason-org/mason.nvim",
 		optional = true,
-		opts_extend = { "ensure_installed" },
 		opts = {
 			ensure_installed = { "rustfmt" },
 		},
