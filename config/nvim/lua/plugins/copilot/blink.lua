@@ -20,7 +20,7 @@ return {
 				copilot = {
 					name = "copilot",
 					module = "blink-copilot",
-					score_offset = -10,
+					score_offset = 100,
 					async = true,
 					opts = {
 						max_completions = 3,
