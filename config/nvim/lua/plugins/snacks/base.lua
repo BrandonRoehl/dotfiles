@@ -41,6 +41,7 @@ return {
 		{ "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
 		{ "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
 		{ "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
+        -- { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File", mode = {"n"}, method = { "workspace/didRenameFiles", "workspace/willRenameFiles" } },
 		{ "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
 		{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 		{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
