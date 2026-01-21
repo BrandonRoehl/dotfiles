@@ -22,20 +22,20 @@ return {
 			ensure_installed = { "rust_analyzer" },
 		},
 	},
-	{
-		"mason-org/mason.nvim",
-		optional = true,
-		opts = {
-			ensure_installed = { "rustfmt" },
-		},
-	},
-	{
-		"stevearc/conform.nvim",
-		optional = true,
-		opts = {
-			formatters_by_ft = {
-				rust = { "rustfmt" },
-			},
-		},
-	},
+	-- {
+	-- 	"mason-org/mason.nvim",
+	-- 	optional = true,
+	-- 	opts = {
+	-- 		ensure_installed = { "rustfmt" },
+	-- 	},
+	-- },
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	optional = true,
+	-- 	opts = {
+	-- 		formatters_by_ft = {
+	-- 			rust = { "rustfmt" },
+	-- 		},
+	-- 	},
+	-- },
 }
