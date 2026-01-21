@@ -39,7 +39,7 @@ end
 ---@return boolean true if the computer name matches
 function M:host_contains(pattern)
 	return self:host_matches(function(name)
-		return string.match(pattern, name) ~= nil
+		return string.match(name, pattern) ~= nil
 	end)
 end
 
