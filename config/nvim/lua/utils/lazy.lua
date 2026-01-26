@@ -45,7 +45,7 @@ end
 ---@param name string
 ---@return boolean result if the plugin is configured
 function M:has_plugin(name)
-	local spec = M.plugin_spec(name)
+	local spec = self.plugin_spec(name)
 	-- Plugin spec exists
 	return spec ~= nil
 		-- Plugin spec is not disabled (enabled or nil)
