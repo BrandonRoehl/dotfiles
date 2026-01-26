@@ -8,15 +8,13 @@ return {
 		enabled = Utils.lazy:enable_with("nvim-dap"),
 		event = "LazyDap",
 		dependencies = { "mfussenegger/nvim-dap", optional = true },
-		config = function()
-			require("dap-go").setup({
-				delve = {
-					-- On Windows delve must be run attached or it crashes.
-					-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-					detached = not vim.fn.has("win32"),
-				},
-			})
-		end,
+		opts = {
+			delve = {
+				-- On Windows delve must be run attached or it crashes.
+				-- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+				detached = not vim.fn.has("win32"),
+			},
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
