@@ -19,7 +19,7 @@ return {
 		dim = {
 			animate = { enabled = false },
 		},
-		quickfile = { enabled = true },
+		quickfile = { enabled = false },
 		scope = { enabled = true },
 		statuscolumn = { enabled = true },
 		image = { enabled = true },
