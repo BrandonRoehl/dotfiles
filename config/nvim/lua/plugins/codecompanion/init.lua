@@ -38,28 +38,21 @@ return {
 				adapter = "copilot",
 			},
 		},
-		adapters = {
-			acp = {
-				claude_code = function()
-					local adapters = require("codecompanion.adapters")
-					local env = {}
-					if Utils.computer:is_host("🔥") then
-						env.CLAUDE_CODE_USE_BEDROCK = "1"
-						env.AWS_PROFILE = "dev"
-					end
-
-					return adapters.extend("claude_code", {
-						env = env,
-					})
-				end,
-			},
-		},
 	},
+	-- ~/.claude/settings.json
+	-- {
+	--   "awsAuthRefresh": "aws sso login --profile dev",
+	--   "env": {
+	--     "AWS_PROFILE": "dev",
+	--     "CLAUDE_CODE_USE_BEDROCK": 1,
+	--     "AWS_REGION": "us-east-1"
+	--   }
+	-- }
 	config = function(_, opts)
 		require("codecompanion").setup(opts)
 		-- Notification providers
 		-- require("plugins.codecompanion.fidget-spinner"):init()
 		-- require("plugins.codecompanion.progress-bar"):init()
-		require("plugins.codecompanion.snacks-notify"):init()
+		-- require("plugins.codecompanion.snacks-notify"):init()
 	end,
 }
