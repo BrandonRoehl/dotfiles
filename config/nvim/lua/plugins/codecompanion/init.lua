@@ -19,13 +19,39 @@ return {
 		{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Prompt Actions", mode = { "n", "v" } },
 	},
 	opts = {
-		strategies = {
+		interactions = Utils.computer:is_host("🔥") and {
+			chat = {
+				adapter = {
+					name = "claude_code",
+					model = "opus",
+				},
+			},
+			inline = {
+				adapter = "copilot",
+			},
+		} or {
 			chat = {
 				name = "copilot",
 				model = "gpt-4.1",
 			},
 			inline = {
 				adapter = "copilot",
+			},
+		},
+		adapters = {
+			acp = {
+				claude_code = function()
+					local adapters = require("codecompanion.adapters")
+					local env = {}
+					if Utils.computer:is_host("🔥") then
+						env.CLAUDE_CODE_USE_BEDROCK = "1"
+						env.AWS_PROFILE = "dev"
+					end
+
+					return adapters.extend("claude_code", {
+						env = env,
+					})
+				end,
 			},
 		},
 	},
