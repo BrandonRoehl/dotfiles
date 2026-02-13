@@ -8,14 +8,16 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "minimap": {
-    "show": "always"
+    "show": "always",
   },
   "buffer_line_height": "comfortable",
   "buffer_font_size": 13.0,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "icon_theme": "Zed (Default)",
-  "features": {
-    "edit_prediction_provider": "copilot",
+  "buffer_font_features": {
+    "calt": false,
+    "liga": false,
+    "dlig": false,
   },
   "agent": {
     "default_model": {
