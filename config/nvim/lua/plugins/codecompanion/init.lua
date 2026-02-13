@@ -41,9 +41,9 @@ return {
 	},
 	-- ~/.claude/settings.json
 	-- {
-	--   "awsAuthRefresh": "aws sso login --profile dev",
+	--   "awsAuthRefresh": "aws sso login --profile claude",
 	--   "env": {
-	--     "AWS_PROFILE": "dev",
+	--     "AWS_PROFILE": "claude",
 	--     "CLAUDE_CODE_USE_BEDROCK": 1,
 	--     "AWS_REGION": "us-east-1"
 	--   }
