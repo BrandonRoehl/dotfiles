@@ -22,6 +22,12 @@
     "liga": false,
     "dlig": false,
   },
+  "buffer_font_fallbacks": [
+    ".ZedMono",
+    "Nerd Font",
+    "JetBrainsMono",
+    ".SystemUIFont",
+  ],
   "agent": {
     "default_model": {
       "provider": "copilot_chat",
@@ -33,7 +39,7 @@
   "ui_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "One Light",
+    "light": "Catppuccin Latte",
     "dark": "Catppuccin Mocha",
   },
 }
