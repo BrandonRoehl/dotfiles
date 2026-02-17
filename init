@@ -37,26 +37,26 @@ git config --global pull.rebase false
 git config --global --add --bool push.autoSetupRemote true
 # git config --global core.editor "nvim"
 
-if [ hash brew >/dev/null 2>&1 ]
-then
-    echo 'Attempting to install brew'
-    if [ uname = "Darwin" ]
-    then
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        # brew install font-hack-nerd-font
+# if [ hash brew >/dev/null 2>&1 ]
+# then
+#     echo 'Attempting to install brew'
+#     if [ uname = "Darwin" ]
+#     then
+#         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#         # brew install font-hack-nerd-font
 #    else
 #        sudo apt-get install build-essential curl git python-setuptools ruby
 #        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-    fi
-fi
+#     fi
+# fi
 
-if [ uname = "Darwin" ]
-then
-    defaults write .GlobalPreferences com.apple.mouse.scaling -1
-fi
+# if [ uname = "Darwin" ]
+# then
+#     defaults write .GlobalPreferences com.apple.mouse.scaling -1
+# fi
 
-curl -L https://iterm2.com/shell_integration/zsh \
--o ~/.iterm2_shell_integration.zsh
+# curl -L https://iterm2.com/shell_integration/zsh \
+# -o ~/.iterm2_shell_integration.zsh
 # brew install coreutils vim tmux wget bash htop
 
 # echo 'install rvm or upgrade rvm'
