@@ -40,6 +40,7 @@ return {
 				gdscript = {},
 				graphql = {},
 				texlab = {},
+				yr_ls = {},
 			},
 		},
 	},
