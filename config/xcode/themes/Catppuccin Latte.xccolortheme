@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.298039 0.309804 0.411765 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>JetBrainsMono-Bold - 13.0</string>
+	<string>JetBrainsMonoNLNF-Bold - 13.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.298039 0.309804 0.411765 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>JetBrainsMono-Medium - 13.0</string>
+	<string>JetBrainsMonoNLNF-Medium - 13.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.25098 0.627451 0.168627 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>JetBrainsMono-Bold - 13.0</string>
+	<string>JetBrainsMonoNLNF-Bold - 13.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.298039 0.309804 0.411765 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>JetBrainsMono-Medium - 13.0</string>
+	<string>JetBrainsMonoNLNF-Medium - 13.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.298039 0.309804 0.411765 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>JetBrainsMono-Bold - 13.0</string>
+	<string>JetBrainsMonoNLNF-Bold - 13.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.937255 0.945098 0.960784 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -162,59 +162,59 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.character</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>JetBrainsMono-Bold - 13.0</string>
+		<string>JetBrainsMonoNLNF-Bold - 13.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>JetBrainsMono-Semibold - 13.0</string>
+		<string>JetBrainsMonoNLNF-Semibold - 13.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>JetBrainsMono-Bold - 13.0</string>
+		<string>JetBrainsMonoNLNF-Bold - 13.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.number</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.string</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 		<key>xcode.syntax.url</key>
-		<string>JetBrainsMono-Regular - 13.0</string>
+		<string>JetBrainsMonoNLNF-Regular - 13.0</string>
 	</dict>
 </dict>
 </plist>
