@@ -16,11 +16,6 @@
   "buffer_line_height": "comfortable",
   "buffer_font_size": 13.0,
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "icon_theme": {
-    "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha"
-  },
   "buffer_font_features": {
     "calt": false,
     "liga": false,
@@ -43,7 +38,7 @@
   "ui_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha",
+    "light": "One Light",
+    "dark": "One Dark",
   },
 }
