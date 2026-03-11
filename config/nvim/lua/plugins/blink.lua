@@ -125,7 +125,7 @@ return {
 				-- Whether to use treesitter highlighting, disable if you run into performance issues
 				treesitter_highlighting = true,
 				-- Window borders to easier see
-				window = { border = vim.g.winborder },
+				window = { border = "solid" },
 			},
 			list = {
 				selection = {
@@ -150,7 +150,7 @@ return {
 					} or nil,
 				},
 				-- Window borders to easier see
-				border = vim.g.winborder,
+				border = "rounded",
 			},
 		},
 		-- Show the signature help when typing
@@ -171,7 +171,7 @@ return {
 				show_on_insert_on_trigger_character = true,
 			},
 			-- Window borders to easier see
-			window = { border = vim.g.winborder },
+			window = { border = "rounded" },
 		},
 
 		-- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

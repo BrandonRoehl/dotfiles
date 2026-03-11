@@ -17,7 +17,7 @@ return {
 	---@type MasonSettings | {ensure_installed: string[]}
 	opts = {
 		ui = {
-			border = vim.g.winborder,
+			border = "none",
 		},
 	},
 	---@param opts MasonSettings | {ensure_installed: string[]}

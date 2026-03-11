@@ -5,13 +5,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set global border definition for hovers
--- Can be one of the pre-defined styles: `"double"`, `"none"`, `"rounded"`, `"shadow"`, `"single"` or `"solid"`.
-vim.g.winborder = "rounded"
--- vim.g.winborder = "none"
--- the new one that exists but is still buggy
--- vim.o.winborder = "rounded"
-
 -- Load globals for specific terminal emulators
 require("config.program")
 

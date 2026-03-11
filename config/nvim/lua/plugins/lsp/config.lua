@@ -102,17 +102,13 @@ return {
 			group = vim.api.nvim_create_augroup("lazy-lsp-attach", { clear = true }),
 			callback = on_attach,
 		})
-		-- Still bugs around `vim.o.winborder`
-		-- waiting on mason and snacks to remove this
-		if vim.g.winborder then
-			-- To override globally the opts if none are provided
-			-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
-			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-				opts = opts or {}
-				opts.border = opts.border or vim.g.winborder
-				return orig_util_open_floating_preview(contents, syntax, opts, ...)
-			end
+		-- To override globally the opts if none are provided
+		-- https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization#borders
+		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+			opts = opts or {}
+			opts.border = opts.border or "rounded"
+			return orig_util_open_floating_preview(contents, syntax, opts, ...)
 		end
 		-- Configure diagnostics
 		vim.diagnostic.config(opts.diagnostics)

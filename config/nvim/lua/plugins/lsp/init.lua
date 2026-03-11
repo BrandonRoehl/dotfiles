@@ -70,7 +70,7 @@ return {
 		---@type vim.diagnostic.Opts
 		diagnostics = {
 			float = {
-				border = vim.g.winborder,
+				border = "rounded",
 				source = "if_many",
 				prefix = " ",
 				scope = "cursor",
