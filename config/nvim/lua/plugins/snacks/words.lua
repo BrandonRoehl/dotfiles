@@ -24,10 +24,10 @@ return {
 				["*"] = {
                     -- stylua: ignore
 					keys = {
-                        { "]]",    function() Snacks.words.jump(vim.v.count1)        end, desc = "Next Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight", enabled = Snacks.words.is_enabled() },
-                        { "[[",    function() Snacks.words.jump(-vim.v.count1)       end, desc = "Prev Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight", enabled = Snacks.words.is_enabled() },
-                        { "<a-n>", function() Snacks.words.jump(vim.v.count1, true)  end, desc = "Next Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight", enabled = Snacks.words.is_enabled() },
-                        { "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight", enabled = Snacks.words.is_enabled() },
+                        { "]]",    function() Snacks.words.jump(vim.v.count1)        end, desc = "Next Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight" },
+                        { "[[",    function() Snacks.words.jump(-vim.v.count1)       end, desc = "Prev Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight" },
+                        { "<a-n>", function() Snacks.words.jump(vim.v.count1, true)  end, desc = "Next Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight" },
+                        { "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, desc = "Prev Reference", mode = { "n", "t" }, method = "textDocument/documentHighlight" },
                     },
 				},
 			},
