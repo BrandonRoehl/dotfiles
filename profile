@@ -17,6 +17,9 @@ export PATH="$PATH:/etc/google-cloud-sdk/bin"
 # Flutter
 export PATH="$PATH:$HOME/workspace/flutter/bin"
 
+# Docker
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+
 # brew install libpq
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
