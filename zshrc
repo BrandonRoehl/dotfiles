@@ -11,8 +11,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 # antigen bundle zsh-users/zsh-history-substring-search
 
-# antigen bundle BrandonRoehl/zsh-clean
-antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
+antigen bundle BrandonRoehl/zsh-clean
+# antigen bundle "$HOME/workspace/zsh-clean" --no-local-clone
 
 # Tell Antigen that you're done.
 antigen apply
