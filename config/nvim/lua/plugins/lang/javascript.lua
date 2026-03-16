@@ -23,13 +23,13 @@ return {
 			},
 		},
 	},
-	{
-		"mason-org/mason-lspconfig.nvim",
-		optional = true,
-		opts = {
-			ensure_installed = { "ts_ls" },
-		},
-	},
+	-- {
+	-- 	"mason-org/mason-lspconfig.nvim",
+	-- 	optional = true,
+	-- 	opts = {
+	-- 		ensure_installed = { "ts_ls" },
+	-- 	},
+	-- },
 	{
 		"stevearc/conform.nvim",
 		optional = true,
