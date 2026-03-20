@@ -54,3 +54,118 @@
 #        or rounded corners, use `macos-titlebar-style = hidden` instead.
 window-decoration = client
 
+# Enable or disable GTK's OpenGL debugging logs. The default is `true` for
+# debug builds, `false` for all others.
+# 
+# Available since: 1.1.0
+gtk-opengl-debug = false
+
+# If `true`, the Ghostty GTK application will run in single-instance mode:
+# each new `ghostty` process launched will result in a new window if there is
+# already a running process.
+# 
+# If `false`, each new ghostty process will launch a separate application.
+# 
+# If `detect`, Ghostty will assume true (single instance) unless one of
+# the following scenarios is found:
+# 
+# 1. TERM_PROGRAM environment variable is a non-empty value. In this
+# case, we assume Ghostty is being launched from a graphical terminal
+# session and you want a dedicated instance.
+# 
+# 2. Any CLI arguments exist. In this case, we assume you are passing
+# custom Ghostty configuration. Single instance mode inherits the
+# configuration from when it was launched, so we must disable single
+# instance to load the new configuration.
+# 
+# If either of these scenarios is producing a false positive, you can
+# set this configuration explicitly to the behavior you want.
+# 
+# The pre-1.2 option `desktop` has been deprecated. Please replace
+# this with `detect`.
+# 
+# The default value is `detect`.
+# 
+# Note that debug builds of Ghostty have a separate single-instance ID
+# so you can test single instance without conflicting with release builds.
+gtk-single-instance = detect
+
+# When enabled, the full GTK titlebar is displayed instead of your window
+# manager's simple titlebar. The behavior of this option will vary with your
+# window manager.
+# 
+# This option does nothing when `window-decoration` is false or when running
+# under macOS.
+gtk-titlebar = true
+
+# Determines the side of the screen that the GTK tab bar will stick to.
+# Top, bottom, and hidden are supported. The default is top.
+# 
+# When `hidden` is set, a tab button displaying the number of tabs will appear
+# in the title bar. It has the ability to open a tab overview for displaying
+# tabs. Alternatively, you can use the `toggle_tab_overview` action in a
+# keybind if your window doesn't have a title bar, or you can switch tabs
+# with keybinds.
+gtk-tabs-location = top
+
+# If this is `true`, the titlebar will be hidden when the window is maximized,
+# and shown when the titlebar is unmaximized. GTK only.
+# 
+# Available since: 1.1.0
+gtk-titlebar-hide-when-maximized = false
+
+# Determines the appearance of the top and bottom bars tab bar.
+# 
+# Valid values are:
+# 
+#  * `flat` - Top and bottom bars are flat with the terminal window.
+#  * `raised` - Top and bottom bars cast a shadow on the terminal area.
+#  * `raised-border` - Similar to `raised` but the shadow is replaced with a
+#    more subtle border.
+gtk-toolbar-style = raised
+
+# The style of the GTK titlbar. Available values are `native` and `tabs`.
+# 
+# The `native` titlebar style is a traditional titlebar with a title, a few
+# buttons and window controls. A separate tab bar will show up below the
+# titlebar if you have multiple tabs open in the window.
+# 
+# The `tabs` titlebar merges the tab bar and the traditional titlebar.
+# This frees up vertical space on your screen if you use multiple tabs. One
+# limitation of the `tabs` titlebar is that you cannot drag the titlebar
+# by the titles any longer (as they are tab titles now). Other areas of the
+# `tabs` title bar can be used to drag the window around.
+# 
+# The default style is `native`.
+gtk-titlebar-style = native
+
+# If `true` (default), then the Ghostty GTK tabs will be "wide." Wide tabs
+# are the new typical Gnome style where tabs fill their available space.
+# If you set this to `false` then tabs will only take up space they need,
+# which is the old style.
+gtk-wide-tabs = true
+
+# Custom CSS files to be loaded.
+# 
+# GTK CSS documentation can be found at the following links:
+# 
+#   * https://docs.gtk.org/gtk4/css-overview.html - An overview of GTK CSS.
+#   * https://docs.gtk.org/gtk4/css-properties.html - A comprehensive list
+#     of supported CSS properties.
+# 
+# Launch Ghostty with `env GTK_DEBUG=interactive ghostty` to tweak Ghostty's
+# CSS in real time using the GTK Inspector. Errors in your CSS files would
+# also be reported in the terminal you started Ghostty from. See
+# https://developer.gnome.org/documentation/tools/inspector.html for more
+# information about the GTK Inspector.
+# 
+# This configuration can be repeated multiple times to load multiple files.
+# Prepend a ? character to the file path to suppress errors if the file does
+# not exist. If you want to include a file that begins with a literal ?
+# character, surround the file path in double quotes (").
+# The file size limit for a single stylesheet is 5MiB.
+# 
+# Available since: 1.1.0
+gtk-custom-css = 
+
+
