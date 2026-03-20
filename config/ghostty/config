@@ -3,6 +3,7 @@
 
 config-file = theme
 config-file = macos
+config-file = linux
 
 # Thickness in pixels or percentage adjustment of the bar cursor and outlined rect cursor.
 # See the notes about adjustments in `adjust-cell-width`.

@@ -1,0 +1,56 @@
+# vim:ft=config:fileencoding=utf-8:foldmethod=marker
+#
+# Configure a preference for window decorations. This setting specifies
+# a _preference_; the actual OS, desktop environment, window manager, etc.
+# may override this preference. Ghostty will do its best to respect this
+# preference but it may not always be possible.
+# 
+# Valid values:
+# 
+#  * `none`
+# 
+#    All window decorations will be disabled. Titlebar, borders, etc. will
+#    not be shown. On macOS, this will also disable tabs (enforced by the
+#    system).
+# 
+#  * `auto`
+# 
+#    Automatically decide to use either client-side or server-side
+#    decorations based on the detected preferences of the current OS and
+#    desktop environment. This option usually makes Ghostty look the most
+#    "native" for your desktop.
+# 
+#  * `client`
+# 
+#    Prefer client-side decorations.
+# 
+#    Available since: 1.1.0
+# 
+#  * `server`
+# 
+#    Prefer server-side decorations. This is only relevant on Linux with GTK,
+#    either on X11, or Wayland on a compositor that supports the
+#    `org_kde_kwin_server_decoration` protocol (e.g. KDE Plasma, but almost
+#    any non-GNOME desktop supports this protocol).
+# 
+#    If `server` is set but the environment doesn't support server-side
+#    decorations, client-side decorations will be used instead.
+# 
+#    Available since: 1.1.0
+# 
+# The default value is `auto`.
+# 
+# For the sake of backwards compatibility and convenience, this setting also
+# accepts boolean true and false values. If set to `true`, this is equivalent
+# to `auto`. If set to `false`, this is equivalent to `none`.
+# This is convenient for users who live primarily on systems that don't
+# differentiate between client and server-side decorations (e.g. macOS and
+# Windows).
+# 
+# The "toggle_window_decorations" keybind action can be used to create
+# a keybinding to toggle this setting at runtime.
+# 
+# macOS: To hide the titlebar without removing the native window borders
+#        or rounded corners, use `macos-titlebar-style = hidden` instead.
+window-decoration = client
+
