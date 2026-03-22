@@ -1,12 +1,22 @@
 #!/bin/sh
-#brew install coreutils
-#$(brew --prefix coreutils)
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
-export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+
+if [[ "$(uname)" == "Linux" ]]; then
+  # Commands specific to Linux go here
+  alias open='xdg-open'
+elif [[ "$(uname)" == "Darwin" ]]; then
+  # Commands specific to macOS (Darwin kernel) go here
+  # brew install coreutils openssl
+  # $(brew --prefix coreutils)
+  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
+  export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+[[ -s "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 export GOPATH="$HOME/workspace/go"
 export PATH="$PATH:$(go env GOPATH)/bin"
@@ -104,4 +114,3 @@ function git-who() {
     git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
 }
 
-. "$HOME/.cargo/env"
