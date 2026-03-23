@@ -9,6 +9,18 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   # $(brew --prefix coreutils)
   export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
   export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+
+
+  function useJava() {
+      if [[ ! -z $1 ]]; then
+          local jvm
+          jvm=$(/usr/libexec/java_home -v "$1")
+          if [[ $? -eq 0 ]]; then
+              export JAVA_HOME=$jvm
+              java -version
+          fi
+      fi
+  }
 fi
 
 
@@ -44,16 +56,14 @@ export GIT_TEMPLATE_DIR="$HOME/.gitconf/git_template"
 # Add pyenv executable to PATH and
 # enable shims by adding the following
 # to ~/.profile and ~/.zprofile:
-#
-export PYENV_ROOT="$HOME/.pyenv"
-if test -d $PYENV_ROOT
+if type 'pyenv' > /dev/null && test -d $PYENV_ROOT
 then
+    export PYENV_ROOT="$HOME/.pyenv"
     # Load pyenv into the shell by adding
     # the following to ~/.zshrc:
     export PATH="$PYENV_ROOT/bin:$HOME/.local/bin:$PATH"
     eval "$(pyenv init --path)"
 fi
-
 
 # Copies the current path to the clipboard
 alias cpdir="pwd | tr -d '\n' | pbcopy"
@@ -69,7 +79,6 @@ if type 'nvim' > /dev/null
 then
     export EDITOR="nvim"
     alias vim='nvim'
-    alias vi='nvim'
 elif type 'vim' > /dev/null
 then
     export EDITOR="vim"
@@ -84,17 +93,6 @@ fi
 function start_idf() {
     source "$HOME/esp/esp-idf/export.sh"
     source "$HOME/esp/esp-matter/export.sh"
-}
-
-function useJava() {
-    if [[ ! -z $1 ]]; then
-        local jvm
-        jvm=$(/usr/libexec/java_home -v "$1")
-        if [[ $? -eq 0 ]]; then
-            export JAVA_HOME=$jvm
-            java -version
-        fi
-    fi
 }
 
 alias 'sourcegraph'="docker run --publish 7080:7080 --publish 2633:2633 --rm --volume ~/.sourcegraph/config:/etc/sourcegraph --volume ~/.sourcegraph/data:/var/opt/sourcegraph sourcegraph/server:3.3.7"
