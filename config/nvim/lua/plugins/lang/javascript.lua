@@ -4,6 +4,12 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		optional = true,
+		specs = {
+			"davidmh/mdx.nvim",
+			dependencies = { "nvim-treesitter/nvim-treesitter" },
+			ft = "mdx",
+			lazy = true,
+		},
 		opts = {
 			ensure_installed = {
 				"javascript",
@@ -41,11 +47,5 @@ return {
 				vue = { "prettierd", "prettier", stop_after_first = true },
 			},
 		},
-	},
-	{
-		"davidmh/mdx.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		ft = { "markdownreact", "mdx" },
-		lazy = true,
 	},
 }
