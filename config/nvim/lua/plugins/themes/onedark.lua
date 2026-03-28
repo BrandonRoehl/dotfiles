@@ -6,33 +6,48 @@ return {
 	-- change the command in the config to whatever the name of that colorscheme is.
 	--
 	-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-	"olimorris/onedarkpro.nvim",
+	"navarasu/onedark.nvim",
 	enabled = true,
 	lazy = false,
 	version = false,
 	priority = 1000, -- Make sure to load this before all the other start plugins.
 	opts = {
-		-- Override default colors or create your own
-		colors = {},
-		-- Override default highlight groups or create your own
-		highlights = {},
-		-- For example, to apply bold and italic, use "bold,italic"
-		styles = {},
-		-- Override which filetype highlight groups are loaded
-		filetypes = {},
-		-- Override which plugin highlight groups are loaded
-		plugins = {},
-		options = {
-			-- Use cursorline highlighting?
-			cursorline = true,
-			-- Use a transparent background?
-			transparency = false,
-			-- Use the theme's colors for Neovim's :terminal?
-			terminal_colors = true,
-			-- Center bar transparency?
-			lualine_transparency = false,
-			-- When the window is out of focus, change the normal background?
-			highlight_inactive_windows = false,
+		-- Main options --
+		style = "darker", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+		transparent = false, -- Show/hide background
+		term_colors = true, -- Change terminal color as per the selected theme style
+		ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
+		cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+		-- toggle theme style ---
+		toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+		toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
+
+		-- Change code style ---
+		-- Options are italic, bold, underline, none
+		-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+		code_style = {
+			comments = "italic",
+			keywords = "none",
+			functions = "none",
+			strings = "none",
+			variables = "none",
+		},
+
+		-- Lualine options --
+		lualine = {
+			transparent = false, -- lualine center bar transparency
+		},
+
+		-- Custom Highlights --
+		colors = {}, -- Override default colors
+		highlights = {}, -- Override highlight groups
+
+		-- Plugins Config --
+		diagnostics = {
+			darker = true, -- darker colors for diagnostic
+			undercurl = true, -- use undercurl instead of underline for diagnostics
+			background = true, -- use background color for virtual text
 		},
 	},
 	init = function()
