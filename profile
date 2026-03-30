@@ -6,8 +6,12 @@ if [[ "$(uname)" == "Linux" ]]; then
 elif [[ "$(uname)" == "Darwin" ]]; then
   # Commands specific to macOS (Darwin kernel) go here
   # brew install coreutils openssl
+  # Homebrew
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
   # $(brew --prefix coreutils)
-  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:/opt/homebrew/bin:$PATH:$HOME/.zsh/bin"
+  export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/usr/local/opt/openssl/bin:$PATH"
+  # zsh bin
+  export PATH="$PATH:$HOME/.zsh/bin"
   export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
