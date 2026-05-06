@@ -1,6 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "enabled_providers": ["lmstudio", "amazon-bedrock"],
+    "enabled_providers": ["lmstudio", "amazon-bedrock", "github-copilot"],
     "provider": {
         "lmstudio": {
             "npm": "@ai-sdk/openai-compatible",

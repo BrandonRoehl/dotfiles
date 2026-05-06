@@ -8,6 +8,14 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "agent_servers": {
+    "opencode": {
+      "favorite_config_option_values": {
+        "model": [
+          "amazon-bedrock/anthropic.claude-opus-4-5-20251101-v1:0/high"
+        ]
+      },
+      "type": "registry"
+    },
     "claude-acp": {
       "favorite_config_option_values": {
         "mode": [
