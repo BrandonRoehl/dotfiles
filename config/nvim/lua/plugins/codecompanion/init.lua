@@ -23,7 +23,6 @@ return {
 			chat = {
 				adapter = {
 					name = "claude_code",
-					model = "opus",
 				},
 			},
 			inline = {
