@@ -14,6 +14,10 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   export PATH="$PATH:$HOME/.zsh/bin"
   export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
+  # Added by LM Studio CLI (lms)
+  export PATH="$PATH:$HOME/.lmstudio/bin"
+  # End of LM Studio CLI section
+
   function useJava() {
       if [[ ! -z $1 ]]; then
           local jvm
