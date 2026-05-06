@@ -8,11 +8,11 @@
                 "baseURL": "http://localhost:11434/v1"
             },
             "models": {
-                "codegemma": {
-                    "name": "CodeGemma",
+                "gemma4": {
+                    "name": "Gemma 4",
                 },
-                "deepseek-coder-v2": {
-                    "name": "DeepSeek Coder v2",
+                "gpt-oss": {
+                    "name": "GPT-OSS",
                 }
             }
         }
