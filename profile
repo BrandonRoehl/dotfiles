@@ -14,6 +14,7 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   export PATH="$PATH:$HOME/.zsh/bin"
   export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
 
+  export PATH="$PATH:$HOME/.lmstudio/bin"
 
   function useJava() {
       if [[ ! -z $1 ]]; then
@@ -115,4 +116,5 @@ function listening() {
 function git-who() {
     git ls-files | while read f; do git blame --line-porcelain $f | grep '^author '; done | sort -f | uniq -ic | sort -n
 }
+
 
