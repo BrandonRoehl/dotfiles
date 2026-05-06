@@ -13,7 +13,10 @@
                 },
                 "openai/gpt-oss-20b": {
                     "name": "GPT-OSS 20B"
-                }
+                },
+                "deepseek/deepseek-r1-0528-qwen3-8b": {
+                    "name": "DeepSeek R1 0528"
+                }:
             }
         }
     }
