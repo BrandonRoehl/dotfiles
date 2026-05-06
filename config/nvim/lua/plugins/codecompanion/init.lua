@@ -19,19 +19,9 @@ return {
 		{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Prompt Actions", mode = { "n", "v" } },
 	},
 	opts = {
-		interactions = Utils.computer:is_host("🔥") and {
+		interactions = {
 			chat = {
-				adapter = {
-					name = "claude_code",
-				},
-			},
-			inline = {
-				adapter = "copilot",
-			},
-		} or {
-			chat = {
-				name = "copilot",
-				model = "gpt-4.1",
+				adapter = "opencode",
 			},
 			inline = {
 				adapter = "copilot",
