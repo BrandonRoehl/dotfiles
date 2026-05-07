@@ -24,7 +24,7 @@
         "amazon-bedrock": {
             "options": {
                 "region": "us-east-1",
-                "profile": "claude"
+                "profile": "sbox"
             }
         }
     }
