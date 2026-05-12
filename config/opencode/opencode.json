@@ -1,7 +1,7 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "theme": "tokyonight",
-    "enabled_providers": ["lmstudio", "amazon-bedrock", "github-copilot"],
+    "enabled_providers": ["lmstudio", "amazon-bedrock", "github-copilot", "windows"],
     "provider": {
         "lmstudio": {
             "npm": "@ai-sdk/openai-compatible",
@@ -24,6 +24,18 @@
                 },
                 "qwen/qwen3.5-9b": {
                     "name": "Qwen3.5 9B"
+                }
+            }
+        },
+        "windows": {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "Windows",
+            "options": {
+                "baseURL": "http://192.168.0.57:1234/v1"
+            },
+            "models": {
+                "openai/gpt-oss-20b": {
+                    "name": "GPT-OSS 20B"
                 }
             }
         },
