@@ -19,6 +19,25 @@ return {
 		{ "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Prompt Actions", mode = { "n", "v" } },
 	},
 	opts = {
+		adapters = {
+			http = {
+				copilot = "copilot",
+				ollama = "ollama",
+				opts = {
+					allow_insecure = false, -- Allow insecure connections?
+					show_presets = false, -- Show preset adapters
+					show_model_choices = true, -- Show model choices when changing adapter
+				},
+			},
+			acp = {
+				claude_code = "claude_code",
+				copilot_acp = "copilot_acp",
+				opencode = "opencode",
+				opts = {
+					show_presets = false,
+				},
+			},
+		},
 		interactions = {
 			chat = {
 				adapter = "opencode",
