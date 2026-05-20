@@ -1,6 +1,5 @@
 {
     "$schema": "https://opencode.ai/config.json",
-    "theme": "tokyonight",
     "share": "disabled",
     "lsp": true,
     "enabled_providers": ["lmstudio", "amazon-bedrock", "github-copilot", "windows"],
