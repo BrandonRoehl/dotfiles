@@ -60,12 +60,12 @@ return {
 			["<Tab>"] = {
 				-- If there is something selected accept it
 				"accept",
-				-- If there is nothing selected and a running snippet jump forward in the snippet
-				"snippet_forward",
 				-- If there is an inline completion available, select and accept it (nvim 0.12+)
 				function(_)
 					return vim.fn.has("nvim-0.12") == 1 and vim.lsp.inline_completion.get()
 				end,
+				-- If there is nothing selected and a running snippet jump forward in the snippet
+				"snippet_forward",
 				-- If nothing so far is true but there is a menu select the first thing
 				"select_and_accept",
 				-- If there is actually nothing trigger the normal key
