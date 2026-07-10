@@ -3,6 +3,17 @@
     "share": "disabled",
     "lsp": true,
     "enabled_providers": ["lmstudio", "amazon-bedrock", "github-copilot", "windows"],
+    "permission": {
+        "external_directory": {
+            "~/workspace/**": "allow",
+            "~/.cargo/registry/src/**": "allow",
+            "~/notes/**": "allow"
+        },
+        "edit": {
+            "~/.cargo/**": "deny",
+            "~/notes/**": "deny"
+        }
+    },
     "provider": {
         "lmstudio": {
             "npm": "@ai-sdk/openai-compatible",
