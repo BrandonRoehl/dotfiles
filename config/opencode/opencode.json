@@ -7,11 +7,13 @@
         "external_directory": {
             "~/workspace/**": "allow",
             "~/.cargo/registry/src/**": "allow",
-            "~/notes/**": "allow"
+            "~/notes/**": "allow",
+            "/tmp": "allow"
         },
         "edit": {
             "~/.cargo/**": "deny",
-            "~/notes/**": "deny"
+            "~/notes/**": "deny",
+            "/tmp/*": "allow"
         }
     },
     "provider": {
