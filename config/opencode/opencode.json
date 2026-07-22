@@ -8,7 +8,7 @@
             "~/workspace/**": "allow",
             "~/.cargo/registry/src/**": "allow",
             "~/notes/**": "allow",
-            "/tmp": "allow"
+            "/tmp/*": "allow"
         },
         "edit": {
             "~/.cargo/**": "deny",
