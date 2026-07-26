@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.yara set filetype=yara
+au BufRead,BufNewFile *.yara setf yara

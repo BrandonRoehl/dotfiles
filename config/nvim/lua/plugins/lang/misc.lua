@@ -26,6 +26,7 @@ return {
 				"yaml",
 				"swift",
 				"graphql",
+				"caddy",
 			},
 		},
 	},
