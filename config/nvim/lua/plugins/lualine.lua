@@ -47,7 +47,17 @@ return {
 				lualine_c = {
 					"diagnostics",
 					"filetype",
-					"filename",
+					{
+						"filename",
+						-- Displays file status (readonly, modified)
+						file_status = true,
+						-- Display new file status
+						newfile_status = false,
+						-- 0: Just filename, 1: Relative path, 2: Absolute path, 3: Absolute path with tilde, 4: Filename + parent dir
+						path = 1,
+						-- Shortens path if it breaks the line
+						shorting_target = 40,
+					},
 				},
 				lualine_x = {
 					-- This will be replaced by the actual component in the config function
