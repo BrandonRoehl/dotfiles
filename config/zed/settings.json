@@ -11,8 +11,7 @@
     "opencode": {
       "favorite_config_option_values": {
         "model": [
-          "amazon-bedrock/anthropic.claude-opus-4-5-20251101-v1:0/high",
-          "amazon-bedrock/anthropic.claude-opus-4-7"
+          "amazon-bedrock/anthropic.claude-opus-5"
         ]
       },
       "type": "registry"
@@ -76,4 +75,19 @@
     "light": "One Light",
     "dark": "One Dark",
   },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "features": "all",
+        },
+        "check": {
+          "command": "clippy",
+        },
+        "diagnostics": {
+          "enable": true,
+        },
+      },
+    }
+  }
 }
