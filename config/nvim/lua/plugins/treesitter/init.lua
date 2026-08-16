@@ -26,6 +26,10 @@ return {
 	opts = {
 		---@type string[]
 		ensure_installed = {},
+		-- highlight = {
+		-- 	enable = true,
+		-- 	additional_vim_regex_highlighting = false,
+		-- },
 	},
 	---@param opts LazyTSConfig
 	config = function(_, opts)

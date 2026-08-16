@@ -10,6 +10,17 @@ return {
 		indent = {
 			enabled = true,
 			animate = { enabled = false },
+			-- hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+			-- can be a list of hl groups to cycle through
+			hl = {
+				"RainbowRed",
+				"RainbowYellow",
+				"RainbowBlue",
+				"RainbowOrange",
+				"RainbowGreen",
+				"RainbowViolet",
+				"RainbowCyan",
+			},
 		},
 		input = { enabled = true },
 		notifier = {

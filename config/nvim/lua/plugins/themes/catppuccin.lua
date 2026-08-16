@@ -14,14 +14,12 @@ return {
 			light = "latte",
 			dark = "mocha",
 		},
-		default_integrations = true,
+		auto_integrations = true,
 		integrations = {
 			blink_cmp = true,
 			dap = true,
 			dap_ui = true,
-			dashboard = true,
 			gitsigns = true,
-			neotree = true,
 			treesitter = true,
 			treesitter_context = true,
 			copilot_vim = true,
@@ -31,35 +29,42 @@ return {
 			semantic_tokens = true,
 			snacks = {
 				enabled = true,
+				-- indent_scope_color = "teal",
+				-- indent_scope_color = "rosewater",
+			},
+			indent_blankline = {
+				enabled = true,
+				scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+				colored_indent_levels = true,
 			},
 			which_key = true,
 			notify = true,
 			noice = true,
-			-- telescope = {
-			-- 	enabled = true,
-			-- 	style = "nvchad",
-			-- 	style = "classic",
-			-- },
-			-- native_lsp = {
-			-- 	enabled = true,
-			-- 	virtual_text = {
-			-- 		errors = { "italic" },
-			-- 		hints = { "italic" },
-			-- 		warnings = { "italic" },
-			-- 		information = { "italic" },
-			-- 		ok = { "italic" },
-			-- 	},
-			-- 	underlines = {
-			-- 		errors = { "underline" },
-			-- 		hints = { "underline" },
-			-- 		warnings = { "underline" },
-			-- 		information = { "underline" },
-			-- 		ok = { "underline" },
-			-- 	},
-			-- 	inlay_hints = {
-			-- 		background = true,
-			-- 	},
-			-- },
+			telescope = {
+				enabled = true,
+				style = "nvchad",
+				-- style = "classic",
+			},
+			native_lsp = {
+				enabled = true,
+				-- 	virtual_text = {
+				-- 		errors = { "italic" },
+				-- 		hints = { "italic" },
+				-- 		warnings = { "italic" },
+				-- 		information = { "italic" },
+				-- 		ok = { "italic" },
+				-- 	},
+				-- 	underlines = {
+				-- 		errors = { "underline" },
+				-- 		hints = { "underline" },
+				-- 		warnings = { "underline" },
+				-- 		information = { "underline" },
+				-- 		ok = { "underline" },
+				-- 	},
+				-- 	inlay_hints = {
+				-- 		background = true,
+				-- 	},
+			},
 		},
 		-- custom_highlights = function(colors)
 		-- 	return {
