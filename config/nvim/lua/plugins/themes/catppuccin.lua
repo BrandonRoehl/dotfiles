@@ -32,11 +32,11 @@ return {
 				-- indent_scope_color = "teal",
 				-- indent_scope_color = "rosewater",
 			},
-			indent_blankline = {
-				enabled = true,
-				scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-				colored_indent_levels = true,
-			},
+			-- indent_blankline = {
+			-- 	enabled = true,
+			-- 	scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+			-- 	colored_indent_levels = true,
+			-- },
 			which_key = true,
 			notify = true,
 			noice = true,

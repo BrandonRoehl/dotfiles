@@ -1,5 +1,56 @@
 ---@module "lazy"
 ---@type LazyPluginSpec
+
+-- snacks indent uses the classic `Rainbow*` highlight groups for its rainbow
+-- indent guides (see plugins/snacks/base.lua), but not every theme defines
+-- them (e.g. tokyonight only ships `RainbowDelimiter*`), so the guides fall
+-- back to a single default color.
+--
+-- Note that `:colorscheme` leaves user-defined groups as empty definitions,
+-- so "exists" is not enough - the group also needs an actual definition.
+-- After every colorscheme is loaded, (re)define the groups with a neutral
+-- palette (unless the theme defines them itself) so rainbow indentation
+-- works regardless of theme.
+-- local rainbow_colors = {
+-- 	dark = {
+-- 		RainbowRed = "#f7768e",
+-- 		RainbowOrange = "#ff9e64",
+-- 		RainbowYellow = "#e0af68",
+-- 		RainbowGreen = "#9ece6a",
+-- 		RainbowBlue = "#7aa2f7",
+-- 		RainbowViolet = "#bb9af7",
+-- 		RainbowCyan = "#73daca",
+-- 	},
+-- 	light = {
+-- 		RainbowRed = "#e45649",
+-- 		RainbowOrange = "#c9602a",
+-- 		RainbowYellow = "#c18401",
+-- 		RainbowGreen = "#50a14f",
+-- 		RainbowBlue = "#4078f2",
+-- 		RainbowViolet = "#a626a4",
+-- 		RainbowCyan = "#0184bc",
+-- 	},
+-- }
+--
+-- local function has_definition(name)
+-- 	return next(vim.api.nvim_get_hl(0, { name = name })) ~= nil
+-- end
+--
+-- local function ensure_rainbow_groups()
+-- 	local colors = rainbow_colors[vim.o.background] or rainbow_colors.dark
+-- 	for name, fg in pairs(colors) do
+-- 		if not has_definition(name) then
+-- 			vim.api.nvim_set_hl(0, name, { fg = fg })
+-- 		end
+-- 	end
+-- end
+--
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	group = vim.api.nvim_create_augroup("themes_rainbow", { clear = true }),
+-- 	callback = ensure_rainbow_groups,
+-- })
+-- ensure_rainbow_groups()
+
 return {
 	import = "plugins.themes.tokyonight",
 	-- import = "plugins.themes.onedark",

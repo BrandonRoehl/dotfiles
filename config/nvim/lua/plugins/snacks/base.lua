@@ -12,14 +12,25 @@ return {
 			animate = { enabled = false },
 			-- hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
 			-- can be a list of hl groups to cycle through
-			hl = {
-				"RainbowRed",
-				"RainbowYellow",
-				"RainbowBlue",
-				"RainbowOrange",
-				"RainbowGreen",
-				"RainbowViolet",
-				"RainbowCyan",
+			scope = {
+				enabled = true,
+				hl = {
+					-- "RainbowRed",
+					-- "RainbowYellow",
+					-- "RainbowBlue",
+					-- "RainbowOrange",
+					-- "RainbowGreen",
+					-- "RainbowViolet",
+					-- "RainbowCyan",
+					"SnacksIndent1",
+					"SnacksIndent2",
+					"SnacksIndent3",
+					"SnacksIndent4",
+					"SnacksIndent5",
+					"SnacksIndent6",
+					"SnacksIndent7",
+					"SnacksIndent8",
+				},
 			},
 		},
 		input = { enabled = true },
