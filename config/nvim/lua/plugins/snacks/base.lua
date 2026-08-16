@@ -15,13 +15,6 @@ return {
 			scope = {
 				enabled = true,
 				hl = {
-					-- "RainbowRed",
-					-- "RainbowYellow",
-					-- "RainbowBlue",
-					-- "RainbowOrange",
-					-- "RainbowGreen",
-					-- "RainbowViolet",
-					-- "RainbowCyan",
 					"SnacksIndent1",
 					"SnacksIndent2",
 					"SnacksIndent3",
