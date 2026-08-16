@@ -28,7 +28,7 @@
             "npm": "@ai-sdk/openai-compatible",
             "name": "Windows",
             "options": {
-                "baseURL": "http://192.168.0.57:1234/v1"
+                "baseURL": "http://192.168.0.140:1234/v1"
             },
             "models": {
                 "qwen/qwen3.8-27b": {
