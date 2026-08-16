@@ -17,30 +17,13 @@
         }
     },
     "provider": {
-        "lmstudio": {
-            "npm": "@ai-sdk/openai-compatible",
-            "name": "LM Studio (local)",
-            "options": {
-                "baseURL": "http://127.0.0.1:1234/v1"
-            },
-            "models": {
-                "google/gemma-4-e4b": {
-                    "name": "Gemma 4 E4B"
-                },
-                "openai/gpt-oss-20b": {
-                    "name": "GPT-OSS 20B"
-                },
-                "deepseek/deepseek-r1-0528-qwen3-8b": {
-                    "name": "DeepSeek R1 0528"
-                },
-                "qwen/qwen3-4b-thinking-2507": {
-                    "name": "Qwen3 4B Thinking"
-                },
-                "qwen/qwen3.5-9b": {
-                    "name": "Qwen3.5 9B"
-                }
-            }
-        },
+        // "lmstudio": {
+        //     "npm": "@ai-sdk/openai-compatible",
+        //     "name": "LM Studio (local)",
+        //     "options": {
+        //         "baseURL": "http://127.0.0.1:1234/v1"
+        //     },
+        // },
         "windows": {
             "npm": "@ai-sdk/openai-compatible",
             "name": "Windows",
@@ -48,8 +31,8 @@
                 "baseURL": "http://192.168.0.57:1234/v1"
             },
             "models": {
-                "openai/gpt-oss-20b": {
-                    "name": "GPT-OSS 20B"
+                "qwen/qwen3.8-27b": {
+                    "name": "Qwen 3.8-27B",
                 }
             }
         },
