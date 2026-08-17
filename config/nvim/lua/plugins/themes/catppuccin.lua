@@ -74,11 +74,23 @@ return {
 		-- 		TelescopeBorder = { fg = colors.blue, bg = colors.none }, -- Border of the telescope window
 		-- 	}
 		-- end,
+		-- custom_highlights = function(colors)
+		-- 	return {
+		-- 		SnacksIndent1 = { fg = colors.red },
+		-- 		SnacksIndent2 = { fg = colors.yellow },
+		-- 		SnacksIndent3 = { fg = colors.blue },
+		-- 		SnacksIndent4 = { fg = colors.peach },
+		-- 		SnacksIndent5 = { fg = colors.green },
+		-- 		SnacksIndent6 = { fg = colors.mauve },
+		-- 		SnacksIndent7 = { fg = colors.teal },
+		-- 		SnacksIndent8 = { fg = colors.lavender },
+		-- 	}
+		-- end,
 	},
 	config = function(_, opts)
 		require("catppuccin").setup(opts)
 	end,
 	init = function()
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-nvim")
 	end,
 }
