@@ -9,6 +9,10 @@
 {
   "agent_servers": {
     "opencode": {
+      "default_config_options": {
+        "effort": "high",
+        "model": "amazon-bedrock/anthropic.claude-opus-5"
+      },
       "favorite_config_option_values": {
         "model": [
           "amazon-bedrock/anthropic.claude-opus-5"
@@ -60,13 +64,6 @@
   ],
   "agent": {
     "dock": "right",
-    "default_model": {
-      "effort": "high",
-      "enable_thinking": true,
-      "provider": "copilot_chat",
-      "model": "gpt-5.2-codex",
-    },
-    "model_parameters": [],
   },
   "vim_mode": true,
   "ui_font_size": 16,
