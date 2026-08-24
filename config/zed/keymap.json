@@ -1,0 +1,13 @@
+[
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // Step A: Define your physical leader key (e.g., mapping space to send "leader")
+      "space": ["workspace::SendKeystrokes", "leader"],
+
+      // Step B: Bind your actions using the "leader" keyword
+      "\\": "workspace::ToggleLeftDock"
+      "leader f f": "file_finder::Toggle",
+    }
+  }
+]
