@@ -1,13 +1,283 @@
+// Zed keymap — mirrors ~/.config/nvim as closely as Zed allows.
+//
+// nvim leader/localleader is <Space>. Zed has no "leader" indirection, so
+// bindings are written literally as "space <keys>".
+//
+// Actions that have no Zed equivalent are noted with a TODO comment instead of
+// being silently dropped.
 [
+  ////////////////////////////////////////////////////////////////////////////
+  // Normal + visual mode (nvim "n"/"v"/"x")
+  ////////////////////////////////////////////////////////////////////////////
   {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "context": "VimControl && !menu",
     "bindings": {
-      // Step A: Define your physical leader key (e.g., mapping space to send "leader")
-      "space": ["workspace::SendKeystrokes", "leader"],
+      // -- window navigation (config/keymaps.lua) ----------------------------
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
 
-      // Step B: Bind your actions using the "leader" keyword
-      "\\": "workspace::ToggleLeftDock"
-      "leader f f": "file_finder::Toggle",
+      // -- snacks explorer / terminal (snacks/picker.lua, snacks/base.lua) ---
+      "\\": "vim::ToggleProjectPanelFocus", // \ File Explorer
+      "ctrl-/": "terminal_panel::ToggleFocus", // <c-/> Toggle Terminal
+
+      // -- treesitter incremental selection (which-key.lua) -----------------
+      "ctrl-space": "editor::SelectLargerSyntaxNode", // <c-space> mode = { x, n }
+
+      // -- LSP (plugins/lsp/init.lua, snacks/picker.lua) --------------------
+      // g d / g D / g y / g I are already Zed defaults and match nvim.
+      "g r": "editor::FindAllReferences", // gr References
+      "g K": "editor::ShowSignatureHelp", // gK Signature Help
+
+      // -- treesitter textobject motions (treesitter/textobjects.lua) -------
+      // ] c / [ c stay on Zed's git-hunk default, matching gitsigns winning
+      // in nvim. ] ] / [ [ are Zed's class/section motions.
+      "] f": "vim::NextMethodStart",
+      "[ f": "vim::PreviousMethodStart",
+      "] F": "vim::NextMethodEnd",
+      "[ F": "vim::PreviousMethodEnd",
+      "[ k": "vim::PreviousSectionStart", // treesitter/context.lua: go_to_context
+      // TODO: no Zed motion for ] a / [ a (@parameter.inner).
+
+      // -- snacks words (snacks/words.lua) ----------------------------------
+      "alt-n": "editor::GoToNextDocumentHighlight",
+      "alt-p": "editor::GoToPreviousDocumentHighlight",
+
+      // -- diagnostics (config/keymaps.lua) ---------------------------------
+      "space q": "diagnostics::DeployCurrentFile", // <leader>q loclist
+
+      // -- format (plugins/format.lua) --------------------------------------
+      "space =": "editor::Format",
+
+      // -- which-key (which-key.lua) ----------------------------------------
+      "space ?": "zed::OpenKeymap",
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader><leader> — hop.nvim (plugins/easymotion.lua)
+      // Zed has Sneak (2-char) and HelixJumpToWord (labelled word jumps).
+      ////////////////////////////////////////////////////////////////////////
+      "space space s": "vim::PushSneak", // HopChar1
+      "space space f": "vim::PushSneak", // HopChar1AC
+      "space space F": "vim::PushSneakBackward", // HopChar1BC
+      "space space t": "vim::PushSneak", // HopChar1CurrentLineAC
+      "space space T": "vim::PushSneakBackward", // HopChar1CurrentLineBC
+      "space space /": "vim::PushSneak", // HopPattern
+      "space space w": "vim::HelixJumpToWord", // HopWordAC
+      "space space b": "vim::HelixJumpToWord", // HopWordBC
+      "space space l": "vim::HelixJumpToWord", // HopAnywhereAC
+      "space space h": "vim::HelixJumpToWord", // HopAnywhereBC
+      "space space j": "vim::HelixJumpToWord", // HopLineStartAC
+      "space space k": "vim::HelixJumpToWord", // HopLineStartBC
+      "space space 0": "go_to_line::Toggle", // HopLine
+      "space space space j": "vim::HelixJumpToWord", // HopAnywhere
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>t — tabs (config/keymaps.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space t n": "workspace::NewFile", // tabnew
+      "space t q": "pane::CloseActiveItem", // tabclose
+      "space t l": "pane::ActivateNextItem", // tabnext +
+      "space t h": "pane::ActivatePreviousItem", // tabnext -
+      "space t b": "pane::AlternateFile", // tabnext #
+      "space t D": "editor::ToggleSelectedDiffHunks", // gitsigns preview_hunk_inline
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>f — find (snacks/picker.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space f f": "file_finder::Toggle",
+      "space f g": "file_finder::Toggle", // git_files — Zed has no git-only finder
+      "space f b": "tab_switcher::Toggle",
+      "space f r": "projects::OpenRecent",
+      "space f p": "projects::OpenRecent",
+      "space f c": "zed::OpenSettingsFile", // Find Config File
+      "space ,": "tab_switcher::Toggle",
+      "space /": "buffer_search::Deploy", // Buffer Lines
+      "space :": "command_palette::Toggle", // Command History
+      "space .": "workspace::NewFile", // Snacks.scratch
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>s — search (snacks/picker.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space s f": "file_finder::Toggle", // Smart Find Files
+      "space s g": "pane::DeploySearch", // Grep
+      "space s w": "pane::DeploySearch", // Grep word / selection (Zed seeds query)
+      "space s b": "buffer_search::Deploy", // Buffer Lines
+      "space s B": "pane::DeploySearch", // Grep Open Buffers
+      "space s c": "command_palette::Toggle", // Command History
+      "space s C": "command_palette::Toggle", // Commands
+      "space s d": "diagnostics::Deploy", // Diagnostics
+      "space s D": "diagnostics::DeployCurrentFile", // Buffer Diagnostics
+      "space s s": "outline::Toggle", // LSP Symbols
+      "space s S": "project_symbols::Toggle", // LSP Workspace Symbols
+      "space s m": "editor::ViewBookmarks", // Marks
+      "space s k": "zed::OpenKeymap", // Keymaps
+      "space s q": "diagnostics::Deploy", // Quickfix List
+      "space s l": "diagnostics::DeployCurrentFile", // Location List
+      "space s R": "workspace::ReopenLastPicker", // Resume
+      "space s u": "editor::Undo", // Undo History (no picker in Zed)
+      "space s t": "pane::DeploySearch", // Todo comments
+      "space s h": "zed::OpenDocs", // Help Pages
+      // TODO: no Zed equivalent for registers / jumps / autocmds / man /
+      //       highlights / icons / lazy specs pickers.
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>g — git (snacks/picker.lua, snacks/base.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space g g": "git_panel::ToggleFocus", // lazygit
+      "space g s": "git_panel::ToggleFocus", // Git Status
+      "space g b": "git::Branch", // Git Branches
+      "space g l": "git_panel::ActivateHistoryTab", // Git Log
+      "space g L": "git::Blame", // Git Log Line
+      "space g S": "git::ViewStash", // Git Stash
+      "space g d": "git::Diff", // Git Diff (Hunks)
+      "space g f": "git::OpenModifiedFiles", // Git Log File
+      "space g B": "editor::OpenPermalinkToLine", // Snacks.gitbrowse
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>h — git hunks (plugins/gitsigns.lua)
+      // ] c / [ c hunk navigation are Zed defaults already.
+      ////////////////////////////////////////////////////////////////////////
+      "space h s": "git::StageRange", // stage hunk
+      "space h r": "git::Restore", // reset hunk
+      "space h S": "git::StageFile", // stage buffer
+      "space h u": "git::UnstageFile", // undo stage hunk
+      "space h R": "git::RestoreFile", // reset buffer
+      "space h p": "editor::ExpandAllDiffHunks", // preview hunk
+      "space h b": "git::Blame", // blame line
+      "space h d": "git::Diff", // diff against index
+      "space h D": "git::DiffHead", // diff against last commit
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>c — code (plugins/lsp/init.lua, mason.lua, lang/python.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space c r": "editor::Rename",
+      "space c a": "editor::ToggleCodeActions",
+      "space c c": "editor::ToggleCodeLens", // Run Codelens
+      "space c C": "editor::ToggleCodeLens", // Refresh Codelens
+      "space c h": "editor::ToggleInlayHints",
+      "space c o": "editor::OrganizeImports",
+      "space c l": "lsp_tool::ToggleMenu", // Lsp Info
+      "space c m": "zed::Extensions", // Mason
+      "space c R": "workspace::SaveAs", // Snacks.rename.rename_file
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>d — debug (plugins/dap/*)
+      ////////////////////////////////////////////////////////////////////////
+      "space d b": "editor::ToggleBreakpoint",
+      "space d B": "editor::EditLogBreakpoint", // Breakpoint Condition
+      "space d c": "debugger::Continue", // Run/Continue
+      "space d C": "debugger::RunToCursor",
+      "space d i": "debugger::StepInto",
+      "space d o": "debugger::StepOut",
+      "space d O": "debugger::StepOver",
+      "space d P": "debugger::Pause",
+      "space d t": "debugger::Stop", // Terminate
+      "space d l": "debugger::Rerun", // Run Last
+      "space d r": "debugger::FocusConsole", // Toggle REPL
+      "space d s": "debugger::ToggleSessionPicker", // Session
+      "space d w": "debugger::FocusVariables", // Widgets
+      "space d j": "debugger::FocusFrames", // Down a frame
+      "space d k": "debugger::FocusFrames", // Up a frame
+      "space d u": "debug_panel::ToggleFocus", // Dap UI
+      "space d e": "debugger::EvaluateSelectedText", // Eval
+      "space d g": "debugger::Start", // Go to Line (No Execute)
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>a — AI (plugins/codecompanion/init.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space a a": "agent::ToggleFocus", // CodeCompanionChat Toggle
+      "space a p": "agent::ToggleProfileSelector", // CodeCompanionActions
+      "space a n": "agent::NewThread",
+      "space a i": "assistant::InlineAssist",
+
+      ////////////////////////////////////////////////////////////////////////
+      // <leader>u — toggles (snacks/base.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space u w": "editor::ToggleSoftWrap",
+      "space u l": "editor::ToggleLineNumbers",
+      "space u L": "editor::ToggleRelativeLineNumbers",
+      "space u d": "editor::ToggleDiagnostics",
+      "space u h": "editor::ToggleInlayHints",
+      "space u g": "editor::ToggleIndentGuides",
+      "space u T": "editor::ToggleSemanticHighlights", // treesitter
+      "space u C": "theme_selector::Toggle", // Colorschemes
+      "space u n": "workspace::ClearAllNotifications", // Dismiss notifications
+      // TODO: no Zed action for spell / conceallevel / dim / background toggles.
+
+      ////////////////////////////////////////////////////////////////////////
+      // misc snacks (snacks/base.lua)
+      ////////////////////////////////////////////////////////////////////////
+      "space z": "workspace::ToggleCenteredLayout", // Snacks.zen
+      "space Z": "workspace::ToggleZoom", // Snacks.zen.zoom
+      "space b d": "pane::CloseActiveItem" // Snacks.bufdelete
+    }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Normal mode only (nvim "n")
+  ////////////////////////////////////////////////////////////////////////////
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "K": "editor::Hover" // which-key.lua: K = LSP Hover
+    }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Visual mode only (nvim "x")
+  ////////////////////////////////////////////////////////////////////////////
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "backspace": "editor::SelectSmallerSyntaxNode" // <BS> Decrement Selection
+    }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Insert mode (plugins/lsp/init.lua, plugins/lsp/inline.lua)
+  ////////////////////////////////////////////////////////////////////////////
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-k": "editor::ShowSignatureHelp", // <c-k> signature help
+      "ctrl-f": "editor::AcceptEditPrediction", // <c-f> accept inline completion
+      "ctrl-g": "editor::NextEditPrediction" // <c-g> switch inline completion
+    }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Make ctrl-w / ctrl-hjkl reach the docks too (project panel, terminal, ...)
+  ////////////////////////////////////////////////////////////////////////////
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w l": "workspace::ActivatePaneRight"
+    }
+  },
+
+  ////////////////////////////////////////////////////////////////////////////
+  // Leader bindings that should still work with no editor open
+  ////////////////////////////////////////////////////////////////////////////
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "\\": "vim::ToggleProjectPanelFocus",
+      "space f f": "file_finder::Toggle",
+      "space f r": "projects::OpenRecent",
+      "space f p": "projects::OpenRecent",
+      "space s g": "pane::DeploySearch",
+      "space g g": "git_panel::ToggleFocus",
+      "space a a": "agent::ToggleFocus",
+      "space t n": "workspace::NewFile",
+      "space ,": "tab_switcher::Toggle"
     }
   }
 ]
