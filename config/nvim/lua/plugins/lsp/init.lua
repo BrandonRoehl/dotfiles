@@ -60,8 +60,7 @@ return {
                     { "<leader>cr", vim.lsp.buf.rename, desc = "Rename", method = "rename" },
                     { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "x" }, method = "textDocument/codeAction" },
                     { "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" }, method = "textDocument/codeLens" },
-                    { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" }, method = "textDocument/codeLens" },
-                    { "<leader>ch>", function()
+                    { "<leader>ch", function()
 		            	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 		            end, desc = "Toggle Inlay [C]ode [H]ints", method = "textDocument/inlayHint" },
                 },
