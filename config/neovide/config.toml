@@ -40,5 +40,8 @@ size = 13.0
 
 [box-drawing]
 # "font-glyph", "native" or "selected-native"
-# mode = "font-glyph"
-mode = "native"
+mode = "font-glyph"
+
+[box-drawing.sizes]
+default = [2, 4]  # Thin and thick values respectively, for all sizes
+
