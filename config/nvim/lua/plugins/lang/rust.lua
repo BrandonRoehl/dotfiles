@@ -18,7 +18,7 @@ local function expand_macro()
 			return
 		end
 		vim.lsp.util.open_floating_preview(vim.split(result.expansion, "\n", { trimempty = true }), "rust", {
-			title = " " .. (result.name or "Macro expansion") .. "",
+			title = " " .. (result.name or "Macro expansion") .. " ",
 			border = "rounded",
 		})
 	end, 0)
