@@ -53,12 +53,9 @@ return {
 		opts = {
 			servers = {
 				rust_analyzer = {
+                    -- stylua: ignore
 					keys = {
-						{
-							"<leader>cx",
-							expand_macro,
-							desc = "Expand macro",
-						},
+						{ "<leader>cx", expand_macro, desc = "Expand macro" },
 					},
 				},
 			},
