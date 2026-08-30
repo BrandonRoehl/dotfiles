@@ -1,27 +1,33 @@
 ---@module "lazy"
 
 local function expand_macro()
-	local client = vim.lsp.get_clients({ bufnr = 0, name = "rust_analyzer" })[1]
-	if not client then
-		vim.notify("rust-analyzer is not attached to this buffer", vim.log.levels.WARN)
-		return
-	end
+	local bufnr = vim.api.nvim_get_current_buf()
+	local win = vim.api.nvim_get_current_win()
+	local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "rust_analyzer" })
 
-	local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
-	client:request("rust-analyzer/expandMacro", params, function(err, result)
-		if err then
-			vim.notify("Expand macro failed: " .. (err.message or vim.inspect(err)), vim.log.levels.ERROR)
+	for _, client in ipairs(clients) do
+		local params = vim.lsp.util.make_position_params(win, client.offset_encoding)
+		if
+			client:supports_method("rust-analyzer/expandMacro", bufnr)
+			and client:request("rust-analyzer/expandMacro", params, function(err, result)
+				if err then
+					vim.notify("Expand macro failed: " .. (err.message or vim.inspect(err)), vim.log.levels.ERROR)
+					return
+				end
+				if not result or not result.expansion or result.expansion == "" then
+					vim.notify("No macro under cursor", vim.log.levels.INFO)
+					return
+				end
+				vim.lsp.util.open_floating_preview(vim.split(result.expansion, "\n", { trimempty = true }), "rust", {
+					title = " " .. (result.name or "Macro expansion") .. " ",
+					border = "rounded",
+				})
+			end, bufnr)
+		then
 			return
 		end
-		if not result or not result.expansion or result.expansion == "" then
-			vim.notify("No macro under cursor", vim.log.levels.INFO)
-			return
-		end
-		vim.lsp.util.open_floating_preview(vim.split(result.expansion, "\n", { trimempty = true }), "rust", {
-			title = " " .. (result.name or "Macro expansion") .. " ",
-			border = "rounded",
-		})
-	end, 0)
+	end
+	vim.notify("rust-analyzer is not attached to this buffer", vim.log.levels.WARN)
 end
 
 ---@return LazyPluginSpec[]
