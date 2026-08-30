@@ -1,17 +1,44 @@
-fork = true
+# backtraces-path = "/path/to/neovide_backtraces.log" # see below for the default platform specific location
+# chdir = "/path/to/dir"
+fork = false
 frame = "full"
+# grid = "420x240" # mutually exclusive with `size` and `maximized`
+# size = "1200x800" # mutually exclusive with `grid` and `maximized`
 idle = true
+# icon = "/full/path/to/neovide.ico" # Example path. Default icon is bundled. Use .icns on macOS.
 maximized = false
+mouse-cursor-icon = "arrow"
 # neovim-bin = "/usr/bin/nvim" # in reality found dynamically on $PATH if unset
 no-multigrid = false
-srgb = false
+opengl = false # macOS/Windows only
+# server = "/tmp/nvim.sock" # or "127.0.0.1:7777"
+srgb = false # platform-specific: false (Linux/macOS) or true (Windows)
+startup-message-capture = true
 tabs = true
-theme = "auto"
-mouse-cursor-icon = "arrow"
-title-hidden = true
+system-native-tabs = false # macOS only
+system-pinned-hotkey = "cmd+ctrl+z" # macOS only
+system-switcher-hotkey = "cmd+ctrl+n" # macOS only
+system-new-window-hotkey = "cmd+n" # macOS only
+system-hide-hotkey = "cmd+h" # macOS only
+system-hide-others-hotkey = "cmd+alt+h" # macOS only
+system-quit-hotkey = "cmd+q" # macOS only
+system-minimize-hotkey = "cmd+m" # macOS only
+system-fullscreen-hotkey = "cmd+ctrl+f" # macOS only
+system-show-all-tabs-hotkey = "cmd+shift+e" # macOS only
+system-tab-prev-hotkey = "cmd+shift+[" # macOS only
+system-tab-next-hotkey = "cmd+shift+]" # macOS only
+title-hidden = false
 vsync = true
+# wayland-app-id = "neovide"
 wsl = false
+# x11-wm-class = "neovide"
+# x11-wm-class-instance = "neovide"
 
 [font]
 normal = ["JetBrainsMono Nerd Font"] # Will use the bundled Fira Code Nerd Font by default
 size = 13.0
+
+[box-drawing]
+# "font-glyph", "native" or "selected-native"
+# mode = "font-glyph"
+mode = "native"
