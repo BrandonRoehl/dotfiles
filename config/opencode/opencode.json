@@ -11,6 +11,7 @@
             "/tmp/*": "allow"
         },
         "edit": {
+            "~/.aws/**": "deny",
             "~/.cargo/**": "deny",
             "~/notes/**": "deny",
             "/tmp/*": "allow"
