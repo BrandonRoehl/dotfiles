@@ -52,8 +52,8 @@
 -- ensure_rainbow_groups()
 
 return {
-	-- import = "plugins.themes.tokyonight",
-	import = "plugins.themes.catppuccin",
+	import = "plugins.themes.tokyonight",
+	-- import = "plugins.themes.catppuccin",
 	-- import = "plugins.themes.onedark",
 	-- import = "plugins.themes.onedarkpro",
 	-- import = "plugins.themes.kanagawa",
