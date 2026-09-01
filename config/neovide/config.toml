@@ -35,12 +35,16 @@ wsl = false
 # x11-wm-class-instance = "neovide"
 
 [font]
-normal = ["JetBrainsMono Nerd Font"] # Will use the bundled Fira Code Nerd Font by default
 size = 13.0
+hinting = "full"
+edging = "none"
+
+[[font.normal]]
+family = "JetBrainsMono Nerd Font"
 
 [font.features]
 # Disables ligatures for all matched or default fonts
-all = ["-calt", "-liga", "-dlig"] 
+"JetBrainsMono Nerd Font" = ["-calt", "-liga", "-dlig"] 
 
 [box-drawing]
 # "font-glyph", "native" or "selected-native"
