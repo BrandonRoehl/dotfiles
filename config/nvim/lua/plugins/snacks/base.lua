@@ -14,16 +14,16 @@ return {
 			-- can be a list of hl groups to cycle through
 			scope = {
 				enabled = true,
-				hl = {
-					"SnacksIndent1",
-					"SnacksIndent2",
-					"SnacksIndent3",
-					"SnacksIndent4",
-					"SnacksIndent5",
-					"SnacksIndent6",
-					"SnacksIndent7",
-					"SnacksIndent8",
-				},
+				-- hl = {
+				-- 	"SnacksIndent1",
+				-- 	"SnacksIndent2",
+				-- 	"SnacksIndent3",
+				-- 	"SnacksIndent4",
+				-- 	"SnacksIndent5",
+				-- 	"SnacksIndent6",
+				-- 	"SnacksIndent7",
+				-- 	"SnacksIndent8",
+				-- },
 			},
 		},
 		input = { enabled = true },
