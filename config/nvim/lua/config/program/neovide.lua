@@ -1,6 +1,8 @@
 -- Neovide Configuration
 -- https://neovide.dev/configuration.html
 
+vim.opt.termguicolors = true
+
 vim.g.have_nerd_font = true
 
 vim.g.neovide_cursor_trail_size = 0.8
