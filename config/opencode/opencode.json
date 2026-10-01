@@ -32,6 +32,9 @@
                 "baseURL": "http://192.168.0.140:1234/v1"
             },
             "models": {
+                "deepseek-ai/DeepSeek-V4.1-Flash": {
+                    "name": "DeepSeek V4.1 Flash",
+                },
                 "qwen/qwen3.8-27b": {
                     "name": "Qwen 3.8-27B",
                 }
