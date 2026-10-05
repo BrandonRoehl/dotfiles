@@ -69,8 +69,8 @@
   "ui_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha",
   },
   "lsp": {
     "rust-analyzer": {
