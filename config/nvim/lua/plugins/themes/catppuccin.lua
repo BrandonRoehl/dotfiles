@@ -16,6 +16,12 @@ return {
 		},
 		term_colors = true,
 		auto_integrations = true,
+		integrations = {
+			snacks = {
+				enabled = true,
+				indent_scope_color = "", -- catppuccin color (eg. `lavender`) Default: overlay2
+			},
+		},
 		-- custom_highlights = function(colors)
 		-- 	return {
 		-- 		NormalFloat = { fg = colors.text, bg = colors.mantle }, -- Normal text in floating windows.
