@@ -28,9 +28,9 @@
         //     },
         // },
         "windows": {
-            "package": "@opencode/ai/providers/openai-compatible",
             "name": "Windows",
-            "options": {
+            "package": "@opencode/ai/providers/openai-compatible",
+            "settings": {
                 "baseURL": "http://192.168.0.138:1234/v1"
             },
             "models": {
@@ -46,7 +46,7 @@
             }
         },
         "amazon-bedrock": {
-            "options": {
+            "settings": {
                 "region": "us-east-1",
                 "profile": "claude"
             }
