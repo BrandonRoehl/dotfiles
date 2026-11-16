@@ -17,7 +17,7 @@
             "/tmp/*": "allow"
         }
     },
-    "model": "github-copilot/claude-sonnet-5.5",
+    // "model": "github-copilot/claude-sonnet-5.5",
     "provider": {
         // "lmstudio": {
         //     "npm": "@ai-sdk/openai-compatible",
