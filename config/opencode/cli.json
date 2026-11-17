@@ -2,14 +2,59 @@
   "$schema": "https://opencode.ai/v2/cli.json",
   "theme": {
     "name": "catppuccin"
+    "mode": "system"
   },
-  "diffs": {
-    "wrap": "word"
+  "animations": true,
+  "cursor": {
+    "style": "block",
+    "blinking": true
+  },
+  "mouse": true,
+  "scroll": {
+    "speed": 3,
+    "acceleration": false
+  },
+  "prompt": {
+    "editor": true,
+    "paste": "compact",
+    "image_preview": false
   },
   "session": {
     "sidebar": "auto",
     "scrollbar": false,
-    "thinking": "show"
+    "submit_scroll": "bottom",
+    "thinking": "show",
+    "grouping": "auto",
+    "image_preview": true,
+    "tps": true,
+    "markdown": "rendered",
+    "new_location": "launch",
+    "permissions": "prompt"
   },
-  "animations": true
+  "tabs": {
+    "mode": "auto",
+    "scope": "cwd",
+    "layout": "horizontal",
+    "indicators": "status"
+  },
+  "diffs": {
+    "source": "branch",
+    "wrap": "word",
+    "tree": true,
+    "single": false,
+    "view": "auto"
+  },
+  "highlights": false,
+  "mini": {
+    "thinking": "show",
+    "tools": "hide",
+    "shell_output": "hide",
+    "turn_summary": "show",
+    "footer": "show",
+    "splash": "show",
+    "work_spinner": "block-soft-slide",
+    "mono": false,
+    "replay": true,
+    "replay_limit": 200
+  }
 }

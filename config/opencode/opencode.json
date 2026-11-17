@@ -2,9 +2,6 @@
     "$schema": "https://opencode.ai/config.json",
     "share": "disabled",
     "lsp": true,
-    "display": {
-        "thinking": "show"
-    },
     // V1 "enabled_providers" equivalent: deny every provider, then allow the enabled ones.
     // "policies": [
     //     { "action": "provider.use", "resource": "*", "effect": "deny" },
