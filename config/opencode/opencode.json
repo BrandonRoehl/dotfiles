@@ -1,5 +1,8 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    // "model": "github-copilot/claude-sonnet-5.5",
+    // "model": "opencode/deepseek-v4.1-flash-free", 
+    // "model": "opencode-go/deepseek-v4.1-flash",
     "share": "disabled",
     "lsp": true,
     // V1 "enabled_providers" equivalent: deny every provider, then allow the enabled ones.
@@ -23,8 +26,6 @@
         { "action": "edit", "resource": "~/notes/**", "effect": "deny" },
         { "action": "edit", "resource": "/tmp/*", "effect": "allow" }
     ],
-    // "model": "github-copilot/claude-sonnet-5.5",
-    // "model": "opencode/deepseek-v4.1-flash-free", 
     "providers": {
         // "lmstudio": {
         //     "package": "@opencode/ai/providers/openai-compatible",
